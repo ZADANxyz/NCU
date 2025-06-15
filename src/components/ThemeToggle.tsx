@@ -4,14 +4,14 @@ import { Moon, Sun } from "lucide-react";
 
 interface ThemeToggleProps {
   className?: string;
-  isDark?: boolean; // allow parent to control dark state
+  isDark?: boolean;
+  iconSize?: number; // new prop for icon size
 }
 
 const GOLD = "#B19528";
 const BLUE = "#046BD2";
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark }) => {
-  // Use isDark from props if provided, else detect
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark, iconSize = 21 }) => {
   const [dark, setDark] = React.useState(() =>
     typeof window !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -32,16 +32,19 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark }) => {
   }, [dark]);
 
   React.useEffect(() => {
-    // Initial load from localStorage or system
     const stored = localStorage.getItem("theme");
     if (stored) setDark(stored === "dark");
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setDark(true);
   }, []);
 
-  // On hover: sun/moon is blue in light mode, gold in dark mode
+  // Correct hover color for icon
+  const hoveredColor = hovered
+    ? (controlledDark ? GOLD : BLUE)
+    : "currentColor";
+
   const iconProps = {
-    size: 21,
-    color: hovered ? (controlledDark ? GOLD : BLUE) : "currentColor",
+    size: iconSize,
+    color: hoveredColor,
     className: "transition-transform duration-300"
   };
 

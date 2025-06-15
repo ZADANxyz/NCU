@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import { ShoppingCart, Search } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import Logo from "./Logo"; // Use your actual Logo component (see note below)
+import Logo from "./Logo";
 
 // Clean NCU wordmark SVG 140px width, fills with currentColor
 const NCUWordmark: React.FC = () => (
@@ -77,7 +77,7 @@ const Header = () => {
   const iconHoverColor = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
 
   // Smaller icon size for cart/search
-  const iconSize = 21;
+  const iconSize = 18;
 
   return (
     <>
@@ -95,16 +95,16 @@ const Header = () => {
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-20 px-3 sm:px-8"
+            "relative flex items-center justify-between h-16 px-3 sm:px-8"
           )}
         >
-          {/* Left: Logo - now using uploaded logo */}
-          <div className="flex items-center" style={{ height: 38 }}>
+          {/* Left: Logo */}
+          <div className="flex items-center" style={{ height: 34 }}>
             <Logo />
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-5">
+            <ul className="flex items-center gap-4">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -114,7 +114,7 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "tracking-wide font-sans text-[14px] font-normal",
+                        "tracking-wide font-sans text-[13px] font-normal",
                         "transition-colors transition-transform duration-150 px-0.5 pb-0.5 rounded-none",
                         "hover:scale-105 focus:scale-105",
                         active
@@ -180,6 +180,7 @@ const Header = () => {
                   iconHoverColor
                 )}
                 isDark={isDark}
+                iconSize={iconSize}
               />
             </span>
           </div>
@@ -204,7 +205,7 @@ const Header = () => {
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
-      <div className="h-20" />
+      <div className="h-16" />
       <style>
         {`
         .glassier-header {
