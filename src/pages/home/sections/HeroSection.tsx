@@ -29,7 +29,7 @@ const SMALL_EDGE_PADDING = "12px";
 const SECTION_MAX_WIDTH = "1240px"; // Content width
 const SECTION_HORIZONTAL_PADDING = "52px";
 
-const GOLD_BAR_MAX_WIDTH = "1400px"; // Make the gold bar a bit wider than the hero content
+const GOLD_BAR_MAX_WIDTH = "1550px"; // Even wider but not to edges
 
 const HeroSection = () => {
   return (
@@ -147,7 +147,7 @@ const HeroSection = () => {
           }
         }
       `}</style>
-      {/* Divider (GOLD BAR): A bit wider than content, but not touching edges */}
+      {/* Divider (GOLD BAR): Even wider, but not touching edges */}
       <div
         className="w-full flex justify-center"
         style={{
