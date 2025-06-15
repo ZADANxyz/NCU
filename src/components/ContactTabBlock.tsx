@@ -31,11 +31,10 @@ const HUBSPOT_PORTAL_ID = "242249646";
 const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
 const HUBSPOT_REGION = "na2";
 
-// Glassy button styles
+// Stronger glassy gold button styles
 const glassyButtonClass =
-  "block bg-white/20 backdrop-blur-md border border-[#B19528]/80 shadow-lg shadow-[#B19528]/30 hover:bg-white/40 hover:backdrop-blur-lg hover:shadow-xl hover:border-[#b19528] text-[#b19528] font-bold rounded-lg py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold drop-shadow-[0_4px_20px_rgba(177,149,40,0.13)]";
+  "block w-full bg-white/10 backdrop-blur-md border border-[#B19528] shadow-lg shadow-[#B19528]/30 hover:bg-white/20 hover:backdrop-blur-lg hover:shadow-xl hover:border-[#b19528] text-[#b19528] font-bold rounded-lg py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold drop-shadow-[0_4px_20px_rgba(177,149,40,0.13)]";
 
-// Contact Box stays the same (no gold line)
 const ContactTabBlock = () => {
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +66,7 @@ const ContactTabBlock = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-full flex flex-col items-center">
       {/* Contact box with border */}
       <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-4 md:px-6 py-6 md:py-8 w-full max-w-md bg-white/90 dark:bg-[#232232]/80 mx-auto">
         <h3 className="text-xl md:text-2xl font-bold golden mb-2 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -76,19 +75,19 @@ const ContactTabBlock = () => {
         {NCU_PHONE}
         <div id="hubspot-form-block" ref={formRef} className="w-full mb-3"></div>
       </div>
-      {/* Apply Now button and text floating below the border */}
-      <div className="flex flex-col items-center mt-2 -mb-1 select-none">
+      {/* Apply Now button and text directly underneath, perfectly matching the contact card width */}
+      <div className="w-full max-w-md flex flex-col items-center mt-5">
         <a
           href={APPLY_LINK}
           target="_blank"
           rel="noopener noreferrer"
           className={glassyButtonClass}
           style={{
-            // fallback for glassmorphism if Tailwind is missing, but should work with Tailwind!
-            boxShadow: "0 4px 20px 0 rgba(177,149,40,0.13)",
-            border: "1.5px solid #B19528",
+            // Make gold more prominent, less white overlay
+            boxShadow: "0 4px 20px 0 rgba(177,149,40,0.19)",
+            border: "2px solid #B19528",
             background:
-              "linear-gradient(120deg,rgba(255,255,255,0.13) 50%,rgba(177,149,40,0.12) 100%)",
+              "linear-gradient(120deg,rgba(255,215,71,0.29) 12%,rgba(177,149,40,0.33) 69%,rgba(177,149,40,0.42) 100%)",
           }}
         >
           Apply Now
@@ -97,10 +96,8 @@ const ContactTabBlock = () => {
           We're here to help—reach out and let's connect!
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default ContactTabBlock;
-
-// (GoldBar removed)
