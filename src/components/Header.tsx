@@ -138,7 +138,8 @@ const Header = () => {
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
-      <div style={{ height: 60 }} />
+      {/* REMOVE spacer for hero image flush with menu */}
+      <div style={{ height: 0 }} />
       <style>
         {`
         .apple-glass-header {
