@@ -54,7 +54,7 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
         className="group relative w-full px-5 py-2 font-semibold rounded-lg shadow-lg transition-all duration-200 disabled:opacity-30"
         style={checkoutBtnStyle}
       >
-        {/* Glass gloss overlay with hover effect */}
+        {/* Glass gloss overlay with much stronger hover effect */}
         <span
           style={{
             position: "absolute",
@@ -67,19 +67,19 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
             borderRadius: "inherit",
             transition: "opacity 0.28s cubic-bezier(0.4,0,0.2,1), filter 0.18s cubic-bezier(0.4,0,0.2,1)",
             background:
-              "linear-gradient(105deg,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.10) 54%,rgba(255,255,255,0.17) 98%)",
+              "linear-gradient(105deg,rgba(255,255,255,0.17) 0%,rgba(255,255,255,0.12) 54%,rgba(255,255,255,0.19) 98%)",
             opacity: 0.18,
             filter: "blur(0.5px)",
           }}
-          className="group-hover:opacity-[0.29] group-hover:filter-glossy"
+          className="group-hover:opacity-[0.38] group-hover:filter-glassx"
           aria-hidden="true"
         />
         <style>
           {`
-            /* Custom filter-glossy for stronger hover glass effect */
-            .group:hover .group-hover\\:filter-glossy {
-              filter: blur(1.1px) brightness(1.16);
-              opacity: 0.29 !important;
+            /* Much stronger filter-glassx for hover glass effect */
+            .group:hover .group-hover\\:filter-glassx {
+              filter: blur(2.5px) brightness(1.21);
+              opacity: 0.38 !important;
             }
           `}
         </style>
@@ -92,3 +92,4 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
 };
 
 export default CartFooter;
+
