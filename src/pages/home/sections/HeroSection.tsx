@@ -1,62 +1,48 @@
-import React, { useRef } from "react";
-import { Button } from "@/components/ui/button";
 
-const HERO_IMAGE = "/lovable-uploads/ff5bd571-8877-4014-b55a-6226e12e20f5.png";
-const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=1200&q=80";
+import React from "react";
+import AlumniCarousel from "@/components/AlumniCarousel";
+import ContactTabBlock from "@/components/ContactTabBlock";
+
+// Flush image directly under the header, no overlay, no spacing above.
+const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const HeroSection = () => {
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  // `onError` handler swaps to Unsplash on failure once, prevents loops
-  const handleImageError = () => {
-    const img = imgRef.current;
-    if (img && img.src !== FALLBACK_IMAGE) {
-      img.src = FALLBACK_IMAGE;
-    }
-  };
-
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[580px] md:min-h-[680px] pt-4 pb-12 overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <>
+      {/* Flush header image, no overlay/text */}
+      <div className="w-full relative">
         <img
-          ref={imgRef}
           src={HERO_IMAGE}
-          alt="NCU Students"
-          className="object-cover w-full h-full"
-          style={{ minHeight: 360, maxHeight: 700, objectPosition: "center 22%" }}
-          onError={handleImageError}
+          alt="New Covenant University Hero"
+          className="w-full h-auto object-cover object-center"
+          style={{
+            display: "block",
+            margin: 0,
+            padding: 0,
+            maxHeight: 460, // Adjust as needed to match ncu.education
+            minHeight: 320,
+          }}
+          draggable={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-transparent dark:from-[#191D28]/80 dark:via-[#181D2F55] dark:to-transparent" />
       </div>
-      <div className="relative z-10 flex flex-col items-center px-4 md:px-9 w-full mt-20">
-        <h1 className="text-[clamp(2.3rem,6vw,4.2rem)] font-extrabold leading-tight text-[#046BD2] mb-2 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-          North Carolina University
-        </h1>
-        <span className="block text-xl md:text-3xl text-[#B19528] font-semibold mb-4 text-center tracking-wide" style={{ letterSpacing: "0.01em" }}>
-          Empowering The Next Generation of Christian Leaders
-        </span>
-        <p className="max-w-2xl text-md md:text-lg text-center text-[#353535] dark:text-[#e2e2e2] mb-8 font-medium" style={{ fontWeight: 400 }}>
-          Accredited. Affordable. 100% Online. Built for your calling.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center w-full mb-4">
-          <Button
-            className="glass glossy px-10 py-4 text-lg font-extrabold shadow-lg border border-[#046BD2]/25 hover:scale-105 bg-[#046BD2] text-white transition"
-            style={{ background: "linear-gradient(96deg, #046BD2 78%, #184281 100%)" }}
-            size="lg"
-          >
-            Apply Now
-          </Button>
-          <Button
-            className="glass glossy px-10 py-4 text-lg font-bold shadow-md border border-gold/70 text-[#046BD2] hover:bg-[#EAF2FB] hover:scale-105 transition"
-            variant="outline"
-            size="lg"
-          >
-            Explore Programs
-          </Button>
+      {/* Hero section below the image */}
+      <section className="relative z-10 flex flex-col items-center w-full bg-[rgba(255,255,255,0.92)] dark:bg-[rgba(28,28,36,0.97)] py-0 md:py-6 lg:py-8 px-1 md:px-0" style={{boxShadow: "0 4px 32px 0 rgba(4,107,210,0.05)", borderBottomLeftRadius: "1.2rem", borderBottomRightRadius: "1.2rem"}}>
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-playfair golden text-center mb-3 md:mb-5 tracking-tight" style={{letterSpacing: 0.1, fontFamily: "'Playfair Display', serif"}}>
+          Meet Our NCU Alumni
+        </h2>
+        {/* Main hero content: alumni carousel left, contact form right */}
+        <div className="flex flex-col md:flex-row justify-center items-stretch w-full max-w-5xl gap-5 md:gap-10 p-1">
+          <div className="w-full md:w-[53%] flex justify-center">
+            <AlumniCarousel />
+          </div>
+          <div className="w-full md:w-[47%] flex justify-center">
+            <ContactTabBlock />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
-
 export default HeroSection;
+
