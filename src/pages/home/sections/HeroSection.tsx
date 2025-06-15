@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -104,13 +103,13 @@ const HeroSection = () => {
             >
               Meet Our NCU Alumni
             </h2>
-            {/* Tighter spacing above slider */}
-            <div className="h-1" />
+            {/* More space above slider */}
+            <div className="h-4 md:h-5" />
             <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
-            {/* More space below slider; top/bottom are the same (20px) */}
-            <div className="h-5 md:h-[20px]" />
+            {/* More space between slider and paragraph */}
+            <div className="h-8 md:h-10" />
             <div className="flex-1 flex flex-col justify-start w-full max-w-[870px]">
               {NCU_ALUMNI_TEXT}
             </div>
@@ -170,4 +169,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-

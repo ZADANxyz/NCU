@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -80,7 +79,7 @@ const AlumniCarousel = () => {
                 <img
                   src={src}
                   alt={`NCU Alumni gallery photo #${idx + 1}`}
-                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[240px] md:h-[330px] lg:h-[385px] border-0 mx-auto transition-all"
+                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
                   style={{
@@ -97,4 +96,3 @@ const AlumniCarousel = () => {
 };
 
 export default AlumniCarousel;
-
