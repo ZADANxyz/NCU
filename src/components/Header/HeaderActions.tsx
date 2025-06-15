@@ -1,6 +1,6 @@
 
 import React from "react";
-import { ShoppingCart, Search, Person } from "lucide-react";
+import { ShoppingCart, Search, User } from "lucide-react";
 import ThemeToggle from "../ThemeToggle";
 import { cn } from "@/lib/utils";
 
@@ -66,7 +66,7 @@ const HeaderActions: React.FC<Props> = ({
         </span>
       </button>
 
-      {/* Person Icon */}
+      {/* Person Icon - updated to User (replaces Person) */}
       <button
         className={cn(
           cartSearchBase,
@@ -80,7 +80,7 @@ const HeaderActions: React.FC<Props> = ({
         type="button"
         tabIndex={0}
       >
-        <Person size={iconSize} strokeWidth={2.05} />
+        <User size={iconSize} strokeWidth={2.05} />
       </button>
 
       {/* Dark mode toggle */}
@@ -99,3 +99,4 @@ const HeaderActions: React.FC<Props> = ({
 };
 
 export default HeaderActions;
+
