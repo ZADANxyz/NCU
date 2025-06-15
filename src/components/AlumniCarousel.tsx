@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -12,8 +11,8 @@ const AUTO_SLIDE_INTERVAL = 7400; // slower than before
 
 const AlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
-  const carouselApi = useRef<any>(null);
-  const timer = useRef<any>(null);
+  const carouselApi = React.useRef<any>(null);
+  const timer = React.useRef<any>(null);
 
   // Auto-slide logic
   useEffect(() => {
@@ -37,16 +36,19 @@ const AlumniCarousel = () => {
   }
 
   return (
-    <div className="py-2 w-full flex items-center justify-center">
+    <div className="py-2 w-full flex items-center justify-start md:justify-start">
       <Carousel
         opts={{
           loop: true,
-          align: "center",
+          align: "start", // flush to the left!
           slidesToScroll: 1,
-          containScroll: 'trimSnaps' // Hide overflow images
+          containScroll: 'trimSnaps'
         }}
         setApi={setApi}
-        className="w-full max-w-xl"
+        className="w-full max-w-[540px] md:max-w-[650px] lg:max-w-[740px] mx-0"
+        style={{
+          marginLeft: 0,
+        }}
       >
         <CarouselContent>
           {alumniImages.map((src, idx) => (
@@ -64,10 +66,11 @@ const AlumniCarousel = () => {
               }}
             >
               <div
-                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/80 dark:bg-[#232232]/78 px-2 pt-2 pb-1 flex items-center justify-center"
+                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/80 dark:bg-[#232232]/78 px-0 pt-2 pb-1 flex items-center justify-center"
                 style={{
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
-                  maxWidth: 450,
+                  width: "100%",
+                  maxWidth: "700px",
                   margin: "0 auto",
                   background: "linear-gradient(105deg,rgba(255,229,87,0.09) 0%,rgba(255,255,255,0.20) 100%)",
                 }}
@@ -75,9 +78,12 @@ const AlumniCarousel = () => {
                 <img
                   src={src}
                   alt={`NCU Alumni gallery photo #${idx + 1}`}
-                  className="rounded-lg object-cover shadow-md w-[296px] md:w-[390px] lg:w-[445px] h-[155px] md:h-[224px] border-2 border-gold mx-auto"
+                  className="rounded-lg object-cover shadow-md w-full md:w-[500px] lg:w-[650px] max-w-[700px] h-[175px] md:h-[260px] lg:h-[320px] border-2 border-gold mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
+                  style={{
+                    marginLeft: 0,
+                  }}
                 />
               </div>
             </CarouselItem>
