@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -119,7 +118,7 @@ const HeroSection = () => {
               marginRight: 0,    // ensure no margin collapsing
             }}
           >
-            <div className="w-full md:w-[94%] lg:w-[88%] xl:w-[82%] 2xl:w-[78%]" style={{marginRight:0, marginLeft:"auto"}}>
+            <div className="w-full" style={{ marginLeft: "auto", marginRight: 0 }}>
               <ContactTabBlock />
             </div>
           </div>
