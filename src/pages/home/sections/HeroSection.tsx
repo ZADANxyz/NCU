@@ -67,10 +67,9 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="relative w-full flex flex-col md:flex-row min-h-[500px]">
+        <div className="relative w-full flex flex-col md:flex-row min-h-[500px] items-start">
           {/* Left column: Stick to left edge */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7"
-               style={{ minWidth: 0 }}>
+          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7" style={{ minWidth: 0 }}>
             <h2
               className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
               style={{
@@ -90,12 +89,11 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right column: contact block - pinned to right edge, overlays in column */}
+          {/* Right column: contact block - stick to right edge, align to top */}
           <div
-            className="w-full md:w-1/2 flex flex-col items-end justify-center mt-0 md:mt-0 pt-6 md:pt-0 pr-3 sm:pr-7 md:absolute md:right-0 md:top-0 md:bottom-0 md:justify-center"
+            className="w-full md:w-1/2 flex flex-col items-end justify-start mt-0 md:mt-0 pt-6 md:pt-0 pr-3 sm:pr-7"
             style={{
               minWidth: 0,
-              height: "100%",
             }}
           >
             <ContactTabBlock />
@@ -124,3 +122,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
