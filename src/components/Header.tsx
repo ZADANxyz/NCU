@@ -83,16 +83,14 @@ const Header = () => {
       <header
         className={cn(
           "fixed top-0 w-full z-40",
-          "apple-glass-header", // use new style
+          "apple-glass-header",
           elevate && "shadow-2xl"
         )}
-        style={
-          {
-            borderBottomLeftRadius: "0.6rem",
-            borderBottomRightRadius: "0.6rem",
-            // box-shadow handled in css class
-          }
-        }
+        style={{
+          // Softer (lighter) curve
+          borderBottomLeftRadius: "0.45rem",
+          borderBottomRightRadius: "0.45rem",
+        }}
       >
         <div
           className={cn(
@@ -105,7 +103,7 @@ const Header = () => {
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-3">
+            <ul className="flex items-center gap-5">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -157,7 +155,7 @@ const Header = () => {
                 "transition-transform duration-150",
                 cartSearchHover,
                 "hover:scale-110 focus:scale-110",
-                "dark:hover:text-[#B19528]" // Explicitly force gold on hover in dark mode
+                "dark:hover:text-[#B19528]"
               )}
               aria-label="Search"
               onClick={() => setSearchOpen((v) => !v)}
@@ -173,7 +171,7 @@ const Header = () => {
                 "transition-transform duration-150",
                 cartSearchHover,
                 "hover:scale-110 focus:scale-110",
-                "dark:hover:text-[#B19528]" // Explicitly force gold on hover in dark mode
+                "dark:hover:text-[#B19528]"
               )}
               aria-label="Open cart"
               onClick={() => setCartOpen(true)}
@@ -190,7 +188,7 @@ const Header = () => {
               <ThemeToggle
                 className={cn(
                   "transition-transform duration-150 hover:scale-110",
-                  cartSearchHover // sync with Search/Cart
+                  cartSearchHover
                 )}
                 isDark={isDark}
                 iconSize={iconSize}
@@ -198,14 +196,15 @@ const Header = () => {
             </span>
           </div>
         </div>
-        {/* Gold line, now stretched further but still just before the curved ends */}
+        {/* Gold line: now fades out at each tip with a slight gradient */}
         <div
           className="mx-auto"
           style={{
             width: "98%",
             height: 2,
+            marginTop: -2,
             background:
-              "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.35) 5%, rgba(177,149,40,1) 27%, rgba(177,149,40,1) 73%, rgba(177,149,40,0.35) 95%, rgba(177,149,40,0.05) 100%)",
+              "linear-gradient(90deg,rgba(177,149,40,0) 0%, rgba(177,149,40,0.15) 2.5%, rgba(177,149,40,0.37) 8%, rgba(177,149,40,1) 21%, rgba(177,149,40,1) 79%, rgba(177,149,40,0.37) 92%, rgba(177,149,40,0.15) 97.5%, rgba(177,149,40,0) 100%)",
             boxShadow:
               "0 2px 18px 0 rgba(177,149,40,0.14) inset, 0 2px 10px 0 rgba(177,149,40,0.05)",
             backdropFilter: "blur(4px)",
@@ -229,8 +228,8 @@ const Header = () => {
           backdrop-filter: blur(21px) saturate(160%);
           -webkit-backdrop-filter: blur(21px) saturate(160%);
           box-shadow: 0 6px 40px 0 rgba(4,107,210,0.12), 0 1px 0 0 #B19528;
-          border-bottom-left-radius: 0.6rem;
-          border-bottom-right-radius: 0.6rem;
+          border-bottom-left-radius: 0.45rem;
+          border-bottom-right-radius: 0.45rem;
           position: relative;
           transition: background 0.38s, box-shadow 0.28s;
           /* clean separation from rest of the page */
