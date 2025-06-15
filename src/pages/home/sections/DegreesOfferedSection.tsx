@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -120,7 +119,7 @@ const DegreesOfferedSection: React.FC = () => (
       <div
         className="w-full flex justify-center"
         style={{
-          marginTop: "3.7rem", // Increased from previous value for more space above divider
+          marginTop: "4.9rem", // Increased by another 1.2rem for more space above divider
           marginBottom: "0",
         }}
       >
