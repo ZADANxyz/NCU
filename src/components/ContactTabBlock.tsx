@@ -1,36 +1,57 @@
 
-// Contact tab block styled with gold border and glass, as on ncu.education front page
+// Contact block with phone, HubSpot embed, and Apply Now button
 
 import React from "react";
 
+const HUBSPOT_EMBED = (
+  <iframe
+    title="NCU Contact Form"
+    src="https://share.hsforms.com/1dkbO5sYpRmKVeObr_0RZDwb08gi"
+    width="100%"
+    height="360"
+    style={{
+      border: "none",
+      minWidth: 220,
+      background: "transparent"
+    }}
+    frameBorder={0}
+    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+    sandbox="allow-scripts allow-same-origin allow-top-navigation allow-forms"
+  ></iframe>
+);
+
+const NCU_PHONE = (
+  <div className="mt-3 mb-1 flex items-center justify-center text-base font-bold text-[#b19528]">
+    <svg width={18} height={18} className="inline-block mr-2" fill="none" stroke="currentColor">
+      <path d="M6.85 2.15A6.59 6.59 0 0 1 11.7 7m-4.85-4.85L3.5 3.5a2 2 0 0 0-.5 2.43A16.11 16.11 0 0 0 14.07 15c.58.25 1.24 0 1.53-.55l1.2-2.14a1 1 0 0 0-.29-1.27l-2.39-1.91a1 1 0 0 0-1.11-.1l-2.2.91a13.01 13.01 0 0 1-4.26-4.26l.91-2.2a1 1 0 0 0-.1-1.11l-1.91-2.39a1 1 0 0 0-1.27-.29z" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+    <span>
+      <a href="tel:+18883177463" className="hover:underline" style={{ color: "#b19528" }}>
+        (888) 317-7463
+      </a>
+    </span>
+  </div>
+);
+
+const APPLY_LINK = "https://ncu.education/apply";
+
 const ContactTabBlock = () => {
   return (
-    <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-6 py-7 w-full max-w-md bg-white/90 dark:bg-[#232232]/80">
-      <h3 className="text-xl md:text-2xl font-bold golden mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-        Get in Touch
+    <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-4 md:px-6 py-6 md:py-8 w-full max-w-md bg-white/90 dark:bg-[#232232]/80">
+      <h3 className="text-xl md:text-2xl font-bold golden mb-2 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+        Contact Us
       </h3>
-      <form className="flex flex-col gap-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-semibold mb-1 text-[#2E2E2E]">Name</label>
-          <input type="text" id="name" name="name" className="w-full border border-gold/60 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gold/80" required />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold mb-1 text-[#2E2E2E]">Email</label>
-          <input type="email" id="email" name="email" className="w-full border border-gold/60 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gold/80" required />
-        </div>
-        <div>
-          <label htmlFor="message" className="block text-sm font-semibold mb-1 text-[#2E2E2E]">Your Message</label>
-          <textarea id="message" name="message" className="w-full border border-gold/60 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-gold/80" rows={3} required />
-        </div>
-        <button
-          type="submit"
-          className="block bg-[#B19528] hover:bg-[#947f23] text-white font-bold rounded-md py-2 px-6 mt-2 shadow-gold transition"
-        >
-          Send
-        </button>
-      </form>
-      {/* Exact below-text from https://ncu.education under contact form */}
-      <div className="text-xs text-[#444] mt-3 leading-snug font-medium text-center">
+      {NCU_PHONE}
+      <div className="w-full mb-3">{HUBSPOT_EMBED}</div>
+      <a
+        href={APPLY_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-[#B19528] hover:bg-[#947f23] text-white font-bold rounded-md py-2 px-6 mt-2 shadow-gold transition text-center text-lg"
+      >
+        Apply Now
+      </a>
+      <div className="text-xs text-[#444] mt-4 leading-snug font-medium text-center">
         We’re here to answer your questions. Reach out today and let’s connect!
       </div>
     </div>
@@ -38,4 +59,3 @@ const ContactTabBlock = () => {
 };
 
 export default ContactTabBlock;
-
