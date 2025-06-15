@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingCart } from "lucide-react";
 
@@ -127,7 +126,9 @@ const CartDrawer: React.FC<{
         <div className="flex items-center justify-between p-6 pb-2 border-b border-gold/70 bg-white/30 dark:bg-black/20 backdrop-blur-sm relative" style={{ zIndex: 12 }}>
           <span className="text-lg font-semibold text-[#B19528]">Your Cart</span>
           <button
-            className="rounded-full p-2 bg-white/50 hover:bg-gold/30 transition"
+            className="rounded-full p-2 transition
+              bg-white/50 hover:bg-gold/30
+              dark:bg-transparent dark:hover:bg-[#B19528]/10"
             onClick={onClose}
             aria-label="Close Cart"
           >
