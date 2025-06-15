@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -26,22 +27,14 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Max width for spacious layout
-const SECTION_MAX_WIDTH = 1240;
-
 const EDGE_HORIZONTAL_PADDING = "52px";
 
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* No divider above the section */}
     <section
-      className="w-full bg-background dark:bg-background py-6 md:py-8 flex flex-col items-center shadow-none"
-      style={{
-        maxWidth: `${SECTION_MAX_WIDTH}px`,
-        margin: "0 auto",
-        paddingLeft: EDGE_HORIZONTAL_PADDING,
-        paddingRight: EDGE_HORIZONTAL_PADDING,
-      }}
+      className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
+      // Remove maxWidth and margin styles to allow full width + only padding
+      // The padding classes above match the HeroSection
     >
       <h2
         className="
@@ -61,9 +54,7 @@ const DegreesOfferedSection: React.FC = () => (
       </p>
       <div className="w-full flex justify-center items-center mb-10">
         <div
-          className="
-            grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
-          "
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full"
         >
           {DEGREE_BUTTONS.map(({ alt, img, to }) => (
             <Link
