@@ -1,8 +1,8 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
-// Degree image assets mapping—ensure order matches your images & routes
 const DEGREE_BUTTONS = [
   {
     alt: "Associate of Arts Degrees",
@@ -26,37 +26,37 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GOLD_BAR_MAX_WIDTH = "97vw"; // Bottom bar remains unchanged
+const GOLD_BAR_MAX_WIDTH = "97vw"; // Matches the bottom bar!
 
 const DegreesOfferedSection: React.FC = () => (
   <>
+    {/* Move TOP GOLD BAR OUTSIDE THE SECTION, exactly like the bottom one */}
+    <div
+      className="w-full flex justify-center"
+      style={{
+        marginTop: "0",
+        marginBottom: "2.6rem",
+      }}
+    >
+      <div
+        className="w-full"
+        style={{
+          maxWidth: GOLD_BAR_MAX_WIDTH,
+          height: "1.1px",
+          background:
+            "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
+          boxShadow:
+            "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
+          borderRadius: 3,
+          zIndex: 20,
+          opacity: 0.99,
+          margin: "0 auto",
+        }}
+      />
+    </div>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
     >
-      {/* SINGLE TOP GOLD BAR — now 97vw to match the bottom */}
-      <div
-        className="w-full flex justify-center"
-        style={{
-          marginTop: "0",
-          marginBottom: "2.6rem",
-        }}
-      >
-        <div
-          className="w-full"
-          style={{
-            maxWidth: GOLD_BAR_MAX_WIDTH, // Top bar now matches the bottom bar!
-            height: "1.1px",
-            background:
-              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-            boxShadow:
-              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-            borderRadius: 3,
-            zIndex: 20,
-            opacity: 0.99,
-            margin: "0 auto",
-          }}
-        />
-      </div>
       <h2
         className="
           text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
