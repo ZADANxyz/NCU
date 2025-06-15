@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -33,10 +34,10 @@ const DegreesOfferedSection: React.FC = () => (
   <section className="w-full bg-background dark:bg-background py-12 md:py-16 px-0 flex flex-col items-center shadow-none">
     <h2
       className="
-        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal dark:text-white
+        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
+        text-[#181818] dark:text-white
       "
       style={{
-        color: "#181818",
         letterSpacing: "0.01em",
         lineHeight: 1.13,
         fontWeight: 400,
@@ -51,7 +52,7 @@ const DegreesOfferedSection: React.FC = () => (
       <div
         className="
           grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
-          px-6 md:px-12
+          px-5 md:px-9
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -62,7 +63,12 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-2 md:p-4 bg-white dark:bg-[#232327] w-full h-full"
+            className="
+              flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-2 md:p-4
+              bg-white
+              dark:bg-transparent dark:shadow-none
+              w-full h-full
+            "
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%", minHeight: "0" }}
