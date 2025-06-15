@@ -30,7 +30,7 @@ const SMALL_EDGE_PADDING = "12px"; // for small screens
 const HeroSection = () => {
   return (
     <>
-      {/* HERO IMAGE: Edge to edge, max height 85vh, moved up to show full text */}
+      {/* HERO IMAGE: Edge to edge, max height 85vh, moved up so full text always shows */}
       <div
         className="w-full relative"
         style={{
@@ -59,12 +59,12 @@ const HeroSection = () => {
             display: "block",
             boxSizing: "border-box",
             position: "relative",
-            top: "-18px", // Move image up a bit to show more text at the top
+            top: "-50px", // Move image up further so full HEADER TEXT is always visible
           }}
           draggable={false}
         />
       </div>
-      {/* SECTION: Container has max-width for true edge-pinned content */}
+      {/* SECTION: Remove max-w-screen-2xl/mx-auto so flex parents stretch edge-to-edge */}
       <section
         className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
@@ -75,14 +75,13 @@ const HeroSection = () => {
         }}
       >
         <div
-          className="w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row min-h-[500px] items-stretch"
+          className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch"
           style={{
-            paddingLeft: SMALL_EDGE_PADDING,
-            paddingRight: SMALL_EDGE_PADDING,
-            gap: "0px",
+            gap: 0,
+            padding: 0, // no internal padding on the container, only children
           }}
         >
-          {/* Left: Edge-pinned on left with padding */}
+          {/* Left: Edge-pinned on left with padding, never restrict with max width parent */}
           <div
             className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0"
             style={{
@@ -110,16 +109,19 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: Edge-pinned on right with padding, NO left padding, flush as possible */}
+          {/* Right: Fully edge-pinned RIGHT with zero padding/margin. On desktop flush right, mobile full width */}
           <div
             className="w-full md:w-1/2 flex flex-col items-end justify-start mt-8 md:mt-0"
             style={{
-              paddingRight: EDGE_PADDING,
-              paddingLeft: 0, // absolutely no left padding for full right pinning
+              paddingRight: 0,   // remove right padding so it's flush
+              paddingLeft: 0,    // no left padding
               minWidth: 0,
+              marginRight: 0,    // ensure no margin collapsing
             }}
           >
-            <ContactTabBlock />
+            <div className="w-full md:w-[94%] lg:w-[88%] xl:w-[82%] 2xl:w-[78%]" style={{marginRight:0, marginLeft:"auto"}}>
+              <ContactTabBlock />
+            </div>
           </div>
         </div>
       </section>
@@ -145,4 +147,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
