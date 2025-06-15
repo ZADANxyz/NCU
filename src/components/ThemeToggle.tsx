@@ -4,14 +4,21 @@ import { Moon, Sun } from "lucide-react";
 
 interface ThemeToggleProps {
   className?: string;
+  isDark?: boolean; // allow parent to control dark state
 }
 
 const GOLD = "#B19528";
+const BLUE = "#046BD2";
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark }) => {
+  // Use isDark from props if provided, else detect
   const [dark, setDark] = React.useState(() =>
-    document.documentElement.classList.contains("dark")
+    typeof window !== "undefined"
+      ? document.documentElement.classList.contains("dark")
+      : false
   );
+  const controlledDark = typeof isDark === "boolean" ? isDark : dark;
+
   const [hovered, setHovered] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,18 +38,18 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setDark(true);
   }, []);
 
-  // Icon and icon color, gold on hover, currentColor default
+  // On hover: sun/moon is blue in light mode, gold in dark mode
   const iconProps = {
-    size: 24,
-    color: hovered ? GOLD : "currentColor",
-    className: "transition-transform duration-300",
+    size: 21,
+    color: hovered ? (controlledDark ? GOLD : BLUE) : "currentColor",
+    className: "transition-transform duration-300"
   };
 
   return (
     <button
       aria-label="Toggle dark mode"
       className={
-        "rounded-full p-2 bg-transparent ring-0 transition-all duration-200 " +
+        "rounded-full p-1.5 bg-transparent ring-0 transition-all duration-200 " +
         (className ?? "")
       }
       onClick={() => setDark((v) => !v)}
@@ -51,11 +58,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
       tabIndex={0}
       type="button"
     >
-      {dark ? (
-        <Sun {...iconProps} />
-      ) : (
-        <Moon {...iconProps} />
-      )}
+      {controlledDark ? <Sun {...iconProps} /> : <Moon {...iconProps} />}
     </button>
   );
 };

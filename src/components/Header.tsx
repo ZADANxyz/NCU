@@ -71,12 +71,13 @@ const Header = () => {
     return () => obs.disconnect();
   });
 
-  // Icon color (adapts via Tailwind dark:) hover control via JS
-  // Default icon color:
+  // Adaptive hover color logic
   const iconColor = "text-slate-700 dark:text-slate-200";
-
-  // Icon hover color:
+  // On hover: blue in light mode, gold in dark mode
   const iconHoverColor = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
+
+  // Smaller icon size for cart/search
+  const iconSize = 21;
 
   return (
     <>
@@ -89,8 +90,7 @@ const Header = () => {
         style={{
           boxShadow: elevate
             ? "0 10px 32px -10px rgba(4,107,210,0.13), 0 1px 0 0 #B19528"
-            : "0 2px 12px 0 rgba(4,107,210,0.06)",
-          // Glass/gloss effect for the whole header (background already mostly set via .glassier-header)
+            : "0 2px 12px 0 rgba(4,107,210,0.06)"
         }}
       >
         <div
@@ -98,13 +98,13 @@ const Header = () => {
             "relative flex items-center justify-between h-20 px-3 sm:px-8"
           )}
         >
-          {/* Left: Logo set via image */}
+          {/* Left: Logo - now using uploaded logo */}
           <div className="flex items-center" style={{ height: 38 }}>
             <Logo />
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-6">
+            <ul className="flex items-center gap-5">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -114,8 +114,8 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "tracking-wide font-sans text-[15px] font-normal",
-                        "transition-colors transition-transform duration-150 px-1 pb-0.5 rounded-none",
+                        "tracking-wide font-sans text-[14px] font-normal",
+                        "transition-colors transition-transform duration-150 px-0.5 pb-0.5 rounded-none",
                         "hover:scale-105 focus:scale-105",
                         active
                           ? "text-[#046BD2]"
@@ -136,7 +136,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right: Actions - dynamic icon hover color */}
+          {/* Right: Actions */}
           <div className="flex items-center gap-1 pl-2">
             {/* Search Icon */}
             <button
@@ -151,13 +151,13 @@ const Header = () => {
               onClick={() => setSearchOpen((v) => !v)}
               type="button"
             >
-              <Search size={24} strokeWidth={2.2} />
+              <Search size={iconSize} strokeWidth={2.05} />
             </button>
             {/* Cart Icon */}
             <button
               className={cn(
                 iconColor,
-                "relative mx-1 p-1 group outline-none ring-0 bg-transparent",
+                "relative mx-0.5 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
                 iconHoverColor,
                 "hover:scale-110 focus:scale-110"
@@ -166,9 +166,9 @@ const Header = () => {
               onClick={() => setCartOpen(true)}
               type="button"
             >
-              <ShoppingCart size={24} strokeWidth={2.2} />
+              <ShoppingCart size={iconSize} strokeWidth={2.05} />
               {/* Demo badge */}
-              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[10px] text-white font-bold h-4 w-4 flex items-center justify-center rounded-full ring-2 ring-white shadow">
+              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[9px] text-white font-bold h-3.5 w-3.5 flex items-center justify-center rounded-full ring-2 ring-white shadow">
                 3
               </span>
             </button>
@@ -179,6 +179,7 @@ const Header = () => {
                   "transition-transform duration-150 hover:scale-110",
                   iconHoverColor
                 )}
+                isDark={isDark}
               />
             </span>
           </div>
@@ -187,11 +188,11 @@ const Header = () => {
         <div
           className="w-full"
           style={{
-            height: 4,
+            height: 2,
             background:
-              "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.4) 10%, rgba(177,149,40,1) 40%, rgba(177,149,40,1) 60%, rgba(177,149,40,0.4) 90%, rgba(177,149,40,0.05) 100%)",
+              "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.35) 5%, rgba(177,149,40,1) 27%, rgba(177,149,40,1) 73%, rgba(177,149,40,0.35) 95%, rgba(177,149,40,0.05) 100%)",
             boxShadow:
-              "0 2px 20px 0 rgba(177,149,40,0.18) inset, 0 2px 14px 0 rgba(177,149,40,0.07)",
+              "0 2px 18px 0 rgba(177,149,40,0.14) inset, 0 2px 10px 0 rgba(177,149,40,0.05)",
             backdropFilter: "blur(4px)",
             WebkitBackdropFilter: "blur(4px)",
             zIndex: 50,
@@ -201,7 +202,6 @@ const Header = () => {
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
 
-      {/* Cart Drawer */}
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
       <div className="h-20" />
