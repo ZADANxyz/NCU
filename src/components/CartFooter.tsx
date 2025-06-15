@@ -9,16 +9,15 @@ interface CartFooterProps {
 
 const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
   // Vivid blue gradient for both modes
-  const blueGradient = "linear-gradient(92deg, rgba(4,107,210,0.92) 0%, rgba(4,107,210,0.94) 50%, rgba(4,107,210,0.82) 100%)";
+  const blueGradient =
+    "linear-gradient(92deg, rgba(4,107,210,0.92) 0%, rgba(4,107,210,0.94) 50%, rgba(4,107,210,0.82) 100%)";
 
-  // Base style for checkout button
+  // Use blue border and shadow in both modes
   const checkoutBtnStyle: React.CSSProperties = {
     background: blueGradient,
     color: "#fff",
-    border: isDark ? "1.3px solid #B19528bf" : "1.5px solid #046BD247",
-    boxShadow: isDark
-      ? "0 3px 22px 4px rgba(177,149,40,0.06), 0 1.5px 0 0 #B19528aa"
-      : "0 2px 22px 2px rgba(4,107,210,0.08), 0 1.5px 0 0 #046BD299",
+    border: "1.5px solid #046BD247",
+    boxShadow: "0 2px 22px 2px rgba(4,107,210,0.08), 0 1.5px 0 0 #046BD299",
     backdropFilter: "blur(4px) brightness(1.04)",
     WebkitBackdropFilter: "blur(4px) brightness(1.04)",
     overflow: "hidden",
@@ -55,7 +54,7 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
         className="relative w-full px-5 py-2 font-semibold rounded-lg shadow-lg transition-all duration-200 disabled:opacity-30"
         style={checkoutBtnStyle}
       >
-        {/* Gloss effect: narrow, centered, subtle */}
+        {/* Lighter, subtle glass gloss, centered */}
         <span
           style={{
             position: "absolute",
