@@ -1,7 +1,7 @@
 
 import React from "react";
 import HeroSection from "./home/sections/HeroSection";
-import ServicesSection from "./home/sections/ServicesSection";
+import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import VisionSection from "./home/sections/VisionSection";
 import PortfolioSection from "./home/sections/PortfolioSection";
 import TeamSection from "./home/sections/TeamSection";
@@ -16,7 +16,7 @@ const Index = () => {
     <div className="bg-background min-h-screen pt-0">
       <main>
         <HeroSection />
-        <ServicesSection />
+        <DegreesOfferedSection />
         <VisionSection />
         <PortfolioSection />
         <TeamSection />
