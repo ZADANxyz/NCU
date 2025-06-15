@@ -1,3 +1,4 @@
+
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -58,7 +59,7 @@ const HeroSection = () => {
         />
       </div>
       <section
-        className="relative z-10 flex bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
+        className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
           boxShadow: "0 4px 32px 0 rgba(4,107,210,0.04)",
           borderBottomLeftRadius: "1.2rem",
@@ -66,9 +67,10 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="w-full flex flex-col md:flex-row items-stretch justify-between">
-          {/* Left column: alumni/intro - stick to left edge with header gutter */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7" style={{ minWidth: 0 }}>
+        <div className="relative w-full flex flex-col md:flex-row min-h-[500px]">
+          {/* Left column: Stick to left edge */}
+          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7"
+               style={{ minWidth: 0 }}>
             <h2
               className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
               style={{
@@ -88,8 +90,14 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right column: contact block - stick to right edge with header gutter */}
-          <div className="w-full md:w-1/2 flex flex-col items-end justify-center mt-0 md:mt-0 pt-6 md:pt-0 pr-3 sm:pr-7" style={{ minWidth: 0 }}>
+          {/* Right column: contact block - pinned to right edge, overlays in column */}
+          <div
+            className="w-full md:w-1/2 flex flex-col items-end justify-center mt-0 md:mt-0 pt-6 md:pt-0 pr-3 sm:pr-7 md:absolute md:right-0 md:top-0 md:bottom-0 md:justify-center"
+            style={{
+              minWidth: 0,
+              height: "100%",
+            }}
+          >
             <ContactTabBlock />
           </div>
         </div>
