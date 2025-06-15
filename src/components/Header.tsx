@@ -55,36 +55,52 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
-  // Icon color (for both modes, adapts via Tailwind dark:)
+  // We'll use `document.documentElement.classList.contains("dark")` to detect theme on initial load
+  const [isDark, setIsDark] = React.useState(() =>
+    typeof window !== "undefined"
+      ? document.documentElement.classList.contains("dark")
+      : false
+  );
+
+  React.useEffect(() => {
+    const obs = new MutationObserver(() =>
+      setIsDark(document.documentElement.classList.contains("dark"))
+    );
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    setIsDark(document.documentElement.classList.contains("dark"));
+    return () => obs.disconnect();
+  });
+
+  // Icon color (adapts via Tailwind dark:) hover control via JS
+  // Default icon color:
   const iconColor = "text-slate-700 dark:text-slate-200";
+
+  // Icon hover color:
+  const iconHoverColor = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
 
   return (
     <>
       <header
         className={cn(
           "fixed top-0 w-full z-40",
-          "glassier-header", // new optimized glass+gloss class
+          "glassier-header",
           elevate && "shadow-2xl"
         )}
         style={{
           boxShadow: elevate
             ? "0 10px 32px -10px rgba(4,107,210,0.13), 0 1px 0 0 #B19528"
             : "0 2px 12px 0 rgba(4,107,210,0.06)",
+          // Glass/gloss effect for the whole header (background already mostly set via .glassier-header)
         }}
       >
-        {/* Glass/gold/gloss overlay handled with CSS */}
         <div
           className={cn(
-            "relative flex items-center justify-between h-20 px-3 sm:px-8",
+            "relative flex items-center justify-between h-20 px-3 sm:px-8"
           )}
         >
-          {/* Left: Logo (replace with your actual logo) */}
+          {/* Left: Logo set via image */}
           <div className="flex items-center" style={{ height: 38 }}>
-            {/* Swap out Logo with your image or SVG. Example: */}
-            <Logo /> 
-            {/* If you have an image: 
-              <img src="/path/to/your-logo.svg" alt="Your Logo" className="h-10 w-auto mr-8" />
-            */}
+            <Logo />
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
@@ -98,17 +114,16 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "tracking-wide font-sans",
-                        "text-[15px] font-normal", // smaller and normal weight
+                        "tracking-wide font-sans text-[15px] font-normal",
                         "transition-colors transition-transform duration-150 px-1 pb-0.5 rounded-none",
-                        "hover:text-[#B19528] hover:scale-105 focus:text-[#B19528]",
+                        "hover:scale-105 focus:scale-105",
                         active
                           ? "text-[#046BD2]"
                           : "text-gray-700 dark:text-gray-200"
                       )}
                       style={{
                         fontFamily: "system-ui, Segoe UI, sans-serif",
-                        textTransform: "none", // not uppercase
+                        textTransform: "none",
                         letterSpacing: "0.01em",
                         fontWeight: 400,
                       }}
@@ -121,7 +136,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right: Actions (Search, Cart, ThemeToggle) */}
+          {/* Right: Actions - dynamic icon hover color */}
           <div className="flex items-center gap-1 pl-2">
             {/* Search Icon */}
             <button
@@ -129,7 +144,8 @@ const Header = () => {
                 iconColor,
                 "ml-2 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
-                "hover:text-[#046BD2] hover:scale-110 focus:text-[#046BD2]"
+                iconHoverColor,
+                "hover:scale-110 focus:scale-110"
               )}
               aria-label="Search"
               onClick={() => setSearchOpen((v) => !v)}
@@ -143,7 +159,8 @@ const Header = () => {
                 iconColor,
                 "relative mx-1 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
-                "hover:text-[#B19528] hover:scale-110 focus:text-[#B19528]"
+                iconHoverColor,
+                "hover:scale-110 focus:scale-110"
               )}
               aria-label="Open cart"
               onClick={() => setCartOpen(true)}
@@ -159,19 +176,20 @@ const Header = () => {
             <span className={cn(iconColor, "ml-1")}>
               <ThemeToggle
                 className={cn(
-                  "transition-transform duration-150 hover:scale-110 hover:text-[#B19528]"
+                  "transition-transform duration-150 hover:scale-110",
+                  iconHoverColor
                 )}
               />
             </span>
           </div>
         </div>
-        {/* Updated Gold Line, thinner, extended wide fade */}
+        {/* Updated Gold Line, thinner, extended fade */}
         <div
           className="w-full"
           style={{
-            height: 4, // thinner line
+            height: 4,
             background:
-              "linear-gradient(90deg,rgba(177,149,40,0.08) 0%, rgba(177,149,40,1) 14%, rgba(177,149,40,1) 86%, rgba(177,149,40,0.08) 100%)",
+              "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.4) 10%, rgba(177,149,40,1) 40%, rgba(177,149,40,1) 60%, rgba(177,149,40,0.4) 90%, rgba(177,149,40,0.05) 100%)",
             boxShadow:
               "0 2px 20px 0 rgba(177,149,40,0.18) inset, 0 2px 14px 0 rgba(177,149,40,0.07)",
             backdropFilter: "blur(4px)",
@@ -186,22 +204,20 @@ const Header = () => {
       {/* Cart Drawer */}
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
-      {/* Header spacer */}
       <div className="h-20" />
       <style>
         {`
-        /* Stronger, brighter glass effect for header */
         .glassier-header {
-          background: rgba(252,252,255,0.85);
+          background: rgba(252,252,255,0.90);
           backdrop-filter: blur(14px) saturate(125%);
           -webkit-backdrop-filter: blur(14px) saturate(125%);
-          box-shadow: 0 2px 40px 0 rgba(177,149,40,0.07), 0 1px 0 0 #B19528;
+          box-shadow: 0 2px 40px 0 rgba(177,149,40,0.12), 0 1px 0 0 #B19528;
           border-bottom-left-radius: 1.3rem;
           border-bottom-right-radius: 1.3rem;
           position: relative;
         }
         .dark .glassier-header {
-          background: rgba(22, 25, 34, 0.86);
+          background: rgba(22, 25, 34, 0.90);
           box-shadow: 0 2px 28px -6px rgba(4,107,210,.13), 0 1px 0 0 #B19528;
         }
         .glassier-header::after {
@@ -212,24 +228,22 @@ const Header = () => {
           top: 0; left: 0; width: 100%; height: 100%;
           z-index: 2;
           border-radius: inherit;
-          /* Top gloss/highlight gradient */
           background: linear-gradient(
             to bottom, 
-            rgba(255,255,255,0.20) 0%,
-            rgba(255,255,255,0.13) 12%, 
-            rgba(252,252,255,0.08) 33%, 
-            rgba(255,255,255,0.03) 72%,
-            rgba(255,255,255,0.01) 100%);
+            rgba(255,255,255,0.23) 0%,
+            rgba(255,255,255,0.10) 14%, 
+            rgba(252,252,255,0.08) 35%, 
+            rgba(255,255,255,0.03) 77%,
+            rgba(255,255,255,0.00) 100%);
           opacity: 1;
         }
         .dark .glassier-header::after {
           background: linear-gradient(
             to bottom, 
-            rgba(255,255,255,0.12) 0%,
-            rgba(255,255,255,0.09) 12%, 
-            rgba(180,180,200,0.04) 36%, 
-            rgba(80,80,80,0.04) 68%,
-            rgba(40,40,40,0.01) 100%);
+            rgba(255,255,255,0.09) 0%,
+            rgba(180,180,200,0.05) 19%, 
+            rgba(180,180,200,0.02) 45%, 
+            rgba(80,80,80,0.01) 100%);
           opacity: 1;
         }
         `}
