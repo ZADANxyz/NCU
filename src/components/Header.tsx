@@ -1,4 +1,3 @@
-
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import CartDrawer from "./CartDrawer";
@@ -6,6 +5,7 @@ import SearchBar from "./SearchBar";
 import { ShoppingCart, Search } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo"; // Use your actual Logo component (see note below)
 
 // Clean NCU wordmark SVG 140px width, fills with currentColor
 const NCUWordmark: React.FC = () => (
@@ -78,13 +78,14 @@ const Header = () => {
             "relative flex items-center justify-between h-20 px-3 sm:px-8",
           )}
         >
-          {/* Left: NCU Wordmark/Logo */}
+          {/* Left: Logo (replace with your actual logo) */}
           <div className="flex items-center" style={{ height: 38 }}>
-            <span className="text-[#046BD2] dark:text-slate-200 transition-colors duration-200">
-              <NCUWordmark />
-            </span>
+            {/* Swap out Logo with your image or SVG. Example: */}
+            <Logo /> 
+            {/* If you have an image: 
+              <img src="/path/to/your-logo.svg" alt="Your Logo" className="h-10 w-auto mr-8" />
+            */}
           </div>
-
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
             <ul className="flex items-center gap-6">
@@ -164,17 +165,17 @@ const Header = () => {
             </span>
           </div>
         </div>
-        {/* Prominent Gold Line */}
+        {/* Updated Gold Line, thinner, extended wide fade */}
         <div
           className="w-full"
           style={{
-            height: 6,
+            height: 4, // thinner line
             background:
-              "linear-gradient(90deg,rgba(177,149,40,0.18) 0%, rgba(177,149,40,1) 22%, rgba(177,149,40,1) 78%,rgba(177,149,40,0.18) 100%)",
+              "linear-gradient(90deg,rgba(177,149,40,0.08) 0%, rgba(177,149,40,1) 14%, rgba(177,149,40,1) 86%, rgba(177,149,40,0.08) 100%)",
             boxShadow:
-              "0 2px 24px 0 rgba(177,149,40,0.27) inset, 0 2px 16px 0 rgba(177,149,40,0.07)",
-            backdropFilter: "blur(5px)",
-            WebkitBackdropFilter: "blur(5px)",
+              "0 2px 20px 0 rgba(177,149,40,0.18) inset, 0 2px 14px 0 rgba(177,149,40,0.07)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
             zIndex: 50,
           }}
         />
