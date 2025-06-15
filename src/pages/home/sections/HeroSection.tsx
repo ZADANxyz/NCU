@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -67,7 +66,7 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="container mx-auto px-0 flex flex-col md:flex-row items-stretch justify-between w-full">
+        <div className="w-full flex flex-col md:flex-row items-stretch justify-between">
           {/* Left column: alumni/intro - stick to left edge with header gutter */}
           <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7" style={{ minWidth: 0 }}>
             <h2
@@ -97,7 +96,7 @@ const HeroSection = () => {
       </section>
       {/* Divider */}
       <div
-        className="container mx-auto w-full"
+        className="w-full"
         style={{
           marginTop: "5.5rem",
           marginBottom: "3.5rem",
@@ -117,4 +116,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
