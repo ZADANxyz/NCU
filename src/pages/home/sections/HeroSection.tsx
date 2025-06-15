@@ -6,10 +6,14 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[1.24rem] md:text-[1.35rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
+  <div className="text-[1.125rem] md:text-[1.25rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
     <p className="mb-6 font-normal font-roboto">
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
-      <a href="/donate" className="font-bold underline text-blue-700 hover:text-blue-900 transition-colors font-roboto">
+      <a
+        href="/donate"
+        className="font-bold underline text-blue-700 hover:text-blue-900 transition-colors font-roboto"
+        style={{ color: "#2563eb" }}
+      >
         here
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
@@ -65,7 +69,8 @@ const HeroSection = () => {
       >
         <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0 pr-0 md:pr-10" style={{ minWidth: 0 }}>
           <h2
-            className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-black mb-1 text-left tracking-tight font-roboto" // enlarged and roboto
+            className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-black mb-7 text-left tracking-tight font-roboto"
+            // ↑↑ increased mb-1 → mb-7 for more space below the heading
             style={{
               color: "#181818",
               letterSpacing: 0.1,

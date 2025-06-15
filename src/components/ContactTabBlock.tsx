@@ -12,38 +12,40 @@ declare global {
 }
 
 const NCU_PHONE = (
-  <div
-    className="mt-3 mb-6 flex items-center justify-center text-[1.6rem] font-medium glass glossy px-4 py-2 rounded-[0.38rem] border-2 border-blue-700 transition-colors group"
+  <a
+    href="tel:+16159482212"
+    className="block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer relative rounded-[0.38rem] font-roboto border-2 border-blue-700 text-blue-700 bg-blue-100/10 hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-300 hover:text-blue-800 active:text-blue-900 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 shadow-lg glossy group"
     style={{
-      background:
-        "linear-gradient(115deg,rgba(81,128,255,0.16) 0%,rgba(41,100,210,0.28) 100%)",
-      boxShadow: "0 6px 32px 0 rgba(81,128,255,0.12)",
-      textShadow: "0 2px 10px rgba(27,45,95,0.10)",
-      letterSpacing: "1px",
-      fontSize: "1.6rem",
-      borderColor: "#2563eb",
+      background: "linear-gradient(115deg,rgba(81,128,255,0.16) 0%,rgba(41,100,210,0.28) 100%)",
+      boxShadow: "0 4px 20px 0 rgba(51,132,245,0.18)",
+      border: "2px solid #2563eb",
+      color: "#2563eb",
+      textShadow: "0 1px 4px rgba(51,100,190,0.09)",
+      transition: "color 0.15s, background 0.2s, border-color 0.2s, box-shadow 0.2s",
+      zIndex: 1,
+      borderRadius: "0.38rem",
       fontFamily: "Roboto, Arial, sans-serif",
+      position: 'relative'
     }}
   >
-    <svg width={25} height={25} className="inline-block mr-2 text-blue-700 group-hover:text-blue-800 transition-colors" fill="none" stroke="currentColor">
-      <path d="M6.85 2.15A6.59 6.59 0 0 1 11.7 7m-4.85-4.85L3.5 3.5a2 2 0 0 0-.5 2.43A16.11 16.11 0 0 0 14.07 15c.58.25 1.24 0 1.53-.55l1.2-2.14a1 1 0 0 0-.29-1.27l-2.39-1.91a1 1 0 0 0-1.11-.1l-2.2.91a13.01 13.01 0 0 1-4.26-4.26l.91-2.2a1 1 0 0 0-.1-1.11l-1.91-2.39a1 1 0 0 0-1.27-.29z" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-    <span>
-      <a
-        href="tel:+16159482212"
-        className="text-blue-700 group-hover:text-blue-800 transition-colors font-bold font-roboto hover:underline active:text-blue-900 visited:text-blue-800"
-        style={{
-          color: "#2563eb",
-          fontWeight: 700,
-          fontFamily: "Roboto, Arial, sans-serif",
-          textDecoration: "none",
-          transition: "color 0.15s ease",
-        }}
-      >
-        (615) 948-2212
-      </a>
+    <span className="inline-flex items-center justify-center">
+      <svg width={25} height={25} className="inline-block mr-2 text-blue-700 group-hover:text-blue-800 transition-colors" fill="none" stroke="currentColor">
+        <path d="M6.85 2.15A6.59 6.59 0 0 1 11.7 7m-4.85-4.85L3.5 3.5a2 2 0 0 0-.5 2.43A16.11 16.11 0 0 0 14.07 15c.58.25 1.24 0 1.53-.55l1.2-2.14a1 1 0 0 0-.29-1.27l-2.39-1.91a1 1 0 0 0-1.11-.1l-2.2.91a13.01 13.01 0 0 1-4.26-4.26l.91-2.2a1 1 0 0 0-.1-1.11l-1.91-2.39a1 1 0 0 0-1.27-.29z" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      (615) 948-2212
     </span>
-  </div>
+    <span
+      className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
+      aria-hidden="true"
+      style={{
+        zIndex: 3,
+        background:
+          "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+        boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+        borderRadius: "inherit",
+      }}
+    ></span>
+  </a>
 );
 
 const APPLY_LINK = "/apply";
