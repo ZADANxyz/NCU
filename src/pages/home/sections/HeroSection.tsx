@@ -67,8 +67,8 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="container mx-auto px-3 sm:px-7 flex flex-col md:flex-row items-stretch justify-center w-full">
-          <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0" style={{ minWidth: 0 }}>
+        <div className="container mx-auto px-3 sm:px-7 flex flex-col md:flex-row items-stretch justify-between w-full">
+          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0" style={{ minWidth: 0 }}>
             <h2
               className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
               style={{
@@ -88,7 +88,7 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-6 md:pt-0 pl-0 md:pl-5 md:pr-0" style={{ minWidth: 0 }}>
+          <div className="w-full md:w-1/2 flex flex-col items-end justify-center mt-0 md:mt-0 pt-6 md:pt-0 pl-0 md:pl-5 md:pr-0" style={{ minWidth: 0 }}>
             <ContactTabBlock />
           </div>
         </div>
