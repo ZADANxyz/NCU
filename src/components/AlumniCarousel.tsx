@@ -39,18 +39,22 @@ const AlumniCarousel = () => {
   }
 
   return (
-    <div className="py-1 w-full flex items-center justify-center">
-      <Carousel opts={{ loop: true, align: "center" }} setApi={setApi}>
-        <CarouselContent className="flex gap-6">
+    <div className="py-2 w-full flex items-center justify-center">
+      <Carousel
+        opts={{ loop: true, align: "center", slidesToScroll: 1 }}
+        setApi={setApi}
+        className="w-full max-w-xl"
+      >
+        <CarouselContent className="flex">
           {alumniImages.map((src, idx) => (
-            <CarouselItem key={idx} className="basis-1/1 flex-none">
+            <CarouselItem key={idx} className="basis-full flex-none transition-transform duration-500 ease-in-out">
               <div
                 className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/75 dark:bg-[#232232]/80 px-2 pt-2 pb-1 flex items-center justify-center"
                 style={{
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   maxWidth: 450,
                   margin: "0 auto",
-                  background: "linear-gradient(105deg,rgba(255,229,87,0.07) 0%,rgba(255,255,255,0.18) 100%)",
+                  background: "linear-gradient(105deg,rgba(255,229,87,0.09) 0%,rgba(255,255,255,0.20) 100%)",
                 }}
               >
                 <img
@@ -70,3 +74,4 @@ const AlumniCarousel = () => {
 };
 
 export default AlumniCarousel;
+
