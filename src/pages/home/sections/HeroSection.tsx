@@ -6,8 +6,8 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[1.26rem] md:text-[1.37rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] mt-6 mb-1 md:mb-2 font-normal font-roboto">
-    <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.26rem" }}>
+  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
+    <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
         href="/donate"
@@ -18,20 +18,19 @@ const NCU_ALUMNI_TEXT = (
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-    <p className="font-normal font-roboto" style={{ fontSize: "1.26rem" }}>
+    <p className="font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
     </p>
   </div>
 );
 
-// Edge padding is reduced for a more "filled" appearance
-const EDGE_PADDING = "16px";
-const SMALL_EDGE_PADDING = "8px";
+const EDGE_PADDING = "52px";
+const SMALL_EDGE_PADDING = "12px";
 
 const HeroSection = () => {
   return (
     <>
-      {/* HERO IMAGE */}
+      {/* HERO IMAGE: ... */}
       <div
         className="w-full relative"
         style={{
@@ -65,7 +64,7 @@ const HeroSection = () => {
           draggable={false}
         />
       </div>
-      {/* Main Section */}
+      {/* SECTION: ... */}
       <section
         className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
@@ -82,35 +81,34 @@ const HeroSection = () => {
             padding: 0,
           }}
         >
-          {/* Left Section: minimal padding for filling space */}
+          {/* Left Section: NOW wider on desktop */}
           <div
             className="w-full md:w-3/5 flex flex-col justify-start items-start pt-12 md:pt-0"
             style={{
               paddingLeft: EDGE_PADDING,
-              paddingRight: "5px",
+              paddingRight: "18px",
               minWidth: 0,
-              // Remove unnecessary constraints for more space
             }}
           >
             <h2
-              className="text-4xl sm:text-[2.6rem] md:text-[3.1rem] font-bold mb-6 md:mb-10 text-left tracking-tight font-roboto"
+              className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-6 md:mb-10 text-left tracking-tight font-roboto"
               style={{
                 color: "#181818",
                 letterSpacing: 0.1,
                 fontFamily: "Roboto, Arial, sans-serif",
-                lineHeight: 1.15,
+                lineHeight: 1.12,
                 fontWeight: 700,
               }}
             >
               Meet Our NCU Alumni
             </h2>
             <div className="h-5" />
-            {/* Carousel has no max-width */}
-            <div className="w-full h-auto">
+            {/* AlumniCarousel: WIDER */}
+            <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
             <div className="h-7" />
-            <div className="flex-1 flex flex-col justify-start w-full">
+            <div className="flex-1 flex flex-col justify-start">
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
@@ -118,8 +116,8 @@ const HeroSection = () => {
           <div
             className="w-full md:w-2/5 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
             style={{
-              paddingRight: EDGE_PADDING,
-              paddingLeft: "0px",
+              paddingRight: 0,
+              paddingLeft: 0,
               minWidth: 0,
               marginRight: 0,
             }}
@@ -128,7 +126,7 @@ const HeroSection = () => {
               <div
                 className="w-full max-w-md hero-contact-padding"
                 style={{
-                  paddingRight: "0px",
+                  paddingRight: "18px",
                 }}
               >
                 <ContactTabBlock />
@@ -140,7 +138,7 @@ const HeroSection = () => {
       <style>{`
         @media (min-width: 768px) {
           .hero-contact-padding {
-            padding-right: 16px !important;
+            padding-right: 52px !important;
           }
         }
       `}</style>
