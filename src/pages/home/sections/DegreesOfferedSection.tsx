@@ -27,7 +27,7 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Make boxes even larger by increasing max width
+// Max width for the grid for spacious layout
 const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
@@ -52,7 +52,7 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — boxes now bigger and more spaced */}
+    {/* Button Grid — boxes bigger and more spaced */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
@@ -67,7 +67,7 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full p-6 md:p-10"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 h-full p-6 md:p-10 bg-white dark:bg-[#232327]"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
@@ -76,7 +76,7 @@ const DegreesOfferedSection: React.FC = () => (
               <img
                 src={img}
                 alt={alt}
-                className="rounded-lg w-full h-full object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
+                className="rounded-lg w-full h-full object-cover shadow-md select-none"
                 draggable={false}
               />
             </AspectRatio>
