@@ -26,21 +26,25 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GOLD_BAR_MAX_WIDTH = "97vw"; // Slightly less than full viewport width for both bars
+const GOLD_BAR_MAX_WIDTH = "97vw"; // Use same width for both top and bottom gold bars
 
 const DegreesOfferedSection: React.FC = () => (
   <>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
     >
-      {/* SINGLE TOP GOLD BAR — nearly full viewport width */}
-      <div className="w-full flex justify-center" style={{ marginTop: "0", marginBottom: "2.6rem" }}>
+      {/* SINGLE TOP GOLD BAR — matches the bottom bar exactly */}
+      <div
+        className="w-full flex justify-center"
+        style={{
+          marginTop: "0",
+          marginBottom: "2.6rem",
+        }}
+      >
         <div
           className="w-full"
           style={{
             maxWidth: GOLD_BAR_MAX_WIDTH,
-            marginLeft: "auto",
-            marginRight: "auto",
             height: "1.1px",
             background:
               "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
@@ -49,7 +53,7 @@ const DegreesOfferedSection: React.FC = () => (
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
-            // No padding needed
+            margin: "0 auto",
           }}
         />
       </div>
