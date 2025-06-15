@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -26,12 +27,12 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Max width for the grid for spacious layout
+// Max width for spacious layout
 const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* Gold divider bar above the section to match styling */}
+    {/* Thin gold line divider bar above the section */}
     <div className="header-gold-bar mb-7" />
     <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
       <h2
@@ -94,10 +95,17 @@ const DegreesOfferedSection: React.FC = () => (
         </div>
       </div>
       {/* Section Subtext */}
-      <div className="max-w-4xl md:max-w-[680px] mx-auto mt-1 mb-3">
-        <p className="text-[1.09rem] md:text-[1.13rem] lg:text-[1.19rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug tracking-wide">
-          New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities
-          in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
+      <div className="max-w-5xl md:max-w-[900px] mx-auto mt-1 mb-3">
+        <p
+          className="text-[1.11rem] md:text-[1.18rem] lg:text-[1.22rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal tracking-wide whitespace-normal"
+          style={{
+            lineHeight: 1.29,
+            letterSpacing: "0.003em",
+            maxWidth: "100%",
+            margin: "0 auto",
+          }}
+        >
+          New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
         </p>
       </div>
       {/* Department of Education Logo */}
@@ -110,9 +118,10 @@ const DegreesOfferedSection: React.FC = () => (
         />
       </div>
     </section>
-    {/* Gold divider bar below the section to match top divider */}
+    {/* Thin gold line divider bar below the section (to match above) */}
     <div className="header-gold-bar mt-7 mb-7" />
   </>
 );
 
 export default DegreesOfferedSection;
+
