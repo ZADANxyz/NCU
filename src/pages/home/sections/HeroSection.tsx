@@ -29,7 +29,7 @@ const SMALL_EDGE_PADDING = "12px"; // for small screens
 const HeroSection = () => {
   return (
     <>
-      {/* HERO IMAGE: Edge to edge, max height 90vh */}
+      {/* HERO IMAGE: Edge to edge, max height 85vh */}
       <div
         className="w-full relative"
         style={{
@@ -51,7 +51,7 @@ const HeroSection = () => {
             width: "100vw",
             maxWidth: "100vw",
             height: "auto",
-            maxHeight: "90vh",
+            maxHeight: "85vh",
             objectFit: "cover",
             objectPosition: "top center",
             background: "#fff",
@@ -107,12 +107,12 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: Edge-pinned on right with padding */}
+          {/* Right: Edge-pinned on right with padding, NO left padding */}
           <div
             className="w-full md:w-1/2 flex flex-col items-end justify-start mt-8 md:mt-0"
             style={{
               paddingRight: EDGE_PADDING,
-              paddingLeft: "18px",
+              // Remove paddingLeft completely for right side
               minWidth: 0,
             }}
           >
