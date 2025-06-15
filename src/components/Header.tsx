@@ -35,12 +35,12 @@ const NCUWordmark: React.FC = () => (
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
-  { label: "Degrees", to: "/degrees" },
+  { label: "About Us", to: "/about-us" },
+  { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
   { label: "Downloads", to: "/downloads" },
   { label: "Donate", to: "/donate" },
-  { label: "Apply", to: "/apply" },
-  { label: "Contact", to: "/contact" },
+  { label: "Apply Now!", to: "/apply" },
 ];
 
 const Header = () => {
@@ -58,25 +58,27 @@ const Header = () => {
   }, []);
 
   // Choose icon color adaptively in light/dark mode
-  // We'll use Tailwind's text-slate-700/dark:text-slate-200 for icons/etc, except for the active nav link.
   const iconColor = "text-slate-700 dark:text-slate-200";
 
   return (
     <>
       <header
         className={cn(
-          "fixed top-0 w-full z-40",
+          "fixed top-0 w-full z-40 glass glossy",
           "shadow-xl transition-shadow duration-300",
           elevate && "shadow-2xl"
         )}
         style={{
-          backdropFilter: "blur(16px)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          padding: 0,
         }}
       >
         <div
           className={cn(
             "relative flex items-center justify-between h-20 px-3 sm:px-8 bg-white/80 dark:bg-neutral-900/80",
-            "backdrop-blur-lg border-b-0"
+            "backdrop-blur-lg border-b-0",
+            "glass glossy"
           )}
           style={{
             WebkitBackdropFilter: "blur(16px)",
@@ -87,7 +89,7 @@ const Header = () => {
         >
           {/* Left: NCU Wordmark/Logo */}
           <div className="flex items-center" style={{ height: 38 }}>
-            <span className="text-[#046BD2] dark:text-[#046BD2]">
+            <span className="text-[#046BD2] dark:text-slate-200 transition-colors duration-200">
               <NCUWordmark />
             </span>
           </div>
@@ -104,9 +106,9 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "uppercase tracking-wide text-[16px] font-normal font-sans",
-                        "transition-all px-2 pb-0.5 rounded",
-                        "hover:text-[#B19528] hover:bg-[#046BD2]/5 duration-150",
+                        "tracking-wide text-[15px] font-normal font-sans",
+                        "transition-colors transition-transform duration-150 px-2 pb-0.5 rounded",
+                        "hover:text-[#B19528] hover:scale-105 focus:text-[#B19528]",
                         active
                           ? "text-[#046BD2]"
                           : "text-gray-700 dark:text-gray-200"
@@ -159,23 +161,24 @@ const Header = () => {
             <span className={cn(iconColor, "ml-1")}>
               <ThemeToggle
                 className={cn(
-                  "transition-transform duration-150 hover:scale-110 hover:text-[#046BD2]"
+                  "transition-transform duration-150 hover:scale-110 hover:text-[#B19528]"
                 )}
               />
             </span>
           </div>
         </div>
 
-        {/* Glassy Gold Line */}
+        {/* More prominent Gold Line */}
         <div
-          className="w-full h-1"
+          className="w-full"
           style={{
+            height: 4,
             background:
-              "linear-gradient(90deg, rgba(177,149,40,0.08) 0%, rgba(177,149,40,1) 35%, rgba(177,149,40,1) 65%, rgba(177,149,40,0.08) 100%)",
+              "linear-gradient(90deg, rgba(177,149,40,0.23) 0%, rgba(177,149,40,1) 28%, rgba(177,149,40,1) 72%, rgba(177,149,40,0.23) 100%)",
             boxShadow:
-              "0 2px 8px 0 rgba(177,149,40,0.12) inset, 0 2px 8px 0 rgba(177,149,40,0.10)",
-            backdropFilter: "blur(4px)",
-            WebkitBackdropFilter: "blur(4px)",
+              "0 2px 16px 0 rgba(177,149,40,0.23) inset, 0 2px 16px 0 rgba(177,149,40,0.13)",
+            backdropFilter: "blur(5px)",
+            WebkitBackdropFilter: "blur(5px)",
             zIndex: 50,
           }}
         />

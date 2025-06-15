@@ -1,16 +1,18 @@
 
 import React from "react";
-import { Moon } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
 interface ThemeToggleProps {
   className?: string;
 }
 
+const GOLD = "#B19528";
+
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
-  // Use class on html element for theme toggling
   const [dark, setDark] = React.useState(() =>
     document.documentElement.classList.contains("dark")
   );
+  const [hovered, setHovered] = React.useState(false);
 
   React.useEffect(() => {
     if (dark) {
@@ -29,6 +31,13 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setDark(true);
   }, []);
 
+  // Icon and icon color, gold on hover, currentColor default
+  const iconProps = {
+    size: 24,
+    color: hovered ? GOLD : "currentColor",
+    className: "transition-transform duration-300",
+  };
+
   return (
     <button
       aria-label="Toggle dark mode"
@@ -37,10 +46,16 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
         (className ?? "")
       }
       onClick={() => setDark((v) => !v)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       tabIndex={0}
       type="button"
     >
-      <Moon size={24} color="currentColor" className="transition-transform duration-300" />
+      {dark ? (
+        <Sun {...iconProps} />
+      ) : (
+        <Moon {...iconProps} />
+      )}
     </button>
   );
 };
