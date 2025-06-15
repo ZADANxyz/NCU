@@ -1,12 +1,36 @@
 
 import React from "react";
-import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import CartDrawer from "./CartDrawer";
 import SearchBar from "./SearchBar";
 import { ShoppingCart, Search } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+
+// Inline clean NCU logo (about 140px wide)
+const NCUWordmark: React.FC = () => (
+  <svg
+    width={140}
+    height={38}
+    viewBox="0 0 220 38"
+    fill="none"
+    aria-label="NCU Logo"
+    className="mr-8"
+    style={{ minWidth: 120 }}
+  >
+    <text
+      x="0"
+      y="28"
+      fontFamily="system-ui, Segoe UI, sans-serif"
+      fontWeight="600"
+      fontSize="32"
+      fill="#046BD2"
+      letterSpacing="5"
+    >
+      NCU
+    </text>
+  </svg>
+);
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
@@ -20,15 +44,10 @@ const NAV_ITEMS = [
 
 const Header = () => {
   const location = useLocation();
-
-  // Cart & Search UI state
   const [cartOpen, setCartOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
 
-  // Mobile nav state
-  const [navOpen, setNavOpen] = React.useState(false);
-
-  // Glassy shadow fix on scroll
+  // Subtle shadow on scroll
   const [elevate, setElevate] = React.useState(false);
   React.useEffect(() => {
     const handle = () => setElevate(window.scrollY > 8);
@@ -36,9 +55,6 @@ const Header = () => {
     handle();
     return () => window.removeEventListener("scroll", handle);
   }, []);
-
-  // Responsive: if mobile, collapse menu (mobile breakpoint 900px)
-  const isMobile = window.innerWidth < 900;
 
   return (
     <>
@@ -52,12 +68,10 @@ const Header = () => {
           backdropFilter: "blur(16px)",
         }}
       >
-        {/* Glass Header Main */}
         <div
           className={cn(
-            "relative flex items-center justify-between h-20 px-2 sm:px-8 bg-white/80 dark:bg-neutral-900/80",
-            "backdrop-blur-lg border-b-0",
-            "transition-all duration-300"
+            "relative flex items-center justify-between h-20 px-3 sm:px-8 bg-white/80 dark:bg-neutral-900/80",
+            "backdrop-blur-lg border-b-0"
           )}
           style={{
             WebkitBackdropFilter: "blur(16px)",
@@ -66,8 +80,10 @@ const Header = () => {
               : "0 2px 8px 0 rgba(4,107,210,0.06)",
           }}
         >
-          {/* Left: Logo */}
-          <Logo />
+          {/* Left: NCU Wordmark */}
+          <div className="flex items-center" style={{ height: 38 }}>
+            <NCUWordmark />
+          </div>
 
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
@@ -81,9 +97,16 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "uppercase font-semibold tracking-wide text-base transition-all px-2 pb-1 rounded hover:text-[#B19528] hover:bg-[#046BD2]/5 duration-150",
-                        active ? "text-[#046BD2]" : "text-gray-700 dark:text-gray-200"
+                        // 16px font, normal, system UI, no bold, no oversize
+                        "uppercase tracking-wide text-[16px] font-normal",
+                        "transition-all px-2 pb-0.5 rounded",
+                        "hover:text-[#B19528] hover:bg-[#046BD2]/5 duration-150",
+                        "font-sans",
+                        active
+                          ? "text-[#046BD2]"
+                          : "text-gray-700 dark:text-gray-200"
                       )}
+                      style={{ fontFamily: "system-ui, Segoe UI, sans-serif" }}
                     >
                       {item.label}
                     </Link>
@@ -93,48 +116,49 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right: Actions */}
-          <div className="flex items-center gap-1 pr-4">
-            {/* Theme Switcher */}
-            <ThemeToggle />
-
-            {/* Cart Icon */}
-            <button
-              className={cn(
-                "relative rounded-full p-2 mx-1 bg-white/40 dark:bg-black/40 ring-1 ring-gold/50 backdrop-blur-md shadow hover:scale-105 hover:bg-gold/20 transition-all duration-200",
-                cartOpen && "scale-110 bg-gold/10"
-              )}
-              aria-label="Open cart"
-              onClick={() => setCartOpen(true)}
-              type="button"
-            >
-              <ShoppingCart
-                size={22}
-                color="#B19528"
-                className="pointer-events-none"
-              />
-              {/* Cart badge (demo) */}
-              <span className="absolute -top-1 -right-1 bg-[#046BD2] text-[10px] text-white font-bold h-4 w-4 flex items-center justify-center rounded-full ring-2 ring-white shadow">
-                3
-              </span>
-            </button>
-
+          {/* Right: Actions (icons order: Search, Cart, Dark) */}
+          <div className="flex items-center gap-1 pl-2">
             {/* Search Icon */}
             <button
               className={cn(
-                "rounded-full p-2 ml-1 bg-white/40 dark:bg-black/40 ring-1 ring-gold/40 backdrop-blur-md shadow hover:scale-105 hover:bg-gold/30 transition-all duration-200",
-                searchOpen && "scale-105"
+                "ml-2 p-1 group outline-none ring-0 bg-transparent",
+                "transition-transform duration-150",
+                "hover:text-[#046BD2] hover:scale-110 focus:text-[#046BD2]"
               )}
               aria-label="Search"
               onClick={() => setSearchOpen((v) => !v)}
               type="button"
             >
-              <Search size={22} color="#046BD2" className="pointer-events-none" />
+              <Search size={24} strokeWidth={2.2} />
             </button>
+            {/* Cart Icon */}
+            <button
+              className={cn(
+                "relative mx-1 p-1 group outline-none ring-0 bg-transparent",
+                "transition-transform duration-150",
+                "hover:text-[#B19528] hover:scale-110 focus:text-[#B19528]"
+              )}
+              aria-label="Open cart"
+              onClick={() => setCartOpen(true)}
+              type="button"
+            >
+              <ShoppingCart size={24} strokeWidth={2.2} />
+              {/* Demo badge */}
+              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[10px] text-white font-bold h-4 w-4 flex items-center justify-center rounded-full ring-2 ring-white shadow">
+                3
+              </span>
+            </button>
+            {/* Dark mode toggle - (no background) */}
+            <span className="ml-1">
+              <ThemeToggle
+                iconClassName={cn(
+                  "transition-transform duration-150 hover:scale-110",
+                  "hover:text-[#046BD2]"
+                )}
+                naked
+              />
+            </span>
           </div>
-
-          {/* Mobile menu toggle (Hamburger) */}
-          {/* Hidden for now - implementation for mobile nav can be added as next step */}
         </div>
 
         {/* Glassy Gold Line */}
