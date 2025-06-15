@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -24,9 +23,13 @@ const NCU_ALUMNI_TEXT = (
   </div>
 );
 
+const EDGE_PADDING = "28px"; // match left/right at large screens (1.75rem)
+const SMALL_EDGE_PADDING = "12px"; // for small screens
+
 const HeroSection = () => {
   return (
     <>
+      {/* HERO IMAGE: Edge to edge, max height 90vh */}
       <div
         className="w-full relative"
         style={{
@@ -47,9 +50,9 @@ const HeroSection = () => {
             borderRadius: 0,
             width: "100vw",
             maxWidth: "100vw",
-            height: "430px",
-            maxHeight: "430px",
-            objectFit: "contain",
+            height: "auto",
+            maxHeight: "90vh",
+            objectFit: "cover",
             objectPosition: "top center",
             background: "#fff",
             display: "block",
@@ -58,6 +61,7 @@ const HeroSection = () => {
           draggable={false}
         />
       </div>
+      {/* SECTION: Pin content to left and right edge with same paddings, align top */}
       <section
         className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
@@ -67,9 +71,23 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="relative w-full flex flex-col md:flex-row min-h-[500px] items-start">
-          {/* Left column: Stick to left edge */}
-          <div className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0 pl-3 sm:pl-7" style={{ minWidth: 0 }}>
+        <div
+          className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch"
+          style={{
+            paddingLeft: SMALL_EDGE_PADDING,
+            paddingRight: SMALL_EDGE_PADDING,
+            gap: "0px",
+          }}
+        >
+          {/* Left: Edge-pinned on left with padding */}
+          <div
+            className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0"
+            style={{
+              paddingLeft: EDGE_PADDING,
+              paddingRight: "18px",
+              minWidth: 0,
+            }}
+          >
             <h2
               className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
               style={{
@@ -89,10 +107,12 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right column: contact block - stick to right edge, align to top */}
+          {/* Right: Edge-pinned on right with padding */}
           <div
-            className="w-full md:w-1/2 flex flex-col items-end justify-start mt-0 md:mt-0 pt-6 md:pt-0 pr-3 sm:pr-7"
+            className="w-full md:w-1/2 flex flex-col items-end justify-start mt-8 md:mt-0"
             style={{
+              paddingRight: EDGE_PADDING,
+              paddingLeft: "18px",
               minWidth: 0,
             }}
           >
@@ -100,7 +120,7 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      {/* Divider */}
+      {/* Divider: unchanged */}
       <div
         className="w-full"
         style={{
@@ -122,4 +142,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
