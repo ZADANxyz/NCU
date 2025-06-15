@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -28,7 +27,7 @@ const DEGREE_BUTTONS = [
 ];
 
 // Max width for spacious layout
-const GRID_MAX_WIDTH = 1600;
+const SECTION_MAX_WIDTH = 1240;
 
 const EDGE_HORIZONTAL_PADDING = "52px";
 
@@ -36,8 +35,10 @@ const DegreesOfferedSection: React.FC = () => (
   <>
     {/* No divider above the section */}
     <section
-      className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none"
+      className="w-full bg-background dark:bg-background py-6 md:py-8 flex flex-col items-center shadow-none"
       style={{
+        maxWidth: `${SECTION_MAX_WIDTH}px`,
+        margin: "0 auto",
         paddingLeft: EDGE_HORIZONTAL_PADDING,
         paddingRight: EDGE_HORIZONTAL_PADDING,
       }}
@@ -63,10 +64,6 @@ const DegreesOfferedSection: React.FC = () => (
           className="
             grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
           "
-          style={{
-            maxWidth: `${GRID_MAX_WIDTH}px`,
-            margin: "0 auto",
-          }}
         >
           {DEGREE_BUTTONS.map(({ alt, img, to }) => (
             <Link
@@ -127,16 +124,13 @@ const DegreesOfferedSection: React.FC = () => (
       <div
         className="w-full flex justify-center"
         style={{
-          marginTop: "4.9rem", // Increased by another 1.2rem for more space above divider
+          marginTop: "4.9rem",
           marginBottom: "0",
         }}
       >
         <div
           className="w-full"
           style={{
-            maxWidth: "1515px",
-            marginLeft: "auto",
-            marginRight: "auto",
             height: "1.1px",
             background:
               "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
@@ -145,8 +139,10 @@ const DegreesOfferedSection: React.FC = () => (
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
-            paddingLeft: "52px",
-            paddingRight: "52px",
+            paddingLeft: EDGE_HORIZONTAL_PADDING,
+            paddingRight: EDGE_HORIZONTAL_PADDING,
+            margin: "0 auto",
+            maxWidth: "100%",
           }}
         />
       </div>
@@ -156,4 +152,3 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
-
