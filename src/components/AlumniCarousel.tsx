@@ -8,7 +8,7 @@ const alumniImages = [
   "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80"
 ];
 
-const AUTO_SLIDE_INTERVAL = 5400; // ms (was 3400, now slower)
+const AUTO_SLIDE_INTERVAL = 7400; // slower than before
 
 const AlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
@@ -52,7 +52,16 @@ const AlumniCarousel = () => {
           {alumniImages.map((src, idx) => (
             <CarouselItem
               key={idx}
-              className={`basis-full flex-none transition-transform duration-500 ease-in-out ${current !== idx ? "hidden" : ""}`}
+              className={`
+                basis-full flex-none transition-all duration-500 ease-in-out
+                ${current === idx
+                  ? "opacity-100 pointer-events-auto scale-100 z-10"
+                  : "opacity-0 pointer-events-none scale-95 z-0"}
+              `}
+              aria-hidden={current !== idx}
+              style={{
+                transitionProperty: "opacity, transform",
+              }}
             >
               <div
                 className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/80 dark:bg-[#232232]/78 px-2 pt-2 pb-1 flex items-center justify-center"
