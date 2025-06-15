@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -31,10 +30,10 @@ const DEGREE_BUTTONS = [
 const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
-  <section className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-0 flex flex-col items-center shadow-none">
+  <section className="w-full bg-background dark:bg-background py-12 md:py-16 px-0 flex flex-col items-center shadow-none">
     <h2
       className="
-        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
+        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal dark:text-white
       "
       style={{
         color: "#181818",
@@ -104,4 +103,3 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
-
