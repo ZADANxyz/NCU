@@ -1,11 +1,11 @@
 import React from "react";
-import ThemeToggle from "./ThemeToggle";
-import CartDrawer from "./CartDrawer";
-import SearchBar from "./SearchBar";
-import { ShoppingCart, Search } from "lucide-react";
-import { useLocation, Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import SearchBar from "./SearchBar";
+import CartDrawer from "./CartDrawer";
+import { useFooterVisible } from "./Header/useFloatingHeader";
+import HeaderNavigation from "./Header/HeaderNavigation";
+import HeaderActions from "./Header/HeaderActions";
+import { cn } from "@/lib/utils";
 
 // Clean NCU wordmark SVG 140px width, fills with currentColor
 const NCUWordmark: React.FC = () => (
@@ -44,18 +44,15 @@ const NAV_ITEMS = [
 ];
 
 const Header = () => {
-  const location = useLocation();
   const [cartOpen, setCartOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
-  React.useEffect(() => {
-    const handle = () => setElevate(window.scrollY > 8);
-    window.addEventListener("scroll", handle);
-    handle();
-    return () => window.removeEventListener("scroll", handle);
-  }, []);
 
-  const [isDark, setIsDark] = React.useState(() =>
+  // Floating header position when footer visible
+  const footerVisible = useFooterVisible("site-footer");
+
+  // track dark mode
+  const [isDark, setIsDark] = React.useState(
     typeof window !== "undefined"
       ? document.documentElement.classList.contains("dark")
       : false
@@ -70,13 +67,15 @@ const Header = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Icon colors
-  const cartSearchBase = "text-slate-700 dark:text-slate-200";
-  // Use state for correct hover color: blue in light, gold in dark
-  const cartSearchHover = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
+  React.useEffect(() => {
+    const handle = () => setElevate(window.scrollY > 8);
+    window.addEventListener("scroll", handle);
+    handle();
+    return () => window.removeEventListener("scroll", handle);
+  }, []);
 
-  // Even smaller icon size
-  const iconSize = 16;
+  // Demo: Always 3 in cart
+  const cartCount = 3;
 
   return (
     <>
@@ -89,6 +88,10 @@ const Header = () => {
         style={{
           borderBottomLeftRadius: "0.38rem",
           borderBottomRightRadius: "0.38rem",
+          transition: "top 0.12s cubic-bezier(.4,0,.2,1), box-shadow 0.28s",
+          top: footerVisible
+            ? `calc(100vh - 60px - var(--footer-height,96px))`
+            : 0,
         }}
       >
         <div
@@ -101,113 +104,21 @@ const Header = () => {
             display: "flex"
           }}
         >
-          {/* Left: Logo */}
+          {/* Logo */}
           <div className="flex items-center" style={{ height: 40, alignItems: "center", display: "flex" }}>
             <Logo />
           </div>
-          {/* Center: Navigation */}
-          <nav className="flex-1 flex items-center justify-center relative z-20" style={{ height: 40, alignItems: "center", display: "flex"}}>
-            <ul className="flex items-center gap-9">
-              {NAV_ITEMS.map((item) => {
-                const active =
-                  location.pathname === item.to ||
-                  (item.to !== "/" && location.pathname.startsWith(item.to));
-                // Menu color logic
-                // Light: active=blue, hover=gold. Dark: active=gold, hover=blue
-                const baseStyle =
-                  "tracking-wide font-sans text-[12.5px] font-normal px-0.5 pb-0.5 rounded-none transition-colors transition-transform duration-150";
-                let colorClass = "";
-                if (!isDark) {
-                  colorClass = active
-                    ? "text-[#046BD2]"
-                    : "text-gray-700 hover:text-[#B19528]"; // gold hover
-                } else {
-                  colorClass = active
-                    ? "text-[#B19528]"
-                    : "text-gray-200 hover:text-[#046BD2]"; // blue hover
-                }
-                return (
-                  <li key={item.label} className="flex items-center h-full">
-                    <Link
-                      to={item.to}
-                      className={cn(
-                        baseStyle,
-                        "hover:scale-105 focus:scale-105",
-                        colorClass
-                      )}
-                      style={{
-                        fontFamily: "system-ui, Segoe UI, sans-serif",
-                        textTransform: "none",
-                        letterSpacing: "0.01em",
-                        fontWeight: 400,
-                        // force vertical centering
-                        display: "flex",
-                        alignItems: "center",
-                        height: 38
-                      }}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-          {/* Right: Actions */}
-          <div
-            className="flex items-center gap-1 pl-1"
-            style={{ height: 40, alignItems: "center", display: "flex" }}
-          >
-            {/* Search Icon */}
-            <button
-              className={cn(
-                cartSearchBase,
-                "ml-1 p-1 group outline-none ring-0 bg-transparent",
-                "transition-transform duration-150",
-                cartSearchHover,
-                "hover:scale-110 focus:scale-110",
-                "dark:hover:text-[#B19528]"
-              )}
-              aria-label="Search"
-              onClick={() => setSearchOpen((v) => !v)}
-              type="button"
-            >
-              <Search size={iconSize} strokeWidth={2.05} />
-            </button>
-            {/* Cart Icon */}
-            <button
-              className={cn(
-                cartSearchBase,
-                "relative mx-0.5 p-1 group outline-none ring-0 bg-transparent",
-                "transition-transform duration-150",
-                cartSearchHover,
-                "hover:scale-110 focus:scale-110",
-                "dark:hover:text-[#B19528]"
-              )}
-              aria-label="Open cart"
-              onClick={() => setCartOpen(true)}
-              type="button"
-            >
-              <ShoppingCart size={iconSize} strokeWidth={2.05} />
-              {/* Demo badge */}
-              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[9px] text-white font-bold h-3 w-3 flex items-center justify-center rounded-full ring-2 ring-white shadow">
-                3
-              </span>
-            </button>
-            {/* Dark mode toggle */}
-            <span className={cn(cartSearchBase, "ml-1")}>
-              <ThemeToggle
-                className={cn(
-                  "transition-transform duration-150 hover:scale-110",
-                  cartSearchHover
-                )}
-                isDark={isDark}
-                iconSize={iconSize}
-              />
-            </span>
-          </div>
+          {/* Navigation */}
+          <HeaderNavigation isDark={isDark} />
+          {/* Actions */}
+          <HeaderActions
+            isDark={isDark}
+            onCartOpen={() => setCartOpen(true)}
+            onSearchOpen={() => setSearchOpen((v) => !v)}
+            cartCount={cartCount}
+          />
         </div>
-        {/* Gold line at the bottom: fade on both tips */}
+        {/* Gold line visual (unchanged) */}
         <div
           className="mx-auto"
           style={{
@@ -231,7 +142,6 @@ const Header = () => {
       <style>
         {`
         .apple-glass-header {
-          /* For all modes: Glassy, immersive, vibrant Apple style */
           background: rgba(255,255,255,0.86);
           backdrop-filter: blur(21px) saturate(160%);
           -webkit-backdrop-filter: blur(21px) saturate(160%);
@@ -240,10 +150,8 @@ const Header = () => {
           border-bottom-right-radius: 0.38rem;
           position: relative;
           transition: background 0.38s, box-shadow 0.28s;
-          /* clean separation from rest of the page */
         }
         .apple-glass-header::after {
-          /* Glossy white shimmer */
           content: "";
           display: block;
           pointer-events: none;
@@ -261,9 +169,7 @@ const Header = () => {
           opacity: 1;
         }
         .dark .apple-glass-header {
-          /* Apple-inspired deep navy/blue glass in dark mode */
           background: rgba(8, 17, 37, 0.84);
-          /* richer blue/grey glass */
           box-shadow: 0 6px 42px -5px rgba(4,107,210,0.24), 0 1.5px 0 0 #B19528;
           backdrop-filter: blur(22px) saturate(220%);
           -webkit-backdrop-filter: blur(22px) saturate(220%);
