@@ -58,7 +58,7 @@ const HeroSection = () => {
         />
       </div>
       <section
-        className="relative z-10 flex flex-col md:flex-row items-stretch justify-center w-full bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0 px-4 md:px-8"
+        className="relative z-10 flex flex-col md:flex-row items-stretch justify-center w-full bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0 pl-4 md:pl-8 pr-0"
         style={{
           boxShadow: "0 4px 32px 0 rgba(4,107,210,0.04)",
           borderBottomLeftRadius: "1.2rem",
@@ -66,7 +66,7 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0 pr-0 md:pr-5" style={{ minWidth: 0 }}>
+        <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0" style={{ minWidth: 0 }}>
           <h2
             className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
             style={{
