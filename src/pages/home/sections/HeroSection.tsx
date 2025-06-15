@@ -164,34 +164,6 @@ const HeroSection = () => {
           }
         }
       `}</style>
-      {/* Divider (GOLD BAR): Even wider, but not touching edges */}
-      <div
-        className="w-full flex justify-center"
-        style={{
-          marginTop: "5.5rem",
-          marginBottom: "3.5rem",
-        }}
-      >
-        <div
-          className="w-full"
-          style={{
-            maxWidth: GOLD_BAR_MAX_WIDTH,
-            marginLeft: "auto",
-            marginRight: "auto",
-            height: "1.1px",
-            background:
-              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-            boxShadow:
-              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-            borderRadius: 3,
-            zIndex: 20,
-            opacity: 0.99,
-            paddingLeft: SECTION_HORIZONTAL_PADDING,
-            paddingRight: SECTION_HORIZONTAL_PADDING,
-          }}
-        />
-      </div>
-      {/* Degrees Offered section goes directly below */}
     </>
   );
 };
