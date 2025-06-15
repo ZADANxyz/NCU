@@ -52,11 +52,11 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — boxes bigger and more spaced */}
+    {/* Button Grid — larger, taller, more spacious boxes */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 md:gap-16 w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 md:gap-14 items-stretch w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -67,12 +67,12 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 h-full p-6 md:p-10 bg-white dark:bg-[#232327]"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-6 md:p-10 bg-white dark:bg-[#232327] min-h-[260px] md:min-h-[360px] h-full"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
           >
-            <AspectRatio ratio={1} className="w-full">
+            <AspectRatio ratio={1 / 1.15} className="w-full flex items-center">
               <img
                 src={img}
                 alt={alt}
