@@ -87,23 +87,27 @@ const Header = () => {
           elevate && "shadow-2xl"
         )}
         style={{
-          // Softer (lighter) curve
-          borderBottomLeftRadius: "0.45rem",
-          borderBottomRightRadius: "0.45rem",
+          borderBottomLeftRadius: "0.38rem", // Even lighter curve
+          borderBottomRightRadius: "0.38rem",
         }}
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-[54px] px-3 sm:px-7"
+            "relative flex items-center justify-between h-[62px] px-3 sm:px-7" // Increased header height for bigger logo, vertical center
           )}
+          style={{
+            minHeight: 62,
+            alignItems: "center", // enforce vertical center
+            display: "flex"
+          }}
         >
           {/* Left: Logo */}
-          <div className="flex items-center" style={{ height: 36 }}>
+          <div className="flex items-center" style={{ height: 40, alignItems: "center", display: "flex" }}>
             <Logo />
           </div>
           {/* Center: Navigation */}
-          <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-5">
+          <nav className="flex-1 flex items-center justify-center relative z-20" style={{ height: 40, alignItems: "center", display: "flex"}}>
+            <ul className="flex items-center gap-7">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -123,7 +127,7 @@ const Header = () => {
                     : "text-gray-200 hover:text-[#046BD2]"; // blue hover
                 }
                 return (
-                  <li key={item.label}>
+                  <li key={item.label} className="flex items-center h-full">
                     <Link
                       to={item.to}
                       className={cn(
@@ -136,6 +140,10 @@ const Header = () => {
                         textTransform: "none",
                         letterSpacing: "0.01em",
                         fontWeight: 400,
+                        // force vertical centering
+                        display: "flex",
+                        alignItems: "center",
+                        height: 38
                       }}
                     >
                       {item.label}
@@ -146,7 +154,10 @@ const Header = () => {
             </ul>
           </nav>
           {/* Right: Actions */}
-          <div className="flex items-center gap-1 pl-1">
+          <div
+            className="flex items-center gap-1 pl-1"
+            style={{ height: 40, alignItems: "center", display: "flex" }}
+          >
             {/* Search Icon */}
             <button
               className={cn(
@@ -196,7 +207,7 @@ const Header = () => {
             </span>
           </div>
         </div>
-        {/* Gold line: now fades out at each tip with a slight gradient */}
+        {/* Gold line at the bottom: fade on both tips */}
         <div
           className="mx-auto"
           style={{
@@ -213,13 +224,10 @@ const Header = () => {
             zIndex: 50,
           }}
         />
-        {/* Expanding SearchBar */}
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
-
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
-
-      <div style={{ height: 54 }} />
+      <div style={{ height: 62 }} />
       <style>
         {`
         .apple-glass-header {
@@ -228,8 +236,8 @@ const Header = () => {
           backdrop-filter: blur(21px) saturate(160%);
           -webkit-backdrop-filter: blur(21px) saturate(160%);
           box-shadow: 0 6px 40px 0 rgba(4,107,210,0.12), 0 1px 0 0 #B19528;
-          border-bottom-left-radius: 0.45rem;
-          border-bottom-right-radius: 0.45rem;
+          border-bottom-left-radius: 0.38rem;
+          border-bottom-right-radius: 0.38rem;
           position: relative;
           transition: background 0.38s, box-shadow 0.28s;
           /* clean separation from rest of the page */
