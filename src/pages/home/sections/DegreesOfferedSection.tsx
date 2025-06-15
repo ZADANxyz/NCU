@@ -30,7 +30,7 @@ const DEGREE_BUTTONS = [
 const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
-  <section className="w-full bg-background dark:bg-background py-8 md:py-12 px-0 flex flex-col items-center shadow-none">
+  <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
     <h2
       className="
         text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
@@ -92,7 +92,7 @@ const DegreesOfferedSection: React.FC = () => (
     </div>
     {/* Section Subtext */}
     <div className="max-w-3xl mx-auto mt-1 mb-3">
-      <p className="text-[1.32rem] md:text-[1.38rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug">
+      <p className="text-[1.46rem] md:text-[1.54rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug">
         New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
       </p>
     </div>
