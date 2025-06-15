@@ -1,9 +1,8 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
-// Degree images and routes
+// Degree image assets mapping—ensure order matches your images & routes
 const DEGREE_BUTTONS = [
   {
     alt: "Associate of Arts Degrees",
@@ -29,96 +28,73 @@ const DEGREE_BUTTONS = [
 
 const DegreesOfferedSection: React.FC = () => (
   <section
-    className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 flex flex-col items-center shadow-none border-0"
+    className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-0 flex flex-col items-center shadow-none"
     style={{}}
   >
-    <div className="w-full max-w-6xl mx-auto px-2 md:px-8 flex flex-col items-center">
-      {/* Section Title */}
-      <h2
-        className="text-4xl md:text-5xl text-center mb-5 tracking-tight font-roboto font-normal"
+    {/* Section Title */}
+    <h2
+      className="
+        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
+      "
+      style={{
+        color: "#181818",
+        letterSpacing: "0.01em",
+        lineHeight: 1.13,
+        fontWeight: 400,
+      }}
+    >
+      Degrees Offered
+    </h2>
+    {/* Section Subtitle */}
+    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
+      Click on any of the degrees below to learn more about each degree level.
+    </p>
+    {/* Button Grid - Fills section edge to edge (like gold bar) */}
+    <div className="w-full flex justify-center items-center mb-10">
+      <div
+        className="
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 w-full
+        "
         style={{
-          color: "#181818",
-          letterSpacing: "0.01em",
-          lineHeight: 1.13,
-          fontWeight: 400,
+          maxWidth: "100vw",
+          paddingLeft: "0",
+          paddingRight: "0",
         }}
       >
-        Degrees Offered
-      </h2>
-      {/* Section Subtitle */}
-      <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-14">
-        Click on any of the degrees below to learn more about each degree level.
-      </p>
-      {/* Button Grid */}
-      <div className="w-full flex justify-center items-center mb-11">
-        <div className="w-full max-w-6xl mx-auto">
-          <div
-            className="
-              grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 
-              gap-5 md:gap-8
-              w-full
-            "
+        {DEGREE_BUTTONS.map(({ alt, img, to }) => (
+          <Link
+            key={alt}
+            to={to}
+            className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-xl transition-shadow hover:shadow-2xl"
+            tabIndex={0}
+            aria-label={alt}
+            style={{ width: "100%" }}
           >
-            {DEGREE_BUTTONS.map(({ alt, img, to }) => (
-              <Link
-                key={alt}
-                to={to}
-                className="
-                  flex items-center justify-center outline-none
-                  transition-shadow
-                  focus-visible:ring-4 focus-visible:ring-gold/30
-                  hover:shadow-xl
-                "
-                tabIndex={0}
-                aria-label={alt}
-                style={{ width: "100%" }}
-              >
-                <AspectRatio
-                  ratio={4 / 5}
-                  className="w-full max-w-[320px] min-w-[170px]"
-                >
-                  <img
-                    src={img}
-                    alt={alt}
-                    className="
-                      rounded-[0.7rem]
-                      w-full h-full object-cover
-                      shadow-md
-                      border border-[#d3c797] dark:border-[#2f2f2f]
-                      transition-transform duration-150
-                      hover:scale-[1.03]
-                      select-none
-                      bg-white dark:bg-[#252527]
-                    "
-                    style={{
-                      minHeight: "175px",
-                      maxHeight: "250px",
-                      aspectRatio: "4 / 5",
-                    }}
-                  />
-                </AspectRatio>
-              </Link>
-            ))}
-          </div>
-        </div>
+            <img
+              src={img}
+              alt={alt}
+              className="rounded-xl w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none max-h-56 md:max-h-64"
+              style={{ minHeight: "170px", maxHeight: "18rem" }}
+            />
+          </Link>
+        ))}
       </div>
-      {/* Section Subtext */}
-      <div className="max-w-3xl mx-auto mt-1 mb-4">
-        <p className="text-[1.32rem] md:text-[1.42rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug font-medium">
-          New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
-        </p>
-      </div>
-      {/* Department of Education Logo */}
-      <div className="flex justify-center mt-7">
-        <img
-          src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
-          alt="Florida Department of Education Logo"
-          className="w-auto h-24 md:h-28"
-          style={{ maxWidth: "420px" }}
-        />
-      </div>
+    </div>
+    {/* Section Subtext */}
+    <div className="max-w-3xl mx-auto mt-1 mb-3">
+      <p className="text-[1.23rem] md:text-[1.28rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug">
+        New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
+      </p>
+    </div>
+    {/* Department of Education Logo */}
+    <div className="flex justify-center mt-6">
+      <img
+        src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
+        alt="Florida Department of Education Logo"
+        className="w-auto h-16 md:h-20"
+        style={{ maxWidth: "310px" }}
+      />
     </div>
   </section>
 );
-
 export default DegreesOfferedSection;
