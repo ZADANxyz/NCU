@@ -51,7 +51,7 @@ const ContactTabBlock = () => {
         }
       };
       document.body.appendChild(script);
-    } else {
+    } else if (window.hbspt) {
       window.hbspt.forms.create({
         region: HUBSPOT_REGION,
         portalId: HUBSPOT_PORTAL_ID,
@@ -68,19 +68,24 @@ const ContactTabBlock = () => {
       </h3>
       {NCU_PHONE}
       <div id="hubspot-form-block" ref={formRef} className="w-full mb-3"></div>
+      {/* Gold border line */}
+      <div className="header-gold-bar my-3" />
+      {/* Apply Now button below gold border line */}
       <a
         href={APPLY_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-[#B19528] hover:bg-[#947f23] text-white font-bold rounded-md py-2 px-6 mt-2 shadow-gold transition text-center text-lg"
+        className="block bg-[#B19528] hover:bg-[#947f23] text-white font-bold rounded-md py-2 px-6 mb-2 shadow-gold transition text-center text-lg"
       >
         Apply Now
       </a>
-      <div className="text-xs text-[#444] mt-4 leading-snug font-medium text-center">
-        We’re here to answer your questions. Reach out today and let’s connect!
+      {/* Shorter, single-line message */}
+      <div className="text-xs md:text-[11px] text-[#444] mt-1 leading-snug font-medium text-center whitespace-nowrap overflow-hidden text-ellipsis">
+        We're here to help—reach out and let's connect!
       </div>
     </div>
   );
 };
 
 export default ContactTabBlock;
+
