@@ -83,13 +83,11 @@ const Header = () => {
       <header
         className={cn(
           "fixed top-0 w-full z-40",
-          "glassier-header",
+          "apple-glass-header", // use new style
           elevate && "shadow-2xl"
         )}
         style={{
-          boxShadow: elevate
-            ? "0 10px 32px -10px rgba(4,107,210,0.13), 0 1px 0 0 #B19528"
-            : "0 2px 12px 0 rgba(4,107,210,0.06)"
+          // no inline box-shadow: handled by apple-glass-header class
         }}
       >
         <div
@@ -219,20 +217,20 @@ const Header = () => {
       <div style={{ height: 54 }} />
       <style>
         {`
-        .glassier-header {
-          background: rgba(252,252,255,0.93);
-          backdrop-filter: blur(11px) saturate(123%);
-          -webkit-backdrop-filter: blur(11px) saturate(123%);
-          box-shadow: 0 2px 30px 0 rgba(177,149,40,0.11), 0 1px 0 0 #B19528;
+        .apple-glass-header {
+          /* For all modes: Glassy, immersive, vibrant Apple style */
+          background: rgba(255,255,255,0.86);
+          backdrop-filter: blur(21px) saturate(160%);
+          -webkit-backdrop-filter: blur(21px) saturate(160%);
+          box-shadow: 0 6px 40px 0 rgba(4,107,210,0.12), 0 1px 0 0 #B19528;
           border-bottom-left-radius: 1.1rem;
           border-bottom-right-radius: 1.1rem;
           position: relative;
+          transition: background 0.38s, box-shadow 0.28s;
+          /* clean separation from rest of the page */
         }
-        .dark .glassier-header {
-          background: rgba(35,39,50,0.91); /* lighter dark for better visibility */
-          box-shadow: 0 2px 22px -9px rgba(4,107,210,.13), 0 1px 0 0 #B19528;
-        }
-        .glassier-header::after {
+        .apple-glass-header::after {
+          /* Glossy white shimmer */
           content: "";
           display: block;
           pointer-events: none;
@@ -241,21 +239,30 @@ const Header = () => {
           z-index: 2;
           border-radius: inherit;
           background: linear-gradient(
-            to bottom, 
-            rgba(255,255,255,0.21) 0%,
-            rgba(255,255,255,0.08) 14%, 
-            rgba(252,252,255,0.07) 35%, 
-            rgba(255,255,255,0.03) 77%,
-            rgba(255,255,255,0.00) 100%);
+            110deg, 
+            rgba(255,255,255,0.20) 0%, 
+            rgba(255,255,255,0.05) 48%, 
+            rgba(255,255,255,0.12) 92%,
+            rgba(255,255,255,0.02) 100%
+          );
           opacity: 1;
         }
-        .dark .glassier-header::after {
+        .dark .apple-glass-header {
+          /* Apple-inspired deep navy/blue glass in dark mode */
+          background: rgba(8, 17, 37, 0.84);
+          /* richer blue/grey glass */
+          box-shadow: 0 6px 42px -5px rgba(4,107,210,0.24), 0 1.5px 0 0 #B19528;
+          backdrop-filter: blur(22px) saturate(220%);
+          -webkit-backdrop-filter: blur(22px) saturate(220%);
+        }
+        .dark .apple-glass-header::after {
           background: linear-gradient(
-            to bottom, 
-            rgba(255,255,255,0.12) 0%,
-            rgba(180,180,200,0.05) 19%, 
-            rgba(180,180,200,0.01) 38%, 
-            rgba(80,80,80,0.006) 100%);
+            120deg, 
+            rgba(185,200,235,0.08) 6%,
+            rgba(110,120,160,0.07) 44%,
+            rgba(255,255,255,0.06) 90%,
+            rgba(20,30,70,0.03) 100%
+          );
           opacity: 1;
         }
         `}
