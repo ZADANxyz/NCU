@@ -1,47 +1,48 @@
 
 import React from "react";
-import { GraduationCap, Book, Users, Globe } from "lucide-react";
+import { GraduationCap, BookOpen, Book, Briefcase } from "lucide-react";
 
 const SERVICES = [
   {
-    label: "Accredited Degrees",
+    label: "Ministry Degrees",
     icon: GraduationCap,
-    desc: "Earn bachelor’s, master’s, and doctoral degrees tailored to your calling."
+    desc: "Start or finish your accredited Christian degree—Bachelor, Master’s, and Doctorate—all 100% online."
   },
   {
-    label: "Bible Training",
+    label: "Christian Counseling",
+    icon: Briefcase,
+    desc: "Designed for those called to serve others with wisdom, faith, and compassion. Prepare for private practice or ministry care."
+  },
+  {
+    label: "Leadership & Marketplace",
+    icon: BookOpen,
+    desc: "Develop the leadership gifts and practical skills for impactful career, business, or nonprofit ministry."
+  },
+  {
+    label: "Bible & Theology Studies",
     icon: Book,
-    desc: "In-depth scriptural studies, discipleship courses, and ministry equipping."
-  },
-  {
-    label: "Student Portal",
-    icon: Users,
-    desc: "Access coursework, grades, resources, and community instantly."
-  },
-  {
-    label: "Global Community",
-    icon: Globe,
-    desc: "Connect & grow with students and alumni around the world."
+    desc: "Deepen your understanding of scripture with flexible online courses and Bible certificates."
   }
 ];
 
 const ServicesSection = () => (
-  <section className="max-w-5xl mx-auto mb-14 z-10 relative px-3">
-    <div className="glass glossy rounded-2xl shadow-lg py-8 px-2 md:px-8">
-      <h2 className="text-3xl font-bold text-center text-[#046BD2] mb-5">Our Services</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {SERVICES.map(({ label, icon: Icon, desc }) => (
-          <div key={label}
-            className="flex flex-col items-center px-5 py-7 rounded-xl bg-white/70 dark:bg-slate-900/70 backdrop-blur glass glossy border border-gold/40 shadow-md hover:scale-105 transition-transform"
-          >
-            <span className="flex items-center justify-center w-14 h-14 rounded-full bg-[#046BD2] mb-3 shadow-lg">
-              <Icon size={28} className="text-white" />
-            </span>
-            <h3 className="text-lg font-bold text-[#046BD2] mb-1">{label}</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 text-center">{desc}</p>
-          </div>
-        ))}
-      </div>
+  <section className="max-w-6xl mx-auto px-3 md:px-7 py-10 mb-12">
+    <h2 className="text-2xl md:text-3xl font-bold text-[#046BD2] mb-8 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+      Our Services
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
+      {SERVICES.map(({ label, icon: Icon, desc }) => (
+        <div
+          key={label}
+          className="flex flex-col items-center px-7 py-9 rounded-xl glass glossy border border-gold/25 bg-white/80 dark:bg-slate-900/70 shadow-md hover:shadow-lg transition"
+        >
+          <span className="flex items-center justify-center w-14 h-14 rounded-full bg-[#046BD2] mb-4 shadow-lg">
+            <Icon size={32} className="text-white" strokeWidth={2.1} />
+          </span>
+          <h3 className="text-base md:text-lg font-bold text-[#046BD2] mb-2 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>{label}</h3>
+          <p className="text-sm md:text-base text-[#393939] dark:text-gray-200 text-center font-medium" style={{ fontWeight: 400 }}>{desc}</p>
+        </div>
+      ))}
     </div>
   </section>
 );
