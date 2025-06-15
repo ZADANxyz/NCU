@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -42,7 +41,7 @@ const DegreesOfferedSection: React.FC = () => (
       Degrees Offered
     </h2>
     {/* Section Subtitle */}
-    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-5">
+    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-10">
       Click on any of the degrees below to learn more about each degree level.
     </p>
     {/* Button Grid */}
