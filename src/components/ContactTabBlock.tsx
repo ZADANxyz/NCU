@@ -1,6 +1,6 @@
+
 import React, { useRef, useEffect } from "react";
 
-// TypeScript: declare the global hbspt from HubSpot
 declare global {
   interface Window {
     hbspt?: {
@@ -13,7 +13,7 @@ declare global {
 
 const NCU_PHONE = (
   <div
-    className="mt-3 mb-6 flex items-center justify-center text-[1.6rem] font-medium glass glossy px-4 py-2 rounded-[0.38rem] border-2 border-blue-700 transition-colors hover:border-blue-600 hover:shadow-lg"
+    className="mt-3 mb-6 flex items-center justify-center text-[1.6rem] font-medium glass glossy px-4 py-2 rounded-[0.38rem] border-2 border-blue-700 transition-colors group"
     style={{
       background:
         "linear-gradient(115deg,rgba(81,128,255,0.16) 0%,rgba(41,100,210,0.28) 100%)",
@@ -21,14 +21,25 @@ const NCU_PHONE = (
       textShadow: "0 2px 10px rgba(27,45,95,0.10)",
       letterSpacing: "1px",
       fontSize: "1.6rem",
-      borderColor: "#2563eb"
+      borderColor: "#2563eb",
+      fontFamily: "Roboto, Arial, sans-serif",
     }}
   >
-    <svg width={25} height={25} className="inline-block mr-2 text-blue-400" fill="none" stroke="currentColor">
+    <svg width={25} height={25} className="inline-block mr-2 text-blue-700 group-hover:text-blue-800 transition-colors" fill="none" stroke="currentColor">
       <path d="M6.85 2.15A6.59 6.59 0 0 1 11.7 7m-4.85-4.85L3.5 3.5a2 2 0 0 0-.5 2.43A16.11 16.11 0 0 0 14.07 15c.58.25 1.24 0 1.53-.55l1.2-2.14a1 1 0 0 0-.29-1.27l-2.39-1.91a1 1 0 0 0-1.11-.1l-2.2.91a13.01 13.01 0 0 1-4.26-4.26l.91-2.2a1 1 0 0 0-.1-1.11l-1.91-2.39a1 1 0 0 0-1.27-.29z" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
     <span>
-      <a href="tel:+16159482212" className="hover:underline" style={{ color: "#2563eb", fontWeight: 700 }}>
+      <a
+        href="tel:+16159482212"
+        className="text-blue-700 group-hover:text-blue-800 transition-colors font-bold font-roboto hover:underline active:text-blue-900 visited:text-blue-800"
+        style={{
+          color: "#2563eb",
+          fontWeight: 700,
+          fontFamily: "Roboto, Arial, sans-serif",
+          textDecoration: "none",
+          transition: "color 0.15s ease",
+        }}
+      >
         (615) 948-2212
       </a>
     </span>
@@ -43,7 +54,7 @@ const HUBSPOT_REGION = "na2";
 
 // Blue glassy button styles for "Apply Today!"
 const glassyBlueButtonClass =
-  "block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold relative text-blue-800 dark:text-blue-300 bg-blue-100/10 backdrop-blur-md shadow-lg overflow-hidden group rounded-[0.38rem]";
+  "block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold relative text-blue-800 dark:text-blue-300 bg-blue-100/10 backdrop-blur-md shadow-lg overflow-hidden group rounded-[0.38rem] font-roboto";
 const blueGlassGlossHoverStyle = {
   boxShadow: "0 4px 20px 0 rgba(51,132,245,0.18)",
   border: "2px solid #2563eb",
@@ -52,14 +63,14 @@ const blueGlassGlossHoverStyle = {
     "linear-gradient(120deg,rgba(51,132,245,0.33) 0%,rgba(91,167,253,0.38) 46%,rgba(132,180,241,0.45) 100%)",
   textShadow: "0 1px 4px rgba(51,100,190,0.09)",
   zIndex: 1,
-  borderRadius: "0.38rem"
+  borderRadius: "0.38rem",
+  fontFamily: "Roboto, Arial, sans-serif"
 };
 
 const ContactTabBlock = () => {
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Prevent double-inject
     if (!window.hbspt) {
       const script = document.createElement("script");
       script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
@@ -86,18 +97,16 @@ const ContactTabBlock = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Contact box with border */}
-      <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto">
-        <h3 className="text-[2.09rem] md:text-[2.35rem] font-black mb-1 text-center tracking-tight font-playfair" style={{ color: "#1a1a1a", lineHeight: 1.09 }}>
+    <div className="w-full flex flex-col items-center font-roboto">
+      <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto font-roboto">
+        <h3 className="text-[2.09rem] md:text-[2.35rem] font-black mb-1 text-center tracking-tight font-roboto" style={{ color: "#1a1a1a", lineHeight: 1.09, fontFamily: "Roboto, Arial, sans-serif" }}>
           Contact Us:
         </h3>
         <div className="pb-3">{NCU_PHONE}</div>
         <div className="w-full h-2" />
         <div id="hubspot-form-block" ref={formRef} className="w-full mb-2"></div>
       </div>
-      {/* Apply Today button and text directly underneath, matching the contact card width */}
-      <div className="w-full max-w-md flex flex-col items-center mt-7 rounded-[0.38rem]">
+      <div className="w-full max-w-md flex flex-col items-center mt-7 rounded-[0.38rem] font-roboto">
         <a
           href={APPLY_LINK}
           className={glassyBlueButtonClass}
@@ -109,7 +118,6 @@ const ContactTabBlock = () => {
           >
             Apply Today!
           </span>
-          {/* Blue glass/gloss overlay for hover */}
           <span
             className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
             aria-hidden="true"
@@ -122,7 +130,7 @@ const ContactTabBlock = () => {
             }}
           ></span>
         </a>
-        <div className="text-[10px] md:text-[11px] text-[#444] font-medium text-center mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs">
+        <div className="text-[10px] md:text-[11px] text-[#444] font-medium text-center mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto">
           We're here to help—reach out and let's connect!
         </div>
       </div>
