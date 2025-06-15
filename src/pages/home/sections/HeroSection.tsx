@@ -3,25 +3,25 @@ import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
 
-// Flush header image, controlled height sneak peek
+// Section image
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
+// User provided alumni text (long, will wrap to visually fill column)
 const NCU_ALUMNI_TEXT = (
-  <>
-    <p className="font-medium text-base md:text-lg text-[#272730] dark:text-[#eaeaea] mb-3 md:mb-6 max-w-2xl">
-      At New Covenant University, our alumni stand as living testaments to the possibilities unlocked by faith-driven education.
-      From business and ministry, to health, creative arts, and beyond, NCU graduates lead with integrity and vision in their communities around the globe.
-      <br className="hidden md:block"/>
-      <br />
-      Explore the stories and accomplishments of our vibrant alumni—and discover how your journey could inspire the next chapter.
+  <div className="font-medium text-base md:text-lg text-[#272730] dark:text-[#eaeaea] max-w-2xl mt-2">
+    <p className="mb-4">
+      New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students here, as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-  </>
+    <p>
+      The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
+    </p>
+  </div>
 );
 
 const HeroSection = () => {
   return (
     <>
-      {/* Header image */}
+      {/* Header image: Edge-to-edge */}
       <div
         className="w-full relative"
         style={{
@@ -42,7 +42,7 @@ const HeroSection = () => {
             borderRadius: 0,
             width: "100%",
             maxWidth: "100vw",
-            height: "430px", // lowered height for sneak peek (was 415-600)
+            height: "430px", // Sneak peek, shows above/below hero
             maxHeight: "430px",
             objectFit: "contain",
             objectPosition: "top center",
@@ -53,32 +53,52 @@ const HeroSection = () => {
           draggable={false}
         />
       </div>
-      {/* Hero content section */}
+      {/* Hero section: alumni & contact (matching padding, no extra space) */}
       <section
-        className="relative z-10 flex flex-col md:flex-row items-stretch w-full bg-[rgba(255,255,255,0.92)] dark:bg-[rgba(28,28,36,0.97)] py-0 md:py-9 lg:py-10 px-2 md:px-0"
+        className="relative z-10 flex flex-col md:flex-row items-stretch w-full bg-[rgba(255,255,255,0.92)] dark:bg-[rgba(28,28,36,0.97)] pt-0 md:pt-9 lg:pt-10 pb-0 px-3 md:px-7"
         style={{
           boxShadow: "0 4px 32px 0 rgba(4,107,210,0.05)",
           borderBottomLeftRadius: "1.2rem",
           borderBottomRightRadius: "1.2rem",
         }}
       >
-        <div className="w-full md:w-1/2 flex flex-col justify-center pb-9 md:pb-0 pt-7 md:pt-0 md:pr-6">
+        {/* Column: Alumni (left) */}
+        <div className="w-full md:w-1/2 flex flex-col justify-start pt-7 md:pt-0 pr-0 md:pr-8" style={{ minWidth: 0 }}>
           <h2
-            className="text-2xl sm:text-3xl md:text-4xl font-bold font-playfair golden text-left mb-2 md:mb-3 tracking-tight"
-            style={{ letterSpacing: 0.1, fontFamily: "'Playfair Display', serif" }}
+            className="text-2xl sm:text-3xl md:text-4xl font-bold font-playfair golden mb-0 text-left tracking-tight"
+            style={{ letterSpacing: 0.1, fontFamily: "'Playfair Display', serif", lineHeight: 1.12 }}
           >
             Meet Our NCU Alumni
           </h2>
-          <div className="mb-4">{NCU_ALUMNI_TEXT}</div>
+          {/* Alumni slider right below header */}
           <AlumniCarousel />
+          {/* Text fills remainder, wraps to last line */}
+          <div className="flex-1 flex flex-col justify-start">
+            {NCU_ALUMNI_TEXT}
+          </div>
         </div>
-        <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+        {/* Column: Contact (right) */}
+        <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-4 md:pt-0 pl-0 md:pl-8" style={{ minWidth: 0 }}>
           <ContactTabBlock />
         </div>
       </section>
+      {/* Gold section divider - matches content width */}
+      <div
+        className="mx-auto w-full max-w-5xl"
+        style={{
+          marginTop: "-8px",
+          marginBottom: "2.5rem",
+          height: 3,
+          background:
+            "linear-gradient(90deg,rgba(177,149,40,0) 0%, rgba(177,149,40,0.15) 2.5%, rgba(177,149,40,0.37) 8%, rgba(177,149,40,1) 21%, rgba(177,149,40,1) 79%, rgba(177,149,40,0.37) 92%, rgba(177,149,40,0.15) 97.5%, rgba(177,149,40,0) 100%)",
+          boxShadow:
+            "0 2px 18px 0 rgba(177,149,40,0.14) inset, 0 2px 10px 0 rgba(177,149,40,0.05)",
+          borderRadius: 2,
+          zIndex: 20,
+        }}
+      />
     </>
   );
 };
 
 export default HeroSection;
-
