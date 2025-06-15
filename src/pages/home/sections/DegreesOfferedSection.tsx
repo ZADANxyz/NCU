@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -27,7 +26,7 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GRID_MAX_WIDTH = 1240;
+const GRID_MAX_WIDTH = 1360;
 
 const DegreesOfferedSection: React.FC = () => (
   <section
@@ -55,7 +54,7 @@ const DegreesOfferedSection: React.FC = () => (
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -66,7 +65,7 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full p-4 md:p-6"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
