@@ -1,5 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { Phone } from "lucide-react";
+import ContactPhoneButton from "./ContactPhoneButton";
+import ContactHubspotForm from "./ContactHubspotForm";
+import ContactApplyBlock from "./ContactApplyBlock";
 
 declare global {
   interface Window {
@@ -151,91 +154,20 @@ const ContactTabBlock = () => {
           <span className="transition-colors">Contact Us:</span>
         </h3>
         <div className="pb-2" />
-        {/* Phone Number - now always gold-based in dark mode */}
-        <div className="flex justify-center mb-7">
-          <a
-            href="tel:+16159482212"
-            className={
-              glassyButtonBase +
-              (
-                isDark
-                  ? " text-gold bg-gold/10 border-2 border-gold"
-                  : " text-blue-800 bg-blue-100/10 border-2 border-blue-700"
-              ) +
-              " !font-bold !text-[1.55rem] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 dark:focus-visible:ring-gold active:text-blue-900"
-            }
-            style={isDark ? goldButtonHover : blueButtonHover}
-          >
-            <span className="inline-flex items-center justify-center">
-              <Phone
-                size={40}
-                className={
-                  "inline-block mr-2 " +
-                  (isDark ? "text-gold" : "text-blue-700") +
-                  " group-hover:text-gold"
-                }
-                aria-hidden="true"
-              />
-              <span
-                className="font-bold"
-                style={{
-                  fontSize: "1.41rem",
-                  color: isDark ? "#B19528" : "#1e3a8a",
-                  display: "inline-block",
-                  verticalAlign: "middle",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                (615) 948-2212
-              </span>
-            </span>
-            <span
-              className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
-              aria-hidden="true"
-              style={isDark ? goldGlossySpan : blueGlossySpan}
-            ></span>
-          </a>
-        </div>
-        <div
-          id="hubspot-form-block"
-          ref={formRef}
-          className={
-            "w-full mb-2 transition-colors" +
-            (isDark
-              ? " dark:text-white dark:[&_input]:text-white dark:[&_label]:text-white dark:[&_button]:text-gold"
-              : " text-black")
-          }
-        ></div>
+        <ContactPhoneButton
+          isDark={isDark}
+          glassyButtonBase={glassyButtonBase}
+          goldButtonHover={goldButtonHover}
+          blueButtonHover={blueButtonHover}
+        />
+        <ContactHubspotForm isDark={isDark} />
       </div>
-      <div className="w-full max-w-md flex flex-col items-center mt-7 rounded-[0.38rem] font-roboto">
-        <a
-          href={APPLY_LINK}
-          className={
-            glassyButtonBase +
-            (isDark
-              ? " text-gold bg-gold/10 border-2 border-gold"
-              : " text-blue-800 bg-blue-100/10 border-2 border-blue-700")
-          }
-          style={isDark ? goldButtonHover : blueButtonHover}
-        >
-          <span className="relative z-20" style={{ position: "relative", color: isDark ? "#B19528" : undefined }}>
-            Apply Today!
-          </span>
-          <span
-            className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
-            aria-hidden="true"
-            style={isDark ? goldGlossySpan : blueGlossySpan}
-          ></span>
-        </a>
-        <div
-          className="text-[12.5px] md:text-[13.5px] font-medium text-center mt-3 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto transition-colors text-[#444] dark:text-white"
-          style={{
-            transition: "color 0.2s"
-          }}
-        >
-          We&apos;re here to help—reach out and let&apos;s connect!
-        </div>
-      </div>
+      <ContactApplyBlock
+        isDark={isDark}
+        glassyButtonBase={glassyButtonBase}
+        goldButtonHover={goldButtonHover}
+        blueButtonHover={blueButtonHover}
+      />
     </div>
   );
 };
