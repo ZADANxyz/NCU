@@ -51,29 +51,48 @@ const DegreesOfferedSection: React.FC = () => (
       </p>
       {/* Button Grid */}
       <div className="w-full flex justify-center items-center mb-11">
-        <div className="w-full">
+        <div className="w-full max-w-6xl mx-auto">
           <div
             className="
-              grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8
+              grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 
+              gap-5 md:gap-8
+              w-full
             "
           >
             {DEGREE_BUTTONS.map(({ alt, img, to }) => (
               <Link
                 key={alt}
                 to={to}
-                className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 transition-shadow hover:shadow-2xl"
+                className="
+                  flex items-center justify-center outline-none
+                  transition-shadow
+                  focus-visible:ring-4 focus-visible:ring-gold/30
+                  hover:shadow-xl
+                "
                 tabIndex={0}
                 aria-label={alt}
                 style={{ width: "100%" }}
               >
-                <AspectRatio ratio={4 / 5} className="w-full max-w-[245px] md:max-w-[245px]">
+                <AspectRatio
+                  ratio={4 / 5}
+                  className="w-full max-w-[320px] min-w-[170px]"
+                >
                   <img
                     src={img}
                     alt={alt}
-                    className="rounded-lg w-full h-full object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
+                    className="
+                      rounded-[0.7rem]
+                      w-full h-full object-cover
+                      shadow-md
+                      border border-[#d3c797] dark:border-[#2f2f2f]
+                      transition-transform duration-150
+                      hover:scale-[1.03]
+                      select-none
+                      bg-white dark:bg-[#252527]
+                    "
                     style={{
                       minHeight: "175px",
-                      maxHeight: "235px",
+                      maxHeight: "250px",
                       aspectRatio: "4 / 5",
                     }}
                   />
@@ -85,17 +104,17 @@ const DegreesOfferedSection: React.FC = () => (
       </div>
       {/* Section Subtext */}
       <div className="max-w-3xl mx-auto mt-1 mb-4">
-        <p className="text-[1.21rem] md:text-[1.32rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug font-medium">
+        <p className="text-[1.32rem] md:text-[1.42rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug font-medium">
           New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
         </p>
       </div>
       {/* Department of Education Logo */}
-      <div className="flex justify-center mt-6">
+      <div className="flex justify-center mt-7">
         <img
           src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
           alt="Florida Department of Education Logo"
-          className="w-auto h-20 md:h-24"
-          style={{ maxWidth: "390px" }}
+          className="w-auto h-24 md:h-28"
+          style={{ maxWidth: "420px" }}
         />
       </div>
     </div>
