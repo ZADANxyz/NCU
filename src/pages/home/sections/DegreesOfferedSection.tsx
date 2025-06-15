@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -48,7 +47,6 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — large, proportional, responsive boxes */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
@@ -68,8 +66,7 @@ const DegreesOfferedSection: React.FC = () => (
             aria-label={alt}
             style={{ width: "100%" }}
           >
-            {/* Use a slightly taller than square aspect ratio */}
-            <AspectRatio ratio={1 / 1.1} className="w-full flex items-center">
+            <AspectRatio ratio={1 / 1} className="w-full flex items-center">
               <img
                 src={img}
                 alt={alt}
