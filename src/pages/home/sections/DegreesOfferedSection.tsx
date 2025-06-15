@@ -86,7 +86,15 @@ const DegreesOfferedSection: React.FC = () => (
         New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
       </p>
     </div>
+    {/* Department of Education Logo */}
+    <div className="flex justify-center mt-6">
+      <img
+        src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
+        alt="Florida Department of Education Logo"
+        className="w-auto h-16 md:h-20"
+        style={{ maxWidth: "310px" }}
+      />
+    </div>
   </section>
 );
-
 export default DegreesOfferedSection;
