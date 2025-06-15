@@ -86,9 +86,14 @@ const Header = () => {
           "apple-glass-header", // use new style
           elevate && "shadow-2xl"
         )}
-        style={{
-          // no inline box-shadow: handled by apple-glass-header class
-        }}
+        style={
+          {
+            // less intense curve:
+            borderBottomLeftRadius: "0.6rem",
+            borderBottomRightRadius: "0.6rem",
+            // box-shadow handled in css class
+          }
+        }
       >
         <div
           className={cn(
@@ -194,10 +199,11 @@ const Header = () => {
             </span>
           </div>
         </div>
-        {/* Updated Gold Line, thinner, extended fade */}
+        {/* Gold line: width reduced, now ends before the corners */}
         <div
-          className="w-full"
+          className="mx-auto"
           style={{
+            width: "94%",
             height: 2,
             background:
               "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.35) 5%, rgba(177,149,40,1) 27%, rgba(177,149,40,1) 73%, rgba(177,149,40,0.35) 95%, rgba(177,149,40,0.05) 100%)",
@@ -205,6 +211,7 @@ const Header = () => {
               "0 2px 18px 0 rgba(177,149,40,0.14) inset, 0 2px 10px 0 rgba(177,149,40,0.05)",
             backdropFilter: "blur(4px)",
             WebkitBackdropFilter: "blur(4px)",
+            borderRadius: 2,
             zIndex: 50,
           }}
         />
@@ -223,8 +230,8 @@ const Header = () => {
           backdrop-filter: blur(21px) saturate(160%);
           -webkit-backdrop-filter: blur(21px) saturate(160%);
           box-shadow: 0 6px 40px 0 rgba(4,107,210,0.12), 0 1px 0 0 #B19528;
-          border-bottom-left-radius: 1.1rem;
-          border-bottom-right-radius: 1.1rem;
+          border-bottom-left-radius: 0.6rem;
+          border-bottom-right-radius: 0.6rem;
           position: relative;
           transition: background 0.38s, box-shadow 0.28s;
           /* clean separation from rest of the page */
