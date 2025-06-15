@@ -26,7 +26,8 @@ const NCU_ALUMNI_TEXT = (
 const EDGE_PADDING = "52px";
 const SMALL_EDGE_PADDING = "12px";
 
-const SECTION_MAX_WIDTH = "1240px"; // Used for content + gold bar
+const SECTION_MAX_WIDTH = "1240px"; // Content width
+const SECTION_HORIZONTAL_PADDING = "52px";
 
 const HeroSection = () => {
   return (
@@ -144,8 +145,14 @@ const HeroSection = () => {
           }
         }
       `}</style>
-      {/* Divider (GOLD BAR): Restrict width to content */}
-      <div className="w-full flex justify-center" style={{ marginTop: "5.5rem", marginBottom: "3.5rem" }}>
+      {/* Divider (GOLD BAR): Restrict width to content, match section spacing */}
+      <div
+        className="w-full flex justify-center"
+        style={{
+          marginTop: "5.5rem",
+          marginBottom: "3.5rem",
+        }}
+      >
         <div
           className="w-full"
           style={{
@@ -160,6 +167,9 @@ const HeroSection = () => {
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
+            // Add the same left/right padding as section
+            paddingLeft: SECTION_HORIZONTAL_PADDING,
+            paddingRight: SECTION_HORIZONTAL_PADDING,
           }}
         />
       </div>
