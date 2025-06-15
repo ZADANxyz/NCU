@@ -50,7 +50,7 @@ const DegreesOfferedSection: React.FC = () => (
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 items-stretch w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 items-stretch w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -61,7 +61,7 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-10 md:p-16 bg-white dark:bg-[#232327] w-full h-full"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-12 md:p-20 bg-white dark:bg-[#232327] w-full h-full"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
