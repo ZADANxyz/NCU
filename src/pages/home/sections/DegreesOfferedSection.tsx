@@ -28,39 +28,13 @@ const DEGREE_BUTTONS = [
 ];
 
 const EDGE_HORIZONTAL_PADDING = "52px";
-const TOP_DIVIDER_MAXWIDTH = "1515px"; // Match bottom divider from HeroSection for consistency
 
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* Top divider - matches length and style of the bottom divider from HeroSection */}
-    <div
-      className="w-full flex justify-center"
-      style={{
-        marginTop: "0rem",
-        marginBottom: "3.7rem", // similar space as degrees to text
-      }}
-    >
-      <div
-        className="w-full"
-        style={{
-          maxWidth: TOP_DIVIDER_MAXWIDTH,
-          marginLeft: "auto",
-          marginRight: "auto",
-          height: "1.1px",
-          background:
-            "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-          boxShadow:
-            "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-          borderRadius: 3,
-          zIndex: 20,
-          opacity: 0.99,
-          paddingLeft: EDGE_HORIZONTAL_PADDING,
-          paddingRight: EDGE_HORIZONTAL_PADDING,
-        }}
-      />
-    </div>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
+      // Remove maxWidth and margin styles to allow full width + only padding
+      // The padding classes above match the HeroSection
     >
       <h2
         className="
@@ -115,7 +89,7 @@ const DegreesOfferedSection: React.FC = () => (
         </div>
       </div>
       {/* Section Subtext */}
-      <div className="max-w-5xl md:max-w-[700px] mx-auto mt-0 mb-3">
+      <div className="max-w-5xl md:max-w-[700px] mx-auto mt-1 mb-3">
         <p
           className="text-[1.11rem] md:text-[1.18rem] lg:text-[1.22rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal tracking-wide whitespace-normal"
           style={{
@@ -137,7 +111,7 @@ const DegreesOfferedSection: React.FC = () => (
           style={{ maxWidth: "330px" }}
         />
       </div>
-      {/* Thin gold divider below the logo, matching the thin gold divider used above */}
+      {/* THIN gold divider below the logo, matching the thin gold divider used above */}
       <div
         className="w-full flex justify-center"
         style={{
@@ -159,7 +133,7 @@ const DegreesOfferedSection: React.FC = () => (
             paddingLeft: EDGE_HORIZONTAL_PADDING,
             paddingRight: EDGE_HORIZONTAL_PADDING,
             margin: "0 auto",
-            maxWidth: TOP_DIVIDER_MAXWIDTH,
+            maxWidth: "100%",
           }}
         />
       </div>
