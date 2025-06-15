@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -40,7 +41,7 @@ const AlumniCarousel = () => {
       <Carousel
         opts={{
           loop: true,
-          align: "start", // flush to the left!
+          align: "start",
           slidesToScroll: 1,
           containScroll: 'trimSnaps'
         }}
@@ -66,8 +67,9 @@ const AlumniCarousel = () => {
               }}
             >
               <div
-                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/80 dark:bg-[#232232]/78 px-0 pt-2 pb-1 flex items-center justify-center"
+                className="glass glossy"
                 style={{
+                  borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   width: "100%",
                   maxWidth: "700px",
@@ -78,7 +80,7 @@ const AlumniCarousel = () => {
                 <img
                   src={src}
                   alt={`NCU Alumni gallery photo #${idx + 1}`}
-                  className="rounded-lg object-cover shadow-md w-full md:w-[500px] lg:w-[650px] max-w-[700px] h-[175px] md:h-[260px] lg:h-[320px] border-2 border-gold mx-auto transition-all"
+                  className="rounded-lg object-cover shadow-md w-full md:w-[500px] lg:w-[650px] max-w-[700px] h-[175px] md:h-[260px] lg:h-[320px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
                   style={{
@@ -95,3 +97,4 @@ const AlumniCarousel = () => {
 };
 
 export default AlumniCarousel;
+
