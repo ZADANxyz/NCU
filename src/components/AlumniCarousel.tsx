@@ -1,4 +1,6 @@
 
+// Carousel showing a gallery of alumni images with glass/gloss look and auto-slide
+
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -8,7 +10,7 @@ const alumniImages = [
   "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80"
 ];
 
-const AUTO_SLIDE_INTERVAL = 3300; // ms
+const AUTO_SLIDE_INTERVAL = 3400; // ms
 
 const AlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
@@ -38,24 +40,17 @@ const AlumniCarousel = () => {
 
   return (
     <div className="py-1 w-full flex items-center justify-center">
-      <Carousel
-        opts={{
-          loop: true,
-          align: "center",
-          // Make sure only one image visible at once
-          slidesToScroll: 1
-        }}
-        setApi={setApi}
-      >
-        <CarouselContent className="flex gap-0"> {/* Removed gap for single image only */}
+      <Carousel opts={{ loop: true, align: "center" }} setApi={setApi}>
+        <CarouselContent className="flex gap-6">
           {alumniImages.map((src, idx) => (
             <CarouselItem key={idx} className="basis-1/1 flex-none">
               <div
-                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/40 bg-white/80 dark:bg-[#232232]/80 px-2 pt-2 pb-1 flex items-center justify-center"
+                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/75 dark:bg-[#232232]/80 px-2 pt-2 pb-1 flex items-center justify-center"
                 style={{
-                  maxWidth: 445,
+                  boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
+                  maxWidth: 450,
                   margin: "0 auto",
-                  background: "linear-gradient(111deg,rgba(255,229,87,0.21) 0%,rgba(255,255,255,0.19) 100%)",
+                  background: "linear-gradient(105deg,rgba(255,229,87,0.07) 0%,rgba(255,255,255,0.18) 100%)",
                 }}
               >
                 <img
