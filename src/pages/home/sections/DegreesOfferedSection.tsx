@@ -31,7 +31,7 @@ const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* Removed thick gold divider above the section */}
+    {/* No divider above the section */}
     <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
       <h2
         className="
@@ -115,8 +115,10 @@ const DegreesOfferedSection: React.FC = () => (
           style={{ maxWidth: "330px" }}
         />
       </div>
+      {/* THIN gold divider below the logo, matching sitewide spacing */}
+      <div className="header-gold-bar mt-7 mb-0" />
+      {/* No divider below the section */}
     </section>
-    {/* Removed thick gold divider below the section */}
   </>
 );
 
