@@ -5,8 +5,8 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[1.28rem] md:text-[1.38rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
-    <p className="mb-6 font-normal font-roboto" style={{ fontSize: "1.28rem" }}>
+  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
+    <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
         href="/donate"
@@ -17,7 +17,7 @@ const NCU_ALUMNI_TEXT = (
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-    <p className="font-normal font-roboto" style={{ fontSize: "1.28rem" }}>
+    <p className="font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
     </p>
   </div>
@@ -77,20 +77,20 @@ const HeroSection = () => {
           className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch"
           style={{
             gap: 0,
-            padding: 0, // no internal padding on the container, only children
+            padding: 0,
           }}
         >
-          {/* Left: increased padding */}
+          {/* Left Section: more spacing and slider size */}
           <div
-            className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0"
+            className="w-full md:w-1/2 flex flex-col justify-start items-start pt-12 md:pt-0"
             style={{
-              paddingLeft: EDGE_PADDING, // now 52px
-              paddingRight: "18px",      // keep as is for now
+              paddingLeft: EDGE_PADDING,
+              paddingRight: "18px",
               minWidth: 0,
             }}
           >
             <h2
-              className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
+              className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-6 md:mb-10 text-left tracking-tight font-roboto"
               style={{
                 color: "#181818",
                 letterSpacing: 0.1,
@@ -101,9 +101,12 @@ const HeroSection = () => {
             >
               Meet Our NCU Alumni
             </h2>
-            <div className="h-2" />
-            <AlumniCarousel />
-            <div className="h-4" />
+            <div className="h-5" />
+            {/* Widen and increase height of AlumniCarousel */}
+            <div className="w-full max-w-[780px]">
+              <AlumniCarousel />
+            </div>
+            <div className="h-7" />
             <div className="flex-1 flex flex-col justify-start">
               {NCU_ALUMNI_TEXT}
             </div>
@@ -122,8 +125,7 @@ const HeroSection = () => {
               <div
                 className="w-full max-w-md hero-contact-padding"
                 style={{
-                  paddingRight: "18px", // mobile
-                  // The .hero-contact-padding class will up this on md+ 
+                  paddingRight: "18px",
                 }}
               >
                 <ContactTabBlock />
