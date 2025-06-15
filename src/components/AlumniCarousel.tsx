@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -45,7 +46,7 @@ const AlumniCarousel = () => {
           containScroll: 'trimSnaps'
         }}
         setApi={setApi}
-        className="w-full max-w-[760px] md:max-w-[780px] lg:max-w-[800px] mx-0"
+        className="w-full max-w-[870px] md:max-w-[870px] lg:max-w-[870px] mx-0"
         style={{
           marginLeft: 0,
         }}
@@ -71,7 +72,7 @@ const AlumniCarousel = () => {
                   borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   width: "100%",
-                  maxWidth: "780px",
+                  maxWidth: "870px",
                   margin: "0 auto",
                   background: "linear-gradient(105deg,rgba(255,229,87,0.09) 0%,rgba(255,255,255,0.20) 100%)",
                 }}
@@ -79,7 +80,7 @@ const AlumniCarousel = () => {
                 <img
                   src={src}
                   alt={`NCU Alumni gallery photo #${idx + 1}`}
-                  className="rounded-lg object-cover shadow-md w-full md:w-[600px] lg:w-[780px] max-w-[780px] h-[205px] md:h-[295px] lg:h-[355px] border-0 mx-auto transition-all"
+                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[205px] md:h-[295px] lg:h-[355px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
                   style={{

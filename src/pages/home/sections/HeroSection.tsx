@@ -1,3 +1,4 @@
+
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -23,13 +24,13 @@ const NCU_ALUMNI_TEXT = (
   </div>
 );
 
-const EDGE_PADDING = "52px"; // Increased from 42px to 52px for more space
-const SMALL_EDGE_PADDING = "12px"; // unchanged
+const EDGE_PADDING = "52px";
+const SMALL_EDGE_PADDING = "12px";
 
 const HeroSection = () => {
   return (
     <>
-      {/* HERO IMAGE: Edge to edge, max height 85vh, moved up so full text always shows */}
+      {/* HERO IMAGE: ... */}
       <div
         className="w-full relative"
         style={{
@@ -58,12 +59,12 @@ const HeroSection = () => {
             display: "block",
             boxSizing: "border-box",
             position: "relative",
-            top: "-50px", // Move image up further so full HEADER TEXT is always visible
+            top: "-50px",
           }}
           draggable={false}
         />
       </div>
-      {/* SECTION: Remove max-w-screen-2xl/mx-auto so flex parents stretch edge-to-edge */}
+      {/* SECTION: ... */}
       <section
         className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
@@ -80,9 +81,9 @@ const HeroSection = () => {
             padding: 0,
           }}
         >
-          {/* Left Section: more spacing and slider size */}
+          {/* Left Section: NOW wider on desktop */}
           <div
-            className="w-full md:w-1/2 flex flex-col justify-start items-start pt-12 md:pt-0"
+            className="w-full md:w-3/5 flex flex-col justify-start items-start pt-12 md:pt-0"
             style={{
               paddingLeft: EDGE_PADDING,
               paddingRight: "18px",
@@ -102,8 +103,8 @@ const HeroSection = () => {
               Meet Our NCU Alumni
             </h2>
             <div className="h-5" />
-            {/* Widen and increase height of AlumniCarousel */}
-            <div className="w-full max-w-[780px]">
+            {/* AlumniCarousel: WIDER */}
+            <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
             <div className="h-7" />
@@ -111,9 +112,9 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: Contact tab with increased desktop right padding */}
+          {/* Right: Contact tab, same width as before */}
           <div
-            className="w-full md:w-1/2 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
+            className="w-full md:w-2/5 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
             style={{
               paddingRight: 0,
               paddingLeft: 0,
@@ -136,13 +137,12 @@ const HeroSection = () => {
       </section>
       <style>{`
         @media (min-width: 768px) {
-          /* This targets the ContactTabBlock container on desktop for increased right padding */
           .hero-contact-padding {
             padding-right: 52px !important;
           }
         }
       `}</style>
-      {/* Divider: unchanged */}
+      {/* Divider */}
       <div
         className="w-full"
         style={{
