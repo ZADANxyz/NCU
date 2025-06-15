@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Degree image assets mapping—ensure order matches your images & routes
 const DEGREE_BUTTONS = [
@@ -46,38 +47,43 @@ const DegreesOfferedSection: React.FC = () => (
       Degrees Offered
     </h2>
     {/* Section Subtitle */}
-    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
+    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-16">
       Click on any of the degrees below to learn more about each degree level.
     </p>
     {/* Button Grid - Fills section edge to edge (like gold bar) */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
-        className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 w-full
-        "
-        style={{
-          maxWidth: "100vw",
-          paddingLeft: "0",
-          paddingRight: "0",
-        }}
+        className="max-w-6xl w-full mx-auto"
       >
-        {DEGREE_BUTTONS.map(({ alt, img, to }) => (
-          <Link
-            key={alt}
-            to={to}
-            className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-xl transition-shadow hover:shadow-2xl"
-            tabIndex={0}
-            aria-label={alt}
-            style={{ width: "100%" }}
-          >
-            <img
-              src={img}
-              alt={alt}
-              className="rounded-xl w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none max-h-56 md:max-h-64"
-              style={{ minHeight: "170px", maxHeight: "18rem" }}
-            />
-          </Link>
-        ))}
+        <div
+          className="
+            grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 md:gap-9
+          "
+        >
+          {DEGREE_BUTTONS.map(({ alt, img, to }) => (
+            <Link
+              key={alt}
+              to={to}
+              className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 transition-shadow hover:shadow-2xl"
+              tabIndex={0}
+              aria-label={alt}
+              // The group allows us to style aspect wrapper on hover.
+              style={{ width: "100%" }}
+            >
+              <AspectRatio ratio={4 / 5} className="w-full">
+                <img
+                  src={img}
+                  alt={alt}
+                  className="rounded-lg w-full h-full object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
+                  style={{
+                    minHeight: "170px",
+                    maxHeight: "16rem", // reduce if needed for more compact cards
+                  }}
+                />
+              </AspectRatio>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
     {/* Section Subtext */}
@@ -97,4 +103,6 @@ const DegreesOfferedSection: React.FC = () => (
     </div>
   </section>
 );
+
 export default DegreesOfferedSection;
+
