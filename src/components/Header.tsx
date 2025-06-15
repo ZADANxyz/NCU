@@ -154,7 +154,8 @@ const Header = () => {
                 "ml-1 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
                 cartSearchHover,
-                "hover:scale-110 focus:scale-110"
+                "hover:scale-110 focus:scale-110",
+                "dark:hover:text-[#B19528]" // Explicitly force gold on hover in dark mode
               )}
               aria-label="Search"
               onClick={() => setSearchOpen((v) => !v)}
@@ -169,7 +170,8 @@ const Header = () => {
                 "relative mx-0.5 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
                 cartSearchHover,
-                "hover:scale-110 focus:scale-110"
+                "hover:scale-110 focus:scale-110",
+                "dark:hover:text-[#B19528]" // Explicitly force gold on hover in dark mode
               )}
               aria-label="Open cart"
               onClick={() => setCartOpen(true)}
