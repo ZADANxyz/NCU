@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -32,8 +31,7 @@ const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* Thin gold line divider bar above the section */}
-    <div className="header-gold-bar mb-7" />
+    {/* Removed thick gold divider above the section */}
     <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
       <h2
         className="
@@ -95,7 +93,7 @@ const DegreesOfferedSection: React.FC = () => (
         </div>
       </div>
       {/* Section Subtext */}
-      <div className="max-w-5xl md:max-w-[900px] mx-auto mt-1 mb-3">
+      <div className="max-w-5xl md:max-w-[720px] mx-auto mt-1 mb-3">
         <p
           className="text-[1.11rem] md:text-[1.18rem] lg:text-[1.22rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal tracking-wide whitespace-normal"
           style={{
@@ -118,10 +116,8 @@ const DegreesOfferedSection: React.FC = () => (
         />
       </div>
     </section>
-    {/* Thin gold line divider bar below the section (to match above) */}
-    <div className="header-gold-bar mt-7 mb-7" />
+    {/* Removed thick gold divider below the section */}
   </>
 );
 
 export default DegreesOfferedSection;
-
