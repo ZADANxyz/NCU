@@ -39,16 +39,22 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
         style={{
           background: isDark
             ? "linear-gradient(93deg, rgba(30,30,36,0.93) 0%,rgba(177,149,40,0.13) 100%)"
-            : "linear-gradient(88deg, rgba(255,255,255,0.85) 0%,rgba(4,107,210,0.07) 100%)",
-          color: isDark ? "#fffbea" : "#000b30",
+            :
+              // Stronger blue on light, plus glass
+              "linear-gradient(92deg, rgba(4,107,210,0.92) 0%,rgba(4,107,210,0.84) 50%,rgba(255,255,255,0.20) 100%)",
+          color: isDark ? "#fffbea" : "#fff",
           border: isDark ? "1.3px solid #B19528bf" : "1.5px solid #046BD247",
           boxShadow:
-            "0 3px 22px 4px rgba(4,107,210,0.08), 0 1.5px 0 0 #B19528aa",
-          backdropFilter: "blur(7px) brightness(1.06)",
-          WebkitBackdropFilter: "blur(7px) brightness(1.06)",
+            isDark
+              ? "0 3px 22px 4px rgba(177,149,40,0.06), 0 1.5px 0 0 #B19528aa"
+              : "0 2px 22px 2px rgba(4,107,210,0.08), 0 1.5px 0 0 #046BD299",
+          backdropFilter: "blur(6px) brightness(1.08)",
+          WebkitBackdropFilter: "blur(6px) brightness(1.08)",
           overflow: "hidden",
+          position: "relative",
         }}
       >
+        {/* Subtle gloss in a smaller area for more blue to show */}
         <span
           style={{
             position: "absolute",
@@ -59,14 +65,17 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
             zIndex: 0,
             pointerEvents: "none",
             borderRadius: "inherit",
+            // Subtle, less opaque gloss than before
             background:
-              "linear-gradient(110deg,rgba(255,255,255,0.11) 0%,rgba(255,255,255,0.09) 46%,rgba(255,255,255,0.13) 94%)",
-            opacity: 0.8,
+              "linear-gradient(110deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.09) 46%,rgba(255,255,255,0.14) 94%)",
+            opacity: isDark ? 0.13 : 0.14, // lower opacity
             mixBlendMode: "screen",
           }}
           aria-hidden="true"
         />
-        <span style={{ position: "relative", zIndex: 1 }}>Checkout</span>
+        <span style={{ position: "relative", zIndex: 1 }}>
+          Checkout
+        </span>
       </button>
     </div>
   );

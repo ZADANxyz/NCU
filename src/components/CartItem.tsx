@@ -25,6 +25,7 @@ const CartItem: React.FC<CartItemProps> = ({
   onQtyInputChange,
   onRemove,
 }) => {
+  const plusMinusColor = isDark ? "#B19528" : "#046BD2";
   return (
     <div className="flex gap-4 items-center bg-white/40 dark:bg-black/30 rounded-xl shadow p-3">
       <img
@@ -55,7 +56,7 @@ const CartItem: React.FC<CartItemProps> = ({
               disabled={item.qty <= 1}
               aria-label="Decrease quantity"
             >
-              <Minus size={18} className="text-[#B19528]" />
+              <Minus size={18} color={plusMinusColor} />
             </button>
             <input
               type="number"
@@ -77,11 +78,7 @@ const CartItem: React.FC<CartItemProps> = ({
             >
               <Plus
                 size={18}
-                className={
-                  isDark
-                    ? "text-[#B19528]"
-                    : "text-[#046BD2]"
-                }
+                color={plusMinusColor}
               />
             </button>
           </div>
