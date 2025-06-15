@@ -23,7 +23,7 @@ const NCU_ALUMNI_TEXT = (
   </div>
 );
 
-const EDGE_PADDING = "28px"; // match left/right at large screens (1.75rem)
+const EDGE_PADDING = "42px"; // Increased by 50% from original (28px)
 const SMALL_EDGE_PADDING = "12px"; // for small screens
 
 const HeroSection = () => {
@@ -80,12 +80,12 @@ const HeroSection = () => {
             padding: 0, // no internal padding on the container, only children
           }}
         >
-          {/* Left: Edge-pinned on left with padding, never restrict with max width parent */}
+          {/* Left: Edge-pinned on left with increased padding */}
           <div
             className="w-full md:w-1/2 flex flex-col justify-start items-start pt-8 md:pt-0"
             style={{
-              paddingLeft: EDGE_PADDING,
-              paddingRight: "18px",
+              paddingLeft: EDGE_PADDING, // now 42px
+              paddingRight: "18px",      // keep as is
               minWidth: 0,
             }}
           >
@@ -108,7 +108,7 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: flush to the right edge, but with a touch of padding */}
+          {/* Right: flush to the right edge, but with increased padding */}
           <div
             className="w-full md:w-1/2 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
             style={{
@@ -119,13 +119,29 @@ const HeroSection = () => {
             }}
           >
             <div className="w-full flex md:justify-end" style={{ marginLeft: 0, marginRight: 0 }}>
-              <div className="w-full max-w-md pr-3 md:pr-7" style={{ marginRight: 0 }}>
+              <div
+                className="w-full max-w-md"
+                style={{
+                  // mobile: 1.125rem (18px), md+: 2.625rem (42px)
+                  paddingRight: "18px",
+                  // apply a media query for md+ screens
+                  // No way to use media in inline styles, so inject a style block below for md:pr
+                }}
+              >
                 <ContactTabBlock />
               </div>
             </div>
           </div>
         </div>
       </section>
+      <style>{`
+        @media (min-width: 768px) {
+          /* This targets the ContactTabBlock container on desktop for increased right padding */
+          .hero-contact-padding {
+            padding-right: 42px !important;
+          }
+        }
+      `}</style>
       {/* Divider: unchanged */}
       <div
         className="w-full"
