@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
-const HERO_IMAGE = "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png";
+const HERO_IMAGE = "/lovable-uploads/ff5bd571-8877-4014-b55a-6226e12e20f5.png";
 // Font inspiration: 'Playfair Display' for heading, system-ui for subtext
 
 const HeroSection = () => (
@@ -47,3 +47,4 @@ const HeroSection = () => (
 );
 
 export default HeroSection;
+
