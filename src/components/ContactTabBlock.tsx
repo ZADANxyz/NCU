@@ -1,6 +1,17 @@
 
 import React, { useRef, useEffect } from "react";
 
+// TypeScript: declare the global hbspt from HubSpot
+declare global {
+  interface Window {
+    hbspt?: {
+      forms: {
+        create: (args: Record<string, any>) => void;
+      };
+    };
+  }
+}
+
 const NCU_PHONE = (
   <div className="mt-3 mb-1 flex items-center justify-center text-base font-bold text-[#b19528]">
     <svg width={18} height={18} className="inline-block mr-2" fill="none" stroke="currentColor">
@@ -35,7 +46,7 @@ const ContactTabBlock = () => {
             region: HUBSPOT_REGION,
             portalId: HUBSPOT_PORTAL_ID,
             formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-block"
+            target: "#hubspot-form-block",
           });
         }
       };
@@ -45,7 +56,7 @@ const ContactTabBlock = () => {
         region: HUBSPOT_REGION,
         portalId: HUBSPOT_PORTAL_ID,
         formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-block"
+        target: "#hubspot-form-block",
       });
     }
   }, []);
