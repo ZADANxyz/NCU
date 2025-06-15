@@ -1,12 +1,25 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+// Update this page to render the amazing new Header
+
+import Header from "@/components/Header";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="bg-background min-h-screen">
+      <Header />
+      <main className="max-w-5xl mx-auto mt-20 px-5">
+        <section className="mt-12 text-center">
+          <h1 className="text-5xl font-bold text-[#046BD2] mb-4">
+            Welcome to NCU
+          </h1>
+          <p className="text-xl text-gold mb-2">
+            Empowering the next generation of leaders.
+          </p>
+          <p className="text-lg text-muted-foreground mt-6">
+            This is a demo site header. Start building your amazing brand experience here!
+          </p>
+        </section>
+      </main>
     </div>
   );
 };

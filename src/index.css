@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -51,6 +52,8 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --gold: 45, 66%, 49%; /* #B19528 in HSL */
   }
 
   .dark {
@@ -89,6 +92,7 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --gold: 45, 66%, 41%; /* slightly darker for dark mode */
   }
 }
 
@@ -99,5 +103,88 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: system-ui, 'Segoe UI', sans-serif;
+    scroll-padding-top: 5rem;
+  }
+
+  /* Glass overlay utilities */
+  .glass {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 24px 1px rgba(4,107,210,0.05),
+      0 1px 0 0 #B19528;
+    border-radius: 1.2rem;
+  }
+
+  .dark .glass {
+    background: rgba(25,25,30,0.82);
+    box-shadow: 0 8px 24px 1px rgba(4,107,210,0.09),
+      0 1px 0 0 #B19528;
+  }
+
+  /* Thin glossy gold border line */
+  .header-gold-bar {
+    height: 4px;
+    width: 100vw;
+    background: linear-gradient(90deg,rgba(177,149,40,0.08) 0%, rgba(177,149,40,1) 33%, rgba(177,149,40,1) 66%,rgba(177,149,40,0.08) 100%);
+    box-shadow: 0 2px 8px 0 rgba(177,149,40,0.11) inset;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
   }
 }
+
+/* Animations for header, search, cart, icons */
+@layer utilities {
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s cubic-bezier(0.39,0.575,0.565,1) both;
+  }
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.18s ease-out both;
+  }
+}
+
+/* Gold utility */
+.golden {
+  color: #B19528;
+}
+.bg-gold {
+  background-color: #B19528;
+}
+.border-gold {
+  border-color: #B19528 !important;
+}
+.ring-gold {
+  --tw-ring-color: #B19528;
+}
+.text-gold {
+  color: #B19528 !important;
+}
+
+/* Gradient gloss for glassy effects */
+.glossy {
+  position: relative;
+  overflow: hidden;
+}
+.glossy::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  background: linear-gradient(110deg,rgba(250,250,255,0.28) 0%,rgba(255,255,255,0.12) 40%,rgba(255,255,255,0.28) 95%);
+  border-radius: inherit;
+  z-index: 1;
+}
+
