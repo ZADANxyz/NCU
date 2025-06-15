@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -27,14 +26,14 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GOLD_BAR_MAX_WIDTH = "1515px"; // Use the same as the hero/bottom divider for consistency
+const GOLD_BAR_MAX_WIDTH = "1800px"; // Increase maxWidth
 
 const DegreesOfferedSection: React.FC = () => (
   <>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
     >
-      {/* SINGLE TOP GOLD BAR — match width to FLDEO bottom bar */}
+      {/* SINGLE TOP GOLD BAR — long width */}
       <div className="w-full flex justify-center" style={{ marginTop: "0", marginBottom: "2.6rem" }}>
         <div
           className="w-full"
@@ -50,7 +49,7 @@ const DegreesOfferedSection: React.FC = () => (
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
-            // No padding needed, as the bar's width is already limited by maxWidth above
+            // No padding needed
           }}
         />
       </div>
@@ -159,4 +158,3 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
-
