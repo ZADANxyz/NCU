@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 import { Phone } from "lucide-react";
 
@@ -152,15 +151,17 @@ const ContactTabBlock = () => {
           <span className="transition-colors">Contact Us:</span>
         </h3>
         <div className="pb-2" />
-        {/* Phone Number */}
+        {/* Phone Number - now always gold-based in dark mode */}
         <div className="flex justify-center mb-7">
           <a
             href="tel:+16159482212"
             className={
               glassyButtonBase +
-              (isDark
-                ? " text-gold bg-gold/10 border-2 border-gold"
-                : " text-blue-800 bg-blue-100/10 border-2 border-blue-700") +
+              (
+                isDark
+                  ? " text-gold bg-gold/10 border-2 border-gold"
+                  : " text-blue-800 bg-blue-100/10 border-2 border-blue-700"
+              ) +
               " !font-bold !text-[1.55rem] focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 dark:focus-visible:ring-gold active:text-blue-900"
             }
             style={isDark ? goldButtonHover : blueButtonHover}
