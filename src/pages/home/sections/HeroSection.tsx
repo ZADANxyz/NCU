@@ -3,27 +3,39 @@ import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
 
-// Flush hero image directly under the header, no overlay, no spacing above
+// Use the exact uploaded header photo. No overlays, no text, no extra spacing.
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const HeroSection = () => {
   return (
     <>
-      {/* Flush header image, no overlay, 0 margin and 0 padding top/bottom */}
-      <div className="w-full relative" style={{ marginTop: 0, paddingTop: 0, paddingBottom: 0 }}>
+      {/* Flush header image, absolutely no gap above, no overlay/text */}
+      <div
+        className="w-full relative"
+        style={{
+          margin: 0,
+          padding: 0,
+          borderRadius: 0,
+          // Ensure no gap between menu and the image: force top alignment
+        }}
+      >
         <img
           src={HERO_IMAGE}
           alt="New Covenant University Hero"
-          className="w-full max-w-none h-auto block object-cover object-center"
+          className="w-full h-auto block"
           style={{
+            display: "block",
             margin: 0,
             padding: 0,
-            display: "block",
-            maxHeight: 460,  // Matches ncu.education at desktop, adjust if needed.
-            minHeight: 320,  // Helps on smaller screens.
-            width: "100vw",
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0,
+            borderRadius: 0,
+            width: "100%",
+            height: "auto",
+            maxWidth: "100vw",
+            // OBJECT-FIT: contain ensures full image is shown, not cropped
+            objectFit: "contain",
+            objectPosition: "top center",
+            background: "#fff", // fallback color for any empty bar area
+            boxSizing: "border-box",
           }}
           draggable={false}
         />
@@ -57,4 +69,5 @@ const HeroSection = () => {
     </>
   );
 };
+
 export default HeroSection;
