@@ -86,6 +86,8 @@ const CartDrawer: React.FC<{
           WebkitBackdropFilter: "blur(22px) saturate(165%)",
           borderTopRightRadius: "0.45rem",
           borderBottomRightRadius: "0.45rem",
+          borderTopLeftRadius: "0.38rem",
+          borderBottomLeftRadius: "0.38rem",
           boxShadow:
             "0 4px 24px 6px rgba(0,0,0,0.14), 0 2px 8px rgba(177,149,40,0.06)",
           borderLeft: "1.5px solid #B19528",
@@ -97,10 +99,11 @@ const CartDrawer: React.FC<{
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 glossy"
           style={{
+            borderTopLeftRadius: "0.38rem",
+            borderBottomLeftRadius: "0.38rem",
             borderTopRightRadius: "0.45rem",
             borderBottomRightRadius: "0.45rem",
             borderLeft: "none",
-            // Matches glossy pseudo of header, but vertical stretch
             background:
               "linear-gradient(108deg, rgba(255,255,255,0.22) 2%,rgba(255,255,255,0.10) 22%,rgba(195,210,250,0.14) 86%,rgba(255,255,255,0.10) 97%,rgba(255,255,255,0) 100%)",
             zIndex: 2,
@@ -112,7 +115,7 @@ const CartDrawer: React.FC<{
           aria-hidden
           style={{
             background:
-              "linear-gradient(180deg,rgba(177,149,40,0) 0%, rgba(177,149,40,0.22) 6%,rgba(177,149,40,0.35) 19%,rgba(177,149,40,1) 33%,rgba(177,149,40,1) 67%, rgba(177,149,40,0.35) 81%, rgba(177,149,40,0.22) 94%,rgba(177,149,40,0) 100%)",
+              "linear-gradient(180deg,rgba(177,149,40,0) 0%, rgba(177,149,40,0.15) 2.5%, rgba(177,149,40,0.37) 8%, rgba(177,149,40,1) 21%, rgba(177,149,40,1) 79%, rgba(177,149,40,0.37) 92%, rgba(177,149,40,0.15) 97.5%, rgba(177,149,40,0) 100%)",
             boxShadow:
               "0 0px 10px 1px rgba(177,149,40,0.08), 0 0.5px 0 0 rgba(177,149,40,0.10)",
             borderRadius: "2px",
@@ -190,4 +193,3 @@ const CartDrawer: React.FC<{
 };
 
 export default CartDrawer;
-

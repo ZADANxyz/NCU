@@ -87,17 +87,17 @@ const Header = () => {
           elevate && "shadow-2xl"
         )}
         style={{
-          borderBottomLeftRadius: "0.38rem", // Even lighter curve
+          borderBottomLeftRadius: "0.38rem",
           borderBottomRightRadius: "0.38rem",
         }}
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-[62px] px-3 sm:px-7" // Increased header height for bigger logo, vertical center
+            "relative flex items-center justify-between h-[60px] px-3 sm:px-7"
           )}
           style={{
-            minHeight: 62,
-            alignItems: "center", // enforce vertical center
+            minHeight: 60,
+            alignItems: "center",
             display: "flex"
           }}
         >
@@ -107,7 +107,7 @@ const Header = () => {
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20" style={{ height: 40, alignItems: "center", display: "flex"}}>
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-9">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -227,7 +227,7 @@ const Header = () => {
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
-      <div style={{ height: 62 }} />
+      <div style={{ height: 60 }} />
       <style>
         {`
         .apple-glass-header {
