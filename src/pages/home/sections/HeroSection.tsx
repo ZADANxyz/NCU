@@ -6,7 +6,7 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
+  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] font-normal font-roboto">
     <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
@@ -102,13 +102,15 @@ const HeroSection = () => {
             >
               Meet Our NCU Alumni
             </h2>
-            <div className="h-5" />
+            {/* Reduced spacing above the carousel */}
+            <div className="h-2" />
             {/* AlumniCarousel: WIDER */}
             <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
-            <div className="h-7" />
-            <div className="flex-1 flex flex-col justify-start">
+            {/* Reduced spacing below the carousel */}
+            <div className="h-2" />
+            <div className="flex-1 flex flex-col justify-start w-full max-w-[870px]">
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
