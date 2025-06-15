@@ -12,7 +12,6 @@ declare global {
   }
 }
 
-// Common glassy blue button styles
 const glassyBlueButtonClass =
   "block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold relative text-blue-800 dark:text-blue-300 bg-blue-100/10 backdrop-blur-md shadow-lg overflow-hidden group rounded-[0.38rem] font-roboto";
 const blueGlassGlossHoverStyle = {
@@ -32,7 +31,7 @@ const NCU_PHONE = (
     href="tel:+16159482212"
     className={
       glassyBlueButtonClass +
-      " flex items-center justify-center !font-extrabold !text-[1.28rem] min-h-[3.1rem] gap-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-300 hover:text-blue-800 active:text-blue-900 border-2 border-blue-700"
+      " flex items-center justify-center !font-bold !text-[1.32rem] min-h-[3.4rem] gap-3 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-300 hover:text-blue-800 active:text-blue-900 border-2 border-blue-700"
     }
     style={{
       ...blueGlassGlossHoverStyle,
@@ -42,8 +41,8 @@ const NCU_PHONE = (
     }}
   >
     <span className="inline-flex items-center justify-center">
-      <Phone size={31} className="inline-block mr-1 text-blue-700 group-hover:text-blue-800 transition-colors" aria-hidden="true" />
-      <span className="font-extrabold" style={{ fontSize: "1.18rem", color: "#1e3a8a" }}>
+      <Phone size={36} className="inline-block mr-2 text-blue-700 group-hover:text-blue-800 transition-colors" aria-hidden="true" />
+      <span className="font-bold" style={{ fontSize: "1.32rem", color: "#1e3a8a", display: "inline-block", verticalAlign: "middle" }}>
         (615) 948-2212
       </span>
     </span>
@@ -99,10 +98,10 @@ const ContactTabBlock = () => {
   return (
     <div className="w-full flex flex-col items-center font-roboto">
       <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto font-roboto">
-        <h3 className="text-[2.09rem] md:text-[2.35rem] font-bold mb-2 text-center tracking-tight font-roboto" style={{ color: "#1a1a1a", lineHeight: 1.09, fontFamily: "Roboto, Arial, sans-serif" }}>
+        <h3 className="text-[2.09rem] md:text-[2.35rem] font-bold mb-3.5 text-center tracking-tight font-roboto" style={{ color: "#1a1a1a", lineHeight: 1.09, fontFamily: "Roboto, Arial, sans-serif" }}>
           Contact Us:
         </h3>
-        <div className="pb-3">{NCU_PHONE}</div>
+        <div className="pb-2">{NCU_PHONE}</div>
         <div className="w-full h-2" />
         <div id="hubspot-form-block" ref={formRef} className="w-full mb-2"></div>
       </div>
@@ -139,4 +138,3 @@ const ContactTabBlock = () => {
 };
 
 export default ContactTabBlock;
-

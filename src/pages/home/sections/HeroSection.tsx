@@ -6,8 +6,8 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[0.9375rem] md:text-[1.125rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
-    <p className="mb-6 font-normal font-roboto" style={{ fontSize: "0.9375rem" }}>
+  <div className="text-[0.94rem] md:text-[1.05rem] leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2 font-normal font-roboto">
+    <p className="mb-6 font-normal font-roboto" style={{ fontSize: "0.94rem" }}>
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
         href="/donate"
@@ -18,7 +18,7 @@ const NCU_ALUMNI_TEXT = (
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-    <p className="font-normal font-roboto" style={{ fontSize: "0.9375rem" }}>
+    <p className="font-normal font-roboto" style={{ fontSize: "0.94rem" }}>
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
     </p>
   </div>
@@ -59,7 +59,7 @@ const HeroSection = () => {
         />
       </div>
       <section
-        className="relative z-10 flex flex-col md:flex-row items-stretch w-full bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0 px-4 md:px-8"
+        className="relative z-10 flex flex-col md:flex-row items-stretch justify-center w-full bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0 px-4 md:px-8"
         style={{
           boxShadow: "0 4px 32px 0 rgba(4,107,210,0.04)",
           borderBottomLeftRadius: "1.2rem",
@@ -67,9 +67,9 @@ const HeroSection = () => {
           background: "var(--background)",
         }}
       >
-        <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0 pr-0 md:pr-10" style={{ minWidth: 0 }}>
+        <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0 pr-0 md:pr-5" style={{ minWidth: 0 }}>
           <h2
-            className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-extrabold mb-7 text-left tracking-tight font-roboto"
+            className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-4 md:mb-8 text-left tracking-tight font-roboto"
             style={{
               color: "#181818",
               letterSpacing: 0.1,
@@ -86,23 +86,23 @@ const HeroSection = () => {
             {NCU_ALUMNI_TEXT}
           </div>
         </div>
-        <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-6 md:pt-0 pl-0 md:pl-5" style={{ minWidth: 0 }}>
+        <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-6 md:pt-0 pl-0 md:pl-5 md:pr-0" style={{ minWidth: 0 }}>
           <ContactTabBlock />
         </div>
       </section>
       <div
         className="mx-auto w-full max-w-5xl"
         style={{
-          marginTop: "2.75rem",
+          marginTop: "3.1rem",
           marginBottom: "3.5rem",
-          height: 3,
+          height: 4,
           background:
-            "linear-gradient(90deg,rgba(177,149,40,0.08) 0%, rgba(177,149,40,0.19) 3%, rgba(177,149,40,0.30) 12%, rgba(177,149,40,0.44) 29%, rgba(177,149,40,0.44) 71%, rgba(177,149,40,0.30) 88%, rgba(177,149,40,0.19) 97%, rgba(177,149,40,0.08) 100%)",
+            "linear-gradient(90deg,rgba(177,149,40,0.14) 0%, rgba(177,149,40,0.28) 3%, rgba(177,149,40,0.40) 12%, rgba(177,149,40,0.60) 29%, rgba(177,149,40,0.60) 71%, rgba(177,149,40,0.40) 88%, rgba(177,149,40,0.28) 97%, rgba(177,149,40,0.14) 100%)",
           boxShadow:
-            "0 2px 9px 0 rgba(177,149,40,0.09) inset, 0 2px 2px 0 rgba(177,149,40,0.04)",
+            "0 2px 9px 0 rgba(177,149,40,0.15) inset, 0 2px 2px 0 rgba(177,149,40,0.07)",
           borderRadius: 3,
           zIndex: 20,
-          opacity: 0.89,
+          opacity: 0.98,
         }}
       />
     </>
@@ -110,4 +110,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
