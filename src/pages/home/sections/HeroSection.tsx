@@ -108,7 +108,7 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: flush to the right edge, no left or right padding, flex child justify-end */}
+          {/* Right: flush to the right edge, but with a touch of padding */}
           <div
             className="w-full md:w-1/2 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
             style={{
@@ -119,7 +119,7 @@ const HeroSection = () => {
             }}
           >
             <div className="w-full flex md:justify-end" style={{ marginLeft: 0, marginRight: 0 }}>
-              <div className="w-full max-w-md" style={{ marginRight: 0 }}>
+              <div className="w-full max-w-md pr-3 md:pr-7" style={{ marginRight: 0 }}>
                 <ContactTabBlock />
               </div>
             </div>
