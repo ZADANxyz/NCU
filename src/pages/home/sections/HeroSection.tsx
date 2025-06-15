@@ -27,6 +27,8 @@ const NCU_ALUMNI_TEXT = (
 const EDGE_PADDING = "52px";
 const SMALL_EDGE_PADDING = "12px";
 
+const SECTION_MAX_WIDTH = "1240px"; // Used for content + gold bar
+
 const HeroSection = () => {
   return (
     <>
@@ -81,7 +83,7 @@ const HeroSection = () => {
             padding: 0,
           }}
         >
-          {/* Left Section: NOW wider on desktop */}
+          {/* Left Section: 3/5 width on desktop */}
           <div
             className="w-full md:w-3/5 flex flex-col justify-start items-start pt-12 md:pt-0"
             style={{
@@ -102,19 +104,18 @@ const HeroSection = () => {
             >
               Meet Our NCU Alumni
             </h2>
-            {/* Reduced spacing above the carousel */}
-            <div className="h-2" />
-            {/* AlumniCarousel: WIDER */}
+            {/* Tighter spacing above slider */}
+            <div className="h-1" />
             <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
-            {/* Reduced spacing below the carousel */}
-            <div className="h-2" />
+            {/* More space below slider; top/bottom are the same (20px) */}
+            <div className="h-5 md:h-[20px]" />
             <div className="flex-1 flex flex-col justify-start w-full max-w-[870px]">
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: Contact tab, same width as before */}
+          {/* Right: Contact tab */}
           <div
             className="w-full md:w-2/5 flex flex-col md:items-end md:justify-start items-stretch justify-start mt-8 md:mt-0"
             style={{
@@ -144,25 +145,29 @@ const HeroSection = () => {
           }
         }
       `}</style>
-      {/* Divider */}
-      <div
-        className="w-full"
-        style={{
-          marginTop: "5.5rem",
-          marginBottom: "3.5rem",
-          height: "1.1px",
-          background:
-            "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-          boxShadow:
-            "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-          borderRadius: 3,
-          zIndex: 20,
-          opacity: 0.99,
-        }}
-      />
+      {/* Divider (GOLD BAR): Restrict width to content */}
+      <div className="w-full flex justify-center" style={{ marginTop: "5.5rem", marginBottom: "3.5rem" }}>
+        <div
+          className="w-full"
+          style={{
+            maxWidth: SECTION_MAX_WIDTH,
+            marginLeft: "auto",
+            marginRight: "auto",
+            height: "1.1px",
+            background:
+              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
+            boxShadow:
+              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
+            borderRadius: 3,
+            zIndex: 20,
+            opacity: 0.99,
+          }}
+        />
+      </div>
       {/* Degrees Offered section goes directly below */}
     </>
   );
 };
 
 export default HeroSection;
+

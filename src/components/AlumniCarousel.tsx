@@ -37,7 +37,7 @@ const AlumniCarousel = () => {
   }
 
   return (
-    <div className="py-2 w-full flex items-center justify-start md:justify-start">
+    <div className="py-0 w-full flex items-center justify-start md:justify-start">
       <Carousel
         opts={{
           loop: true,
@@ -80,7 +80,7 @@ const AlumniCarousel = () => {
                 <img
                   src={src}
                   alt={`NCU Alumni gallery photo #${idx + 1}`}
-                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[205px] md:h-[295px] lg:h-[355px] border-0 mx-auto transition-all"
+                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[240px] md:h-[330px] lg:h-[385px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
                   style={{
@@ -97,3 +97,4 @@ const AlumniCarousel = () => {
 };
 
 export default AlumniCarousel;
+
