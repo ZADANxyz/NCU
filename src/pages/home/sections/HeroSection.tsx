@@ -29,7 +29,7 @@ const SMALL_EDGE_PADDING = "12px";
 const SECTION_MAX_WIDTH = "1240px"; // Content width
 const SECTION_HORIZONTAL_PADDING = "52px";
 
-const GOLD_BAR_MAX_WIDTH = "1550px"; // Even wider but not to edges
+const GOLD_BAR_MAX_WIDTH = "1480px"; // Slightly less wide, very close but not at edges
 
 const HeroSection = () => {
   return (
