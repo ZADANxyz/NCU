@@ -1,3 +1,4 @@
+
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import CartDrawer from "./CartDrawer";
@@ -55,7 +56,6 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
-  // We'll use `document.documentElement.classList.contains("dark")` to detect theme on initial load
   const [isDark, setIsDark] = React.useState(() =>
     typeof window !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -69,15 +69,15 @@ const Header = () => {
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
     setIsDark(document.documentElement.classList.contains("dark"));
     return () => obs.disconnect();
-  });
+  }, []);
 
-  // Adaptive hover color logic
-  const iconColor = "text-slate-700 dark:text-slate-200";
-  // On hover: blue in light mode, gold in dark mode
-  const iconHoverColor = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
+  // Icon colors
+  const cartSearchBase = "text-slate-700 dark:text-slate-200";
+  // Use state for correct hover color: blue in light, gold in dark
+  const cartSearchHover = isDark ? "hover:text-[#B19528]" : "hover:text-[#046BD2]";
 
-  // Smaller icon size for cart/search
-  const iconSize = 18;
+  // Even smaller icon size
+  const iconSize = 16;
 
   return (
     <>
@@ -95,31 +95,42 @@ const Header = () => {
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-16 px-3 sm:px-8"
+            "relative flex items-center justify-between h-13 px-2 sm:px-6" // Reduce height/padding further
           )}
         >
           {/* Left: Logo */}
-          <div className="flex items-center" style={{ height: 34 }}>
+          <div className="flex items-center" style={{ height: 30 }}>
             <Logo />
           </div>
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-4">
+            <ul className="flex items-center gap-3">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
                   (item.to !== "/" && location.pathname.startsWith(item.to));
+                // Menu color logic
+                // Light: active=blue, hover=gold. Dark: active=gold, hover=blue
+                const baseStyle =
+                  "tracking-wide font-sans text-[12.5px] font-normal px-0.5 pb-0.5 rounded-none transition-colors transition-transform duration-150";
+                let colorClass = "";
+                if (!isDark) {
+                  colorClass = active
+                    ? "text-[#046BD2]"
+                    : "text-gray-700 hover:text-[#B19528]"; // gold hover
+                } else {
+                  colorClass = active
+                    ? "text-[#B19528]"
+                    : "text-gray-200 hover:text-[#046BD2]"; // blue hover
+                }
                 return (
                   <li key={item.label}>
                     <Link
                       to={item.to}
                       className={cn(
-                        "tracking-wide font-sans text-[13px] font-normal",
-                        "transition-colors transition-transform duration-150 px-0.5 pb-0.5 rounded-none",
+                        baseStyle,
                         "hover:scale-105 focus:scale-105",
-                        active
-                          ? "text-[#046BD2]"
-                          : "text-gray-700 dark:text-gray-200"
+                        colorClass
                       )}
                       style={{
                         fontFamily: "system-ui, Segoe UI, sans-serif",
@@ -135,16 +146,15 @@ const Header = () => {
               })}
             </ul>
           </nav>
-
           {/* Right: Actions */}
-          <div className="flex items-center gap-1 pl-2">
+          <div className="flex items-center gap-1 pl-1">
             {/* Search Icon */}
             <button
               className={cn(
-                iconColor,
-                "ml-2 p-1 group outline-none ring-0 bg-transparent",
+                cartSearchBase,
+                "ml-1 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
-                iconHoverColor,
+                cartSearchHover,
                 "hover:scale-110 focus:scale-110"
               )}
               aria-label="Search"
@@ -156,10 +166,10 @@ const Header = () => {
             {/* Cart Icon */}
             <button
               className={cn(
-                iconColor,
+                cartSearchBase,
                 "relative mx-0.5 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
-                iconHoverColor,
+                cartSearchHover,
                 "hover:scale-110 focus:scale-110"
               )}
               aria-label="Open cart"
@@ -168,16 +178,16 @@ const Header = () => {
             >
               <ShoppingCart size={iconSize} strokeWidth={2.05} />
               {/* Demo badge */}
-              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[9px] text-white font-bold h-3.5 w-3.5 flex items-center justify-center rounded-full ring-2 ring-white shadow">
+              <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[9px] text-white font-bold h-3 w-3 flex items-center justify-center rounded-full ring-2 ring-white shadow">
                 3
               </span>
             </button>
             {/* Dark mode toggle */}
-            <span className={cn(iconColor, "ml-1")}>
+            <span className={cn(cartSearchBase, "ml-1")}>
               <ThemeToggle
                 className={cn(
                   "transition-transform duration-150 hover:scale-110",
-                  iconHoverColor
+                  cartSearchHover // sync with Search/Cart
                 )}
                 isDark={isDark}
                 iconSize={iconSize}
@@ -205,21 +215,21 @@ const Header = () => {
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
-      <div className="h-16" />
+      <div className="h-13" />
       <style>
         {`
         .glassier-header {
-          background: rgba(252,252,255,0.90);
-          backdrop-filter: blur(14px) saturate(125%);
-          -webkit-backdrop-filter: blur(14px) saturate(125%);
-          box-shadow: 0 2px 40px 0 rgba(177,149,40,0.12), 0 1px 0 0 #B19528;
-          border-bottom-left-radius: 1.3rem;
-          border-bottom-right-radius: 1.3rem;
+          background: rgba(252,252,255,0.93);
+          backdrop-filter: blur(11px) saturate(123%);
+          -webkit-backdrop-filter: blur(11px) saturate(123%);
+          box-shadow: 0 2px 30px 0 rgba(177,149,40,0.11), 0 1px 0 0 #B19528;
+          border-bottom-left-radius: 1.1rem;
+          border-bottom-right-radius: 1.1rem;
           position: relative;
         }
         .dark .glassier-header {
-          background: rgba(22, 25, 34, 0.90);
-          box-shadow: 0 2px 28px -6px rgba(4,107,210,.13), 0 1px 0 0 #B19528;
+          background: rgba(35,39,50,0.91); /* lighter dark for better visibility */
+          box-shadow: 0 2px 22px -9px rgba(4,107,210,.13), 0 1px 0 0 #B19528;
         }
         .glassier-header::after {
           content: "";
@@ -231,9 +241,9 @@ const Header = () => {
           border-radius: inherit;
           background: linear-gradient(
             to bottom, 
-            rgba(255,255,255,0.23) 0%,
-            rgba(255,255,255,0.10) 14%, 
-            rgba(252,252,255,0.08) 35%, 
+            rgba(255,255,255,0.21) 0%,
+            rgba(255,255,255,0.08) 14%, 
+            rgba(252,252,255,0.07) 35%, 
             rgba(255,255,255,0.03) 77%,
             rgba(255,255,255,0.00) 100%);
           opacity: 1;
@@ -241,10 +251,10 @@ const Header = () => {
         .dark .glassier-header::after {
           background: linear-gradient(
             to bottom, 
-            rgba(255,255,255,0.09) 0%,
+            rgba(255,255,255,0.12) 0%,
             rgba(180,180,200,0.05) 19%, 
-            rgba(180,180,200,0.02) 45%, 
-            rgba(80,80,80,0.01) 100%);
+            rgba(180,180,200,0.01) 38%, 
+            rgba(80,80,80,0.006) 100%);
           opacity: 1;
         }
         `}

@@ -37,7 +37,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark, iconSize =
     else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setDark(true);
   }, []);
 
-  // Correct hover color for icon
+  // On hover: sun/moon is blue in light mode, gold in dark mode, else currentColor
   const hoveredColor = hovered
     ? (controlledDark ? GOLD : BLUE)
     : "currentColor";
