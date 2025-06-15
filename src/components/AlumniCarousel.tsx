@@ -1,6 +1,4 @@
 
-// Carousel showing a gallery of alumni images with glass/gloss look and auto-slide
-
 import React, { useEffect, useRef } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
@@ -10,7 +8,7 @@ const alumniImages = [
   "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=600&q=80"
 ];
 
-const AUTO_SLIDE_INTERVAL = 3400; // ms
+const AUTO_SLIDE_INTERVAL = 5400; // ms (was 3400, now slower)
 
 const AlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
@@ -41,15 +39,23 @@ const AlumniCarousel = () => {
   return (
     <div className="py-2 w-full flex items-center justify-center">
       <Carousel
-        opts={{ loop: true, align: "center", slidesToScroll: 1 }}
+        opts={{
+          loop: true,
+          align: "center",
+          slidesToScroll: 1,
+          containScroll: 'trimSnaps' // Hide overflow images
+        }}
         setApi={setApi}
         className="w-full max-w-xl"
       >
-        <CarouselContent className="flex">
+        <CarouselContent>
           {alumniImages.map((src, idx) => (
-            <CarouselItem key={idx} className="basis-full flex-none transition-transform duration-500 ease-in-out">
+            <CarouselItem
+              key={idx}
+              className={`basis-full flex-none transition-transform duration-500 ease-in-out ${current !== idx ? "hidden" : ""}`}
+            >
               <div
-                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/75 dark:bg-[#232232]/80 px-2 pt-2 pb-1 flex items-center justify-center"
+                className="glass glossy rounded-2xl shadow-lg border-2 border-[#B19528]/30 bg-white/80 dark:bg-[#232232]/78 px-2 pt-2 pb-1 flex items-center justify-center"
                 style={{
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   maxWidth: 450,
@@ -74,4 +80,3 @@ const AlumniCarousel = () => {
 };
 
 export default AlumniCarousel;
-

@@ -8,9 +8,13 @@ const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 // User provided alumni text (long, will wrap to visually fill column)
 const NCU_ALUMNI_TEXT = (
-  <div className="font-medium text-base md:text-lg text-[#272730] dark:text-[#eaeaea] max-w-2xl mt-2">
-    <p className="mb-4">
-      New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students here, as they take what they have learned from NCU to the marketplace and ministry.
+  <div className="font-semibold text-[1.21rem] md:text-xl leading-relaxed text-[#242424] dark:text-[#eaeaea] max-w-2xl mt-4 mb-1 md:mb-2">
+    <p className="mb-5">
+      New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
+      <a href="/donate" className="font-bold underline text-blue-700 hover:text-blue-900 transition-colors" style={{ fontWeight: 800 }}>
+        here
+      </a>
+      , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
     <p>
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
@@ -19,6 +23,8 @@ const NCU_ALUMNI_TEXT = (
 );
 
 const HeroSection = () => {
+  // Padding: match header (same as px-3 md:px-7, which is 0.75rem / 1.75rem = 12px / 28px).
+  // We'll increase to px-4 md:px-8 to ensure visual consistency with header.
   return (
     <>
       {/* Header image: Edge-to-edge */}
@@ -40,9 +46,9 @@ const HeroSection = () => {
             margin: 0,
             padding: 0,
             borderRadius: 0,
-            width: "100%",
+            width: "100vw",
             maxWidth: "100vw",
-            height: "430px", // Sneak peek, shows above/below hero
+            height: "430px",
             maxHeight: "430px",
             objectFit: "contain",
             objectPosition: "top center",
@@ -53,32 +59,42 @@ const HeroSection = () => {
           draggable={false}
         />
       </div>
-      {/* Hero section: alumni & contact (matching padding, no extra space) */}
+      {/* Hero section: alumni & contact */}
       <section
-        className="relative z-10 flex flex-col md:flex-row items-stretch w-full bg-[rgba(255,255,255,0.92)] dark:bg-[rgba(28,28,36,0.97)] pt-0 md:pt-9 lg:pt-10 pb-0 px-3 md:px-7"
+        className="relative z-10 flex flex-col md:flex-row items-stretch w-full bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0 px-4 md:px-8"
         style={{
-          boxShadow: "0 4px 32px 0 rgba(4,107,210,0.05)",
+          boxShadow: "0 4px 32px 0 rgba(4,107,210,0.04)",
           borderBottomLeftRadius: "1.2rem",
           borderBottomRightRadius: "1.2rem",
+          background: "var(--background)", // use same bg everywhere for consistency
         }}
       >
         {/* Column: Alumni (left) */}
-        <div className="w-full md:w-1/2 flex flex-col justify-start pt-7 md:pt-0 pr-0 md:pr-8" style={{ minWidth: 0 }}>
+        <div className="w-full md:w-1/2 flex flex-col justify-start pt-8 md:pt-0 pr-0 md:pr-10" style={{ minWidth: 0 }}>
           <h2
-            className="text-2xl sm:text-3xl md:text-4xl font-bold font-playfair golden mb-0 text-left tracking-tight"
-            style={{ letterSpacing: 0.1, fontFamily: "'Playfair Display', serif", lineHeight: 1.12 }}
+            className="text-2xl sm:text-3xl md:text-4xl font-bold font-playfair mb-1 text-left tracking-tight"
+            style={{
+              color: "#181818",
+              letterSpacing: 0.1,
+              fontFamily: "'Playfair Display', serif",
+              lineHeight: 1.12,
+            }}
           >
             Meet Our NCU Alumni
           </h2>
+          {/* Space between header and slider */}
+          <div className="h-2" />
           {/* Alumni slider right below header */}
           <AlumniCarousel />
+          {/* Space between slider and text */}
+          <div className="h-4" />
           {/* Text fills remainder, wraps to last line */}
           <div className="flex-1 flex flex-col justify-start">
             {NCU_ALUMNI_TEXT}
           </div>
         </div>
         {/* Column: Contact (right) */}
-        <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-4 md:pt-0 pl-0 md:pl-8" style={{ minWidth: 0 }}>
+        <div className="w-full md:w-1/2 flex flex-col items-center justify-center mt-0 md:mt-0 pt-6 md:pt-0 pl-0 md:pl-10" style={{ minWidth: 0 }}>
           <ContactTabBlock />
         </div>
       </section>
@@ -86,13 +102,13 @@ const HeroSection = () => {
       <div
         className="mx-auto w-full max-w-5xl"
         style={{
-          marginTop: "-8px",
-          marginBottom: "2.5rem",
-          height: 3,
+          marginTop: "2.5rem",
+          marginBottom: "3.5rem",
+          height: 4,
           background:
-            "linear-gradient(90deg,rgba(177,149,40,0) 0%, rgba(177,149,40,0.15) 2.5%, rgba(177,149,40,0.37) 8%, rgba(177,149,40,1) 21%, rgba(177,149,40,1) 79%, rgba(177,149,40,0.37) 92%, rgba(177,149,40,0.15) 97.5%, rgba(177,149,40,0) 100%)",
+            "linear-gradient(90deg,rgba(177,149,40,0.08) 0%, rgba(177,149,40,0.24) 2.5%, rgba(177,149,40,0.65) 10%, rgba(177,149,40,1) 25%, rgba(177,149,40,1) 75%, rgba(177,149,40,0.65) 90%, rgba(177,149,40,0.24) 97.5%, rgba(177,149,40,0.08) 100%)",
           boxShadow:
-            "0 2px 18px 0 rgba(177,149,40,0.14) inset, 0 2px 10px 0 rgba(177,149,40,0.05)",
+            "0 2px 18px 0 rgba(177,149,40,0.18) inset, 0 2px 10px 0 rgba(177,149,40,0.08)",
           borderRadius: 2,
           zIndex: 20,
         }}

@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from "react";
 
 // TypeScript: declare the global hbspt from HubSpot
@@ -42,14 +43,13 @@ const HUBSPOT_REGION = "na2";
 
 // Blue glassy button styles for "Apply Today!"
 const glassyBlueButtonClass =
-  "block w-full font-bold rounded-lg py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold relative border-2 border-blue-700 text-blue-800 dark:text-blue-300 bg-blue-100/10 backdrop-blur-md shadow-lg hover:after:opacity-100 hover:text-white overflow-hidden";
-
+  "block w-full font-bold rounded-lg py-2 px-6 transition text-center text-lg cursor-pointer glassy-gold relative border-2 border-blue-700 text-blue-800 dark:text-blue-300 bg-blue-100/10 backdrop-blur-md shadow-lg overflow-hidden group";
 const blueGlassGlossHoverStyle = {
-  boxShadow: "0 4px 20px 0 rgba(51,132,245,0.16)",
+  boxShadow: "0 4px 20px 0 rgba(51,132,245,0.18)",
   border: "2px solid #2563eb",
   color: "#1e3a8a",
   background:
-    "linear-gradient(120deg,rgba(51,132,245,0.32) 10%,rgba(91,167,253,0.21) 58%,rgba(132,180,241,0.23) 100%)",
+    "linear-gradient(120deg,rgba(51,132,245,0.33) 0%,rgba(91,167,253,0.38) 46%,rgba(132,180,241,0.45) 100%)",
   textShadow: "0 1px 4px rgba(51,100,190,0.09)",
   zIndex: 1,
 };
@@ -87,15 +87,15 @@ const ContactTabBlock = () => {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Contact box with border */}
-      <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/90 dark:bg-[#232232]/80 mx-auto">
-        <h3 className="text-[2.15rem] md:text-[2.45rem] font-black mb-1 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif", color: "#181818", lineHeight: 1.09 }}>
+      <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto">
+        <h3 className="text-[2.09rem] md:text-[2.35rem] font-black mb-1 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif", color: "#1a1a1a", lineHeight: 1.09 }}>
           Contact Us:
         </h3>
-        {NCU_PHONE}
+        <div className="pb-3">{NCU_PHONE}</div>
         <div className="w-full h-2" />
         <div id="hubspot-form-block" ref={formRef} className="w-full mb-2"></div>
       </div>
-      {/* Apply Today button and text directly underneath, perfectly matching the contact card width */}
+      {/* Apply Today button and text directly underneath, matching the contact card width */}
       <div className="w-full max-w-md flex flex-col items-center mt-7">
         <a
           href={APPLY_LINK}
@@ -110,18 +110,19 @@ const ContactTabBlock = () => {
           </span>
           {/* Blue glass/gloss overlay for hover */}
           <span
-            className="absolute inset-0 transition-all duration-200 pointer-events-none opacity-0 hover:opacity-100"
+            className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
             aria-hidden="true"
             style={{
               zIndex: 3,
               background:
-                "linear-gradient(110deg,rgba(81,128,255,0.23) 0%,rgba(41,100,210,0.36) 60%,rgba(250,250,255,0.11) 100%)",
-              boxShadow: "0 8px 26px 0 rgba(51,132,245,0.11)",
+                "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+              boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
               borderRadius: "inherit",
+              // more blue, more fill
             }}
           ></span>
         </a>
-        <div className="text-[9px] md:text-[10px] text-[#444] font-medium text-center mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs">
+        <div className="text-[10px] md:text-[11px] text-[#444] font-medium text-center mt-2 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs">
           We're here to help—reach out and let's connect!
         </div>
       </div>
