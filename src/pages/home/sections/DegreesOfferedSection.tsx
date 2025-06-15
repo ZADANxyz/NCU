@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -29,10 +30,18 @@ const DEGREE_BUTTONS = [
 // Max width for spacious layout
 const GRID_MAX_WIDTH = 1600;
 
+const EDGE_HORIZONTAL_PADDING = "52px";
+
 const DegreesOfferedSection: React.FC = () => (
   <>
     {/* No divider above the section */}
-    <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
+    <section
+      className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none"
+      style={{
+        paddingLeft: EDGE_HORIZONTAL_PADDING,
+        paddingRight: EDGE_HORIZONTAL_PADDING,
+      }}
+    >
       <h2
         className="
           text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
@@ -53,7 +62,6 @@ const DegreesOfferedSection: React.FC = () => (
         <div
           className="
             grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
-            px-6 sm:px-9 md:px-12
           "
           style={{
             maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -148,3 +156,4 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
+
