@@ -1,3 +1,4 @@
+
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -29,7 +30,7 @@ const SMALL_EDGE_PADDING = "12px"; // for small screens
 const HeroSection = () => {
   return (
     <>
-      {/* HERO IMAGE: Edge to edge, max height 85vh */}
+      {/* HERO IMAGE: Edge to edge, max height 85vh, moved up to show full text */}
       <div
         className="w-full relative"
         style={{
@@ -57,11 +58,13 @@ const HeroSection = () => {
             background: "#fff",
             display: "block",
             boxSizing: "border-box",
+            position: "relative",
+            top: "-18px", // Move image up a bit to show more text at the top
           }}
           draggable={false}
         />
       </div>
-      {/* SECTION: Pin content to left and right edge with same paddings, align top */}
+      {/* SECTION: Container has max-width for true edge-pinned content */}
       <section
         className="relative z-10 bg-[rgba(255,255,255,0.99)] dark:bg-[rgba(28,28,36,0.99)] pt-0 md:pt-10 lg:pt-14 pb-0"
         style={{
@@ -72,7 +75,7 @@ const HeroSection = () => {
         }}
       >
         <div
-          className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch"
+          className="w-full max-w-screen-2xl mx-auto flex flex-col md:flex-row min-h-[500px] items-stretch"
           style={{
             paddingLeft: SMALL_EDGE_PADDING,
             paddingRight: SMALL_EDGE_PADDING,
@@ -107,12 +110,12 @@ const HeroSection = () => {
               {NCU_ALUMNI_TEXT}
             </div>
           </div>
-          {/* Right: Edge-pinned on right with padding, NO left padding */}
+          {/* Right: Edge-pinned on right with padding, NO left padding, flush as possible */}
           <div
             className="w-full md:w-1/2 flex flex-col items-end justify-start mt-8 md:mt-0"
             style={{
               paddingRight: EDGE_PADDING,
-              // Remove paddingLeft completely for right side
+              paddingLeft: 0, // absolutely no left padding for full right pinning
               minWidth: 0,
             }}
           >
@@ -142,3 +145,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
