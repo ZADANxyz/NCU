@@ -31,10 +31,7 @@ const DEGREE_BUTTONS = [
 const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
-  <section
-    className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-0 flex flex-col items-center shadow-none"
-  >
-    {/* Section Title */}
+  <section className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-0 flex flex-col items-center shadow-none">
     <h2
       className="
         text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
@@ -48,11 +45,10 @@ const DegreesOfferedSection: React.FC = () => (
     >
       Degrees Offered
     </h2>
-    {/* Section Subtitle */}
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — larger, taller, more spacious boxes */}
+    {/* Button Grid — large, proportional, responsive boxes */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
@@ -67,12 +63,13 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-6 md:p-10 bg-white dark:bg-[#232327] min-h-[260px] md:min-h-[360px] h-full"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-6 md:p-10 bg-white dark:bg-[#232327] w-full h-full"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
           >
-            <AspectRatio ratio={1 / 1.15} className="w-full flex items-center">
+            {/* Use a slightly taller than square aspect ratio */}
+            <AspectRatio ratio={1 / 1.1} className="w-full flex items-center">
               <img
                 src={img}
                 alt={alt}
