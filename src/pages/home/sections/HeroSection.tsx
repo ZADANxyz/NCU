@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock, { GoldBar } from "@/components/ContactTabBlock";
@@ -21,7 +20,7 @@ const NCU_ALUMNI_TEXT = (
 const HeroSection = () => {
   return (
     <>
-      {/* Header image, with sneak preview (controlled height) */}
+      {/* Header image */}
       <div
         className="w-full relative"
         style={{
@@ -76,13 +75,8 @@ const HeroSection = () => {
           <ContactTabBlock />
         </div>
       </section>
-      {/* Gold bar floats below the contact form, outside its border */}
-      <div className="flex w-full justify-center">
-        <GoldBar />
-      </div>
     </>
   );
 };
 
 export default HeroSection;
-
