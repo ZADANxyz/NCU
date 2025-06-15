@@ -26,14 +26,14 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GOLD_BAR_MAX_WIDTH = "1800px"; // Increase maxWidth
+const GOLD_BAR_MAX_WIDTH = "100vw"; // Use full viewport width for max bar length
 
 const DegreesOfferedSection: React.FC = () => (
   <>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
     >
-      {/* SINGLE TOP GOLD BAR — long width */}
+      {/* SINGLE TOP GOLD BAR — full viewport width */}
       <div className="w-full flex justify-center" style={{ marginTop: "0", marginBottom: "2.6rem" }}>
         <div
           className="w-full"
@@ -139,6 +139,7 @@ const DegreesOfferedSection: React.FC = () => (
         <div
           className="w-full"
           style={{
+            maxWidth: GOLD_BAR_MAX_WIDTH,
             height: "1.1px",
             background:
               "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
@@ -148,7 +149,6 @@ const DegreesOfferedSection: React.FC = () => (
             zIndex: 20,
             opacity: 0.99,
             margin: "0 auto",
-            maxWidth: GOLD_BAR_MAX_WIDTH,
           }}
         />
       </div>
