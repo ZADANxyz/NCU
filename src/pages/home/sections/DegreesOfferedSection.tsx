@@ -26,6 +26,8 @@ const DEGREE_BUTTONS = [
   },
 ];
 
+const GRID_MAX_WIDTH = 1200; // px, slightly smaller than before
+
 const DegreesOfferedSection: React.FC = () => (
   <section
     className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-0 flex flex-col items-center shadow-none"
@@ -49,23 +51,22 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid - Fills section edge to edge (like gold bar) */}
+    {/* Button Grid — reduced max width, gap, and slightly smaller images */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 w-full
         "
         style={{
-          maxWidth: "100vw",
-          paddingLeft: "0",
-          paddingRight: "0",
+          maxWidth: `${GRID_MAX_WIDTH}px`,
+          margin: "0 auto",
         }}
       >
         {DEGREE_BUTTONS.map(({ alt, img, to }) => (
           <Link
             key={alt}
             to={to}
-            className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-xl transition-shadow hover:shadow-2xl"
+            className="flex items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
@@ -73,8 +74,8 @@ const DegreesOfferedSection: React.FC = () => (
             <img
               src={img}
               alt={alt}
-              className="rounded-xl w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none max-h-56 md:max-h-64"
-              style={{ minHeight: "170px", maxHeight: "18rem" }}
+              className="rounded-lg w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none max-h-44 md:max-h-52"
+              style={{ minHeight: "130px", maxHeight: "13rem" }}
             />
           </Link>
         ))}
@@ -87,14 +88,16 @@ const DegreesOfferedSection: React.FC = () => (
       </p>
     </div>
     {/* Department of Education Logo */}
-    <div className="flex justify-center mt-6">
+    <div className="flex justify-center mt-7">
       <img
         src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
         alt="Florida Department of Education Logo"
-        className="w-auto h-16 md:h-20"
-        style={{ maxWidth: "310px" }}
+        className="w-auto h-18 md:h-24"
+        style={{ maxWidth: "330px" }}
       />
     </div>
   </section>
 );
+
 export default DegreesOfferedSection;
+
