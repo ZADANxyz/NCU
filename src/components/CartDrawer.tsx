@@ -166,6 +166,7 @@ const CartDrawer: React.FC<{
               boxShadow: "none",
               border: "none",
             }}
+            // Remove background on hover
             onMouseOver={e => {
               (e.currentTarget as HTMLButtonElement).style.background = "none";
             }}
@@ -196,12 +197,14 @@ const CartDrawer: React.FC<{
                   <div className="font-medium text-[#046BD2]">{item.title}</div>
                   <div className="text-[#B19528] font-semibold">${item.price.toFixed(2)}</div>
                 </div>
-                {/* Controls row: trash + qty controls side-by-side */}
+                {/* Controls row: trash to the left of qty controls */}
                 <div className="flex items-center gap-2">
+                  {/* Trash icon now on the LEFT */}
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="p-1 rounded hover:bg-destructive/10 text-destructive-500 focus-visible:outline-none transition"
                     aria-label="Remove item"
+                    style={{ marginRight: 0 }}
                   >
                     <Trash2 size={17} />
                   </button>
@@ -228,11 +231,7 @@ const CartDrawer: React.FC<{
                       />
                       <button
                         onClick={() => handleQtyChange(item.id, 1)}
-                        className={`p-1 rounded focus-visible:outline-none ${
-                          isDark
-                            ? "hover:bg-gold/20"
-                            : "hover:bg-primary/10"
-                        }`}
+                        className={`p-1 rounded focus-visible:outline-none`}
                         style={{
                           background: "none",
                         }}
@@ -240,7 +239,11 @@ const CartDrawer: React.FC<{
                       >
                         <Plus
                           size={18}
-                          className={isDark ? "text-[#B19528]" : "text-[#046BD2]"}
+                          className={
+                            isDark
+                              ? "text-[#B19528]"
+                              : "text-[#046BD2]"
+                          }
                         />
                       </button>
                     </div>
@@ -252,14 +255,23 @@ const CartDrawer: React.FC<{
         </div>
         {/* Footer */}
         <div
-          className="p-6 border-t border-gold/60 bg-gradient-to-t from-white/80 via-white/40 to-transparent dark:from-black/80 relative"
+          className="p-6 border-t border-gold/60 bg-gradient-to-t from-white/90 via-white/60 to-transparent dark:from-black/90 relative"
           style={{
             zIndex: 12,
             background: isDark
-              ? "linear-gradient(120deg, rgba(30, 30, 36, 0.95), rgba(30, 30, 36, 0.68), rgba(30, 30, 36, 0.1))"
-              : "linear-gradient(120deg, rgba(255,255,255,0.92), rgba(230,240,255,0.48), rgba(255,255,255,0.05))",
-            backdropFilter: "blur(10px) saturate(135%)",
-            WebkitBackdropFilter: "blur(10px) saturate(135%)",
+              ? "linear-gradient(120deg, rgba(30,30,36,0.98),rgba(30,30,36,0.80),rgba(38,24,12,0.34) 82%,rgba(30,30,36,0.13) 100%)"
+              : "linear-gradient(120deg, rgba(255,255,255,0.95),rgba(230,240,255,0.58),rgba(240,230,190,0.24) 83%,rgba(255,255,255,0.07) 100%)",
+            backdropFilter: "blur(11px) saturate(170%) brightness(1.06)",
+            WebkitBackdropFilter: "blur(11px) saturate(170%) brightness(1.06)",
+            borderTop: isDark
+              ? "1.6px solid rgba(177,149,40,0.50)"
+              : "1.8px solid rgba(4,107,210,0.16)",
+            boxShadow: isDark
+              ? "0 2px 18px 2px rgba(177,149,40,0.05),0 1.5px 0 0 #B1952880"
+              : "0 2px 16px 1px rgba(4,107,210,0.10), 0 1px 0 0 #B19528",
+            borderBottomLeftRadius: "0",
+            borderBottomRightRadius: "0",
+            borderLeft: "none"
           }}
         >
           <div className="flex items-center justify-between text-lg font-bold pb-3">
@@ -271,16 +283,36 @@ const CartDrawer: React.FC<{
             className="w-full px-5 py-2 font-semibold rounded-lg shadow-lg transition-all duration-200 disabled:opacity-30"
             style={{
               background: isDark
-                ? "linear-gradient(90deg, rgba(40,38,54,0.90) 0%, rgba(177,149,40,0.18) 100%)"
-                : "linear-gradient(90deg, rgba(255,255,255,0.87) 0%, rgba(4,107,210,0.13) 100%)",
+                ? "linear-gradient(93deg, rgba(30,30,36,0.91) 0%,rgba(177,149,40,0.20) 100%)"
+                : "linear-gradient(88deg, rgba(255,255,255,0.90) 0%,rgba(4,107,210,0.16) 100%)",
               color: isDark ? "#fffbea" : "#000b30",
-              border: isDark ? "1.2px solid #B1952880" : "1.4px solid #046BD240",
+              border: isDark ? "1.3px solid #B19528bf" : "1.5px solid #046BD247",
               boxShadow:
-                "0 2px 16px 2px rgba(4,107,210,0.05), 0 1px 0 0 #B19528",
-              backdropFilter: "blur(6px) brightness(1.05)",
+                "0 3px 28px 4px rgba(4,107,210,0.11), 0 1.5px 0 0 #B19528aa",
+              backdropFilter: "blur(11px) brightness(1.08)",
+              WebkitBackdropFilter: "blur(11px) brightness(1.08)",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            Checkout
+            <span
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: "100%",
+                height: "100%",
+                zIndex: 0,
+                pointerEvents: "none",
+                borderRadius: "inherit",
+                background:
+                  "linear-gradient(110deg,rgba(255,255,255,0.19) 0%,rgba(255,255,255,0.13) 46%,rgba(255,255,255,0.18) 94%)",
+                opacity: 1,
+                mixBlendMode: "screen",
+              }}
+              aria-hidden="true"
+            />
+            <span style={{ position: "relative", zIndex: 1 }}>Checkout</span>
           </button>
         </div>
       </aside>
