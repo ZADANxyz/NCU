@@ -139,9 +139,8 @@ const ContactTabBlock = () => {
     <div className="w-full flex flex-col items-center font-roboto">
       <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto font-roboto">
         <h3
-          className="text-[2.25rem] md:text-[2.56rem] font-bold mb-4 text-center tracking-tight font-roboto transition-colors"
+          className="text-[2.25rem] md:text-[2.56rem] font-bold mb-4 text-center tracking-tight font-roboto transition-colors text-[#1a1a1a] dark:text-white"
           style={{
-            color: isDark ? "#fff" : "#1a1a1a",
             lineHeight: 1.09,
             fontFamily: "Roboto, Arial, sans-serif",
             fontWeight: 700,
@@ -229,9 +228,8 @@ const ContactTabBlock = () => {
           ></span>
         </a>
         <div
-          className="text-[12.5px] md:text-[13.5px] font-medium text-center mt-3 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto transition-colors"
+          className="text-[12.5px] md:text-[13.5px] font-medium text-center mt-3 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto transition-colors text-[#444] dark:text-white"
           style={{
-            color: isDark ? "#fff" : "#444", 
             transition: "color 0.2s"
           }}
         >
