@@ -120,7 +120,7 @@ const DegreesOfferedSection: React.FC = () => (
       <div
         className="w-full flex justify-center"
         style={{
-          marginTop: "2.5rem",
+          marginTop: "3.7rem", // Increased from previous value for more space above divider
           marginBottom: "0",
         }}
       >
