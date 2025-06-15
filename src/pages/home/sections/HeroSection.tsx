@@ -1,6 +1,7 @@
+
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
-import ContactTabBlock, { GoldBar } from "@/components/ContactTabBlock";
+import ContactTabBlock from "@/components/ContactTabBlock";
 
 // Flush header image, controlled height sneak peek
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
@@ -80,3 +81,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
