@@ -1,24 +1,5 @@
 
-// Contact block with phone, HubSpot embed, and Apply Now button
-
-import React from "react";
-
-const HUBSPOT_EMBED = (
-  <iframe
-    title="NCU Contact Form"
-    src="https://share.hsforms.com/1dkbO5sYpRmKVeObr_0RZDwb08gi"
-    width="100%"
-    height="360"
-    style={{
-      border: "none",
-      minWidth: 220,
-      background: "transparent"
-    }}
-    frameBorder={0}
-    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-    sandbox="allow-scripts allow-same-origin allow-top-navigation allow-forms"
-  ></iframe>
-);
+import React, { useRef, useEffect } from "react";
 
 const NCU_PHONE = (
   <div className="mt-3 mb-1 flex items-center justify-center text-base font-bold text-[#b19528]">
@@ -35,14 +16,47 @@ const NCU_PHONE = (
 
 const APPLY_LINK = "https://ncu.education/apply";
 
+const HUBSPOT_PORTAL_ID = "242249646";
+const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
+const HUBSPOT_REGION = "na2";
+
 const ContactTabBlock = () => {
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Prevent double-inject
+    if (!window.hbspt) {
+      const script = document.createElement("script");
+      script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
+      script.async = true;
+      script.onload = () => {
+        if (window.hbspt) {
+          window.hbspt.forms.create({
+            region: HUBSPOT_REGION,
+            portalId: HUBSPOT_PORTAL_ID,
+            formId: HUBSPOT_FORM_ID,
+            target: "#hubspot-form-block"
+          });
+        }
+      };
+      document.body.appendChild(script);
+    } else {
+      window.hbspt.forms.create({
+        region: HUBSPOT_REGION,
+        portalId: HUBSPOT_PORTAL_ID,
+        formId: HUBSPOT_FORM_ID,
+        target: "#hubspot-form-block"
+      });
+    }
+  }, []);
+
   return (
     <div className="glass glossy rounded-xl border-2 border-gold shadow-lg px-4 md:px-6 py-6 md:py-8 w-full max-w-md bg-white/90 dark:bg-[#232232]/80">
       <h3 className="text-xl md:text-2xl font-bold golden mb-2 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
         Contact Us
       </h3>
       {NCU_PHONE}
-      <div className="w-full mb-3">{HUBSPOT_EMBED}</div>
+      <div id="hubspot-form-block" ref={formRef} className="w-full mb-3"></div>
       <a
         href={APPLY_LINK}
         target="_blank"

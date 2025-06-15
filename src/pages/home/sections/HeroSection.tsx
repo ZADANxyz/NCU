@@ -1,4 +1,3 @@
-
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import ContactTabBlock from "@/components/ContactTabBlock";
@@ -35,15 +34,15 @@ const HeroSection = () => {
         <img
           src={HERO_IMAGE}
           alt="New Covenant University Hero"
-          className="w-full h-[415px] md:h-[480px] lg:h-[510px] xl:h-[540px] 2xl:h-[600px] block"
+          className="w-full"
           style={{
             margin: 0,
             padding: 0,
             borderRadius: 0,
             width: "100%",
             maxWidth: "100vw",
-            height: "100%",
-            maxHeight: "540px",
+            height: "430px", // lowered height for sneak peek (was 415-600)
+            maxHeight: "430px",
             objectFit: "contain",
             objectPosition: "top center",
             background: "#fff",
