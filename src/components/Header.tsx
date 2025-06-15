@@ -47,8 +47,6 @@ const Header = () => {
   const location = useLocation();
   const [cartOpen, setCartOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
-
-  // Subtle shadow on scroll
   const [elevate, setElevate] = React.useState(false);
   React.useEffect(() => {
     const handle = () => setElevate(window.scrollY > 8);
@@ -57,35 +55,28 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
-  // Choose icon color adaptively in light/dark mode
+  // Icon color (for both modes, adapts via Tailwind dark:)
   const iconColor = "text-slate-700 dark:text-slate-200";
 
   return (
     <>
       <header
         className={cn(
-          "fixed top-0 w-full z-40 glass glossy",
-          "shadow-xl transition-shadow duration-300",
+          "fixed top-0 w-full z-40",
+          "glassier-header", // new optimized glass+gloss class
           elevate && "shadow-2xl"
         )}
         style={{
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
-          padding: 0,
+          boxShadow: elevate
+            ? "0 10px 32px -10px rgba(4,107,210,0.13), 0 1px 0 0 #B19528"
+            : "0 2px 12px 0 rgba(4,107,210,0.06)",
         }}
       >
+        {/* Glass/gold/gloss overlay handled with CSS */}
         <div
           className={cn(
-            "relative flex items-center justify-between h-20 px-3 sm:px-8 bg-white/80 dark:bg-neutral-900/80",
-            "backdrop-blur-lg border-b-0",
-            "glass glossy"
+            "relative flex items-center justify-between h-20 px-3 sm:px-8",
           )}
-          style={{
-            WebkitBackdropFilter: "blur(16px)",
-            boxShadow: elevate
-              ? "0 8px 22px -6px rgba(4,107,210,0.07), 0 1px 0 0 #B19528"
-              : "0 2px 8px 0 rgba(4,107,210,0.06)",
-          }}
         >
           {/* Left: NCU Wordmark/Logo */}
           <div className="flex items-center" style={{ height: 38 }}>
@@ -96,7 +87,7 @@ const Header = () => {
 
           {/* Center: Navigation */}
           <nav className="flex-1 flex items-center justify-center relative z-20">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-6">
               {NAV_ITEMS.map((item) => {
                 const active =
                   location.pathname === item.to ||
@@ -106,14 +97,20 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        "tracking-wide text-[15px] font-normal font-sans",
-                        "transition-colors transition-transform duration-150 px-2 pb-0.5 rounded",
+                        "tracking-wide font-sans",
+                        "text-[15px] font-normal", // smaller and normal weight
+                        "transition-colors transition-transform duration-150 px-1 pb-0.5 rounded-none",
                         "hover:text-[#B19528] hover:scale-105 focus:text-[#B19528]",
                         active
                           ? "text-[#046BD2]"
                           : "text-gray-700 dark:text-gray-200"
                       )}
-                      style={{ fontFamily: "system-ui, Segoe UI, sans-serif" }}
+                      style={{
+                        fontFamily: "system-ui, Segoe UI, sans-serif",
+                        textTransform: "none", // not uppercase
+                        letterSpacing: "0.01em",
+                        fontWeight: 400,
+                      }}
                     >
                       {item.label}
                     </Link>
@@ -123,7 +120,7 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right: Actions - order is right->left: Search, Cart, Theme */}
+          {/* Right: Actions (Search, Cart, ThemeToggle) */}
           <div className="flex items-center gap-1 pl-2">
             {/* Search Icon */}
             <button
@@ -167,16 +164,15 @@ const Header = () => {
             </span>
           </div>
         </div>
-
-        {/* More prominent Gold Line */}
+        {/* Prominent Gold Line */}
         <div
           className="w-full"
           style={{
-            height: 4,
+            height: 6,
             background:
-              "linear-gradient(90deg, rgba(177,149,40,0.23) 0%, rgba(177,149,40,1) 28%, rgba(177,149,40,1) 72%, rgba(177,149,40,0.23) 100%)",
+              "linear-gradient(90deg,rgba(177,149,40,0.18) 0%, rgba(177,149,40,1) 22%, rgba(177,149,40,1) 78%,rgba(177,149,40,0.18) 100%)",
             boxShadow:
-              "0 2px 16px 0 rgba(177,149,40,0.23) inset, 0 2px 16px 0 rgba(177,149,40,0.13)",
+              "0 2px 24px 0 rgba(177,149,40,0.27) inset, 0 2px 16px 0 rgba(177,149,40,0.07)",
             backdropFilter: "blur(5px)",
             WebkitBackdropFilter: "blur(5px)",
             zIndex: 50,
@@ -191,6 +187,52 @@ const Header = () => {
 
       {/* Header spacer */}
       <div className="h-20" />
+      <style>
+        {`
+        /* Stronger, brighter glass effect for header */
+        .glassier-header {
+          background: rgba(252,252,255,0.85);
+          backdrop-filter: blur(14px) saturate(125%);
+          -webkit-backdrop-filter: blur(14px) saturate(125%);
+          box-shadow: 0 2px 40px 0 rgba(177,149,40,0.07), 0 1px 0 0 #B19528;
+          border-bottom-left-radius: 1.3rem;
+          border-bottom-right-radius: 1.3rem;
+          position: relative;
+        }
+        .dark .glassier-header {
+          background: rgba(22, 25, 34, 0.86);
+          box-shadow: 0 2px 28px -6px rgba(4,107,210,.13), 0 1px 0 0 #B19528;
+        }
+        .glassier-header::after {
+          content: "";
+          display: block;
+          pointer-events: none;
+          position: absolute; 
+          top: 0; left: 0; width: 100%; height: 100%;
+          z-index: 2;
+          border-radius: inherit;
+          /* Top gloss/highlight gradient */
+          background: linear-gradient(
+            to bottom, 
+            rgba(255,255,255,0.20) 0%,
+            rgba(255,255,255,0.13) 12%, 
+            rgba(252,252,255,0.08) 33%, 
+            rgba(255,255,255,0.03) 72%,
+            rgba(255,255,255,0.01) 100%);
+          opacity: 1;
+        }
+        .dark .glassier-header::after {
+          background: linear-gradient(
+            to bottom, 
+            rgba(255,255,255,0.12) 0%,
+            rgba(255,255,255,0.09) 12%, 
+            rgba(180,180,200,0.04) 36%, 
+            rgba(80,80,80,0.04) 68%,
+            rgba(40,40,40,0.01) 100%);
+          opacity: 1;
+        }
+        `}
+      </style>
     </>
   );
 };
