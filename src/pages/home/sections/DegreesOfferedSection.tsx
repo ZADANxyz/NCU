@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -50,7 +51,7 @@ const DegreesOfferedSection: React.FC = () => (
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1 md:gap-2 items-stretch w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -61,10 +62,10 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-16 md:p-28 bg-white dark:bg-[#232327] w-full h-full"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-2 md:p-4 bg-white dark:bg-[#232327] w-full h-full"
             tabIndex={0}
             aria-label={alt}
-            style={{ width: "100%" }}
+            style={{ width: "100%", minHeight: "0" }}
           >
             <AspectRatio ratio={1 / 1} className="w-full flex items-center">
               <img
@@ -72,6 +73,12 @@ const DegreesOfferedSection: React.FC = () => (
                 alt={alt}
                 className="rounded-lg w-full h-full object-cover shadow-md select-none"
                 draggable={false}
+                style={{
+                  minHeight: 0,
+                  minWidth: 0,
+                  maxHeight: "100%",
+                  maxWidth: "100%",
+                }}
               />
             </AspectRatio>
           </Link>
@@ -97,3 +104,4 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
+
