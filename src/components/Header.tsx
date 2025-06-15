@@ -88,7 +88,6 @@ const Header = () => {
         )}
         style={
           {
-            // less intense curve:
             borderBottomLeftRadius: "0.6rem",
             borderBottomRightRadius: "0.6rem",
             // box-shadow handled in css class
@@ -199,11 +198,11 @@ const Header = () => {
             </span>
           </div>
         </div>
-        {/* Gold line: width reduced, now ends before the corners */}
+        {/* Gold line, now stretched further but still just before the curved ends */}
         <div
           className="mx-auto"
           style={{
-            width: "94%",
+            width: "98%",
             height: 2,
             background:
               "linear-gradient(90deg,rgba(177,149,40,0.05) 0%, rgba(177,149,40,0.35) 5%, rgba(177,149,40,1) 27%, rgba(177,149,40,1) 73%, rgba(177,149,40,0.35) 95%, rgba(177,149,40,0.05) 100%)",
