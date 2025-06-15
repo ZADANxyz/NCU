@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -26,8 +25,8 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Slightly smaller max width for better alignment
-const GRID_MAX_WIDTH = 1080;
+// Increased max width for the grid to fill more space and keep square proportions
+const GRID_MAX_WIDTH = 1240;
 
 const DegreesOfferedSection: React.FC = () => (
   <section
@@ -51,7 +50,7 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — now true even column aspect, constrained width */}
+    {/* Button Grid — grid fills more width with larger maxWidth */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
@@ -100,4 +99,3 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
-
