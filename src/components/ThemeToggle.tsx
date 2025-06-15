@@ -2,7 +2,11 @@
 import React from "react";
 import { Moon } from "lucide-react";
 
-const ThemeToggle = () => {
+interface ThemeToggleProps {
+  className?: string;
+}
+
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
   // Use class on html element for theme toggling
   const [dark, setDark] = React.useState(() =>
     document.documentElement.classList.contains("dark")
@@ -28,12 +32,15 @@ const ThemeToggle = () => {
   return (
     <button
       aria-label="Toggle dark mode"
-      className="rounded-full p-2 bg-white/40 dark:bg-black/40 ring-1 ring-white/40 dark:ring-black/40 backdrop-blur-sm shadow hover:scale-105 hover:bg-white/70 dark:hover:bg-black/60 transition-all duration-200 mr-2"
+      className={
+        "rounded-full p-2 bg-transparent ring-0 transition-all duration-200 " +
+        (className ?? "")
+      }
       onClick={() => setDark((v) => !v)}
       tabIndex={0}
       type="button"
     >
-      <Moon size={22} color="#046BD2" className="transition-transform duration-300" />
+      <Moon size={24} color="currentColor" className="transition-transform duration-300" />
     </button>
   );
 };

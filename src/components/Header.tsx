@@ -7,7 +7,7 @@ import { ShoppingCart, Search } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-// Inline clean NCU logo (about 140px wide)
+// Clean NCU wordmark SVG 140px width, fills with currentColor
 const NCUWordmark: React.FC = () => (
   <svg
     width={140}
@@ -24,8 +24,9 @@ const NCUWordmark: React.FC = () => (
       fontFamily="system-ui, Segoe UI, sans-serif"
       fontWeight="600"
       fontSize="32"
-      fill="#046BD2"
+      fill="currentColor"
       letterSpacing="5"
+      style={{ color: "inherit" }}
     >
       NCU
     </text>
@@ -56,6 +57,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
+  // Choose icon color adaptively in light/dark mode
+  // We'll use Tailwind's text-slate-700/dark:text-slate-200 for icons/etc, except for the active nav link.
+  const iconColor = "text-slate-700 dark:text-slate-200";
+
   return (
     <>
       <header
@@ -80,9 +85,11 @@ const Header = () => {
               : "0 2px 8px 0 rgba(4,107,210,0.06)",
           }}
         >
-          {/* Left: NCU Wordmark */}
+          {/* Left: NCU Wordmark/Logo */}
           <div className="flex items-center" style={{ height: 38 }}>
-            <NCUWordmark />
+            <span className="text-[#046BD2] dark:text-[#046BD2]">
+              <NCUWordmark />
+            </span>
           </div>
 
           {/* Center: Navigation */}
@@ -97,11 +104,9 @@ const Header = () => {
                     <Link
                       to={item.to}
                       className={cn(
-                        // 16px font, normal, system UI, no bold, no oversize
-                        "uppercase tracking-wide text-[16px] font-normal",
+                        "uppercase tracking-wide text-[16px] font-normal font-sans",
                         "transition-all px-2 pb-0.5 rounded",
                         "hover:text-[#B19528] hover:bg-[#046BD2]/5 duration-150",
-                        "font-sans",
                         active
                           ? "text-[#046BD2]"
                           : "text-gray-700 dark:text-gray-200"
@@ -116,11 +121,12 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Right: Actions (icons order: Search, Cart, Dark) */}
+          {/* Right: Actions - order is right->left: Search, Cart, Theme */}
           <div className="flex items-center gap-1 pl-2">
             {/* Search Icon */}
             <button
               className={cn(
+                iconColor,
                 "ml-2 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
                 "hover:text-[#046BD2] hover:scale-110 focus:text-[#046BD2]"
@@ -134,6 +140,7 @@ const Header = () => {
             {/* Cart Icon */}
             <button
               className={cn(
+                iconColor,
                 "relative mx-1 p-1 group outline-none ring-0 bg-transparent",
                 "transition-transform duration-150",
                 "hover:text-[#B19528] hover:scale-110 focus:text-[#B19528]"
@@ -148,14 +155,12 @@ const Header = () => {
                 3
               </span>
             </button>
-            {/* Dark mode toggle - (no background) */}
-            <span className="ml-1">
+            {/* Dark mode toggle */}
+            <span className={cn(iconColor, "ml-1")}>
               <ThemeToggle
-                iconClassName={cn(
-                  "transition-transform duration-150 hover:scale-110",
-                  "hover:text-[#046BD2]"
+                className={cn(
+                  "transition-transform duration-150 hover:scale-110 hover:text-[#046BD2]"
                 )}
-                naked
               />
             </span>
           </div>
