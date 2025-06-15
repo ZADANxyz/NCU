@@ -1,22 +1,25 @@
-import React, { useRef } from "react";
+
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const HERO_IMAGE = "/lovable-uploads/ff5bd571-8877-4014-b55a-6226e12e20f5.png";
+const HERO_IMAGE = "/lovable-uploads/ff5bd571-8877-4014-b55a-6226e12e20f5.png?v=" + Date.now();
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=1200&q=80";
 
 const HeroSection = () => {
   const imgRef = useRef<HTMLImageElement>(null);
+  const [imgError, setImgError] = useState(false);
 
-  // `onError` handler swaps to Unsplash on failure once, prevents loops
+  // Set error and switch to fallback, prevents infinite loop
   const handleImageError = () => {
     const img = imgRef.current;
     if (img && img.src !== FALLBACK_IMAGE) {
       img.src = FALLBACK_IMAGE;
+      setImgError(true);
     }
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[580px] md:min-h-[680px] pt-4 pb-12 overflow-hidden">
+    <section className="relative flex flex-col items-center justify-center min-h-[580px] md:min-h-[680px] pb-12 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
           ref={imgRef}
@@ -25,10 +28,19 @@ const HeroSection = () => {
           className="object-cover w-full h-full"
           style={{ minHeight: 360, maxHeight: 700, objectPosition: "center 22%" }}
           onError={handleImageError}
+          draggable={false}
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/55 to-transparent dark:from-[#191D28]/80 dark:via-[#181D2F55] dark:to-transparent" />
+        {imgError && (
+          <div className="absolute inset-0 flex items-center justify-center z-10 bg-white/40 dark:bg-[#181D2FD9]">
+            <span className="px-4 py-2 bg-gold text-white font-bold rounded shadow-lg text-sm">
+              Custom header image could not be loaded, showing fallback.
+            </span>
+          </div>
+        )}
       </div>
-      <div className="relative z-10 flex flex-col items-center px-4 md:px-9 w-full mt-20">
+      <div className="relative z-10 flex flex-col items-center px-4 md:px-9 w-full">
         <h1 className="text-[clamp(2.3rem,6vw,4.2rem)] font-extrabold leading-tight text-[#046BD2] mb-2 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
           North Carolina University
         </h1>
@@ -60,3 +72,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
