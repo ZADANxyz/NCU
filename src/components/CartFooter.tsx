@@ -54,32 +54,32 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
         className="group relative w-full px-5 py-2 font-semibold rounded-lg shadow-lg transition-all duration-200 disabled:opacity-30"
         style={checkoutBtnStyle}
       >
-        {/* Glass gloss overlay with much stronger hover effect */}
+        {/* Glass gloss overlay now FULL width and height */}
         <span
           style={{
             position: "absolute",
-            left: "20%",
+            left: 0,
             top: 0,
-            width: "60%",
+            width: "100%",
             height: "100%",
             zIndex: 0,
             pointerEvents: "none",
             borderRadius: "inherit",
             transition: "opacity 0.28s cubic-bezier(0.4,0,0.2,1), filter 0.18s cubic-bezier(0.4,0,0.2,1)",
             background:
-              "linear-gradient(105deg,rgba(255,255,255,0.17) 0%,rgba(255,255,255,0.12) 54%,rgba(255,255,255,0.19) 98%)",
-            opacity: 0.18,
-            filter: "blur(0.5px)",
+              "linear-gradient(105deg,rgba(255,255,255,0.21) 0%,rgba(255,255,255,0.12) 57%,rgba(255,255,255,0.23) 100%)",
+            opacity: 0.19, // slightly more visible default
+            filter: "blur(0.8px)",
           }}
-          className="group-hover:opacity-[0.38] group-hover:filter-glassx"
+          className="group-hover:opacity-[0.49] group-hover:filter-glassmax"
           aria-hidden="true"
         />
         <style>
           {`
-            /* Much stronger filter-glassx for hover glass effect */
-            .group:hover .group-hover\\:filter-glassx {
-              filter: blur(2.5px) brightness(1.21);
-              opacity: 0.38 !important;
+            /* Very strong glass effect on button hover */
+            .group:hover .group-hover\\:filter-glassmax {
+              filter: blur(4.5px) brightness(1.29);
+              opacity: 0.49 !important;
             }
           `}
         </style>
@@ -92,4 +92,3 @@ const CartFooter: React.FC<CartFooterProps> = ({ isDark, total, hasItems }) => {
 };
 
 export default CartFooter;
-

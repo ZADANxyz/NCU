@@ -1,45 +1,28 @@
 
 import React from "react";
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 interface ThemeToggleProps {
   className?: string;
-  isDark?: boolean;
-  iconSize?: number; // new prop for icon size
+  isDark?: boolean; // Still allowed for controlled render, but prefers context
+  iconSize?: number;
 }
 
 const GOLD = "#B19528";
 const BLUE = "#046BD2";
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark, iconSize = 21 }) => {
-  const [dark, setDark] = React.useState(() =>
-    typeof window !== "undefined"
-      ? document.documentElement.classList.contains("dark")
-      : false
-  );
-  const controlledDark = typeof isDark === "boolean" ? isDark : dark;
+  const { theme, isDark: dark, toggleTheme } = useTheme();
+
+  // Use controlled prop only if explicitly provided, otherwise context
+  const effectiveIsDark = typeof isDark === "boolean" ? isDark : dark;
 
   const [hovered, setHovered] = React.useState(false);
 
-  React.useEffect(() => {
-    if (dark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [dark]);
-
-  React.useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored) setDark(stored === "dark");
-    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) setDark(true);
-  }, []);
-
   // On hover: sun/moon is blue in light mode, gold in dark mode, else currentColor
   const hoveredColor = hovered
-    ? (controlledDark ? GOLD : BLUE)
+    ? (effectiveIsDark ? GOLD : BLUE)
     : "currentColor";
 
   const iconProps = {
@@ -55,13 +38,13 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className, isDark, iconSize =
         "rounded-full p-1.5 bg-transparent ring-0 transition-all duration-200 " +
         (className ?? "")
       }
-      onClick={() => setDark((v) => !v)}
+      onClick={toggleTheme}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       tabIndex={0}
       type="button"
     >
-      {controlledDark ? <Sun {...iconProps} /> : <Moon {...iconProps} />}
+      {effectiveIsDark ? <Sun {...iconProps} /> : <Moon {...iconProps} />}
     </button>
   );
 };
