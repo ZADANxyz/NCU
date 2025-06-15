@@ -51,7 +51,7 @@ const DegreesOfferedSection: React.FC = () => (
       <div
         className="
           grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full
-          px-2 md:px-4
+          px-4 md:px-8
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
