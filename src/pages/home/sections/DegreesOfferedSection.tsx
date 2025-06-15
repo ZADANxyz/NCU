@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -29,7 +28,7 @@ const DegreesOfferedSection: React.FC = () => (
   <section className="w-full bg-white dark:bg-[rgba(32,32,36,0.99)] py-12 md:py-16 px-3 md:px-7 flex flex-col items-center shadow-none">
     {/* Section Title */}
     <h2
-      className="text-4xl md:text-5xl font-bold text-center mb-7 font-playfair tracking-tight"
+      className="text-4xl md:text-5xl font-bold text-center mb-7 tracking-tight"
       style={{
         color: "#181818",
         letterSpacing: "0.01em",
