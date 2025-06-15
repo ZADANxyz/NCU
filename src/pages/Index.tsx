@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
@@ -304,7 +303,6 @@ function ReviewsSlider() {
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  filled={i < REVIEWS[index].stars}
                   className={cn(
                     "w-5 h-5",
                     i < REVIEWS[index].stars ? "text-[#B19528]" : "text-gray-300"
@@ -395,4 +393,3 @@ const Index = () => {
 };
 
 export default Index;
-
