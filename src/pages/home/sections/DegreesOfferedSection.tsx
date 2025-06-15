@@ -94,9 +94,10 @@ const DegreesOfferedSection: React.FC = () => (
         </div>
       </div>
       {/* Section Subtext */}
-      <div className="max-w-3xl mx-auto mt-1 mb-3">
-        <p className="text-[1.36rem] md:text-[1.43rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug">
-          New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
+      <div className="max-w-4xl md:max-w-[680px] mx-auto mt-1 mb-3">
+        <p className="text-[1.09rem] md:text-[1.13rem] lg:text-[1.19rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal leading-snug tracking-wide">
+          New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities
+          in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
         </p>
       </div>
       {/* Department of Education Logo */}
@@ -109,7 +110,7 @@ const DegreesOfferedSection: React.FC = () => (
         />
       </div>
     </section>
-    {/* Gold divider bar below the section */}
+    {/* Gold divider bar below the section to match top divider */}
     <div className="header-gold-bar mt-7 mb-7" />
   </>
 );
