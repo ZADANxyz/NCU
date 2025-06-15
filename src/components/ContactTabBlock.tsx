@@ -146,6 +146,7 @@ const ContactTabBlock = () => {
             fontFamily: "Roboto, Arial, sans-serif",
             fontWeight: 700,
             letterSpacing: 0.1,
+            transition: "color 0.2s"
           }}
         >
           <span className="transition-colors">Contact Us:</span>
@@ -227,8 +228,13 @@ const ContactTabBlock = () => {
             style={isDark ? goldGlossySpan : blueGlossySpan}
           ></span>
         </a>
-        <div className="text-[12.5px] md:text-[13.5px] font-medium text-center mt-3 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto transition-colors"
-          style={{ color: isDark ? "#fff" : "#444" }}>
+        <div
+          className="text-[12.5px] md:text-[13.5px] font-medium text-center mt-3 whitespace-nowrap overflow-hidden text-ellipsis max-w-xs font-roboto transition-colors"
+          style={{
+            color: isDark ? "#fff" : "#444", 
+            transition: "color 0.2s"
+          }}
+        >
           We&apos;re here to help—reach out and let&apos;s connect!
         </div>
       </div>
