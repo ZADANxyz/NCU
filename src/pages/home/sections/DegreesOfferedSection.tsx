@@ -28,13 +28,40 @@ const DEGREE_BUTTONS = [
 
 const EDGE_HORIZONTAL_PADDING = "52px";
 
+const GOLD_BAR_MAX_WIDTH = "1515px"; // Use the same as the hero/bottom divider for consistency
+
 const DegreesOfferedSection: React.FC = () => (
   <>
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
-      // Remove maxWidth and margin styles to allow full width + only padding
-      // The padding classes above match the HeroSection
     >
+      {/* TOP GOLD BAR (moved above heading, now matches bottom width) */}
+      <div
+        className="w-full flex justify-center"
+        style={{
+          marginTop: "0",
+          marginBottom: "2.6rem",
+        }}
+      >
+        <div
+          className="w-full"
+          style={{
+            maxWidth: GOLD_BAR_MAX_WIDTH,
+            marginLeft: "auto",
+            marginRight: "auto",
+            height: "1.1px",
+            background:
+              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
+            boxShadow:
+              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
+            borderRadius: 3,
+            zIndex: 20,
+            opacity: 0.99,
+            paddingLeft: EDGE_HORIZONTAL_PADDING,
+            paddingRight: EDGE_HORIZONTAL_PADDING,
+          }}
+        />
+      </div>
       <h2
         className="
           text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
@@ -86,32 +113,6 @@ const DegreesOfferedSection: React.FC = () => (
             </Link>
           ))}
         </div>
-      </div>
-      {/* Top THIN gold divider */}
-      <div
-        className="w-full flex justify-center"
-        style={{
-          marginBottom: "2.6rem",
-        }}
-      >
-        <div
-          className="w-full"
-          style={{
-            width: "100%",
-            height: "1.1px",
-            background:
-              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-            boxShadow:
-              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-            borderRadius: 3,
-            zIndex: 20,
-            opacity: 0.99,
-            paddingLeft: EDGE_HORIZONTAL_PADDING,
-            paddingRight: EDGE_HORIZONTAL_PADDING,
-            margin: "0 auto",
-            maxWidth: "100%",
-          }}
-        />
       </div>
       {/* Section Subtext */}
       <div className="max-w-5xl md:max-w-[700px] mx-auto mt-1 mb-3">
