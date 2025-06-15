@@ -31,7 +31,7 @@ const DegreesOfferedSection: React.FC = () => (
     {/* Section Title */}
     <h2
       className="
-        text-4xl md:text-5xl font-semibold text-center mb-7 tracking-tight font-roboto
+        text-4xl md:text-5xl text-center mb-7 tracking-tight font-roboto font-normal
       "
       style={{
         color: "#181818",
@@ -41,14 +41,15 @@ const DegreesOfferedSection: React.FC = () => (
     >
       Degrees Offered
     </h2>
-    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 mb-3">
+    {/* Section Subtitle */}
+    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-5">
       Click on any of the degrees below to learn more about each degree level.
     </p>
     {/* Button Grid */}
-    <div className="w-full flex justify-center items-center mb-7">
+    <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8
           w-full max-w-6xl
         "
       >
@@ -63,15 +64,16 @@ const DegreesOfferedSection: React.FC = () => (
             <img
               src={img}
               alt={alt}
-              className="rounded-xl w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
+              className="rounded-xl w-full h-auto object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none max-h-56 md:max-h-64"
+              style={{ minHeight: "170px", maxHeight: "16rem" }}
             />
           </Link>
         ))}
       </div>
     </div>
     {/* Section Subtext */}
-    <div className="max-w-3xl mx-auto mt-1 mb-7">
-      <p className="text-lg md:text-xl text-center text-[#333] dark:text-gray-100 font-roboto">
+    <div className="max-w-3xl mx-auto mt-1 mb-3">
+      <p className="text-[1.13rem] md:text-[1.18rem] text-center text-[#333] dark:text-gray-100 font-roboto font-medium leading-snug">
         New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
       </p>
     </div>
@@ -79,4 +81,3 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
-
