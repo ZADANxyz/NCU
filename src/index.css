@@ -96,11 +96,12 @@
 @layer base {
   * {
     @apply border-border;
+    font-family: 'Roboto', Arial, sans-serif;
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: system-ui, 'Segoe UI', sans-serif;
+    @apply bg-background text-foreground font-roboto;
+    font-family: 'Roboto', Arial, sans-serif;
     scroll-padding-top: 5rem;
   }
 

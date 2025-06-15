@@ -13,21 +13,22 @@ declare global {
 
 const NCU_PHONE = (
   <div
-    className="mt-3 mb-6 flex items-center justify-center text-[1.6rem] font-extrabold glass glossy px-4 py-2 rounded-xl shadow-lg backdrop-blur-md border border-blue-400/60 dark:border-blue-300/50 text-blue-700"
+    className="mt-3 mb-6 flex items-center justify-center text-[1.6rem] font-medium glass glossy px-4 py-2 rounded-[0.38rem] border-2 border-blue-700 transition-colors hover:border-blue-600 hover:shadow-lg"
     style={{
       background:
         "linear-gradient(115deg,rgba(81,128,255,0.16) 0%,rgba(41,100,210,0.28) 100%)",
-      boxShadow: "0 6px 32px 0 rgba(81,128,255,0.18)",
+      boxShadow: "0 6px 32px 0 rgba(81,128,255,0.12)",
       textShadow: "0 2px 10px rgba(27,45,95,0.10)",
       letterSpacing: "1px",
       fontSize: "1.6rem",
+      borderColor: "#2563eb"
     }}
   >
     <svg width={25} height={25} className="inline-block mr-2 text-blue-400" fill="none" stroke="currentColor">
       <path d="M6.85 2.15A6.59 6.59 0 0 1 11.7 7m-4.85-4.85L3.5 3.5a2 2 0 0 0-.5 2.43A16.11 16.11 0 0 0 14.07 15c.58.25 1.24 0 1.53-.55l1.2-2.14a1 1 0 0 0-.29-1.27l-2.39-1.91a1 1 0 0 0-1.11-.1l-2.2.91a13.01 13.01 0 0 1-4.26-4.26l.91-2.2a1 1 0 0 0-.1-1.11l-1.91-2.39a1 1 0 0 0-1.27-.29z" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
     <span>
-      <a href="tel:+16159482212" className="hover:underline" style={{ color: "#2563eb", fontWeight: 900 }}>
+      <a href="tel:+16159482212" className="hover:underline" style={{ color: "#2563eb", fontWeight: 700 }}>
         (615) 948-2212
       </a>
     </span>
@@ -87,8 +88,8 @@ const ContactTabBlock = () => {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Contact box with border */}
-      <div className="glass glossy shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto rounded-[0.38rem]">
-        <h3 className="text-[2.09rem] md:text-[2.35rem] font-black mb-1 text-center tracking-tight" style={{ fontFamily: "'Playfair Display', serif", color: "#1a1a1a", lineHeight: 1.09 }}>
+      <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full max-w-md bg-white/95 dark:bg-[#232232]/92 mx-auto">
+        <h3 className="text-[2.09rem] md:text-[2.35rem] font-black mb-1 text-center tracking-tight font-playfair" style={{ color: "#1a1a1a", lineHeight: 1.09 }}>
           Contact Us:
         </h3>
         <div className="pb-3">{NCU_PHONE}</div>
