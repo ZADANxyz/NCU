@@ -30,34 +30,9 @@ const DEGREE_BUTTONS = [
 // Max width for spacious layout
 const GRID_MAX_WIDTH = 1600;
 
-const THIN_DIVIDER_STYLE = {
-  maxWidth: "1515px",
-  marginLeft: "auto",
-  marginRight: "auto",
-  height: "1.1px",
-  background:
-    "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-  boxShadow:
-    "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-  borderRadius: 3,
-  zIndex: 20,
-  opacity: 0.99,
-  paddingLeft: "52px",
-  paddingRight: "52px",
-};
-
 const DegreesOfferedSection: React.FC = () => (
   <>
-    {/* THIN gold divider above section */}
-    <div
-      className="w-full flex justify-center"
-      style={{
-        marginTop: "2.5rem",
-        marginBottom: "0",
-      }}
-    >
-      <div className="w-full" style={THIN_DIVIDER_STYLE} />
-    </div>
+    {/* No divider above the section */}
     <section className="w-full bg-background dark:bg-background py-6 md:py-8 px-0 flex flex-col items-center shadow-none">
       <h2
         className="
@@ -133,7 +108,7 @@ const DegreesOfferedSection: React.FC = () => (
         </p>
       </div>
       {/* Department of Education Logo */}
-      <div className="flex justify-center mt-7 mb-0">
+      <div className="flex justify-center mt-7">
         <img
           src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
           alt="Florida Department of Education Logo"
@@ -141,7 +116,7 @@ const DegreesOfferedSection: React.FC = () => (
           style={{ maxWidth: "330px" }}
         />
       </div>
-      {/* THIN gold divider below the logo, with the same spacing as above */}
+      {/* THIN gold divider below the logo, matching the thin gold divider used above */}
       <div
         className="w-full flex justify-center"
         style={{
@@ -149,7 +124,24 @@ const DegreesOfferedSection: React.FC = () => (
           marginBottom: "0",
         }}
       >
-        <div className="w-full" style={THIN_DIVIDER_STYLE} />
+        <div
+          className="w-full"
+          style={{
+            maxWidth: "1515px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            height: "1.1px",
+            background:
+              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
+            boxShadow:
+              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
+            borderRadius: 3,
+            zIndex: 20,
+            opacity: 0.99,
+            paddingLeft: "52px",
+            paddingRight: "52px",
+          }}
+        />
       </div>
       {/* No divider below the section */}
     </section>
