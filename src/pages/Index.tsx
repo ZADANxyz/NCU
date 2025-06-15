@@ -7,9 +7,7 @@ import PortfolioSection from "./home/sections/PortfolioSection";
 import TeamSection from "./home/sections/TeamSection";
 import FoundingStorySection from "./home/sections/FoundingStorySection";
 import SubscribeSection from "./home/sections/SubscribeSection";
-import ReviewsSlider from "./home/sections/ReviewsSlider";
-import ContactAndMapSection from "./home/sections/ContactAndMapSection";
-import FooterSection from "./home/sections/FooterSection";
+import ReviewsSection from "./home/sections/ReviewsSection";
 
 const Index = () => {
   return (
@@ -17,15 +15,13 @@ const Index = () => {
       <main>
         <HeroSection />
         <DegreesOfferedSection />
+        <ReviewsSection />
         <VisionSection />
         <PortfolioSection />
         <TeamSection />
         <FoundingStorySection />
         <SubscribeSection />
-        <ReviewsSlider />
-        <ContactAndMapSection />
       </main>
-      <FooterSection />
     </div>
   );
 };
