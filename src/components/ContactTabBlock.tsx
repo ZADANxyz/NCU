@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from "react";
 
 // TypeScript: declare the global hbspt from HubSpot
@@ -52,7 +51,6 @@ const blueGlassGlossHoverStyle = {
   background:
     "linear-gradient(120deg,rgba(51,132,245,0.32) 10%,rgba(91,167,253,0.21) 58%,rgba(132,180,241,0.23) 100%)",
   textShadow: "0 1px 4px rgba(51,100,190,0.09)",
-  position: "relative",
   zIndex: 1,
 };
 
@@ -132,4 +130,3 @@ const ContactTabBlock = () => {
 };
 
 export default ContactTabBlock;
-
