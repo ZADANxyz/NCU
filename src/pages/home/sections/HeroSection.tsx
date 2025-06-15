@@ -5,21 +5,37 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-white font-normal font-roboto transition-colors">
-    <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
+  <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
+    style={{
+      color: "inherit"
+    }}
+  >
+    <p className="mb-8 font-normal font-roboto dark:text-white" style={{ fontSize: "1.38rem" }}>
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
         href="/donate"
-        className="font-bold underline font-roboto dark:text-white transition-colors"
-        style={{ color: "#181818" }}
+        className="font-bold underline font-roboto transition-colors dark:text-white"
+        style={{ color: "inherit" }}
       >
         here
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-    <p className="font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
+    <p className="font-normal font-roboto dark:text-white" style={{ fontSize: "1.38rem" }}>
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
     </p>
+    <style>
+      {`
+      .dark .font-roboto, 
+      .dark .font-normal, 
+      .dark .text-[1.38rem], 
+      .dark .text-[1.55rem], 
+      .dark p, 
+      .dark a {
+        color: #fff !important;
+      }
+      `}
+    </style>
   </div>
 );
 
@@ -97,7 +113,7 @@ const HeroSection = () => {
             <h2
               className="text-4xl sm:text-[2.7rem] md:text-[3.2rem] font-bold mb-6 md:mb-10 text-left tracking-tight font-roboto transition-colors"
               style={{
-                color: "#181818",
+                color: "var(--h2-color, #181818)",
                 letterSpacing: 0.1,
                 fontFamily: "Roboto, Arial, sans-serif",
                 lineHeight: 1.12,
@@ -106,30 +122,15 @@ const HeroSection = () => {
             >
               <span className="dark:text-white transition-colors">Meet Our NCU Alumni</span>
             </h2>
-            {/* More space above slider */}
             <div className="h-4 md:h-5" />
             <div className="w-full max-w-[870px]">
               <AlumniCarousel />
             </div>
-            {/* More space between slider and paragraph */}
             <div className="h-8 md:h-10" />
             <div className="flex-1 flex flex-col justify-start w-full max-w-[870px]">
-              {/* Paragraph and links styled for dark mode */}
-              <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed text-[#242424] dark:text-white font-normal font-roboto transition-colors">
-                <p className="mb-8 font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
-                  New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
-                  <a
-                    href="/donate"
-                    className="font-bold underline font-roboto dark:text-white transition-colors"
-                    style={{ color: "#181818" }}
-                  >
-                    here
-                  </a>
-                  , as they take what they have learned from NCU to the marketplace and ministry.
-                </p>
-                <p className="font-normal font-roboto" style={{ fontSize: "1.38rem" }}>
-                  The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
-                </p>
+              <div className="text-[1.38rem] md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
+                   style={{ color: "inherit" }}>
+                {NCU_ALUMNI_TEXT}
               </div>
             </div>
           </div>
