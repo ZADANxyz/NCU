@@ -1,4 +1,3 @@
-
 import React from "react";
 import ThemeToggle from "./ThemeToggle";
 import CartDrawer from "./CartDrawer";
@@ -95,11 +94,11 @@ const Header = () => {
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-13 px-2 sm:px-6" // Reduce height/padding further
+            "relative flex items-center justify-between h-[54px] px-3 sm:px-7"
           )}
         >
           {/* Left: Logo */}
-          <div className="flex items-center" style={{ height: 30 }}>
+          <div className="flex items-center" style={{ height: 36 }}>
             <Logo />
           </div>
           {/* Center: Navigation */}
@@ -215,7 +214,7 @@ const Header = () => {
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
 
-      <div className="h-13" />
+      <div style={{ height: 54 }} />
       <style>
         {`
         .glassier-header {
