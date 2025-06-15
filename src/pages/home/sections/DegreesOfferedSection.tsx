@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -26,8 +27,6 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const EDGE_HORIZONTAL_PADDING = "52px";
-
 const GOLD_BAR_MAX_WIDTH = "1515px"; // Use the same as the hero/bottom divider for consistency
 
 const DegreesOfferedSection: React.FC = () => (
@@ -35,14 +34,8 @@ const DegreesOfferedSection: React.FC = () => (
     <section
       className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
     >
-      {/* TOP GOLD BAR (moved above heading, now matches bottom width) */}
-      <div
-        className="w-full flex justify-center"
-        style={{
-          marginTop: "0",
-          marginBottom: "2.6rem",
-        }}
-      >
+      {/* SINGLE TOP GOLD BAR — match width to FLDEO bottom bar */}
+      <div className="w-full flex justify-center" style={{ marginTop: "0", marginBottom: "2.6rem" }}>
         <div
           className="w-full"
           style={{
@@ -57,8 +50,7 @@ const DegreesOfferedSection: React.FC = () => (
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
-            paddingLeft: EDGE_HORIZONTAL_PADDING,
-            paddingRight: EDGE_HORIZONTAL_PADDING,
+            // No padding needed, as the bar's width is already limited by maxWidth above
           }}
         />
       </div>
@@ -156,10 +148,8 @@ const DegreesOfferedSection: React.FC = () => (
             borderRadius: 3,
             zIndex: 20,
             opacity: 0.99,
-            paddingLeft: EDGE_HORIZONTAL_PADDING,
-            paddingRight: EDGE_HORIZONTAL_PADDING,
             margin: "0 auto",
-            maxWidth: "100%",
+            maxWidth: GOLD_BAR_MAX_WIDTH,
           }}
         />
       </div>
@@ -169,3 +159,4 @@ const DegreesOfferedSection: React.FC = () => (
 );
 
 export default DegreesOfferedSection;
+
