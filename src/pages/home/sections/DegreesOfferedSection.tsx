@@ -27,8 +27,8 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Make boxes larger by increasing max width
-const GRID_MAX_WIDTH = 1400;
+// Make boxes even larger by increasing max width
+const GRID_MAX_WIDTH = 1600;
 
 const DegreesOfferedSection: React.FC = () => (
   <section
@@ -56,7 +56,7 @@ const DegreesOfferedSection: React.FC = () => (
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 md:gap-10 w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 md:gap-16 w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -67,7 +67,7 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full p-4 md:p-7"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full p-6 md:p-10"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
