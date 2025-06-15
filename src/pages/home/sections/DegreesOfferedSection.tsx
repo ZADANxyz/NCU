@@ -1,5 +1,7 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Degree image assets mapping—ensure order matches your images & routes
 const DEGREE_BUTTONS = [
@@ -25,7 +27,6 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-// Increased max width for the grid to fill more space and keep square proportions
 const GRID_MAX_WIDTH = 1240;
 
 const DegreesOfferedSection: React.FC = () => (
@@ -54,7 +55,7 @@ const DegreesOfferedSection: React.FC = () => (
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 w-full h-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -65,17 +66,19 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full min-h-[175px] max-h-[240px]"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
           >
-            <img
-              src={img}
-              alt={alt}
-              className="rounded-lg w-full h-full object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
-              // full height and width, no minHeight
-            />
+            <AspectRatio ratio={1} className="w-full">
+              <img
+                src={img}
+                alt={alt}
+                className="rounded-lg w-full h-full object-cover shadow-md transition-transform duration-150 hover:scale-[1.025] border border-[#d3c797] dark:border-[#2f2f2f] select-none"
+                draggable={false}
+              />
+            </AspectRatio>
           </Link>
         ))}
       </div>
