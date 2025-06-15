@@ -27,7 +27,8 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GRID_MAX_WIDTH = 1240;
+// Make boxes larger by increasing max width
+const GRID_MAX_WIDTH = 1400;
 
 const DegreesOfferedSection: React.FC = () => (
   <section
@@ -51,11 +52,11 @@ const DegreesOfferedSection: React.FC = () => (
     <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
-    {/* Button Grid — grid fills more width with larger maxWidth */}
+    {/* Button Grid — boxes now bigger and more spaced */}
     <div className="w-full flex justify-center items-center mb-10">
       <div
         className="
-          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-7 w-full
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7 md:gap-10 w-full
         "
         style={{
           maxWidth: `${GRID_MAX_WIDTH}px`,
@@ -66,7 +67,7 @@ const DegreesOfferedSection: React.FC = () => (
           <Link
             key={alt}
             to={to}
-            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full"
+            className="flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-shadow hover:shadow-2xl h-full p-4 md:p-7"
             tabIndex={0}
             aria-label={alt}
             style={{ width: "100%" }}
