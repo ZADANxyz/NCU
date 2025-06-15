@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingCart, X, Minus, Plus, Trash2 } from "lucide-react";
 
@@ -140,7 +139,7 @@ const CartDrawer: React.FC<{
             zIndex: 2,
           }}
         />
-        {/* Vertical gold line, faded tips, at left edge of glass */}
+        {/* Vertical gold line */}
         <div
           className="absolute left-0 top-[3.5%] h-[93%] w-[2.5px] pointer-events-none"
           aria-hidden
@@ -166,7 +165,12 @@ const CartDrawer: React.FC<{
               borderRadius: "50%",
               boxShadow: "none",
               border: "none",
-              // No hover styling for background 
+            }}
+            onMouseOver={e => {
+              (e.currentTarget as HTMLButtonElement).style.background = "none";
+            }}
+            onMouseOut={e => {
+              (e.currentTarget as HTMLButtonElement).style.background = "none";
             }}
           >
             <X
@@ -192,35 +196,8 @@ const CartDrawer: React.FC<{
                   <div className="font-medium text-[#046BD2]">{item.title}</div>
                   <div className="text-[#B19528] font-semibold">${item.price.toFixed(2)}</div>
                 </div>
-                {/* Quantity controls */}
-                <div className="flex flex-col items-center gap-1">
-                  <div className="flex items-center gap-1">
-                    <button
-                      onClick={() => handleQtyChange(item.id, -1)}
-                      className="p-1 rounded hover:bg-gold/10 focus-visible:outline-none disabled:opacity-35"
-                      disabled={item.qty <= 1}
-                      aria-label="Decrease quantity"
-                    >
-                      <Minus size={18} className="text-[#B19528]" />
-                    </button>
-                    <input
-                      type="number"
-                      min={1}
-                      value={item.qty}
-                      onChange={(e) =>
-                        handleQtyInputChange(item.id, e.target.valueAsNumber)
-                      }
-                      className="w-12 border border-gold text-center rounded bg-white/60 dark:bg-black/40"
-                      style={{ margin: "0 2px" }}
-                    />
-                    <button
-                      onClick={() => handleQtyChange(item.id, 1)}
-                      className="p-1 rounded hover:bg-primary/10 focus-visible:outline-none"
-                      aria-label="Increase quantity"
-                    >
-                      <Plus size={18} className="text-[#046BD2]" />
-                    </button>
-                  </div>
+                {/* Controls row: trash + qty controls side-by-side */}
+                <div className="flex items-center gap-2">
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="p-1 rounded hover:bg-destructive/10 text-destructive-500 focus-visible:outline-none transition"
@@ -228,20 +205,80 @@ const CartDrawer: React.FC<{
                   >
                     <Trash2 size={17} />
                   </button>
+                  {/* Quantity controls */}
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => handleQtyChange(item.id, -1)}
+                        className="p-1 rounded hover:bg-gold/10 focus-visible:outline-none disabled:opacity-35"
+                        disabled={item.qty <= 1}
+                        aria-label="Decrease quantity"
+                      >
+                        <Minus size={18} className="text-[#B19528]" />
+                      </button>
+                      <input
+                        type="number"
+                        min={1}
+                        value={item.qty}
+                        onChange={(e) =>
+                          handleQtyInputChange(item.id, e.target.valueAsNumber)
+                        }
+                        className="w-12 border border-gold text-center rounded bg-white/60 dark:bg-black/40"
+                        style={{ margin: "0 2px" }}
+                      />
+                      <button
+                        onClick={() => handleQtyChange(item.id, 1)}
+                        className={`p-1 rounded focus-visible:outline-none ${
+                          isDark
+                            ? "hover:bg-gold/20"
+                            : "hover:bg-primary/10"
+                        }`}
+                        style={{
+                          background: "none",
+                        }}
+                        aria-label="Increase quantity"
+                      >
+                        <Plus
+                          size={18}
+                          className={isDark ? "text-[#B19528]" : "text-[#046BD2]"}
+                        />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))
           )}
         </div>
         {/* Footer */}
-        <div className="p-6 border-t border-gold/60 bg-gradient-to-t from-white/80 via-white/40 to-transparent dark:from-black/80 relative" style={{ zIndex: 12 }}>
+        <div
+          className="p-6 border-t border-gold/60 bg-gradient-to-t from-white/80 via-white/40 to-transparent dark:from-black/80 relative"
+          style={{
+            zIndex: 12,
+            background: isDark
+              ? "linear-gradient(120deg, rgba(30, 30, 36, 0.95), rgba(30, 30, 36, 0.68), rgba(30, 30, 36, 0.1))"
+              : "linear-gradient(120deg, rgba(255,255,255,0.92), rgba(230,240,255,0.48), rgba(255,255,255,0.05))",
+            backdropFilter: "blur(10px) saturate(135%)",
+            WebkitBackdropFilter: "blur(10px) saturate(135%)",
+          }}
+        >
           <div className="flex items-center justify-between text-lg font-bold pb-3">
             <span>Total</span>
             <span className="text-[#B19528]">${total.toFixed(2)}</span>
           </div>
           <button
             disabled={cart.length === 0}
-            className="w-full px-5 py-2 font-semibold rounded-lg bg-[#046BD2] hover:bg-[#0357a7] text-white shadow-lg transition-all duration-200 disabled:opacity-30"
+            className="w-full px-5 py-2 font-semibold rounded-lg shadow-lg transition-all duration-200 disabled:opacity-30"
+            style={{
+              background: isDark
+                ? "linear-gradient(90deg, rgba(40,38,54,0.90) 0%, rgba(177,149,40,0.18) 100%)"
+                : "linear-gradient(90deg, rgba(255,255,255,0.87) 0%, rgba(4,107,210,0.13) 100%)",
+              color: isDark ? "#fffbea" : "#000b30",
+              border: isDark ? "1.2px solid #B1952880" : "1.4px solid #046BD240",
+              boxShadow:
+                "0 2px 16px 2px rgba(4,107,210,0.05), 0 1px 0 0 #B19528",
+              backdropFilter: "blur(6px) brightness(1.05)",
+            }}
           >
             Checkout
           </button>
@@ -252,4 +289,3 @@ const CartDrawer: React.FC<{
 };
 
 export default CartDrawer;
-
