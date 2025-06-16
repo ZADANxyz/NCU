@@ -1,11 +1,10 @@
-
 import React from "react";
 
-const GOLD_BAR_MAX_WIDTH = "97vw";
+const GOLD_BAR_MAX_WIDTH = "93vw";
 
 const HeroDividerSection = () => {
   return (
-    <section className="w-full bg-background dark:bg-background py-8">
+    <section className="w-full bg-background dark:bg-background pt-20 pb-8">
       <div className="w-full flex justify-center">
         <div
           className="w-full"
