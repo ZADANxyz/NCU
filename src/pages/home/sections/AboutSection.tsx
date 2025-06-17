@@ -19,8 +19,8 @@ const AboutSection = () => {
           </div>
 
           {/* Right Column - Content and Buttons */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-start">
-            <div className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-16 lg:mt-20">
+          <div className="w-full lg:w-1/2 flex flex-col justify-start pr-0 lg:pr-4">
+            <div className="text-xl md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-16 lg:mt-20">
               <p>
                 New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
                 <a 
@@ -35,7 +35,7 @@ const AboutSection = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 font-roboto w-full sm:w-auto"
+                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 font-roboto w-full sm:w-auto min-w-[140px] h-12"
                 onClick={() => window.location.href = '/apply'}
               >
                 <span className="relative z-20">Apply Today!</span>
@@ -52,7 +52,7 @@ const AboutSection = () => {
               </button>
               
               <button 
-                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-gold text-blue-800 dark:text-gold bg-blue-100/10 dark:bg-gold/10 hover:bg-blue-200/20 dark:hover:bg-gold/20 font-roboto w-full sm:w-auto"
+                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-gold text-blue-800 dark:text-gold bg-blue-100/10 dark:bg-gold/10 hover:bg-blue-200/20 dark:hover:bg-gold/20 font-roboto w-full sm:w-auto min-w-[140px] h-12"
                 onClick={() => window.location.href = '/contact'}
               >
                 <span className="relative z-20">Contact Us</span>
