@@ -20,7 +20,7 @@ const AboutSection = () => {
 
           {/* Right Column - Content and Buttons */}
           <div className="w-full lg:w-1/2 flex flex-col justify-start">
-            <div className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8">
+            <div className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-8 lg:mt-12">
               <p>
                 New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
                 <a 
@@ -34,18 +34,38 @@ const AboutSection = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded font-roboto"
-                asChild
+              <button 
+                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 font-roboto w-full sm:w-auto"
+                onClick={() => window.location.href = '/apply'}
               >
-                <a href="/apply">Apply Today!</a>
-              </Button>
+                <span className="relative z-20">Apply Today!</span>
+                <span
+                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
+                  aria-hidden="true"
+                  style={{
+                    zIndex: 3,
+                    background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+                    boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+                    borderRadius: "inherit",
+                  }}
+                ></span>
+              </button>
               
               <button 
-                className="block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden group rounded border-2 border-blue-700 dark:border-gold text-blue-800 dark:text-gold bg-blue-100/10 dark:bg-gold/10 hover:bg-blue-200/20 dark:hover:bg-gold/20 font-roboto"
+                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-gold text-blue-800 dark:text-gold bg-blue-100/10 dark:bg-gold/10 hover:bg-blue-200/20 dark:hover:bg-gold/20 font-roboto w-full sm:w-auto"
                 onClick={() => window.location.href = '/contact'}
               >
                 <span className="relative z-20">Contact Us</span>
+                <span
+                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
+                  aria-hidden="true"
+                  style={{
+                    zIndex: 3,
+                    background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+                    boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+                    borderRadius: "inherit",
+                  }}
+                ></span>
               </button>
             </div>
           </div>
