@@ -13,14 +13,14 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
               About Us
             </h2>
-            <div className="w-full">
+            <div className="w-full overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>
 
           {/* Right Column - Content and Buttons */}
           <div className="w-full lg:w-1/2 flex flex-col justify-start">
-            <div className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-8 lg:mt-12">
+            <div className="text-xl md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-8 lg:mt-12">
               <p>
                 New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
                 <a 
