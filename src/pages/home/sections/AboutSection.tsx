@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   return (
-    <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
+    <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-6 sm:px-8 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
           {/* Left Column - Title and Photo Slider */}
@@ -13,7 +13,7 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
               About Us
             </h2>
-            <div className="w-full overflow-hidden rounded-lg">
+            <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
               <AlumniCarousel />
             </div>
           </div>
@@ -25,7 +25,7 @@ const AboutSection = () => {
                 New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
                 <a 
                   href="/about" 
-                  className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                  className="text-blue-600 dark:text-gold font-medium hover:underline"
                 >
                   [ read more ]
                 </a>
@@ -35,7 +35,7 @@ const AboutSection = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 font-roboto w-full sm:w-auto min-w-[140px] h-12"
+                className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-gold dark:border-gold dark:hover:bg-gold/90 dark:hover:border-gold/90 font-roboto w-full sm:w-auto min-w-[140px] h-12"
                 onClick={() => window.location.href = '/apply'}
               >
                 <span className="relative z-20">Apply Today!</span>
