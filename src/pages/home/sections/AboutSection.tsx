@@ -13,7 +13,7 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
               About Us
             </h2>
-            <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
+            <div className="w-full overflow-hidden rounded-lg h-72 md:h-88">
               <AlumniCarousel />
             </div>
           </div>
@@ -40,7 +40,7 @@ const AboutSection = () => {
               >
                 <span className="relative z-20">Apply Today!</span>
                 <span
-                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
+                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:!bg-none dark:!shadow-none"
                   aria-hidden="true"
                   style={{
                     zIndex: 3,
@@ -48,7 +48,6 @@ const AboutSection = () => {
                     boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
                     borderRadius: "inherit",
                   }}
-                  className="dark:!bg-none dark:!shadow-none"
                 ></span>
                 <span
                   className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
@@ -68,7 +67,7 @@ const AboutSection = () => {
               >
                 <span className="relative z-20">Contact Us</span>
                 <span
-                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100"
+                  className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:!bg-none dark:!shadow-none"
                   aria-hidden="true"
                   style={{
                     zIndex: 3,
@@ -76,7 +75,6 @@ const AboutSection = () => {
                     boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
                     borderRadius: "inherit",
                   }}
-                  className="dark:!bg-none dark:!shadow-none"
                 ></span>
                 <span
                   className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
