@@ -41,7 +41,7 @@ const FooterSection = () => (
       
       <div className="max-w-7xl mx-auto relative h-[96px] px-3 sm:px-6 md:px-[52px]">
         {/* Top row - Logo left, Social icons right */}
-        <div className="absolute top-3 left-0 right-0 flex items-center justify-between">
+        <div className="absolute top-3 left-3 sm:left-6 md:left-[52px] right-3 sm:right-6 md:right-[52px] flex items-center justify-between">
           {/* Logo - left side */}
           <div className="flex items-center">
             <Logo />
@@ -124,8 +124,8 @@ const FooterSection = () => (
         </div>
 
         {/* Bottom right - Search and Theme Toggle */}
-        <div className="absolute bottom-3 right-0 flex items-center gap-2">
-          <Search size={16} className="text-gray-600 dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
+        <div className="absolute bottom-3 right-3 sm:right-6 md:right-[52px] flex items-center gap-2">
+          <Search size={16} className="text-[#181818] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
           <ThemeToggle iconSize={16} />
         </div>
       </div>

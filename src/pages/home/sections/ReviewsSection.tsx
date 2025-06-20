@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -117,144 +116,145 @@ const ReviewsSection: React.FC = () => {
       className="
         w-full bg-background dark:bg-background 
         pt-4 pb-12 md:pt-6 md:pb-16
-        px-3 sm:px-6 md:px-[52px]
         flex flex-col items-center
       "
     >
-      {/* Section Title */}
-      <h2
-        className="
-          text-4xl md:text-5xl text-center mb-3 tracking-tight font-roboto font-normal
-          text-[#181818] dark:text-white
-        "
-        style={{
-          letterSpacing: "0.01em",
-          lineHeight: 1.13,
-          fontWeight: 400,
-        }}
-      >
-        What Our Students Are Saying
-      </h2>
-
-      <p className="text-lg md:text-xl text-center font-roboto text-[#666] dark:text-gray-300 font-light mb-6">
-        Real stories from real students
-      </p>
-
-      {/* Reviews Grid */}
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {REVIEWS.map((review) => {
-          const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
-
-          return (
-            <Card
-              key={review.id}
-              className="
-                glass glossy
-                bg-white/96 dark:bg-slate-900/80
-                border border-transparent dark:border-gold/10
-                shadow-lg hover:shadow-xl
-                hover:border-transparent dark:hover:border-gold/20
-                transition-shadow duration-300
-              "
-            >
-              <CardContent className="p-6">
-                {/* Header with photo and platform */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={review.photo}
-                      alt={review.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-[#181818] dark:text-white text-base">
-                        {review.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {review.date}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {/* Remove circle background here */}
-                    <PlatformLogo size={20} />
-                  </div>
-                </div>
-
-                {/* Star rating and verified badge */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1">
-                    {renderStars(review.rating)}
-                  </div>
-                  {review.verified && (
-                    <div
-                      className="flex items-center gap-1 text-[#34A853]"
-                      aria-label="Verified review"
-                    >
-                      <VerifiedCheckmark size={16} />
-                      <span className="text-xs font-medium text-[#34A853]">
-                        Verified
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Review text */}
-                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed">
-                  {review.text}
-                </p>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      {/* Call-to-Action Button */}
-      <div className="flex justify-center mb-6">
-        <Button
-          asChild
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 md:px-[52px]">
+        {/* Section Title */}
+        <h2
           className="
-            flex items-center gap-3
-            bg-gradient-to-r from-blue-600 to-blue-500
-            hover:from-blue-700 hover:to-blue-600
-            text-white px-8 py-3 text-lg font-medium
-            border-2 border-blue-600
-            hover:border-blue-700
-            transition-all duration-300 rounded-lg
-            dark:bg-gradient-to-r dark:from-[#B19528] dark:to-[#D4AF37]
-            dark:hover:from-[#D4AF37] dark:hover:to-[#B19528]
-            dark:border-[#B19528] dark:hover:border-[#D4AF37]
+            text-4xl md:text-5xl text-center mb-3 tracking-tight font-roboto font-normal
+            text-[#181818] dark:text-white
           "
-        >
-          <a
-            href="https://g.page/r/CSs8kB-cZ81zEBM/review"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3"
-          >
-            <GoogleLogo size={24} />
-            <span>Leave a Google Review</span>
-          </a>
-        </Button>
-      </div>
-
-      {/* Bottom gold divider */}
-      <div className="w-full flex justify-center mt-6 md:mt-8">
-        <div
-          className="w-full"
           style={{
-            maxWidth: GOLD_BAR_MAX_WIDTH,
-            height: "1.1px",
-            background:
-              "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
-            boxShadow:
-              "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
-            borderRadius: 3,
-            zIndex: 20,
-            opacity: 0.99,
-            margin: "0 auto",
+            letterSpacing: "0.01em",
+            lineHeight: 1.13,
+            fontWeight: 400,
           }}
-        />
+        >
+          What Our Students Are Saying
+        </h2>
+
+        <p className="text-lg md:text-xl text-center font-roboto text-[#666] dark:text-gray-300 font-light mb-6">
+          Real stories from real students
+        </p>
+
+        {/* Reviews Grid */}
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {REVIEWS.map((review) => {
+            const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
+
+            return (
+              <Card
+                key={review.id}
+                className="
+                  glass glossy
+                  bg-white/96 dark:bg-slate-900/80
+                  border border-transparent dark:border-gold/10
+                  shadow-lg hover:shadow-xl
+                  hover:border-transparent dark:hover:border-gold/20
+                  transition-shadow duration-300
+                "
+              >
+                <CardContent className="p-6">
+                  {/* Header with photo and platform */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={review.photo}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-[#181818] dark:text-white text-base">
+                          {review.name}
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {review.date}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {/* Remove circle background here */}
+                      <PlatformLogo size={20} />
+                    </div>
+                  </div>
+
+                  {/* Star rating and verified badge */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1">
+                      {renderStars(review.rating)}
+                    </div>
+                    {review.verified && (
+                      <div
+                        className="flex items-center gap-1 text-[#34A853]"
+                        aria-label="Verified review"
+                      >
+                        <VerifiedCheckmark size={16} />
+                        <span className="text-xs font-medium text-[#34A853]">
+                          Verified
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Review text */}
+                  <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed">
+                    {review.text}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Call-to-Action Button */}
+        <div className="flex justify-center mb-6">
+          <Button
+            asChild
+            className="
+              flex items-center gap-3
+              bg-gradient-to-r from-blue-600 to-blue-500
+              hover:from-blue-700 hover:to-blue-600
+              text-white px-8 py-3 text-lg font-medium
+              border-2 border-blue-600
+              hover:border-blue-700
+              transition-all duration-300 rounded-lg
+              dark:bg-gradient-to-r dark:from-[#B19528] dark:to-[#D4AF37]
+              dark:hover:from-[#D4AF37] dark:hover:to-[#B19528]
+              dark:border-[#B19528] dark:hover:border-[#D4AF37]
+            "
+          >
+            <a
+              href="https://g.page/r/CSs8kB-cZ81zEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3"
+            >
+              <GoogleLogo size={24} />
+              <span>Leave a Google Review</span>
+            </a>
+          </Button>
+        </div>
+
+        {/* Bottom gold divider */}
+        <div className="w-full flex justify-center mt-6 md:mt-8">
+          <div
+            className="w-full"
+            style={{
+              maxWidth: GOLD_BAR_MAX_WIDTH,
+              height: "1.1px",
+              background:
+                "linear-gradient(90deg,rgba(177,149,40,0.16) 0%, rgba(177,149,40,0.36) 3%, rgba(177,149,40,0.52) 12%, rgba(177,149,40,0.75) 29%, rgba(177,149,40,0.75) 71%, rgba(177,149,40,0.52) 88%, rgba(177,149,40,0.36) 97%, rgba(177,149,40,0.16) 100%)",
+              boxShadow:
+                "0 2px 9px 0 rgba(177,149,40,0.17) inset, 0 2px 2px 0 rgba(177,149,40,0.08)",
+              borderRadius: 3,
+              zIndex: 20,
+              opacity: 0.99,
+              margin: "0 auto",
+            }}
+          />
+        </div>
       </div>
     </section>
   );
