@@ -41,8 +41,8 @@ const FooterSection = () => (
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Main Footer Content */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
-          {/* Left - Logo only */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
+          {/* Left - Logo */}
           <div className="flex items-center">
             <Logo />
           </div>
@@ -68,7 +68,7 @@ const FooterSection = () => (
           </div>
 
           {/* Right - Social Media Icons and Controls */}
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-end gap-4">
             {/* Social Media Icons */}
             <div className="flex items-center gap-3">
               <a
@@ -134,7 +134,7 @@ const FooterSection = () => (
       </div>
     </footer>
 
-    <style jsx>{`
+    <style>{`
       .apple-glass-footer {
         background: rgba(255,255,255,0.86);
         backdrop-filter: blur(21px) saturate(160%);
