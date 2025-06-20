@@ -13,7 +13,7 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
               About Us
             </h2>
-            <div className="w-full overflow-hidden rounded-lg h-72 md:h-80">
+            <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
               <AlumniCarousel />
             </div>
           </div>

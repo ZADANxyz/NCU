@@ -118,14 +118,14 @@ const FooterSection = () => (
               rel="noopener noreferrer"
               className="text-[#046BD2] dark:text-[#B19528] font-semibold hover:underline"
             >
-              ZATHENA VENTURES 🚀
+              ZATHENA VENTURES 🦁
             </a>
           </div>
         </div>
 
         {/* Bottom right - Search and Theme Toggle */}
         <div className="absolute bottom-3 right-0 flex items-center gap-2">
-          <Search size={16} className="text-[#046BD2] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
+          <Search size={16} className="text-gray-600 dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
           <ThemeToggle iconSize={16} />
         </div>
       </div>
