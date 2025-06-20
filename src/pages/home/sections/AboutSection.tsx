@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
   return (
-    <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-4 sm:px-8 md:px-12 lg:px-16">
+    <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
           {/* Left Column - Title and Photo Slider */}

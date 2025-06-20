@@ -39,7 +39,7 @@ const FooterSection = () => (
         }}
       />
       
-      <div className="max-w-7xl mx-auto relative h-[96px] px-3 sm:px-7">
+      <div className="max-w-7xl mx-auto relative h-[96px] px-3 sm:px-6 md:px-[52px]">
         {/* Top row - Logo left, Social icons right */}
         <div className="absolute top-3 left-0 right-0 flex items-center justify-between">
           {/* Logo - left side */}

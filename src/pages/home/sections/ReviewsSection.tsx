@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -116,7 +117,7 @@ const ReviewsSection: React.FC = () => {
       className="
         w-full bg-background dark:bg-background 
         pt-4 pb-12 md:pt-6 md:pb-16
-        px-3 sm:px-6 md:px-[52px] 
+        px-3 sm:px-6 md:px-[52px]
         flex flex-col items-center
       "
     >
