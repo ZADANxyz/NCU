@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Youtube, Facebook, Instagram, Twitter, Mail, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -38,36 +39,16 @@ const FooterSection = () => (
         }}
       />
       
-      <div className="max-w-7xl mx-auto relative h-[96px]">
-        {/* Logo - positioned to match header left padding */}
-        <div className="absolute left-3 sm:left-7 top-0 h-full flex items-center">
-          <Logo />
-        </div>
-
-        {/* Center - Copyright Information - centered to the header container */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <div className="text-sm mb-1">
-            Copyright © {new Date().getFullYear()} - <span className="text-[#B19528] dark:text-[#B19528] font-semibold">NEW COVENANT UNIVERSITY</span>
-            <br />
-            All Rights Reserved - <a href="/sitemap" className="text-[#046BD2] dark:text-[#B19528] hover:underline">Sitemap</a>
+      <div className="max-w-7xl mx-auto relative h-[96px] px-3 sm:px-7">
+        {/* Top row - Logo left, Social icons right */}
+        <div className="absolute top-3 left-0 right-0 flex items-center justify-between">
+          {/* Logo - left side */}
+          <div className="flex items-center">
+            <Logo />
           </div>
-          <div className="text-sm">
-            <span>Designed & Hosted By: </span>
-            <a 
-              href="https://zathenaventures.xyz" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[#046BD2] dark:text-[#B19528] font-semibold hover:underline"
-            >
-              ZATHENA VENTURES 🚀
-            </a>
-          </div>
-        </div>
 
-        {/* Right - Social Media Icons and Controls - positioned to match header right padding */}
-        <div className="absolute right-3 sm:right-7 top-0 h-full flex flex-col justify-center gap-3">
-          {/* Social Media Icons Row */}
-          <div className="flex items-center justify-end gap-2">
+          {/* Social Media Icons - right side */}
+          <div className="flex items-center gap-2">
             <a
               href="#"
               aria-label="Facebook"
@@ -120,17 +101,38 @@ const FooterSection = () => (
               <HubSpotIcon />
             </a>
           </div>
+        </div>
 
-          {/* Search and Theme Toggle Row */}
-          <div className="flex items-center justify-end gap-2">
-            <Search size={16} className="text-[#046BD2] dark:text-[#B19528] cursor-pointer hover:opacity-80 transition-opacity" />
-            <ThemeToggle iconSize={16} />
+        {/* Center - Copyright Information */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+          <div className="text-sm mb-1">
+            Copyright © {new Date().getFullYear()} - <span className="text-[#046BD2] dark:text-[#B19528] font-semibold">NEW COVENANT UNIVERSITY</span>
+            <br />
+            All Rights Reserved - <a href="/sitemap" className="text-[#046BD2] dark:text-[#B19528] hover:underline">Sitemap</a>
           </div>
+          <div className="text-sm">
+            <span>Designed & Hosted By: </span>
+            <a 
+              href="https://zathenaventures.xyz" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#046BD2] dark:text-[#B19528] font-semibold hover:underline"
+            >
+              ZATHENA VENTURES 🚀
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom right - Search and Theme Toggle */}
+        <div className="absolute bottom-3 right-0 flex items-center gap-2">
+          <Search size={16} className="text-[#046BD2] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
+          <ThemeToggle iconSize={16} />
         </div>
       </div>
     </footer>
 
-    <style>{`
+    <style>
+      {`
       .apple-glass-footer {
         background: rgba(255,255,255,0.86);
         backdrop-filter: blur(21px) saturate(160%);
@@ -174,7 +176,8 @@ const FooterSection = () => (
         );
         opacity: 1;
       }
-    `}</style>
+      `}
+    </style>
   </>
 );
 
