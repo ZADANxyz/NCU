@@ -140,8 +140,8 @@ const ReviewsSection: React.FC = () => {
         Real stories from real students
       </p>
 
-      {/* Reviews Grid - adjusted to be narrower like degrees and taller */}
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
+      {/* Reviews Grid - adjusted to max-w-7xl for slightly wider than 6xl but not full width */}
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
         {REVIEWS.map((review) => {
           const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
 
