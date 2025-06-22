@@ -1,3 +1,4 @@
+
 import React from "react";
 import AlumniCarousel from "@/components/AlumniCarousel";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const AboutSection = () => {
   return (
     <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+      <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
         {/* Left Column - Title and Photo Slider */}
         <div className="w-full lg:w-1/2 flex flex-col">
           <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">

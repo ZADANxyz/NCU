@@ -154,9 +154,10 @@ const ReviewsSection: React.FC = () => {
                 shadow-lg hover:shadow-xl
                 hover:border-transparent dark:hover:border-gold/20
                 transition-shadow duration-300
+                min-h-[320px]
               "
             >
-              <CardContent className="p-6">
+              <CardContent className="p-6 h-full flex flex-col">
                 {/* Header with photo and platform */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
@@ -199,7 +200,7 @@ const ReviewsSection: React.FC = () => {
                 </div>
 
                 {/* Review text */}
-                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed">
+                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed flex-grow">
                   {review.text}
                 </p>
               </CardContent>
