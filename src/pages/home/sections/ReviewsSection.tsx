@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -139,8 +140,8 @@ const ReviewsSection: React.FC = () => {
         Real stories from real students
       </p>
 
-      {/* Reviews Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {/* Reviews Grid - adjusted to be narrower like degrees and taller */}
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12">
         {REVIEWS.map((review) => {
           const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
 
@@ -154,9 +155,10 @@ const ReviewsSection: React.FC = () => {
                 shadow-lg hover:shadow-xl
                 hover:border-transparent dark:hover:border-gold/20
                 transition-shadow duration-300
+                min-h-[280px]
               "
             >
-              <CardContent className="p-6">
+              <CardContent className="p-6 h-full flex flex-col">
                 {/* Header with photo and platform */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
@@ -175,7 +177,6 @@ const ReviewsSection: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    {/* Remove circle background here */}
                     <PlatformLogo size={20} />
                   </div>
                 </div>
@@ -198,8 +199,8 @@ const ReviewsSection: React.FC = () => {
                   )}
                 </div>
 
-                {/* Review text */}
-                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed">
+                {/* Review text - flex-grow to fill remaining space */}
+                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed flex-grow">
                   {review.text}
                 </p>
               </CardContent>
