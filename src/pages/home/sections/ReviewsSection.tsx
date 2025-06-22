@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -116,10 +117,11 @@ const ReviewsSection: React.FC = () => {
       className="
         w-full bg-background dark:bg-background 
         pt-4 pb-12 md:pt-6 md:pb-16
+        px-3 sm:px-6 md:px-[52px]
         flex flex-col items-center
       "
     >
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 md:px-[52px]">
+      <div className="w-full max-w-7xl mx-auto">
         {/* Section Title */}
         <h2
           className="
