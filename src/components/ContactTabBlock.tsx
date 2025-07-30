@@ -118,14 +118,29 @@ const ContactTabBlock = () => {
         #hubspot-form-block * {
           color: #fff !important;
         }
-        #hubspot-form-block label, #hubspot-form-block .hs-form-required {
+        #hubspot-form-block label, 
+        #hubspot-form-block .hs-form-required,
+        #hubspot-form-block .hs-fieldtype-text label,
+        #hubspot-form-block .hs-fieldtype-textarea label,
+        #hubspot-form-block .hs-fieldtype-select label,
+        #hubspot-form-block .hs-fieldtype-file label,
+        #hubspot-form-block .hs-form-field label,
+        #hubspot-form-block .hs-richtext,
+        #hubspot-form-block .hs-form-field > label,
+        #hubspot-form-block .field label,
+        #hubspot-form-block .hs-file-description,
+        #hubspot-form-block .hs-file-description span {
           color: #fff !important;
         }
-        #hubspot-form-block input, #hubspot-form-block textarea, #hubspot-form-block select {
+        #hubspot-form-block input, 
+        #hubspot-form-block textarea, 
+        #hubspot-form-block select {
           background: #232232 !important;
           color: #fff !important;
+          border-color: #666 !important;
         }
-        #hubspot-form-block .hs-button.primary, #hubspot-form-block input[type=submit] {
+        #hubspot-form-block .hs-button.primary, 
+        #hubspot-form-block input[type=submit] {
           background: #b19528 !important;
           border-color: #b19528 !important;
           color: #232232 !important;
