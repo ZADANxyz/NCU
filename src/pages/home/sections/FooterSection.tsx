@@ -136,8 +136,8 @@ const FooterSection = () => {
           <ThemeToggle iconSize={16} />
         </div>
 
-        {/* Search Bar - positioned above footer */}
-        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-full z-50">
+        {/* Search Bar - positioned above footer and gold line */}
+        <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 w-full z-50">
           <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
         </div>
       </div>
