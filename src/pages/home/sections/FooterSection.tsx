@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Youtube, Facebook, Instagram, Twitter, Mail, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
+import SearchBar from "@/components/SearchBar";
 
 // TikTok icon component since it's not available in Lucide
 const TikTokIcon = () => (
@@ -17,9 +18,12 @@ const HubSpotIcon = () => (
   </svg>
 );
 
-const FooterSection = () => (
-  <>
-    <footer id="site-footer" className="w-full apple-glass-footer relative">
+const FooterSection = () => {
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  return (
+    <>
+      <footer id="site-footer" className="w-full apple-glass-footer relative">
       {/* Gold line visual (same as header but above footer) */}
       <div
         className="mx-auto"
@@ -109,7 +113,7 @@ const FooterSection = () => (
             <br />
             All Rights Reserved - <a href="/sitemap" className="text-[#046BD2] dark:text-[#B19528] hover:underline">Sitemap</a>
           </div>
-          <div className="text-sm">
+          <div className="text-sm mt-1">
             <span>Designed & Hosted By: </span>
             <a 
               href="https://zathenaventures.xyz" 
@@ -124,9 +128,16 @@ const FooterSection = () => (
 
         {/* Bottom right - Search and Theme Toggle */}
         <div className="absolute bottom-3 right-3 sm:right-6 md:right-[52px] flex items-center gap-2">
-          <Search size={16} className="text-[#181818] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" />
+          <Search 
+            size={16} 
+            className="text-[#181818] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" 
+            onClick={() => setSearchOpen(!searchOpen)}
+          />
           <ThemeToggle iconSize={16} />
         </div>
+
+        {/* Search Bar */}
+        <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </div>
     </footer>
 
@@ -177,7 +188,8 @@ const FooterSection = () => (
       }
       `}
     </style>
-  </>
-);
+    </>
+  );
+};
 
 export default FooterSection;
