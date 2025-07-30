@@ -107,51 +107,6 @@ const ContactTabBlock = () => {
     }
   }, []);
 
-  // Inject style to force HubSpot form dark mode text to white
-  useEffect(() => {
-    if (!isDark) return;
-    let styleTag = document.getElementById("hubspot-darkmode-style");
-    if (!styleTag) {
-      styleTag = document.createElement("style");
-      styleTag.id = "hubspot-darkmode-style";
-      styleTag.innerHTML = `
-        #hubspot-form-block * {
-          color: #fff !important;
-        }
-        #hubspot-form-block label, 
-        #hubspot-form-block .hs-form-required,
-        #hubspot-form-block .hs-fieldtype-text label,
-        #hubspot-form-block .hs-fieldtype-textarea label,
-        #hubspot-form-block .hs-fieldtype-select label,
-        #hubspot-form-block .hs-fieldtype-file label,
-        #hubspot-form-block .hs-form-field label,
-        #hubspot-form-block .hs-richtext,
-        #hubspot-form-block .hs-form-field > label,
-        #hubspot-form-block .field label,
-        #hubspot-form-block .hs-file-description,
-        #hubspot-form-block .hs-file-description span {
-          color: #fff !important;
-        }
-        #hubspot-form-block input, 
-        #hubspot-form-block textarea, 
-        #hubspot-form-block select {
-          background: #232232 !important;
-          color: #fff !important;
-          border-color: #666 !important;
-        }
-        #hubspot-form-block .hs-button.primary, 
-        #hubspot-form-block input[type=submit] {
-          background: #b19528 !important;
-          border-color: #b19528 !important;
-          color: #232232 !important;
-        }
-      `;
-      document.head.appendChild(styleTag);
-    }
-    return () => {
-      styleTag?.remove();
-    };
-  }, [isDark]);
 
   return (
     <div className="w-full flex flex-col items-center font-roboto">

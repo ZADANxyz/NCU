@@ -56,29 +56,19 @@ const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
       styleTag = document.createElement("style");
       styleTag.id = "hubspot-darkmode-style";
       styleTag.innerHTML = `
-        #hubspot-form-block * {
-          color: #fff !important;
-        }
-        #hubspot-form-block label, 
+        #hubspot-form-block label,
         #hubspot-form-block .hs-form-required,
-        #hubspot-form-block .hs-fieldtype-text label,
-        #hubspot-form-block .hs-fieldtype-textarea label,
-        #hubspot-form-block .hs-fieldtype-select label,
-        #hubspot-form-block .hs-fieldtype-file label,
         #hubspot-form-block .hs-form-field label,
         #hubspot-form-block .hs-richtext,
-        #hubspot-form-block .hs-form-field > label,
-        #hubspot-form-block .field label,
-        #hubspot-form-block .hs-file-description,
-        #hubspot-form-block .hs-file-description span {
+        #hubspot-form-block .hs-file-description {
           color: #fff !important;
         }
         #hubspot-form-block input, 
         #hubspot-form-block textarea, 
         #hubspot-form-block select {
-          background: #232232 !important;
+          background: rgba(35, 34, 50, 0.8) !important;
           color: #fff !important;
-          border-color: #666 !important;
+          border: 1px solid #666 !important;
         }
         #hubspot-form-block .hs-button.primary, 
         #hubspot-form-block input[type=submit] {
