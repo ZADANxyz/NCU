@@ -96,10 +96,10 @@ const Header = () => {
       >
         <div
           className={cn(
-            "relative flex items-center justify-between h-[60px] px-3 sm:px-7"
+            "relative flex items-center justify-between h-[70px] px-3 sm:px-7"
           )}
           style={{
-            minHeight: 60,
+            minHeight: 70,
             alignItems: "center",
             display: "flex"
           }}

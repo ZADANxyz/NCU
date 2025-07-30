@@ -113,7 +113,7 @@ const FooterSection = () => {
             <br />
             All Rights Reserved - <a href="/sitemap" className="text-[#046BD2] dark:text-[#B19528] hover:underline">Sitemap</a>
           </div>
-          <div className="text-sm mt-1">
+          <div className="text-sm mt-3">
             <span>Designed & Hosted By: </span>
             <a 
               href="https://zathenaventures.xyz" 
@@ -136,8 +136,10 @@ const FooterSection = () => {
           <ThemeToggle iconSize={16} />
         </div>
 
-        {/* Search Bar */}
-        <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
+        {/* Search Bar - positioned above footer */}
+        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 w-full z-50">
+          <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
+        </div>
       </div>
     </footer>
 
