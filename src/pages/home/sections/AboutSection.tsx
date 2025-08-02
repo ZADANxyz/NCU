@@ -10,7 +10,7 @@ const AboutSection = () => {
         {/* Left Column - Title and Photo Slider */}
         <div className="w-full lg:w-1/2 flex flex-col">
           <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
-            About Us
+            Meet Our President:
           </h2>
           <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
             <AlumniCarousel />
@@ -20,14 +20,11 @@ const AboutSection = () => {
         {/* Right Column - Content and Buttons */}
         <div className="w-full lg:w-1/2 flex flex-col justify-start pr-0 lg:pr-4">
           <div className="text-xl md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-16 lg:mt-20">
+            <h3 className="text-xl md:text-2xl font-roboto font-bold text-[#333] dark:text-gray-200 mb-4">
+              Angel L. Crites, Ed.D; D.Th
+            </h3>
             <p>
-              New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
-              <a 
-                href="/about" 
-                className="text-blue-600 hover:underline dark:text-[#B19528] dark:hover:text-[#B19528]"
-              >
-                [ read more ]
-              </a>
+              Dr. Crites has had over three decades of experience in the field of education and 15 years of experience with higher education. Her unique biblical perspectives inspire others pursuing their call to ministry and leadership. She holds a B.A. in Classical Christian Education, M.A. in Christian Leadership and Organizational Management, M.A. in Counseling from Destiny Christian College and University, Nashville, Tennessee campus. As well as a Doctorate in Christian Education from New Covenant University, Jacksonville, Florida and a Doctorate in Theology from Vineyard Harvester Seminary and Bible College based out of Georgia.
             </p>
           </div>
 
@@ -62,9 +59,9 @@ const AboutSection = () => {
             
             <button 
               className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto w-full sm:w-auto min-w-[140px] h-12"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => window.location.href = '/donate'}
             >
-              <span className="relative z-20">Contact Us</span>
+              <span className="relative z-20">Donate Now</span>
               <span
                 className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
                 aria-hidden="true"

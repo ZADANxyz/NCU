@@ -10,7 +10,7 @@ import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 import AlumniCarousel from "@/components/AlumniCarousel";
 
-const HERO_IMAGE = "/lovable-uploads/aa922b63-f20a-4042-8985-bd50591544e3.png";
+const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const About = () => {
   return (
@@ -52,16 +52,16 @@ const About = () => {
           {/* Right Column - Portrait Image and Slider */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             {/* Portrait Image */}
-            <div className="w-full h-96 overflow-hidden rounded-lg">
+            <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
               <img
-                src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
-                alt="Dr. Paul Crites"
+                src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
+                alt="Paul Crites"
                 className="w-full h-full object-cover"
               />
             </div>
             
             {/* Horizontal Image Slider */}
-            <div className="w-full h-48 overflow-hidden rounded-lg">
+            <div className="w-full h-64 overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>
@@ -73,7 +73,7 @@ const About = () => {
             className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto min-w-[160px] h-12"
             onClick={() => window.location.href = '/apply'}
           >
-            <span className="relative z-20">Apply Today</span>
+            <span className="relative z-20">Apply Today!</span>
             <span
               className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
               aria-hidden="true"
@@ -102,10 +102,9 @@ const About = () => {
       <main>
         <HeroDividerSection />
         <DegreesOfferedSection />
-        <HeroDividerSection />
         <ReviewsSection />
-        <HeroDividerSection />
         <AboutSection />
+        <HeroDividerSection />
         <MapSection />
       </main>
       
