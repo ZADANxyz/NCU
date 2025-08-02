@@ -13,7 +13,11 @@ const AboutSection = () => {
             Meet Our President:
           </h2>
           <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
-            <AlumniCarousel />
+            <img
+              src="/lovable-uploads/033cc9e0-07a9-4d43-b011-0d16b20cb8d9.png"
+              alt="Dr. Angel Crites"
+              className="w-full h-full object-cover object-center"
+            />
           </div>
         </div>
 

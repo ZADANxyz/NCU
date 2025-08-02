@@ -9,6 +9,7 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 import AlumniCarousel from "@/components/AlumniCarousel";
+import ContactTabBlock from "@/components/ContactTabBlock";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -52,11 +53,11 @@ const About = () => {
           {/* Right Column - Portrait Image and Slider */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             {/* Portrait Image */}
-            <div className="w-full h-64 overflow-hidden rounded-lg mb-4">
+            <div className="w-full aspect-video overflow-hidden rounded-lg mb-4">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
             
@@ -70,7 +71,7 @@ const About = () => {
         {/* Apply Today Button */}
         <div className="flex justify-center mt-12">
           <button 
-            className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto min-w-[160px] h-12"
+            className="group block font-bold py-3 px-10 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[180px] h-12"
             onClick={() => window.location.href = '/apply'}
           >
             <span className="relative z-20">Apply Today!</span>
@@ -105,6 +106,11 @@ const About = () => {
         <ReviewsSection />
         <AboutSection />
         <HeroDividerSection />
+        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+          <div className="max-w-4xl mx-auto">
+            <ContactTabBlock />
+          </div>
+        </div>
         <MapSection />
       </main>
       
