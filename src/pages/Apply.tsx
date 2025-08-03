@@ -29,27 +29,27 @@ const Apply = () => {
       <main className="flex-1">
         {/* Application Section */}
         <section className="w-full py-16 bg-background">
-          <div className="w-full px-6 sm:px-8 md:px-[60px] max-w-7xl mx-auto">
+          <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 mb-8">
-              {/* Logo */}
+              {/* Logo - Large and pinned to left */}
               <div className="flex-shrink-0">
                 <img
                   src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
                   alt="New Covenant University Seal"
-                  className="w-32 h-32 md:w-40 md:h-40"
+                  className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64"
                 />
               </div>
               
-              {/* University Info */}
-              <div className="flex-1">
-                <div className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
+              {/* University Info - Centered vertically with logo */}
+              <div className="flex-1 flex flex-col justify-center">
+                <div className="text-lg md:text-xl lg:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                   Application for Admission
                 </h1>
-                <p className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 uppercase tracking-wide">
+                <p className="text-lg md:text-xl lg:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 uppercase tracking-wide">
                   PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                 </p>
               </div>
