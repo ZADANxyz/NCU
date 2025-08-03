@@ -14,26 +14,15 @@ interface GoogleDriveFile {
 }
 
 class GoogleDriveService {
-  private apiKey: string | null = null;
+  private apiKey: string = "AIzaSyCkc1syK-D7R6zGUohUZ8_1uO73tVG3Y8g"; // Hardcoded API key
   private folderId: string = "1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94"; // Your Google Drive folder ID
 
-  setApiKey(apiKey: string) {
-    this.apiKey = apiKey;
-    localStorage.setItem('googleDriveApiKey', apiKey);
-  }
-
-  getApiKey(): string | null {
-    if (!this.apiKey) {
-      this.apiKey = localStorage.getItem('googleDriveApiKey');
-    }
+  getApiKey(): string {
     return this.apiKey;
   }
 
   async fetchGalleryImages(): Promise<GoogleDriveImage[]> {
     const apiKey = this.getApiKey();
-    if (!apiKey) {
-      throw new Error('Google Drive API key not set');
-    }
 
     try {
       const response = await fetch(
@@ -65,10 +54,6 @@ class GoogleDriveService {
     }
   }
 
-  isValidApiKey(apiKey: string): boolean {
-    // Basic validation - Google API keys are typically 39 characters and start with "AIza"
-    return apiKey.length === 39 && apiKey.startsWith('AIza');
-  }
 }
 
 export const googleDriveService = new GoogleDriveService();

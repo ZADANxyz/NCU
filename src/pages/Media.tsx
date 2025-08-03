@@ -7,12 +7,8 @@ import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
-import { ChevronLeft, ChevronRight, Settings, RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { googleDriveService, GoogleDriveImage } from "@/utils/googleDriveApi";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
@@ -38,20 +34,12 @@ const Media = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
   const [galleryImages, setGalleryImages] = useState<GoogleDriveImage[]>(initialGalleryImages);
-  const [apiKey, setApiKey] = useState("");
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   
-  // Load saved API key and gallery data from localStorage
+  // Load gallery images on component mount
   useEffect(() => {
-    const savedApiKey = googleDriveService.getApiKey();
     const savedGalleryImages = localStorage.getItem("mediaGalleryImages");
-    
-    if (savedApiKey) {
-      setApiKey(savedApiKey);
-      loadGalleryImages(); // Auto-load images if API key exists
-    }
     
     if (savedGalleryImages) {
       try {
@@ -61,6 +49,9 @@ const Media = () => {
         console.error("Error parsing saved gallery images:", error);
       }
     }
+    
+    // Auto-load fresh images from Google Drive
+    loadGalleryImages();
   }, []);
 
   const loadGalleryImages = async () => {
@@ -85,31 +76,6 @@ const Media = () => {
     }
   };
 
-  const handleApiKeySubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!apiKey) {
-      toast({
-        title: "Error",
-        description: "Please enter your Google Drive API key",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!googleDriveService.isValidApiKey(apiKey)) {
-      toast({
-        title: "Invalid API Key",
-        description: "Please enter a valid Google Drive API key (should start with 'AIza')",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    googleDriveService.setApiKey(apiKey);
-    await loadGalleryImages();
-    setIsSettingsOpen(false);
-  };
 
   // Calculate pagination values
   const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
@@ -176,81 +142,11 @@ const Media = () => {
       {/* Gallery Section */}
       <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
         <div className="w-full px-6 sm:px-8 md:px-[60px]">
-          {/* Gallery Title & Settings */}
-          <div className="mb-12 flex justify-between items-center">
+          {/* Gallery Title */}
+          <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white tracking-tight">
               Gallery:
             </h2>
-            
-            {/* Admin Settings Button */}
-            <Collapsible open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
-              <CollapsibleTrigger asChild>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="opacity-50 hover:opacity-100 transition-opacity"
-                >
-                  <Settings className="h-4 w-4 mr-2" />
-                  Settings
-                </Button>
-              </CollapsibleTrigger>
-              <CollapsibleContent className="mt-4">
-                <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border">
-                  <h3 className="text-lg font-medium mb-4 text-[#181818] dark:text-white">
-                    Google Drive API Configuration
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    Enter your Google Drive API key to automatically load images from your Google Drive folder.
-                  </p>
-                  
-                  <form onSubmit={handleApiKeySubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="apiKey">Google Drive API Key</Label>
-                      <Input
-                        id="apiKey"
-                        type="password"
-                        value={apiKey}
-                        onChange={(e) => setApiKey(e.target.value)}
-                        placeholder="AIza..."
-                        className="mt-1"
-                      />
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <Button type="submit" disabled={isLoading}>
-                        {isLoading ? "Loading..." : "Save & Load Images"}
-                      </Button>
-                      
-                      {googleDriveService.getApiKey() && (
-                        <Button 
-                          type="button" 
-                          variant="outline"
-                          onClick={loadGalleryImages}
-                          disabled={isLoading}
-                        >
-                          <RefreshCw className="h-4 w-4 mr-2" />
-                          Refresh Gallery
-                        </Button>
-                      )}
-                    </div>
-                  </form>
-                  
-                  <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
-                      Setup Instructions:
-                    </h4>
-                    <ol className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
-                      <li>1. Go to Google Cloud Console and create a project</li>
-                      <li>2. Enable the Google Drive API for your project</li>
-                      <li>3. Create credentials (API Key) and restrict it to Google Drive API</li>
-                      <li>4. Make sure your Google Drive folder is publicly accessible</li>
-                      <li>5. Enter the API key above and click "Save & Load Images"</li>
-                      <li>6. Images will automatically refresh when you add new ones to the folder</li>
-                    </ol>
-                  </div>
-                </div>
-              </CollapsibleContent>
-            </Collapsible>
           </div>
 
           {/* Gallery Grid */}
