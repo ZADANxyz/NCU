@@ -14,12 +14,11 @@ const TikTokIcon = () => (
 // HubSpot icon component
 const HubSpotIcon = () => (
   <img 
-    src="/lovable-uploads/c5e7ddc6-391b-47f0-8ee5-aedefb060295.png" 
+    src="/lovable-uploads/f88d4d0d-8a44-4768-9377-018c10d02f2f.png" 
     alt="HubSpot" 
     width="16" 
     height="16" 
     className="object-contain"
-    style={{ filter: 'brightness(0) invert(1)' }}
   />
 );
 
