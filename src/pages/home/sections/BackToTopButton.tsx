@@ -30,7 +30,7 @@ const BackToTopButton = () => {
       {isVisible && (
         <Button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-16 z-50 w-12 h-12 bg-[#B19528] hover:bg-[#B19528]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+          className="fixed bottom-8 right-4 z-50 w-12 h-12 bg-[#B19528] hover:bg-[#B19528]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
           size="icon"
         >
           <ArrowUp className="w-6 h-6" />
