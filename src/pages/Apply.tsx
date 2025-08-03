@@ -31,7 +31,7 @@ const Apply = () => {
         <section className="w-full py-16 bg-background">
           <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
-            <div className="flex flex-col lg:flex-row items-start justify-center gap-12 mb-8 max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-start justify-center gap-12 mb-8">
               {/* Logo - Large and pinned to left with proper aspect ratio */}
               <div className="flex-shrink-0">
                 <img
@@ -44,14 +44,14 @@ const Apply = () => {
               
               {/* University Info - Positioned more to the right and centered vertically */}
               <div className="flex-1 flex flex-col justify-center pl-8 pt-4">
-                <div className="text-lg md:text-xl lg:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
+                <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4 whitespace-nowrap">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
                 <div className="pl-20">
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
                     Application for Admission
                   </h1>
-                  <p className="text-sm md:text-base lg:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8">
+                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8 whitespace-nowrap">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
                 </div>
