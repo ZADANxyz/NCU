@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import Apply from "./pages/Apply";
 import Store from "./pages/Store";
@@ -39,6 +40,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<><Header /><main className="flex-1"><Index /></main></>} />
               <Route path="/about" element={<><Header /><main className="flex-1"><About /></main></>} />
+              <Route path="/contact" element={<><Header /><main className="flex-1"><Contact /></main></>} />
               <Route path="/donate" element={<><Header /><main className="flex-1"><Donate /></main></>} />
               <Route path="/apply" element={<><Header /><main className="flex-1"><Apply /></main></>} />
               <Route path="/store" element={<><Header /><main className="flex-1"><Store /></main></>} />
