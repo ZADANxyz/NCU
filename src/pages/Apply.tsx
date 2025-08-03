@@ -47,11 +47,11 @@ const Apply = () => {
                 <div className="text-lg md:text-xl lg:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
-                <div className="pl-8">
+                <div className="pl-12">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                     Application for Admission
                   </h1>
-                  <p className="text-base md:text-lg lg:text-xl font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
+                  <p className="text-sm md:text-base lg:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide text-center">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
                 </div>
