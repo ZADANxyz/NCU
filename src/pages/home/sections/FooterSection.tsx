@@ -18,8 +18,7 @@ const HubSpotIcon = () => (
     alt="HubSpot" 
     width="16" 
     height="16" 
-    className="object-contain brightness-0 invert"
-    style={{ filter: 'brightness(0) invert(1)' }}
+    className="object-contain"
   />
 );
 
