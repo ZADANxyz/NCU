@@ -51,9 +51,9 @@ const About = () => {
           </div>
 
           {/* Right Column - Portrait Image and Slider */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-6">
+          <div className="w-full lg:w-1/2 flex flex-col gap-4">
             {/* Portrait Image */}
-            <div className="w-full h-64 md:h-80 overflow-hidden rounded-lg mb-4">
+            <div className="w-full h-80 md:h-96 overflow-hidden rounded-lg">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"
@@ -62,7 +62,7 @@ const About = () => {
             </div>
             
             {/* Horizontal Image Slider */}
-            <div className="w-full h-48 md:h-64 overflow-hidden rounded-lg">
+            <div className="w-full h-32 md:h-40 overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>

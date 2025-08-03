@@ -51,33 +51,15 @@ const HeroSection = () => {
   return (
     <>
       {/* HERO IMAGE: ... */}
-      <div
-        className="w-full relative"
-        style={{
-          margin: 0,
-          padding: 0,
-          borderRadius: 0,
-          overflow: "hidden",
-          lineHeight: 0,
-        }}
-      >
+      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
           src={HERO_IMAGE}
-          alt="New Covenant University Hero"
-          className="w-full h-[500px] md:h-[600px] lg:h-[700px] object-cover object-top"
+          alt="New Covenant University Campus"
+          className="w-full h-[500px] md:h-[600px] lg:h-[700px] object-cover"
+          loading="eager"
           style={{
-            margin: 0,
-            padding: 0,
-            borderRadius: 0,
-            width: "100vw",
-            maxWidth: "100vw",
-            background: "#fff",
-            display: "block",
-            boxSizing: "border-box",
-            position: "relative",
-            top: "-50px",
+            objectPosition: "center center",
           }}
-          draggable={false}
         />
       </div>
       {/* SECTION: ... */}

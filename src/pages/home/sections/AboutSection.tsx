@@ -24,7 +24,7 @@ const AboutSection = () => {
               New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
               <a 
                 href="/about" 
-                className="text-blue-600 dark:text-[#B19528] font-bold underline hover:text-blue-700 dark:hover:text-[#B19528]/80 transition-colors"
+                className="text-[#333] dark:text-gray-200 font-bold border border-[#333] dark:border-gray-200 px-2 py-1 rounded hover:bg-[#333] hover:text-white dark:hover:bg-gray-200 dark:hover:text-[#333] transition-colors"
               >
                 read more
               </a>
