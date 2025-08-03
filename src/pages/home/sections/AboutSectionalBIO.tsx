@@ -29,13 +29,40 @@ const AboutSectionalBIO = () => {
             </p>
           </div>
 
-          {/* Action Button */}
+          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto w-full sm:w-auto min-w-[140px] h-12"
               onClick={() => window.location.href = '/apply'}
             >
               <span className="relative z-20">Apply Today!</span>
+              <span
+                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
+                aria-hidden="true"
+                style={{
+                  zIndex: 3,
+                  background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+                  boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+                  borderRadius: "inherit",
+                }}
+              ></span>
+              <span
+                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
+                aria-hidden="true"
+                style={{
+                  zIndex: 3,
+                  background: "linear-gradient(110deg,rgba(177,149,40,0.27) 0%,rgba(228,214,128,0.45) 60%,rgba(178,160,66,0.18) 100%)",
+                  boxShadow: "0 8px 30px 0 rgba(177,149,40,0.19)",
+                  borderRadius: "inherit",
+                }}
+              ></span>
+            </button>
+            
+            <button 
+              className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto w-full sm:w-auto min-w-[140px] h-12"
+              onClick={() => window.location.href = '/donate'}
+            >
+              <span className="relative z-20">Donate Now</span>
               <span
                 className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
                 aria-hidden="true"

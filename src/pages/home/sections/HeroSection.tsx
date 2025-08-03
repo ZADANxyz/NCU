@@ -64,17 +64,13 @@ const HeroSection = () => {
         <img
           src={HERO_IMAGE}
           alt="New Covenant University Hero"
-          className="w-full"
+          className="w-full h-[500px] md:h-[600px] lg:h-[700px] object-cover object-top"
           style={{
             margin: 0,
             padding: 0,
             borderRadius: 0,
             width: "100vw",
             maxWidth: "100vw",
-            height: "auto",
-            maxHeight: "85vh",
-            objectFit: "cover",
-            objectPosition: "top center",
             background: "#fff",
             display: "block",
             boxSizing: "border-box",

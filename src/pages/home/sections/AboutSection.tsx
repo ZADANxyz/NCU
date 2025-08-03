@@ -21,7 +21,13 @@ const AboutSection = () => {
         <div className="w-full lg:w-1/2 flex flex-col justify-start pr-0 lg:pr-4">
           <div className="text-xl md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-8 mt-16 lg:mt-20">
             <p>
-              New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were published into books and training manuals evolving into a state recognized program. Decades later the vision continues providing students with a leadership and ethics focused education by providing a wide array of undergraduate and graduate programs in Leadership, Education, Theology, Ministry and Counseling.
+              New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were…{" "}
+              <a 
+                href="/about" 
+                className="text-blue-600 dark:text-[#B19528] font-bold underline hover:text-blue-700 dark:hover:text-[#B19528]/80 transition-colors"
+              >
+                read more
+              </a>
             </p>
           </div>
 
