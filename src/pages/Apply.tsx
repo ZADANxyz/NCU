@@ -31,7 +31,7 @@ const Apply = () => {
         <section className="w-full py-16 bg-background">
           <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
-            <div className="flex flex-col lg:flex-row items-start justify-center gap-12 mb-8">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
               {/* Logo - Large and pinned to left with proper aspect ratio */}
               <div className="flex-shrink-0">
                 <img
