@@ -34,13 +34,13 @@ const CourseCatalogue = () => {
             </div>
 
             {/* PDF Embed */}
-            <div className="w-full bg-card border border-border rounded-lg overflow-hidden shadow-lg">
+            <div className="w-full -mx-3 sm:-mx-6 md:-mx-[52px]">
               <iframe 
-                src="https://drive.google.com/file/d/11esqJo0l33FKi_qLzVKbi3VxIX3wbWwJ/preview?rm=minimal&embedded=true" 
+                src="https://drive.google.com/file/d/11esqJo0l33FKi_qLzVKbi3VxIX3wbWwJ/preview?embedded=true&rm=minimal" 
                 width="100%" 
-                height="4000px" 
+                height="5000px" 
                 allow="autoplay"
-                style={{ border: "none", display: "block" }}
+                style={{ border: "none", display: "block", minHeight: "100vh" }}
                 title="Course Catalogue PDF"
               />
             </div>
