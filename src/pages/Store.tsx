@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
-import AboutSection from "./home/sections/AboutSection";
+import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
+import { useToast } from "@/hooks/use-toast";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -87,6 +88,17 @@ const books = [
 ];
 
 const Store = () => {
+  const [cart, setCart] = useState<any[]>([]);
+  const { toast } = useToast();
+
+  const addToCart = (book: any) => {
+    setCart(prev => [...prev, { ...book, price: 15 }]);
+    toast({
+      title: "Added to Cart",
+      description: `"${book.title}" has been added to your cart.`,
+    });
+  };
+
   return (
     <div className="bg-background min-h-screen pt-0">
       {/* Hero Image - Same as About page */}
@@ -104,12 +116,11 @@ const Store = () => {
 
       {/* Store Content - Full Width */}
       <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
-        <div className="w-full px-3 sm:px-6 md:px-[52px]">
+        <div className="w-full px-6 sm:px-8 md:px-[60px]">
           {/* Store Description - Two Lines */}
           <div className="text-center mb-16">
-            <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-6xl mx-auto">
-              All books are available as gifts for donations of $15 or more. All donations are used for scholarship funds to help current students of NCU.<br/>
-              Please be sure to include your email address at the time of your donation so we may follow up.
+            <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-5xl mx-auto">
+              All books are available as gifts for donations of $15 or more. All donations are used for scholarship funds to help current students of NCU. Please be sure to include your email address at the time of your donation so we may follow up.
             </p>
           </div>
 
@@ -131,9 +142,10 @@ const Store = () => {
                   {book.author}
                 </p>
                 <button 
+                  onClick={() => addToCart(book)}
                   className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto w-full max-w-[200px] min-w-[140px] h-12"
                 >
-                  <span className="relative z-20">Buy Now</span>
+                  <span className="relative z-20">Add to Cart</span>
                   <span
                     className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
                     aria-hidden="true"
@@ -160,8 +172,8 @@ const Store = () => {
           </div>
 
           {/* Browse Collection Button - Outline Style */}
-          <div className="text-center">
-            <button 
+          <div className="text-center mb-12">
+            <button
               className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[280px] h-12 text-base"
             >
               <span className="relative z-20">Browse The Entire Collection Here</span>
@@ -195,7 +207,7 @@ const Store = () => {
         <HeroDividerSection />
         <DegreesOfferedSection />
         <ReviewsSection />
-        <AboutSection />
+        <AboutSectionalSUBPAGE />
         <HeroDividerSection />
         <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
           <ContactAboutForm />
