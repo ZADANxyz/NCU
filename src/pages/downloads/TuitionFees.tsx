@@ -43,11 +43,11 @@ const TuitionFees = () => {
               
               {/* PDF Embed */}
               <iframe 
-                src="https://drive.google.com/file/d/1OOXYVYvYR708PGgi_-CS8ssYQqlmoY9S/preview" 
+                src="https://drive.google.com/file/d/1OOXYVYvYR708PGgi_-CS8ssYQqlmoY9S/preview?rm=minimal&embedded=true" 
                 width="100%" 
-                height="800px" 
+                height="2000px" 
                 allow="autoplay"
-                style={{ border: "none" }}
+                style={{ border: "none", display: "block" }}
                 title="Tuition & Fees PDF"
               />
             </div>

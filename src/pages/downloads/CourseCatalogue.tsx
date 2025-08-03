@@ -43,11 +43,11 @@ const CourseCatalogue = () => {
               
               {/* PDF Embed */}
               <iframe 
-                src="https://drive.google.com/file/d/11esqJo0l33FKi_qLzVKbi3VxIX3wbWwJ/preview" 
+                src="https://drive.google.com/file/d/11esqJo0l33FKi_qLzVKbi3VxIX3wbWwJ/preview?rm=minimal&embedded=true" 
                 width="100%" 
-                height="800px" 
+                height="2000px" 
                 allow="autoplay"
-                style={{ border: "none" }}
+                style={{ border: "none", display: "block" }}
                 title="Course Catalogue PDF"
               />
             </div>

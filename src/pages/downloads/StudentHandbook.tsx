@@ -43,11 +43,11 @@ const StudentHandbook = () => {
               
               {/* PDF Embed */}
               <iframe 
-                src="https://drive.google.com/file/d/12K1Wl23OLDSGzQXHsm5eDshBniyxm7Uu/preview" 
+                src="https://drive.google.com/file/d/12K1Wl23OLDSGzQXHsm5eDshBniyxm7Uu/preview?rm=minimal&embedded=true" 
                 width="100%" 
-                height="800px" 
+                height="2000px" 
                 allow="autoplay"
-                style={{ border: "none" }}
+                style={{ border: "none", display: "block" }}
                 title="Student Handbook PDF"
               />
             </div>
