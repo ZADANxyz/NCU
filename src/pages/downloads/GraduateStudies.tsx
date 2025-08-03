@@ -38,7 +38,7 @@ const GraduateStudies = () => {
               <iframe 
                 src="https://drive.google.com/file/d/17z-47Ze3FZxVySuNicZSI_TE0BhPgbdV/preview?usp=drive_web&embedded=true" 
                 width="100%" 
-                height="20000px" 
+                height="150000px" 
                 allow="autoplay"
                 style={{ border: "none", display: "block" }}
                 title="Graduate Studies Notebook PDF"
