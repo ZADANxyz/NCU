@@ -62,7 +62,7 @@ const About = () => {
             </div>
             
             {/* Horizontal Image Slider */}
-            <div className="w-full h-[120px] md:h-[140px] overflow-hidden rounded-lg">
+            <div className="w-full h-[180px] md:h-[200px] overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>
