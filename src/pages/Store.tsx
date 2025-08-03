@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
@@ -9,6 +9,7 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 import { useToast } from "@/hooks/use-toast";
+import { removeBackground, loadImageFromUrl } from "@/utils/backgroundRemoval";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -65,31 +66,68 @@ const books = [
     id: 9,
     title: "10 Golden Keys",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
+    image: "/lovable-uploads/c969fc67-71fc-40aa-b274-a122d07e40db.png"
   },
   {
     id: 10,
     title: "The Law of the Seed",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/d74aae3a-32f5-4e93-9bae-af5a4a61bff8.png"
+    image: "/lovable-uploads/a0a54c8b-1141-4d85-bb7b-8280e02b7160.png"
   },
   {
     id: 11,
     title: "The Apostles Have Landed",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/0b8ffb5b-2139-4853-890a-c2ee2ca521ac.png"
+    image: "/lovable-uploads/06ce7626-99b6-4765-864e-2d59e50d359f.png"
   },
   {
     id: 12,
     title: "The Man Book",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
+    image: "/lovable-uploads/78f9f130-73f5-4db1-98da-4ba220e81779.png"
   }
 ];
 
 const Store = () => {
   const [cart, setCart] = useState<any[]>([]);
+  const [processedImages, setProcessedImages] = useState<{ [key: number]: string }>({});
+  const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const processBookImages = async () => {
+      setIsProcessing(true);
+      const processed: { [key: number]: string } = {};
+      
+      try {
+        for (const book of books) {
+          try {
+            console.log(`Processing book ${book.id}: ${book.title}`);
+            const img = await loadImageFromUrl(book.image);
+            const processedBlob = await removeBackground(img);
+            const processedUrl = URL.createObjectURL(processedBlob);
+            processed[book.id] = processedUrl;
+            console.log(`Successfully processed book ${book.id}`);
+          } catch (error) {
+            console.error(`Failed to process book ${book.id}:`, error);
+            // Keep original image if processing fails
+            processed[book.id] = book.image;
+          }
+        }
+        setProcessedImages(processed);
+      } catch (error) {
+        console.error('Error processing images:', error);
+        toast({
+          title: "Image Processing Warning",
+          description: "Some book images couldn't be processed, showing originals.",
+        });
+      } finally {
+        setIsProcessing(false);
+      }
+    };
+
+    processBookImages();
+  }, [toast]);
 
   const addToCart = (book: any) => {
     setCart(prev => [...prev, { ...book, price: 15 }]);
@@ -129,11 +167,15 @@ const Store = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {books.map((book) => (
               <div key={book.id} className="flex flex-col items-center text-center">
-                <div className="w-full aspect-[3/4] mb-4 rounded-lg overflow-hidden shadow-lg">
+                <div className="w-full aspect-[3/4] mb-4 flex items-center justify-center">
                   <img
-                    src={book.image}
+                    src={processedImages[book.id] || book.image}
                     alt={book.title}
-                    className="w-full h-full object-cover"
+                    className="max-w-full max-h-full object-contain drop-shadow-lg"
+                    style={{
+                      filter: isProcessing ? 'blur(2px)' : 'none',
+                      transition: 'filter 0.3s ease'
+                    }}
                   />
                 </div>
                 <h3 className="text-base font-medium italic text-[#2c2c2c] dark:text-gray-200 mb-2 min-h-[3rem] flex items-center">
