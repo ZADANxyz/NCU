@@ -34,13 +34,13 @@ const GraduateStudies = () => {
             </div>
 
             {/* PDF Embed */}
-            <div className="w-full -mx-3 sm:-mx-6 md:-mx-[52px]">
+            <div className="w-full -mx-3 sm:-mx-6 md:-mx-[52px] flex justify-center">
               <iframe 
-                src="https://drive.google.com/file/d/17z-47Ze3FZxVySuNicZSI_TE0BhPgbdV/preview?embedded=true&rm=minimal" 
+                src="https://drive.google.com/file/d/17z-47Ze3FZxVySuNicZSI_TE0BhPgbdV/preview?embedded=true&rm=minimal&zoom=fit" 
                 width="100%" 
-                height="8000px" 
+                height="20000px" 
                 allow="autoplay"
-                style={{ border: "none", display: "block", minHeight: "100vh" }}
+                style={{ border: "none", display: "block", maxWidth: "100%" }}
                 title="Graduate Studies Notebook PDF"
               />
             </div>
