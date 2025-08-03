@@ -23,7 +23,7 @@ const CourseCatalogue = () => {
         <section className="w-full py-8 bg-background">
           <div className="w-full px-3 sm:px-6 md:px-[52px]">
             {/* Download Button */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-end mb-8">
               <Button 
                 onClick={handleDownload} 
                 className="flex items-center gap-2 bg-[#046BD2] hover:bg-[#046BD2]/90 dark:bg-[#B19528] dark:hover:bg-[#B19528]/90 text-white font-roboto"
