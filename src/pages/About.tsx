@@ -9,7 +9,7 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 import AlumniCarousel from "@/components/AlumniCarousel";
-import ContactTabBlock from "@/components/ContactTabBlock";
+import ContactAboutForm from "@/components/ContactAboutForm";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -107,9 +107,7 @@ const About = () => {
         <AboutSection />
         <HeroDividerSection />
         <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
-          <div className="max-w-4xl mx-auto">
-            <ContactTabBlock />
-          </div>
+          <ContactAboutForm />
         </div>
         <MapSection />
       </main>

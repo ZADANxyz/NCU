@@ -33,7 +33,7 @@ const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
             region: HUBSPOT_REGION,
             portalId: HUBSPOT_PORTAL_ID,
             formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-block",
+            target: "#hubspot-form-block-about",
           });
         }
       };
@@ -43,7 +43,7 @@ const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
         region: HUBSPOT_REGION,
         portalId: HUBSPOT_PORTAL_ID,
         formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-block",
+        target: "#hubspot-form-block-about",
       });
     }
   }, []);
@@ -56,22 +56,22 @@ const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
       styleTag = document.createElement("style");
       styleTag.id = "hubspot-darkmode-style";
       styleTag.innerHTML = `
-        #hubspot-form-block label,
-        #hubspot-form-block .hs-form-required,
-        #hubspot-form-block .hs-form-field label,
-        #hubspot-form-block .hs-richtext,
-        #hubspot-form-block .hs-file-description {
+        #hubspot-form-block-about label,
+        #hubspot-form-block-about .hs-form-required,
+        #hubspot-form-block-about .hs-form-field label,
+        #hubspot-form-block-about .hs-richtext,
+        #hubspot-form-block-about .hs-file-description {
           color: #fff !important;
         }
-        #hubspot-form-block input, 
-        #hubspot-form-block textarea, 
-        #hubspot-form-block select {
+        #hubspot-form-block-about input, 
+        #hubspot-form-block-about textarea, 
+        #hubspot-form-block-about select {
           background: rgba(35, 34, 50, 0.8) !important;
           color: #fff !important;
           border: 1px solid #666 !important;
         }
-        #hubspot-form-block .hs-button.primary, 
-        #hubspot-form-block input[type=submit] {
+        #hubspot-form-block-about .hs-button.primary, 
+        #hubspot-form-block-about input[type=submit] {
           background: #b19528 !important;
           border-color: #b19528 !important;
           color: #232232 !important;
@@ -86,7 +86,7 @@ const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
 
   return (
     <div
-      id="hubspot-form-block"
+      id="hubspot-form-block-about"
       ref={formRef}
       className={
         "w-full mb-2 transition-colors" +
