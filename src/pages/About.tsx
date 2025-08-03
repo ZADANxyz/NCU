@@ -31,9 +31,9 @@ const About = () => {
 
       {/* About Us Section */}
       <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
-          {/* Left Column - Title and Content */}
-          <div className="w-full lg:w-1/2 flex flex-col">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+          {/* Left Column - Title and Content (2/3 width) */}
+          <div className="w-full lg:w-2/3 flex flex-col">
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
               About Us:
             </h2>
@@ -50,10 +50,10 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Column - Portrait Image and Slider */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-4 lg:mt-16">
+          {/* Right Column - Portrait Image and Slider (1/3 width) */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-4">
             {/* Portrait Image */}
-            <div className="w-full h-80 md:h-96 overflow-hidden rounded-lg">
+            <div className="w-full h-[400px] md:h-[500px] overflow-hidden rounded-lg">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"
@@ -62,7 +62,7 @@ const About = () => {
             </div>
             
             {/* Horizontal Image Slider */}
-            <div className="w-full h-32 md:h-40 overflow-hidden rounded-lg">
+            <div className="w-full h-[120px] md:h-[140px] overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>
