@@ -7,50 +7,28 @@ import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
-import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { ChevronLeft, ChevronRight, Settings, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { googleDriveService, GoogleDriveImage } from "@/utils/googleDriveApi";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
-// Gallery images - now automatically managed via Zapier integration
+// Gallery images managed via Google Drive API
 // Main Google Drive folder: https://drive.google.com/drive/folders/1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94?usp=share_link
 
-// Initial gallery images (will be replaced by Zapier webhook data)
-const initialGalleryImages = [
+// Initial placeholder images (will be replaced by Google Drive API data)
+const initialGalleryImages: GoogleDriveImage[] = [
   { 
     id: 1, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_1", 
-    alt: "University Photo 1" 
-  },
-  { 
-    id: 2, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_2", 
-    alt: "University Photo 2" 
-  },
-  { 
-    id: 3, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_3", 
-    alt: "University Photo 3" 
-  },
-  { 
-    id: 4, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_4", 
-    alt: "University Photo 4" 
-  },
-  { 
-    id: 5, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_5", 
-    alt: "University Photo 5" 
-  },
-  { 
-    id: 6, 
-    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_6", 
-    alt: "University Photo 6" 
-  },
+    src: "https://drive.google.com/uc?export=view&id=PLACEHOLDER", 
+    alt: "Loading images from Google Drive...",
+    name: "placeholder",
+    fileId: "placeholder"
+  }
 ];
 
 const IMAGES_PER_PAGE = 24;
@@ -59,19 +37,20 @@ const Media = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
-  const [galleryImages, setGalleryImages] = useState(initialGalleryImages);
-  const [webhookUrl, setWebhookUrl] = useState("");
+  const [galleryImages, setGalleryImages] = useState<GoogleDriveImage[]>(initialGalleryImages);
+  const [apiKey, setApiKey] = useState("");
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   
-  // Load saved webhook URL and gallery data from localStorage
+  // Load saved API key and gallery data from localStorage
   useEffect(() => {
-    const savedWebhookUrl = localStorage.getItem("mediaGalleryWebhookUrl");
+    const savedApiKey = googleDriveService.getApiKey();
     const savedGalleryImages = localStorage.getItem("mediaGalleryImages");
     
-    if (savedWebhookUrl) {
-      setWebhookUrl(savedWebhookUrl);
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+      loadGalleryImages(); // Auto-load images if API key exists
     }
     
     if (savedGalleryImages) {
@@ -84,73 +63,58 @@ const Media = () => {
     }
   }, []);
 
-  // Set up webhook endpoint listener
-  useEffect(() => {
-    const handleWebhookData = (event: MessageEvent) => {
-      if (event.data.type === 'ZAPIER_GALLERY_UPDATE') {
-        const newImages = event.data.images;
-        setGalleryImages(newImages);
-        localStorage.setItem("mediaGalleryImages", JSON.stringify(newImages));
-        toast({
-          title: "Gallery Updated",
-          description: `${newImages.length} images loaded from Google Drive`,
-        });
-      }
-    };
-
-    window.addEventListener('message', handleWebhookData);
-    return () => window.removeEventListener('message', handleWebhookData);
-  }, [toast]);
-  
-  const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
-  const startIndex = (currentPage - 1) * IMAGES_PER_PAGE;
-  const currentImages = galleryImages.slice(startIndex, startIndex + IMAGES_PER_PAGE);
-
-  const handleWebhookSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!webhookUrl) {
-      toast({
-        title: "Error",
-        description: "Please enter your Zapier webhook URL",
-        variant: "destructive",
-      });
-      return;
-    }
-
+  const loadGalleryImages = async () => {
     setIsLoading(true);
-    localStorage.setItem("mediaGalleryWebhookUrl", webhookUrl);
-
     try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "no-cors",
-        body: JSON.stringify({
-          action: "get_gallery_images",
-          timestamp: new Date().toISOString(),
-          triggered_from: window.location.origin,
-        }),
-      });
-
+      const images = await googleDriveService.fetchGalleryImages();
+      setGalleryImages(images);
+      localStorage.setItem("mediaGalleryImages", JSON.stringify(images));
       toast({
-        title: "Webhook URL Saved",
-        description: "The webhook URL has been saved. Your Zapier automation should now update the gallery when you add images to Google Drive.",
+        title: "Gallery Updated",
+        description: `${images.length} images loaded from Google Drive`,
       });
-      
-      setIsSettingsOpen(false);
     } catch (error) {
-      console.error("Error testing webhook:", error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       toast({
-        title: "Webhook URL Saved",
-        description: "The webhook URL has been saved locally. Make sure your Zapier automation is set up correctly.",
+        title: "Error Loading Images",
+        description: errorMessage,
+        variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleApiKeySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!apiKey) {
+      toast({
+        title: "Error",
+        description: "Please enter your Google Drive API key",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!googleDriveService.isValidApiKey(apiKey)) {
+      toast({
+        title: "Invalid API Key",
+        description: "Please enter a valid Google Drive API key (should start with 'AIza')",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    googleDriveService.setApiKey(apiKey);
+    await loadGalleryImages();
+    setIsSettingsOpen(false);
+  };
+
+  // Calculate pagination values
+  const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
+  const startIndex = (currentPage - 1) * IMAGES_PER_PAGE;
+  const currentImages = galleryImages.slice(startIndex, startIndex + IMAGES_PER_PAGE);
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -233,28 +197,42 @@ const Media = () => {
               <CollapsibleContent className="mt-4">
                 <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border">
                   <h3 className="text-lg font-medium mb-4 text-[#181818] dark:text-white">
-                    Zapier Webhook Configuration
+                    Google Drive API Configuration
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    Set up your Zapier webhook to automatically update the gallery when you add images to Google Drive.
+                    Enter your Google Drive API key to automatically load images from your Google Drive folder.
                   </p>
                   
-                  <form onSubmit={handleWebhookSubmit} className="space-y-4">
+                  <form onSubmit={handleApiKeySubmit} className="space-y-4">
                     <div>
-                      <Label htmlFor="webhookUrl">Zapier Webhook URL</Label>
+                      <Label htmlFor="apiKey">Google Drive API Key</Label>
                       <Input
-                        id="webhookUrl"
-                        type="url"
-                        value={webhookUrl}
-                        onChange={(e) => setWebhookUrl(e.target.value)}
-                        placeholder="https://hooks.zapier.com/hooks/catch/..."
+                        id="apiKey"
+                        type="password"
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                        placeholder="AIza..."
                         className="mt-1"
                       />
                     </div>
                     
-                    <Button type="submit" disabled={isLoading}>
-                      {isLoading ? "Saving..." : "Save Webhook URL"}
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button type="submit" disabled={isLoading}>
+                        {isLoading ? "Loading..." : "Save & Load Images"}
+                      </Button>
+                      
+                      {googleDriveService.getApiKey() && (
+                        <Button 
+                          type="button" 
+                          variant="outline"
+                          onClick={loadGalleryImages}
+                          disabled={isLoading}
+                        >
+                          <RefreshCw className="h-4 w-4 mr-2" />
+                          Refresh Gallery
+                        </Button>
+                      )}
+                    </div>
                   </form>
                   
                   <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
@@ -262,12 +240,12 @@ const Media = () => {
                       Setup Instructions:
                     </h4>
                     <ol className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
-                      <li>1. Create a Zapier automation with "Google Drive - New File in Folder" trigger</li>
-                      <li>2. Set the folder to your Google Drive gallery folder</li>
-                      <li>3. Add a "Webhooks - POST" action step</li>
-                      <li>4. Set the webhook URL to send image data to this website</li>
-                      <li>5. Configure the payload to include file ID and name for each image</li>
-                      <li>6. Test by uploading an image to your Google Drive folder</li>
+                      <li>1. Go to Google Cloud Console and create a project</li>
+                      <li>2. Enable the Google Drive API for your project</li>
+                      <li>3. Create credentials (API Key) and restrict it to Google Drive API</li>
+                      <li>4. Make sure your Google Drive folder is publicly accessible</li>
+                      <li>5. Enter the API key above and click "Save & Load Images"</li>
+                      <li>6. Images will automatically refresh when you add new ones to the folder</li>
                     </ol>
                   </div>
                 </div>
