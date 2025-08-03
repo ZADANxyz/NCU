@@ -119,7 +119,7 @@ const Store = () => {
         <div className="w-full px-6 sm:px-8 md:px-[60px]">
           {/* Store Description - Two Lines */}
           <div className="text-center mb-16">
-            <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-6xl mx-auto">
+            <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-7xl mx-auto">
               All books are available as gifts for donations of $15 or more. All donations are used for scholarship funds to help current students of NCU.<br/>
               Please be sure to include your email address at the time of your donation so we may follow up.
             </p>
@@ -173,7 +173,7 @@ const Store = () => {
           </div>
 
           {/* Browse Collection Button - Outline Style */}
-          <div className="text-center mt-8 mb-4">
+          <div className="text-center mt-16 mb-2">
             <button 
               className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[280px] h-12 text-base mx-auto"
             >
