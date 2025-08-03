@@ -3,12 +3,13 @@ import { Button } from "@/components/ui/button";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
-import AboutSectionalBIO from "./home/sections/AboutSectionalBIO";
-import ContactAndMapSection from "./home/sections/ContactAndMapSection";
+import AboutSection from "./home/sections/AboutSection";
+import ContactAboutForm from "@/components/ContactAboutForm";
+import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 
-const HERO_IMAGE = "/lovable-uploads/033cc9e0-07a9-4d43-b011-0d16b20cb8d9.png";
+const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const books = [
   {
@@ -87,64 +88,121 @@ const books = [
 
 const Store = () => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Image Section */}
-      <section className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
+    <div className="bg-background min-h-screen pt-0">
+      {/* Hero Image - Same as About page */}
+      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
           src={HERO_IMAGE}
           alt="NCU Store"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover"
+          loading="eager"
+          style={{
+            objectPosition: "center center",
+          }}
         />
-        <div className="absolute inset-0 bg-black/20" />
-      </section>
+      </div>
 
-      {/* Store Content */}
-      <section className="max-w-6xl mx-auto px-3 md:px-7 py-16">
-        {/* Store Description */}
-        <div className="text-center mb-16">
-          <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-5xl mx-auto">
-            All books are available as gifts for donations of $15 or more. All donations are used for scholarship funds to help current students of NCU. Please be sure to include your email address at the time of your donation so we may follow up.
-          </p>
-        </div>
+      {/* Store Content - Full Width */}
+      <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
+        <div className="w-full px-3 sm:px-6 md:px-[52px]">
+          {/* Store Description - Two Lines */}
+          <div className="text-center mb-16">
+            <p className="text-lg md:text-xl lg:text-2xl text-[#2c2c2c] dark:text-gray-200 leading-relaxed font-normal max-w-6xl mx-auto">
+              All books are available as gifts for donations of $15 or more. All donations are used for scholarship funds to help current students of NCU.<br/>
+              Please be sure to include your email address at the time of your donation so we may follow up.
+            </p>
+          </div>
 
-        {/* Books Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {books.map((book) => (
-            <div key={book.id} className="flex flex-col items-center text-center">
-              <div className="w-full aspect-[3/4] mb-4 rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={book.image}
-                  alt={book.title}
-                  className="w-full h-full object-cover"
-                />
+          {/* Books Grid - Full Width */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            {books.map((book) => (
+              <div key={book.id} className="flex flex-col items-center text-center">
+                <div className="w-full aspect-[3/4] mb-4 rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src={book.image}
+                    alt={book.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-base font-medium italic text-[#2c2c2c] dark:text-gray-200 mb-2 min-h-[3rem] flex items-center">
+                  {book.title}
+                </h3>
+                <p className="text-sm text-[#666] dark:text-gray-400 mb-4">
+                  {book.author}
+                </p>
+                <button 
+                  className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto w-full max-w-[200px] min-w-[140px] h-12"
+                >
+                  <span className="relative z-20">Buy Now</span>
+                  <span
+                    className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
+                    aria-hidden="true"
+                    style={{
+                      zIndex: 3,
+                      background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+                      boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+                      borderRadius: "inherit",
+                    }}
+                  ></span>
+                  <span
+                    className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
+                    aria-hidden="true"
+                    style={{
+                      zIndex: 3,
+                      background: "linear-gradient(110deg,rgba(177,149,40,0.27) 0%,rgba(228,214,128,0.45) 60%,rgba(178,160,66,0.18) 100%)",
+                      boxShadow: "0 8px 30px 0 rgba(177,149,40,0.19)",
+                      borderRadius: "inherit",
+                    }}
+                  ></span>
+                </button>
               </div>
-              <h3 className="text-base font-medium italic text-[#2c2c2c] dark:text-gray-200 mb-2 min-h-[3rem] flex items-center">
-                {book.title}
-              </h3>
-              <p className="text-sm text-[#666] dark:text-gray-400 mb-4">
-                {book.author}
-              </p>
-              <Button className="w-full max-w-[200px]">
-                Buy Now
-              </Button>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Browse Collection Button */}
-        <div className="text-center">
-          <Button variant="outline" className="px-8 py-3 text-base">
-            Browse The Entire Collection Here
-          </Button>
+          {/* Browse Collection Button - Outline Style */}
+          <div className="text-center">
+            <button 
+              className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[280px] h-12 text-base"
+            >
+              <span className="relative z-20">Browse The Entire Collection Here</span>
+              <span
+                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
+                aria-hidden="true"
+                style={{
+                  zIndex: 3,
+                  background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
+                  boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
+                  borderRadius: "inherit",
+                }}
+              ></span>
+              <span
+                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
+                aria-hidden="true"
+                style={{
+                  zIndex: 3,
+                  background: "linear-gradient(110deg,rgba(177,149,40,0.27) 0%,rgba(228,214,128,0.45) 60%,rgba(178,160,66,0.18) 100%)",
+                  boxShadow: "0 8px 30px 0 rgba(177,149,40,0.19)",
+                  borderRadius: "inherit",
+                }}
+              ></span>
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Sections matching About page */}
-      <HeroDividerSection />
-      <DegreesOfferedSection />
-      <ReviewsSection />
-      <AboutSectionalBIO />
-      <ContactAndMapSection />
+      {/* Same sections as About page */}
+      <main>
+        <HeroDividerSection />
+        <DegreesOfferedSection />
+        <ReviewsSection />
+        <AboutSection />
+        <HeroDividerSection />
+        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+          <ContactAboutForm />
+        </div>
+        <MapSection />
+      </main>
+      
       <FooterSection />
       <BackToTopButton />
     </div>
