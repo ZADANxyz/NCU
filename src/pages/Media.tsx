@@ -11,88 +11,53 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
-// Gallery images managed via Google Drive links
-// To add/update images: 
-// 1. Upload images to Google Drive
-// 2. Right-click image > Get link > Change access to "Anyone with the link"
-// 3. Use the direct image link format: https://drive.google.com/uc?export=view&id=FILE_ID
-// Where FILE_ID is extracted from the shared link
+// Gallery images managed via Google Drive folder
+// Main folder: https://drive.google.com/drive/folders/1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94?usp=share_link
+// 
+// TO UPDATE GALLERY:
+// 1. Add images to the Google Drive folder above
+// 2. For each image: Right-click > Get link > Change access to "Anyone with the link"
+// 3. Extract the FILE_ID from the shared link (the long string after /d/ and before /view)
+// 4. Replace the FILE_ID in the links below using format: https://drive.google.com/uc?export=view&id=FILE_ID
+// 5. Update the alt text to describe the image
+//
+// EXAMPLE: If shared link is https://drive.google.com/file/d/1ABC123XYZ789/view?usp=sharing
+// Then FILE_ID is: 1ABC123XYZ789
+// And the src should be: https://drive.google.com/uc?export=view&id=1ABC123XYZ789
+
 const galleryImages = [
+  // Replace these example IDs with actual file IDs from your Google Drive folder
   { 
     id: 1, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_1", 
-    alt: "Graduation ceremony" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_1", 
+    alt: "University Photo 1" 
   },
   { 
     id: 2, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_2", 
-    alt: "University event" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_2", 
+    alt: "University Photo 2" 
   },
   { 
     id: 3, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_3", 
-    alt: "Student activities" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_3", 
+    alt: "University Photo 3" 
   },
   { 
     id: 4, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_4", 
-    alt: "Campus life" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_4", 
+    alt: "University Photo 4" 
   },
   { 
     id: 5, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_5", 
-    alt: "Academic ceremonies" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_5", 
+    alt: "University Photo 5" 
   },
   { 
     id: 6, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_6", 
-    alt: "University facilities" 
+    src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_6", 
+    alt: "University Photo 6" 
   },
-  { 
-    id: 7, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_7", 
-    alt: "Student life" 
-  },
-  { 
-    id: 8, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_8", 
-    alt: "Campus events" 
-  },
-  { 
-    id: 9, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_9", 
-    alt: "Academic achievements" 
-  },
-  { 
-    id: 10, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_10", 
-    alt: "University community" 
-  },
-  { 
-    id: 11, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_11", 
-    alt: "Educational activities" 
-  },
-  { 
-    id: 12, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_12", 
-    alt: "School programs" 
-  },
-  { 
-    id: 13, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_13", 
-    alt: "University celebrations" 
-  },
-  { 
-    id: 14, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_14", 
-    alt: "Academic excellence" 
-  },
-  { 
-    id: 15, 
-    src: "https://drive.google.com/uc?export=view&id=1example_file_id_15", 
-    alt: "Student achievements" 
-  },
+  // Add more images as needed by copying the pattern above
 ];
 
 const IMAGES_PER_PAGE = 24;
