@@ -31,18 +31,19 @@ const Apply = () => {
         <section className="w-full py-16 bg-background">
           <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
-            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 mb-8">
-              {/* Logo - Large and pinned to left */}
+            <div className="flex flex-col lg:flex-row items-start gap-12 mb-8">
+              {/* Logo - Large and pinned to left with proper aspect ratio */}
               <div className="flex-shrink-0">
                 <img
                   src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
                   alt="New Covenant University Seal"
-                  className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64"
+                  className="w-auto h-48 md:h-56 lg:h-64 max-w-none"
+                  style={{ aspectRatio: 'auto' }}
                 />
               </div>
               
-              {/* University Info - Centered vertically with logo */}
-              <div className="flex-1 flex flex-col justify-center">
+              {/* University Info - Positioned more to the right and centered vertically */}
+              <div className="flex-1 flex flex-col justify-center pl-8">
                 <div className="text-lg md:text-xl lg:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
