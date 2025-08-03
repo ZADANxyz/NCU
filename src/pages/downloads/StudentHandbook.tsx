@@ -20,7 +20,7 @@ const StudentHandbook = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 pt-16">
         {/* PDF Section */}
-        <section className="w-full pt-4 pb-2 bg-background">
+        <section className="w-full pt-2 pb-2 bg-background">
           <div className="w-full px-3 sm:px-6 md:px-[52px]">
             {/* Download Button */}
             <div className="flex justify-end mb-4">
