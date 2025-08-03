@@ -18,7 +18,8 @@ const HubSpotIcon = () => (
     alt="HubSpot" 
     width="16" 
     height="16" 
-    className="object-contain"
+    className="object-contain brightness-0 invert"
+    style={{ filter: 'brightness(0) invert(1)' }}
   />
 );
 
@@ -57,28 +58,34 @@ const FooterSection = () => {
           {/* Social Media Icons - right side */}
           <div className="flex items-center gap-2">
             <a
-              href="#"
+              href="https://www.facebook.com/newcovenantu"
               aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <Facebook size={16} />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/newcovenantuniversity"
               aria-label="Instagram"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <Instagram size={16} />
             </a>
             <a
-              href="#"
+              href="https://x.com/NewCovenantU"
               aria-label="Twitter"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <Twitter size={16} />
             </a>
             <a
-              href="https://www.youtube.com/@paulcrites"
+              href="https://www.youtube.com/@newcovenantuniversity808"
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
@@ -87,15 +94,19 @@ const FooterSection = () => {
               <Youtube size={16} />
             </a>
             <a
-              href="#"
+              href="https://www.tiktok.com/@newcovenantuniversity"
               aria-label="TikTok"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <TikTokIcon />
             </a>
             <a
-              href="mailto:info@ncu.edu"
+              href="https://ncu.education/webmail"
               aria-label="Email"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <Mail size={16} />
