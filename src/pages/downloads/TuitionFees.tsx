@@ -38,7 +38,7 @@ const TuitionFees = () => {
               <iframe 
                 src="https://drive.google.com/file/d/1OOXYVYvYR708PGgi_-CS8ssYQqlmoY9S/preview?usp=drive_web&embedded=true" 
                 width="100%" 
-                height="30000px" 
+                height="6000px" 
                 allow="autoplay"
                 style={{ border: "none", display: "block" }}
                 title="Tuition & Fees PDF"
