@@ -119,16 +119,17 @@ const Contact = () => {
   return (
     <div className="bg-background min-h-screen">
       {/* Header Image */}
-      <section className="w-full overflow-hidden">
-        <AspectRatio ratio={16 / 9} className="w-full">
-          <div
-            className="w-full h-full bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('/lovable-uploads/c969fc67-71fc-40aa-b274-a122d07e40db.png')`,
-            }}
-          />
-        </AspectRatio>
-      </section>
+      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
+        <img
+          src="/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png"
+          alt="New Covenant University Campus"
+          className="w-full h-full object-cover"
+          loading="eager"
+          style={{
+            objectPosition: "center center",
+          }}
+        />
+      </div>
 
       {/* Contact Section */}
       <section className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
@@ -140,7 +141,7 @@ const Contact = () => {
               <img
                 src={isDark ? "/lovable-uploads/0b8ffb5b-2139-4853-890a-c2ee2ca521ac.png" : "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"}
                 alt="New Covenant University Logo"
-                className="w-24 h-24 mb-4"
+                className="w-32 h-32 mb-4 object-contain"
               />
               <h1 className="text-3xl md:text-4xl font-roboto font-bold text-[#181818] dark:text-white text-center">
                 GET IN TOUCH WITH US TODAY!
@@ -166,11 +167,11 @@ const Contact = () => {
             </h2>
 
             {/* Gold Contact Box */}
-            <div className="bg-gradient-to-br from-[#B19528]/10 to-[#D4AF37]/5 border-2 border-[#B19528] rounded-lg p-6 mb-6">
+            <div className="bg-white dark:bg-white border-2 border-[#B19528] rounded-lg p-6 mb-6 text-center">
               {/* Phone Number */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-[#181818] dark:text-white mb-2">PHONE NUMBER:</h3>
-                <div className="flex items-center gap-2">
+                <h3 className="text-lg font-bold text-[#181818] mb-2">PHONE NUMBER:</h3>
+                <div className="flex items-center justify-center gap-2">
                   <Phone className="w-5 h-5 text-[#B19528]" />
                   <a
                     href="tel:+16159482212"
@@ -183,8 +184,8 @@ const Contact = () => {
 
               {/* Email Address */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-[#181818] dark:text-white mb-2">EMAIL ADDRESS:</h3>
-                <div className="flex items-center gap-2">
+                <h3 className="text-lg font-bold text-[#181818] mb-2">EMAIL ADDRESS:</h3>
+                <div className="flex items-center justify-center gap-2">
                   <Mail className="w-5 h-5 text-[#B19528]" />
                   <a
                     href="mailto:ADMISSIONS@NCU.EDUCATION"
@@ -197,31 +198,31 @@ const Contact = () => {
 
               {/* Locations */}
               <div className="mb-6">
-                <h3 className="text-lg font-bold text-[#181818] dark:text-white mb-2">LOCATIONS:</h3>
-                <div className="flex flex-col gap-1">
+                <h3 className="text-lg font-bold text-[#181818] mb-2">LOCATIONS:</h3>
+                <div className="flex flex-col items-center gap-1">
                   <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#B19528]" />
-                    <span className="text-lg font-semibold text-[#181818] dark:text-white">FREMONT, OH</span>
+                    <span className="text-lg font-semibold text-[#181818]">FREMONT, OH</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#B19528]" />
-                    <span className="text-lg font-semibold text-[#181818] dark:text-white">ORMAND BEACH, FL</span>
+                    <span className="text-lg font-semibold text-[#181818]">ORMAND BEACH, FL</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#B19528]" />
-                    <span className="text-lg font-semibold text-[#181818] dark:text-white">SPRINGFIELD, TN</span>
+                    <span className="text-lg font-semibold text-[#181818]">SPRINGFIELD, TN</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#B19528]" />
-                    <span className="text-lg font-semibold text-[#181818] dark:text-white">NASAU, BAHAMAS</span>
+                    <span className="text-lg font-semibold text-[#181818]">NASAU, BAHAMAS</span>
                   </div>
                 </div>
               </div>
 
               {/* Social Media */}
               <div>
-                <h3 className="text-lg font-bold text-[#181818] dark:text-white mb-3">SOCIAL MEDIA:</h3>
-                <div className="flex gap-4">
+                <h3 className="text-lg font-bold text-[#181818] mb-3">SOCIAL MEDIA:</h3>
+                <div className="flex justify-center gap-4">
                   <a
                     href="https://www.facebook.com/newcovenantu"
                     target="_blank"
