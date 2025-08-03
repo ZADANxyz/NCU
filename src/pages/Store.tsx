@@ -17,49 +17,49 @@ const books = [
     id: 1,
     title: "Think Like a Queen to Be Married to a King",
     author: "Dr. Angel Crites",
-    image: "/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
+    image: "/lovable-uploads/f6a209b9-33ce-4341-a4b2-e6f72e9e8258.png"
   },
   {
     id: 2,
     title: "21 Things Every Leader Needs to Know",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/5112ed5b-dfc8-4730-891c-db9b20452df4.png"
+    image: "/lovable-uploads/af2d99f6-cd34-4b13-856d-94fbb9e77196.png"
   },
   {
     id: 3,
     title: "Money Matters",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/f34e6004-3e3f-4587-96e4-6e67154b7ca6.png"
+    image: "/lovable-uploads/f541daf2-f08f-4b19-a805-710e2125de05.png"
   },
   {
     id: 4,
     title: "Rewired",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/d162fcf1-b78e-48f1-a9da-ef64c1c89243.png"
+    image: "/lovable-uploads/920eed9e-4f95-4252-a39c-26d09d229961.png"
   },
   {
     id: 5,
     title: "Ministry Moments",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png"
+    image: "/lovable-uploads/74fb2e7d-641c-4afa-903d-f49190fe99d4.png"
   },
   {
     id: 6,
     title: "Confessions of a Faithful Father",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/7788beff-edb4-4e06-a889-be37c6860148.png"
+    image: "/lovable-uploads/2c985979-5ae0-41c5-8b38-213a5f90c86b.png"
   },
   {
     id: 7,
     title: "Seasons & Sons",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/aa922b63-f20a-4042-8985-bd50591544e3.png"
+    image: "/lovable-uploads/bb84dfe6-5b64-494e-bd78-497ec0c70cdc.png"
   },
   {
     id: 8,
     title: "The Decisions of a Wealthy King",
     author: "Dr. Paul Crites",
-    image: "/lovable-uploads/c5e7ddc6-391b-47f0-8ee5-aedefb060295.png"
+    image: "/lovable-uploads/1f73dd87-3e04-4063-9cca-3a86f0fe1737.png"
   },
   {
     id: 9,
