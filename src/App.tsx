@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/Header";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Donate from "./pages/Donate";
 import Store from "./pages/Store";
 import Media from "./pages/Media";
 import Downloads from "./pages/Downloads";
@@ -32,6 +33,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/donate" element={<Donate />} />
                 <Route path="/store" element={<Store />} />
                 <Route path="/media" element={<Media />} />
                 <Route path="/downloads" element={<Downloads />} />
