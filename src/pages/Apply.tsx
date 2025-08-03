@@ -37,7 +37,7 @@ const Apply = () => {
                 <img
                   src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
                   alt="New Covenant University Seal"
-                  className="w-auto h-48 md:h-56 lg:h-64 max-w-none"
+                  className="w-auto h-40 md:h-48 lg:h-56 max-w-none"
                   style={{ aspectRatio: 'auto' }}
                 />
               </div>
