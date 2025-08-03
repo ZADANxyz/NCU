@@ -1,7 +1,7 @@
 import React from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
+
 import HeroDividerSection from "../home/sections/HeroDividerSection";
 import DegreesOfferedSection from "../home/sections/DegreesOfferedSection";
 import ReviewsSection from "../home/sections/ReviewsSection";
@@ -17,8 +17,6 @@ const CourseCatalogue = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      
       <main className="flex-1 pt-16">
         {/* PDF Section */}
         <section className="w-full py-8 bg-background">

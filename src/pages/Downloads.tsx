@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import Header from "@/components/Header";
+
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
@@ -38,8 +38,6 @@ const Downloads = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      
       <main className="pt-16 flex-1">
         {/* Header Image Section */}
         <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
