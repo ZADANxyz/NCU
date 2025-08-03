@@ -41,35 +41,15 @@ const CourseCatalogue = () => {
                 </p>
               </div>
               
-              {/* PDF Embed Placeholder */}
-              <div className="relative w-full" style={{ minHeight: "800px" }}>
-                <div className="absolute inset-0 flex items-center justify-center bg-muted/50">
-                  <div className="text-center p-8">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Download size={32} className="text-primary" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2 text-foreground">
-                      PDF Document Placeholder
-                    </h3>
-                    <p className="text-muted-foreground mb-4 max-w-md">
-                      This is a placeholder for the Course Catalogue PDF. 
-                      Replace this section with the actual PDF embed code.
-                    </p>
-                    <div className="bg-card border border-border rounded p-4 text-left max-w-lg mx-auto">
-                      <code className="text-sm text-muted-foreground">
-                        {`<!-- Replace with actual PDF embed -->
-<iframe 
-  src="path/to/course-catalogue.pdf"
-  width="100%" 
-  height="800px"
-  style="border: none;"
->
-</iframe>`}
-                      </code>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* PDF Embed */}
+              <iframe 
+                src="https://drive.google.com/file/d/11esqJo0l33FKi_qLzVKbi3VxIX3wbWwJ/preview" 
+                width="100%" 
+                height="800px" 
+                allow="autoplay"
+                style={{ border: "none" }}
+                title="Course Catalogue PDF"
+              />
             </div>
           </div>
         </section>
