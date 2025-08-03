@@ -85,7 +85,7 @@ const ContactAboutForm = () => {
   return (
     <div className="w-full">
       {/* Contact Us Title */}
-      <h3 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
+      <h3 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight text-center">
         Contact Us:
       </h3>
       
@@ -95,7 +95,7 @@ const ContactAboutForm = () => {
       </div>
       
       {/* Phone Button */}
-      <div className="w-full max-w-md mx-auto">
+      <div className="w-full">
         <ContactPhoneButton
           isDark={isDark}
           glassyButtonBase={glassyButtonBase}
@@ -103,7 +103,7 @@ const ContactAboutForm = () => {
           blueButtonHover={blueButtonHover}
         />
         <p className="text-center text-sm text-gray-600 dark:text-gray-300 mt-2 font-roboto">
-          We're here to help!
+          We're here to help, reach out and let's connect!
         </p>
       </div>
     </div>

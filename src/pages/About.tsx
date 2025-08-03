@@ -4,7 +4,7 @@ import HeroSection from "./home/sections/HeroSection";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
-import AboutSection from "./home/sections/AboutSection";
+import AboutSectionalBIO from "./home/sections/AboutSectionalBIO";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
@@ -17,7 +17,7 @@ const About = () => {
   return (
     <div className="bg-background min-h-screen pt-0">
       {/* Hero Image */}
-      <div className="w-full h-[600px] md:h-[700px] lg:h-[800px] relative overflow-hidden">
+      <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
           src={HERO_IMAGE}
           alt="New Covenant University Campus"
@@ -53,7 +53,7 @@ const About = () => {
           {/* Right Column - Portrait Image and Slider */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             {/* Portrait Image */}
-            <div className="w-full aspect-video overflow-hidden rounded-lg mb-4">
+            <div className="w-full h-96 md:h-[500px] overflow-hidden rounded-lg mb-4">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"
@@ -71,7 +71,7 @@ const About = () => {
         {/* Apply Today Button */}
         <div className="flex justify-center mt-12">
           <button 
-            className="group block font-bold py-3 px-10 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[180px] h-12"
+            className="group block font-bold py-4 px-16 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[220px] h-14 text-lg"
             onClick={() => window.location.href = '/apply'}
           >
             <span className="relative z-20">Apply Today!</span>
@@ -104,7 +104,7 @@ const About = () => {
         <HeroDividerSection />
         <DegreesOfferedSection />
         <ReviewsSection />
-        <AboutSection />
+        <AboutSectionalBIO />
         <HeroDividerSection />
         <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
           <ContactAboutForm />
