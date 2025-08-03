@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
@@ -7,26 +7,20 @@ import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
-// Gallery images managed via Google Drive folder
-// Main folder: https://drive.google.com/drive/folders/1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94?usp=share_link
-// 
-// TO UPDATE GALLERY:
-// 1. Add images to the Google Drive folder above
-// 2. For each image: Right-click > Get link > Change access to "Anyone with the link"
-// 3. Extract the FILE_ID from the shared link (the long string after /d/ and before /view)
-// 4. Replace the FILE_ID in the links below using format: https://drive.google.com/uc?export=view&id=FILE_ID
-// 5. Update the alt text to describe the image
-//
-// EXAMPLE: If shared link is https://drive.google.com/file/d/1ABC123XYZ789/view?usp=sharing
-// Then FILE_ID is: 1ABC123XYZ789
-// And the src should be: https://drive.google.com/uc?export=view&id=1ABC123XYZ789
+// Gallery images - now automatically managed via Zapier integration
+// Main Google Drive folder: https://drive.google.com/drive/folders/1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94?usp=share_link
 
-const galleryImages = [
-  // Replace these example IDs with actual file IDs from your Google Drive folder
+// Initial gallery images (will be replaced by Zapier webhook data)
+const initialGalleryImages = [
   { 
     id: 1, 
     src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_1", 
@@ -57,7 +51,6 @@ const galleryImages = [
     src: "https://drive.google.com/uc?export=view&id=REPLACE_WITH_ACTUAL_FILE_ID_6", 
     alt: "University Photo 6" 
   },
-  // Add more images as needed by copying the pattern above
 ];
 
 const IMAGES_PER_PAGE = 24;
@@ -66,10 +59,98 @@ const Media = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
+  const [galleryImages, setGalleryImages] = useState(initialGalleryImages);
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  
+  // Load saved webhook URL and gallery data from localStorage
+  useEffect(() => {
+    const savedWebhookUrl = localStorage.getItem("mediaGalleryWebhookUrl");
+    const savedGalleryImages = localStorage.getItem("mediaGalleryImages");
+    
+    if (savedWebhookUrl) {
+      setWebhookUrl(savedWebhookUrl);
+    }
+    
+    if (savedGalleryImages) {
+      try {
+        const parsedImages = JSON.parse(savedGalleryImages);
+        setGalleryImages(parsedImages);
+      } catch (error) {
+        console.error("Error parsing saved gallery images:", error);
+      }
+    }
+  }, []);
+
+  // Set up webhook endpoint listener
+  useEffect(() => {
+    const handleWebhookData = (event: MessageEvent) => {
+      if (event.data.type === 'ZAPIER_GALLERY_UPDATE') {
+        const newImages = event.data.images;
+        setGalleryImages(newImages);
+        localStorage.setItem("mediaGalleryImages", JSON.stringify(newImages));
+        toast({
+          title: "Gallery Updated",
+          description: `${newImages.length} images loaded from Google Drive`,
+        });
+      }
+    };
+
+    window.addEventListener('message', handleWebhookData);
+    return () => window.removeEventListener('message', handleWebhookData);
+  }, [toast]);
   
   const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
   const startIndex = (currentPage - 1) * IMAGES_PER_PAGE;
   const currentImages = galleryImages.slice(startIndex, startIndex + IMAGES_PER_PAGE);
+
+  const handleWebhookSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!webhookUrl) {
+      toast({
+        title: "Error",
+        description: "Please enter your Zapier webhook URL",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    localStorage.setItem("mediaGalleryWebhookUrl", webhookUrl);
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          action: "get_gallery_images",
+          timestamp: new Date().toISOString(),
+          triggered_from: window.location.origin,
+        }),
+      });
+
+      toast({
+        title: "Webhook URL Saved",
+        description: "The webhook URL has been saved. Your Zapier automation should now update the gallery when you add images to Google Drive.",
+      });
+      
+      setIsSettingsOpen(false);
+    } catch (error) {
+      console.error("Error testing webhook:", error);
+      toast({
+        title: "Webhook URL Saved",
+        description: "The webhook URL has been saved locally. Make sure your Zapier automation is set up correctly.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -131,11 +212,67 @@ const Media = () => {
       {/* Gallery Section */}
       <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
         <div className="w-full px-6 sm:px-8 md:px-[60px]">
-          {/* Gallery Title */}
-          <div className="mb-12">
+          {/* Gallery Title & Settings */}
+          <div className="mb-12 flex justify-between items-center">
             <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white tracking-tight">
               Gallery:
             </h2>
+            
+            {/* Admin Settings Button */}
+            <Collapsible open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
+              <CollapsibleTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="opacity-50 hover:opacity-100 transition-opacity"
+                >
+                  <Settings className="h-4 w-4 mr-2" />
+                  Settings
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4">
+                <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border">
+                  <h3 className="text-lg font-medium mb-4 text-[#181818] dark:text-white">
+                    Zapier Webhook Configuration
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    Set up your Zapier webhook to automatically update the gallery when you add images to Google Drive.
+                  </p>
+                  
+                  <form onSubmit={handleWebhookSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="webhookUrl">Zapier Webhook URL</Label>
+                      <Input
+                        id="webhookUrl"
+                        type="url"
+                        value={webhookUrl}
+                        onChange={(e) => setWebhookUrl(e.target.value)}
+                        placeholder="https://hooks.zapier.com/hooks/catch/..."
+                        className="mt-1"
+                      />
+                    </div>
+                    
+                    <Button type="submit" disabled={isLoading}>
+                      {isLoading ? "Saving..." : "Save Webhook URL"}
+                    </Button>
+                  </form>
+                  
+                  <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
+                      Setup Instructions:
+                    </h4>
+                    <ol className="text-xs text-blue-700 dark:text-blue-300 space-y-1">
+                      <li>1. Create a Zapier automation with "Google Drive - New File in Folder" trigger</li>
+                      <li>2. Set the folder to your Google Drive gallery folder</li>
+                      <li>3. Add a "Webhooks - POST" action step</li>
+                      <li>4. Set the webhook URL to send image data to this website</li>
+                      <li>5. Configure the payload to include file ID and name for each image</li>
+                      <li>6. Test by uploading an image to your Google Drive folder</li>
+                    </ol>
+                  </div>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
 
           {/* Gallery Grid */}
