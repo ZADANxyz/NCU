@@ -54,52 +54,34 @@ const Donate = () => {
       </div>
 
       {/* Donation Options Section */}
-      <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
+      <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
+        <div className="w-full px-6 sm:px-8 md:px-[60px]">
         {/* Donation Buttons Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
-          {donationOptions.map((option, index) => (
+          {donationOptions.map((option) => (
             <button
               key={option.name}
               onClick={() => handleDonationClick(option.url)}
               className={`group w-full font-bold py-6 px-8 transition text-center cursor-pointer shadow-lg overflow-hidden rounded border-2 font-roboto h-20 text-xl ${
                 option.preferred
-                  ? 'border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20'
+                  ? 'border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20'
                   : 'border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20'
-              } ${option.preferred ? 'drop-shadow-[0_4px_12px_rgba(177,149,40,0.4)] dark:drop-shadow-[0_4px_12px_rgba(177,149,40,0.4)]' : ''}`}
+              }`}
             >
               <span className="relative z-20">{option.name}</span>
-              <span
-                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
-                aria-hidden="true"
-                style={{
-                  zIndex: 3,
-                  background: "linear-gradient(110deg,rgba(51,128,255,0.45) 0%,rgba(41,100,210,0.67) 60%,rgba(27,55,130,0.18) 100%)",
-                  boxShadow: "0 8px 30px 0 rgba(51,132,245,0.17)",
-                  borderRadius: "inherit",
-                }}
-              ></span>
-              <span
-                className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 hidden dark:block"
-                aria-hidden="true"
-                style={{
-                  zIndex: 3,
-                  background: "linear-gradient(110deg,rgba(177,149,40,0.27) 0%,rgba(228,214,128,0.45) 60%,rgba(178,160,66,0.18) 100%)",
-                  boxShadow: "0 8px 30px 0 rgba(177,149,40,0.19)",
-                  borderRadius: "inherit",
-                }}
-              ></span>
             </button>
           ))}
         </div>
 
         {/* Description Text */}
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <p className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-6">
             New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students.
           </p>
           <p className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed">
             The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
           </p>
+        </div>
         </div>
       </section>
 
