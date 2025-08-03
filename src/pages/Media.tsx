@@ -11,23 +11,88 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
-// Sample gallery images - these would be managed by the school president
+// Gallery images managed via Google Drive links
+// To add/update images: 
+// 1. Upload images to Google Drive
+// 2. Right-click image > Get link > Change access to "Anyone with the link"
+// 3. Use the direct image link format: https://drive.google.com/uc?export=view&id=FILE_ID
+// Where FILE_ID is extracted from the shared link
 const galleryImages = [
-  { id: 1, src: "/lovable-uploads/033cc9e0-07a9-4d43-b011-0d16b20cb8d9.png", alt: "Graduation ceremony" },
-  { id: 2, src: "/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png", alt: "University event" },
-  { id: 3, src: "/lovable-uploads/5112ed5b-dfc8-4730-891c-db9b20452df4.png", alt: "Student activities" },
-  { id: 4, src: "/lovable-uploads/f34e6004-3e3f-4587-96e4-6e67154b7ca6.png", alt: "Campus life" },
-  { id: 5, src: "/lovable-uploads/d162fcf1-b78e-48f1-a9da-ef64c1c89243.png", alt: "Academic ceremonies" },
-  { id: 6, src: "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png", alt: "University facilities" },
-  { id: 7, src: "/lovable-uploads/7788beff-edb4-4e06-a889-be37c6860148.png", alt: "Student life" },
-  { id: 8, src: "/lovable-uploads/aa922b63-f20a-4042-8985-bd50591544e3.png", alt: "Campus events" },
-  { id: 9, src: "/lovable-uploads/c5e7ddc6-391b-47f0-8ee5-aedefb060295.png", alt: "Academic achievements" },
-  { id: 10, src: "/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png", alt: "University community" },
-  { id: 11, src: "/lovable-uploads/d74aae3a-32f5-4e93-9bae-af5a4a61bff8.png", alt: "Educational activities" },
-  { id: 12, src: "/lovable-uploads/0b8ffb5b-2139-4853-890a-c2ee2ca521ac.png", alt: "School programs" },
-  { id: 13, src: "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png", alt: "University celebrations" },
-  { id: 14, src: "/lovable-uploads/a03296b5-6734-433b-93c5-efe5e37623bf.png", alt: "Academic excellence" },
-  { id: 15, src: "/lovable-uploads/f88d4d0d-8a44-4768-9377-018c10d02f2f.png", alt: "Student achievements" },
+  { 
+    id: 1, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_1", 
+    alt: "Graduation ceremony" 
+  },
+  { 
+    id: 2, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_2", 
+    alt: "University event" 
+  },
+  { 
+    id: 3, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_3", 
+    alt: "Student activities" 
+  },
+  { 
+    id: 4, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_4", 
+    alt: "Campus life" 
+  },
+  { 
+    id: 5, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_5", 
+    alt: "Academic ceremonies" 
+  },
+  { 
+    id: 6, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_6", 
+    alt: "University facilities" 
+  },
+  { 
+    id: 7, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_7", 
+    alt: "Student life" 
+  },
+  { 
+    id: 8, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_8", 
+    alt: "Campus events" 
+  },
+  { 
+    id: 9, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_9", 
+    alt: "Academic achievements" 
+  },
+  { 
+    id: 10, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_10", 
+    alt: "University community" 
+  },
+  { 
+    id: 11, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_11", 
+    alt: "Educational activities" 
+  },
+  { 
+    id: 12, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_12", 
+    alt: "School programs" 
+  },
+  { 
+    id: 13, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_13", 
+    alt: "University celebrations" 
+  },
+  { 
+    id: 14, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_14", 
+    alt: "Academic excellence" 
+  },
+  { 
+    id: 15, 
+    src: "https://drive.google.com/uc?export=view&id=1example_file_id_15", 
+    alt: "Student achievements" 
+  },
 ];
 
 const IMAGES_PER_PAGE = 24;
