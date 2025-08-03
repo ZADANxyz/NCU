@@ -53,7 +53,7 @@ const About = () => {
           {/* Right Column - Portrait Image and Slider */}
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
             {/* Portrait Image */}
-            <div className="w-full h-96 md:h-[500px] overflow-hidden rounded-lg mb-4">
+            <div className="w-full h-[800px] md:h-[1000px] overflow-hidden rounded-lg mb-4">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"

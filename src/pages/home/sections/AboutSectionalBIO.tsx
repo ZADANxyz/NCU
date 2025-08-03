@@ -11,7 +11,7 @@ const AboutSectionalBIO = () => {
           </h2>
           <div className="w-full h-96 md:h-[500px] overflow-hidden rounded-lg">
             <img
-              src="/lovable-uploads/angel-crites.png"
+              src="/lovable-uploads/d162fcf1-b78e-48f1-a9da-ef64c1c89243.png"
               alt="Dr. Angel L. Crites"
               className="w-full h-full object-cover object-center"
             />
@@ -32,10 +32,10 @@ const AboutSectionalBIO = () => {
           {/* Action Button */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
-              className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto w-full sm:w-auto min-w-[140px] h-12"
-              onClick={() => window.location.href = '/donate'}
+              className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto w-full sm:w-auto min-w-[140px] h-12"
+              onClick={() => window.location.href = '/apply'}
             >
-              <span className="relative z-20">Donate Now</span>
+              <span className="relative z-20">Apply Today!</span>
               <span
                 className="absolute inset-0 opacity-0 transition-all duration-200 pointer-events-none group-hover:opacity-100 dark:hidden"
                 aria-hidden="true"
