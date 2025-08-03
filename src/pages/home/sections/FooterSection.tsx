@@ -13,9 +13,13 @@ const TikTokIcon = () => (
 
 // HubSpot icon component
 const HubSpotIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.164 7.931V5.829c0-.792-.268-1.494-.713-2.058.267-.4.426-.894-.426-1.429C17.877.903 16.955 0 15.86 0s-2.017.903-2.017 2.342c0 .535.159 1.029.426 1.429-.445.564-.713 1.266-.713 2.058v2.102c-1.297.307-2.262 1.483-2.262 2.892 0 1.408.965 2.585 2.262 2.892v7.943c0 .792.268 1.494.713 2.058-.267.4-.426.894-.426 1.429 0 1.439.922 2.342 2.017 2.342s2.017-.903 2.017-2.342c0-.535-.159-1.029-.426-1.429.445-.564.713-1.266.713-2.058v-7.943c1.297-.307 2.262-1.484 2.262-2.892 0-1.409-.965-2.585-2.262-2.892zM15.86 1.463c.466 0 .842.393.842.879 0 .486-.376.879-.842.879-.466 0-.842-.393-.842-.879 0-.486.376-.879.842-.879zm0 21.074c-.466 0-.842-.393-.842-.879 0-.486.376-.879.842.879.466 0 .842.393.842.879 0 .486-.376.879-.842.879zm0-10.714c-.961 0-1.738-.811-1.738-1.812s.777-1.812 1.738-1.812 1.738.811 1.738 1.812-.777 1.812-1.738 1.812z"/>
-  </svg>
+  <img 
+    src="/lovable-uploads/d74aae3a-32f5-4e93-9bae-af5a4a61bff8.png" 
+    alt="HubSpot" 
+    width="16" 
+    height="16" 
+    className="object-contain"
+  />
 );
 
 const FooterSection = () => {
@@ -97,8 +101,10 @@ const FooterSection = () => {
               <Mail size={16} />
             </a>
             <a
-              href="#"
+              href="https://crm.ncu.education"
               aria-label="HubSpot"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
             >
               <HubSpotIcon />
