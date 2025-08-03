@@ -20,10 +20,10 @@ const StudentHandbook = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 pt-16">
         {/* PDF Section */}
-        <section className="w-full py-4 bg-background">
+        <section className="w-full py-2 bg-background">
           <div className="w-full px-3 sm:px-6 md:px-[52px]">
             {/* Download Button */}
-            <div className="flex justify-end mb-8">
+            <div className="flex justify-end mb-4">
               <Button 
                 onClick={handleDownload} 
                 className="flex items-center gap-2 bg-[#046BD2] hover:bg-[#046BD2]/90 dark:bg-[#B19528] dark:hover:bg-[#B19528]/90 text-white font-roboto"
@@ -38,7 +38,7 @@ const StudentHandbook = () => {
               <iframe 
                 src="https://drive.google.com/file/d/12K1Wl23OLDSGzQXHsm5eDshBniyxm7Uu/preview?usp=drive_web&embedded=true" 
                 width="100%" 
-                height="15000px" 
+                height="70000px" 
                 allow="autoplay"
                 style={{ border: "none", display: "block" }}
                 title="Student Handbook PDF"
