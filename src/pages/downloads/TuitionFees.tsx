@@ -20,7 +20,7 @@ const TuitionFees = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1 pt-16">
         {/* PDF Section */}
-        <section className="w-full py-8 bg-background">
+        <section className="w-full py-4 bg-background">
           <div className="w-full px-3 sm:px-6 md:px-[52px]">
             {/* Download Button */}
             <div className="flex justify-end mb-8">
@@ -33,19 +33,12 @@ const TuitionFees = () => {
               </Button>
             </div>
 
-            {/* PDF Placeholder */}
+            {/* PDF Embed */}
             <div className="w-full bg-card border border-border rounded-lg overflow-hidden shadow-lg">
-              <div className="bg-muted px-6 py-4 border-b border-border">
-                <p className="text-sm text-muted-foreground">
-                  Tuition & Fees - New Covenant University
-                </p>
-              </div>
-              
-              {/* PDF Embed */}
               <iframe 
                 src="https://drive.google.com/file/d/1OOXYVYvYR708PGgi_-CS8ssYQqlmoY9S/preview?rm=minimal&embedded=true" 
                 width="100%" 
-                height="2000px" 
+                height="4000px" 
                 allow="autoplay"
                 style={{ border: "none", display: "block" }}
                 title="Tuition & Fees PDF"
