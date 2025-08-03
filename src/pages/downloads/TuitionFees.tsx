@@ -1,7 +1,7 @@
 import React from "react";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import HeaderDOWNLOADS from "@/components/HeaderDOWNLOADS";
+import Header from "@/components/Header";
 import HeroDividerSection from "../home/sections/HeroDividerSection";
 import DegreesOfferedSection from "../home/sections/DegreesOfferedSection";
 import ReviewsSection from "../home/sections/ReviewsSection";
@@ -17,7 +17,7 @@ const TuitionFees = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <HeaderDOWNLOADS />
+      <Header />
       
       <main className="flex-1 pt-16">
         {/* PDF Section */}
