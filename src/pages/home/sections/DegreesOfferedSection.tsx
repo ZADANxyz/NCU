@@ -7,17 +7,17 @@ const DEGREE_BUTTONS = [
   {
     alt: "Associate of Arts Degrees",
     img: "/lovable-uploads/f34e6004-3e3f-4587-96e4-6e67154b7ca6.png",
-    to: "/degrees/associate",
+    to: "/degrees/associate-of-arts",
   },
   {
     alt: "Bachelor of Arts Degrees",
     img: "/lovable-uploads/aa922b63-f20a-4042-8985-bd50591544e3.png",
-    to: "/degrees/bachelor",
+    to: "/degrees/bachelor-of-arts",
   },
   {
     alt: "Master of Arts Degrees",
     img: "/lovable-uploads/7788beff-edb4-4e06-a889-be37c6860148.png",
-    to: "/degrees/master",
+    to: "/degrees/master-of-arts",
   },
   {
     alt: "Doctorate Degrees",
