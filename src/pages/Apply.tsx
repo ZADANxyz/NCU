@@ -43,7 +43,7 @@ const Apply = () => {
               </div>
               
               {/* University Info - Positioned more to the right and centered vertically */}
-              <div className="flex-1 flex flex-col justify-center pl-8 pt-4">
+              <div className="flex-1 flex flex-col justify-center pl-12 pt-4">
                 <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4 whitespace-nowrap">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
