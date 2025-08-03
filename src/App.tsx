@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Donate from "./pages/Donate";
+import Apply from "./pages/Apply";
 import Store from "./pages/Store";
 import Media from "./pages/Media";
 import Downloads from "./pages/Downloads";
@@ -33,10 +34,11 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/donate" element={<Donate />} />
-                <Route path="/store" element={<Store />} />
-                <Route path="/media" element={<Media />} />
-                <Route path="/downloads" element={<Downloads />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/apply" element={<Apply />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/downloads" element={<Downloads />} />
                 <Route path="/downloads/student-handbook" element={<StudentHandbook />} />
                 <Route path="/downloads/tuition-fees" element={<TuitionFees />} />
                 <Route path="/downloads/graduate-studies" element={<GraduateStudies />} />

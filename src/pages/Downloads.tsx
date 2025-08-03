@@ -56,7 +56,7 @@ const Downloads = () => {
 
         {/* Downloads Grid Section */}
         <section className="w-full py-16 bg-background">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-6 sm:px-8 md:px-[60px]">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-roboto font-normal mb-4 text-[#181818] dark:text-white tracking-tight">
                 Downloads
@@ -65,7 +65,7 @@ const Downloads = () => {
                 Access important documents and resources for your academic journey
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-none">
               {downloadItems.map((item, index) => (
                 <div key={index} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-white dark:bg-[#242836] hover:shadow-lg transition-shadow duration-300">
                   <h3 className="text-2xl font-roboto font-normal mb-4 text-[#181818] dark:text-white">
