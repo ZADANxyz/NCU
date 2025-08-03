@@ -8,7 +8,7 @@ import HeroDividerSection from "@/pages/home/sections/HeroDividerSection";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
-const BiblicalStudies = () => {
+const ChristianLeadership = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeaderMenuDEGREES currentDegreeLevel="associate" />
@@ -33,9 +33,9 @@ const BiblicalStudies = () => {
         <div className="w-full">
           <div className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <iframe
-              src="https://placeholder-pdf-url.com/biblical-studies"
+              src="https://placeholder-pdf-url.com/christian-leadership"
               className="w-full h-[800px] border-0"
-              title="Associate of Biblical Studies Course Information"
+              title="Associate of Christian Leadership Course Information"
             />
           </div>
         </div>
@@ -60,4 +60,4 @@ const BiblicalStudies = () => {
   );
 };
 
-export default BiblicalStudies;
+export default ChristianLeadership;

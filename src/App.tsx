@@ -23,6 +23,7 @@ import BachelorOfArts from "./pages/degrees/BachelorOfArts";
 import MasterOfArts from "./pages/degrees/MasterOfArts";
 import Doctorate from "./pages/degrees/Doctorate";
 import BiblicalStudies from "./pages/degrees/courses/BiblicalStudies";
+import ChristianLeadership from "./pages/degrees/courses/ChristianLeadership";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
               <Route path="/degrees/master-of-arts" element={<main className="flex-1"><MasterOfArts /></main>} />
               <Route path="/degrees/doctorate" element={<main className="flex-1"><Doctorate /></main>} />
               <Route path="/degrees/associate-of-arts/biblical-studies" element={<main className="flex-1"><BiblicalStudies /></main>} />
+              <Route path="/degrees/associate-of-arts/christian-leadership" element={<main className="flex-1"><ChristianLeadership /></main>} />
               <Route path="*" element={<><Header /><main className="flex-1"><NotFound /></main></>} />
             </Routes>
           </div>
