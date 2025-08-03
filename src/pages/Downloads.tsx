@@ -38,7 +38,7 @@ const Downloads = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="pt-16 flex-1">
+      <main className="flex-1">
         {/* Header Image Section */}
         <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -75,9 +75,9 @@ const Downloads = () => {
                     {item.description}
                   </p>
                   <Button asChild className="w-full max-w-xs">
-                    <Link to={item.to}>
+                    <a href={item.to} target="_blank" rel="noopener noreferrer">
                       View Document
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               ))}
