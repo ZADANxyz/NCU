@@ -38,7 +38,7 @@ const StudentHandbook = () => {
               <iframe 
                 src="https://drive.google.com/file/d/12K1Wl23OLDSGzQXHsm5eDshBniyxm7Uu/preview?usp=drive_web&embedded=true" 
                 width="100%" 
-                height="40000px" 
+                height="15000px" 
                 allow="autoplay"
                 style={{ border: "none", display: "block" }}
                 title="Student Handbook PDF"
