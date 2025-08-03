@@ -9,6 +9,7 @@ import Header from "@/components/Header";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Store from "./pages/Store";
+import Media from "./pages/Media";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/store" element={<Store />} />
+                <Route path="/media" element={<Media />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
