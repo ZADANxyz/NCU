@@ -10,6 +10,11 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Store from "./pages/Store";
 import Media from "./pages/Media";
+import Downloads from "./pages/Downloads";
+import StudentHandbook from "./pages/downloads/StudentHandbook";
+import TuitionFees from "./pages/downloads/TuitionFees";
+import GraduateStudies from "./pages/downloads/GraduateStudies";
+import CourseCatalogue from "./pages/downloads/CourseCatalogue";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +34,11 @@ const App = () => (
                 <Route path="/about" element={<About />} />
                 <Route path="/store" element={<Store />} />
                 <Route path="/media" element={<Media />} />
+                <Route path="/downloads" element={<Downloads />} />
+                <Route path="/downloads/student-handbook" element={<StudentHandbook />} />
+                <Route path="/downloads/tuition-fees" element={<TuitionFees />} />
+                <Route path="/downloads/graduate-studies" element={<GraduateStudies />} />
+                <Route path="/downloads/course-catalogue" element={<CourseCatalogue />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
