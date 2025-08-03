@@ -6,6 +6,7 @@ import AboutSectionalSUBPAGE from "@/pages/home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "@/pages/home/sections/MapSection";
 import FooterSection from "@/pages/home/sections/FooterSection";
+import BackToTopButton from "@/pages/home/sections/BackToTopButton";
 import HeroDividerSection from "@/pages/home/sections/HeroDividerSection";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
@@ -46,6 +47,7 @@ const Degrees = () => {
       <MapSection />
       
       <FooterSection />
+      <BackToTopButton />
     </div>
   );
 };

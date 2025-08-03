@@ -9,6 +9,7 @@ import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
+import BackToTopButton from "./home/sections/BackToTopButton";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -106,6 +107,7 @@ const Downloads = () => {
       </main>
       
       <FooterSection />
+      <BackToTopButton />
     </div>
   );
 };
