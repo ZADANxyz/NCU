@@ -114,7 +114,7 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
           </div>
           
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <nav className="hidden md:flex items-center gap-9">
             <Link
               to="/"
               className={cn(
