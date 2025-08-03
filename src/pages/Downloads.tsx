@@ -74,7 +74,7 @@ const Downloads = () => {
                   <p className="text-muted-foreground mb-6 max-w-sm">
                     {item.description}
                   </p>
-                  <Button asChild className="w-full max-w-xs">
+                  <Button asChild variant="default" className="w-full max-w-xs bg-[#046BD2] hover:bg-[#046BD2]/90 text-white">
                     <a href={item.to} target="_blank" rel="noopener noreferrer">
                       View Document
                     </a>
