@@ -40,7 +40,7 @@ const Downloads = () => {
     <div className="min-h-screen bg-background">
       <main className="flex-1">
         {/* Header Image Section */}
-        <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+        <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
           <div className="absolute inset-0">
             <img
               src={HERO_IMAGE}
@@ -58,20 +58,20 @@ const Downloads = () => {
         <section className="w-full py-16 bg-background">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-foreground">
+              <h1 className="text-4xl md:text-5xl font-roboto font-normal mb-4 text-[#181818] dark:text-white tracking-tight">
                 Downloads
               </h1>
-              <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-muted-foreground">
+              <p className="text-lg md:text-xl font-roboto font-normal max-w-3xl mx-auto text-[#333] dark:text-gray-200">
                 Access important documents and resources for your academic journey
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {downloadItems.map((item, index) => (
-                <div key={index} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-card hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-2xl font-semibold mb-4 text-foreground">
+                <div key={index} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-white dark:bg-[#242836] hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-2xl font-roboto font-normal mb-4 text-[#181818] dark:text-white">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 max-w-sm">
+                  <p className="text-[#333] dark:text-gray-200 font-roboto font-normal mb-6 max-w-sm">
                     {item.description}
                   </p>
                   <Button asChild variant="default" className="w-full max-w-xs bg-[#046BD2] hover:bg-[#046BD2]/90 text-white">
