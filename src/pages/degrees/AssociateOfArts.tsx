@@ -65,6 +65,9 @@ const AssociateOfArts = () => {
         </div>
       </section>
       
+      {/* Divider */}
+      <HeroDividerSection />
+      
       <DegreesOfferedSection />
       <ReviewsSection />
       <AboutSectionalSUBPAGE />

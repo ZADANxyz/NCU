@@ -118,11 +118,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -133,11 +133,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/about"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/about")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -148,11 +148,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/store"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/store")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -166,11 +166,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
               <Link
                 to="/degrees"
                 className={cn(
-                  "flex items-center text-sm font-medium transition-colors duration-200",
+                  "flex items-center text-sm font-medium font-roboto transition-colors duration-200",
                   isDegreesActive
                     ? isDark
-                      ? "text-white"
-                      : "text-gray-900"
+                      ? "text-[#B19528]"
+                      : "text-[#046BD2]"
                     : isDark
                     ? "text-gray-300 hover:text-white"
                     : "text-gray-600 hover:text-gray-900"
@@ -247,11 +247,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/downloads"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/downloads")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -262,11 +262,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/donate"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/donate")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"
@@ -277,11 +277,11 @@ const HeaderMenuDEGREES: React.FC<HeaderMenuDEGREESProps> = ({ currentDegreeLeve
             <Link
               to="/apply"
               className={cn(
-                "text-sm font-medium transition-colors duration-200",
+                "text-sm font-medium font-roboto transition-colors duration-200",
                 isActive("/apply")
                   ? isDark
-                    ? "text-white"
-                    : "text-gray-900"
+                    ? "text-[#B19528]"
+                    : "text-[#046BD2]"
                   : isDark
                   ? "text-gray-300 hover:text-white"
                   : "text-gray-600 hover:text-gray-900"

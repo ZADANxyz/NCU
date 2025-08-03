@@ -73,6 +73,9 @@ const Doctorate = () => {
         </div>
       </section>
       
+      {/* Divider */}
+      <HeroDividerSection />
+      
       <DegreesOfferedSection />
       <ReviewsSection />
       <AboutSectionalSUBPAGE />
