@@ -37,7 +37,7 @@ const Apply = () => {
                 <img
                   src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
                   alt="New Covenant University Seal"
-                  className="w-auto h-40 md:h-48 lg:h-56 max-w-none"
+                  className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
                   style={{ aspectRatio: 'auto' }}
                 />
               </div>
@@ -51,7 +51,7 @@ const Apply = () => {
                   <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                     Application for Admission
                   </h1>
-                  <p className="text-sm md:text-base lg:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
+                  <p className="text-sm md:text-base lg:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
                 </div>
