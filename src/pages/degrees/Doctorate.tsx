@@ -1,5 +1,8 @@
 import React from "react";
 import HeaderMenuDEGREES from "@/components/HeaderMenuDEGREES";
+import DegreesOfferedSection from "@/pages/home/sections/DegreesOfferedSection";
+import ReviewsSection from "@/pages/home/sections/ReviewsSection";
+import AboutSectionalSUBPAGE from "@/pages/home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "@/pages/home/sections/MapSection";
 import FooterSection from "@/pages/home/sections/FooterSection";
@@ -51,11 +54,11 @@ const Doctorate = () => {
       {/* Course Selection Section */}
       <section className="w-full bg-background dark:bg-background py-16 px-3 sm:px-6 md:px-[52px]">
         <div className="w-full">
-          <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-12 text-center tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-12 text-left tracking-tight">
             Doctorate Degrees:
           </h2>
           
-          <div className="space-y-4 max-w-4xl mx-auto">
+          <div className="space-y-4">
             {DOCTORATE_COURSES.map((course) => (
               <Link key={course.path} to={course.path} className="block" target="_blank" rel="noopener noreferrer">
                 <Button
@@ -69,6 +72,10 @@ const Doctorate = () => {
           </div>
         </div>
       </section>
+      
+      <DegreesOfferedSection />
+      <ReviewsSection />
+      <AboutSectionalSUBPAGE />
       
       {/* Divider */}
       <HeroDividerSection />
