@@ -30,11 +30,12 @@ const galleryImages = [
   { id: 15, src: "/lovable-uploads/f88d4d0d-8a44-4768-9377-018c10d02f2f.png", alt: "Student achievements" },
 ];
 
-const IMAGES_PER_PAGE = 12;
+const IMAGES_PER_PAGE = 24;
 
 const Media = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
   
   const totalPages = Math.ceil(galleryImages.length / IMAGES_PER_PAGE);
   const startIndex = (currentPage - 1) * IMAGES_PER_PAGE;
@@ -54,6 +55,32 @@ const Media = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+  };
+
+  const openImage = (imageSrc: string, imageIndex: number) => {
+    setSelectedImage(imageSrc);
+    setSelectedImageIndex(imageIndex);
+  };
+
+  const goToPreviousImage = () => {
+    if (selectedImageIndex > 0) {
+      const newIndex = selectedImageIndex - 1;
+      setSelectedImageIndex(newIndex);
+      setSelectedImage(galleryImages[newIndex].src);
+    }
+  };
+
+  const goToNextImage = () => {
+    if (selectedImageIndex < galleryImages.length - 1) {
+      const newIndex = selectedImageIndex + 1;
+      setSelectedImageIndex(newIndex);
+      setSelectedImage(galleryImages[newIndex].src);
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setSelectedImageIndex(-1);
   };
 
   return (
@@ -82,12 +109,12 @@ const Media = () => {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
-            {currentImages.map((image) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+            {currentImages.map((image, index) => (
               <div 
                 key={image.id} 
                 className="group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => setSelectedImage(image.src)}
+                onClick={() => openImage(image.src, startIndex + index)}
               >
                 <div className="aspect-square relative">
                   <img
@@ -144,20 +171,47 @@ const Media = () => {
       {selectedImage && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={closeModal}
         >
-          <div className="relative max-w-4xl max-h-full">
+          <div className="relative max-w-4xl max-h-full" onClick={(e) => e.stopPropagation()}>
+            {/* Previous Image Arrow */}
+            {selectedImageIndex > 0 && (
+              <button
+                onClick={goToPreviousImage}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-all"
+              >
+                <ChevronLeft size={24} />
+              </button>
+            )}
+            
+            {/* Next Image Arrow */}
+            {selectedImageIndex < galleryImages.length - 1 && (
+              <button
+                onClick={goToNextImage}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-all"
+              >
+                <ChevronRight size={24} />
+              </button>
+            )}
+            
             <img
               src={selectedImage}
               alt="Gallery image"
               className="max-w-full max-h-full object-contain rounded-lg"
             />
+            
+            {/* Close Button */}
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-gray-300 transition-colors"
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-gray-300 transition-colors z-10"
             >
               ×
             </button>
+            
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+              {selectedImageIndex + 1} / {galleryImages.length}
+            </div>
           </div>
         </div>
       )}
