@@ -14,7 +14,7 @@ const TikTokIcon = () => (
 // HubSpot icon component
 const HubSpotIcon = () => (
   <img 
-    src="/lovable-uploads/f88d4d0d-8a44-4768-9377-018c10d02f2f.png" 
+    src="/lovable-uploads/a03296b5-6734-433b-93c5-efe5e37623bf.png" 
     alt="HubSpot" 
     width="16" 
     height="16" 
