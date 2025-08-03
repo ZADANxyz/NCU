@@ -6,7 +6,8 @@ import HeroDividerSection from "../home/sections/HeroDividerSection";
 import DegreesOfferedSection from "../home/sections/DegreesOfferedSection";
 import ReviewsSection from "../home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "../home/sections/AboutSectionalSUBPAGE";
-import ContactAndMapSection from "../home/sections/ContactAndMapSection";
+import ContactAboutForm from "@/components/ContactAboutForm";
+import MapSection from "../home/sections/MapSection";
 import FooterSection from "../home/sections/FooterSection";
 
 const StudentHandbook = () => {
@@ -20,13 +21,13 @@ const StudentHandbook = () => {
       <main className="flex-1 pt-16">
         {/* PDF Section */}
         <section className="w-full py-8 bg-background">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Header with Download Button */}
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-0">
-                Student Handbook
-              </h1>
-              <Button onClick={handleDownload} className="flex items-center gap-2">
+          <div className="w-full px-3 sm:px-6 md:px-[52px]">
+            {/* Download Button */}
+            <div className="flex justify-center mb-8">
+              <Button 
+                onClick={handleDownload} 
+                className="flex items-center gap-2 bg-[#046BD2] hover:bg-[#046BD2]/90 dark:bg-[#B19528] dark:hover:bg-[#B19528]/90 text-white font-roboto"
+              >
                 <Download size={20} />
                 Download PDF
               </Button>
@@ -80,7 +81,17 @@ const StudentHandbook = () => {
         <DegreesOfferedSection />
         <ReviewsSection />
         <AboutSectionalSUBPAGE />
-        <ContactAndMapSection />
+        
+        {/* Another Divider */}
+        <HeroDividerSection />
+        
+        {/* Contact Form Section */}
+        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+          <ContactAboutForm />
+        </div>
+        
+        {/* Map Section */}
+        <MapSection />
         <FooterSection />
       </main>
     </div>
