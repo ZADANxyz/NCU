@@ -6,7 +6,8 @@ import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
-import ContactAndMapSection from "./home/sections/ContactAndMapSection";
+import ContactAboutForm from "@/components/ContactAboutForm";
+import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
@@ -36,10 +37,10 @@ const Downloads = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-background">
       <HeaderDOWNLOADS />
       
-      <main className="flex-1 pt-16">
+      <main className="pt-16 flex-1">
         {/* Header Image Section */}
         <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -93,9 +94,20 @@ const Downloads = () => {
         <DegreesOfferedSection />
         <ReviewsSection />
         <AboutSectionalSUBPAGE />
-        <ContactAndMapSection />
-        <FooterSection />
+        
+        {/* Another Divider */}
+        <HeroDividerSection />
+        
+        {/* Contact Form Section */}
+        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+          <ContactAboutForm />
+        </div>
+        
+        {/* Map Section */}
+        <MapSection />
       </main>
+      
+      <FooterSection />
     </div>
   );
 };
