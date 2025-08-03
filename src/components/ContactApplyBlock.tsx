@@ -57,7 +57,7 @@ const ContactApplyBlock: React.FC<ContactApplyBlockProps> = ({
           transition: "color 0.2s",
         }}
       >
-        We&apos;re here to help—reach out and let&apos;s connect!
+        We&apos;re here to help, reach out and let&apos;s connect!
       </div>
     </div>
   );
