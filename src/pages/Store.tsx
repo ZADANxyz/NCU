@@ -173,7 +173,7 @@ const Store = () => {
           </div>
 
           {/* Browse Collection Button - Outline Style */}
-          <div className="text-center mt-20 mb-0">
+          <div className="text-center mt-24 -mb-4">
             <button 
               className="group block font-bold py-3 px-8 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20 font-roboto min-w-[280px] h-12 text-base mx-auto"
             >
