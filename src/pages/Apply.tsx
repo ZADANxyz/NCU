@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
@@ -9,6 +9,21 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 
 const Apply = () => {
+  useEffect(() => {
+    // Load HubSpot form script
+    const script = document.createElement('script');
+    script.src = 'https://js-na2.hsforms.net/forms/embed/242249646.js';
+    script.defer = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://js-na2.hsforms.net/forms/embed/242249646.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       <main className="flex-1">
@@ -42,15 +57,12 @@ const Apply = () => {
 
             {/* HubSpot Application Form */}
             <div className="bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg">
-              <iframe
-                title="HubSpot Application Form"
-                src="https://share.hsforms.com/1fa0ae292-5a40-456b-9fda-506cf235517f"
-                width="100%"
-                height="800"
-                frameBorder="0"
-                className="w-full rounded-lg border-none"
-                style={{ background: "transparent", minHeight: 800 }}
-              />
+              <div 
+                className="hs-form-frame" 
+                data-region="na2" 
+                data-form-id="3105fcaf-cce4-45de-90a4-89705caec011" 
+                data-portal-id="242249646"
+              ></div>
             </div>
           </div>
         </section>
