@@ -1,4 +1,5 @@
 import React from "react";
+import PresidentCarousel from "@/components/PresidentCarousel";
 
 const AboutSectionalBIO = () => {
   return (
@@ -9,13 +10,7 @@ const AboutSectionalBIO = () => {
           <h2 className="text-4xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-8 tracking-tight">
             Meet Our President:
           </h2>
-          <div className="w-full h-96 md:h-[500px] overflow-hidden rounded-lg">
-            <img
-              src="/lovable-uploads/d162fcf1-b78e-48f1-a9da-ef64c1c89243.png"
-              alt="Dr. Angel L. Crites"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
+          <PresidentCarousel />
         </div>
 
         {/* Right Column - Content and Button */}

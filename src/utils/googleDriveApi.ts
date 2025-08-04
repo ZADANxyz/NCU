@@ -15,18 +15,32 @@ interface GoogleDriveFile {
 
 class GoogleDriveService {
   private apiKey: string = "AIzaSyCkc1syK-D7R6zGUohUZ8_1uO73tVG3Y8g"; // Hardcoded API key
-  private folderId: string = "1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94"; // Your Google Drive folder ID
+  private folderIds = {
+    gallery: "1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94", // Media gallery
+    alumni: "1Jd9a_WIwC6qoKxGw5oUJ6N9BtPuCB-Ex", // Alumni slider
+    aboutUs: "1XCz8U5a8gf6fZC1rArLuP7vfY2_OjFUM", // About us slider
+    president: "11fChmVogNYLnvMEL_yG6q0PrdN9dqtN1" // Meet the president
+  };
 
   getApiKey(): string {
     return this.apiKey;
   }
 
+  async fetchImagesFromFolder(folderType: keyof typeof this.folderIds): Promise<GoogleDriveImage[]> {
+    const folderId = this.folderIds[folderType];
+    return this.fetchImages(folderId);
+  }
+
   async fetchGalleryImages(): Promise<GoogleDriveImage[]> {
+    return this.fetchImages(this.folderIds.gallery);
+  }
+
+  private async fetchImages(folderId: string): Promise<GoogleDriveImage[]> {
     const apiKey = this.getApiKey();
 
     try {
       const response = await fetch(
-        `https://www.googleapis.com/drive/v3/files?q='${this.folderId}'+in+parents+and+mimeType+contains+'image/'&key=${apiKey}&fields=files(id,name,mimeType,webViewLink)`
+        `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType+contains+'image/'&key=${apiKey}&fields=files(id,name,mimeType,webViewLink)`
       );
 
       if (!response.ok) {

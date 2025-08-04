@@ -2,23 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { googleDriveService, type GoogleDriveImage } from "@/utils/googleDriveApi";
 
-const AUTO_SLIDE_INTERVAL = 7400; // slower than before
+const AUTO_SLIDE_INTERVAL = 7400;
 
-const AlumniCarousel = () => {
+const AboutUsCarousel = () => {
   const [current, setCurrent] = React.useState(0);
-  const [alumniImages, setAlumniImages] = useState<GoogleDriveImage[]>([]);
+  const [aboutImages, setAboutImages] = useState<GoogleDriveImage[]>([]);
   const [loading, setLoading] = useState(true);
   const carouselApi = React.useRef<any>(null);
   const timer = React.useRef<any>(null);
 
-  // Fetch alumni images from Google Drive
+  // Fetch about us images from Google Drive
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const images = await googleDriveService.fetchImagesFromFolder('alumni');
-        setAlumniImages(images);
+        const images = await googleDriveService.fetchImagesFromFolder('aboutUs');
+        setAboutImages(images);
       } catch (error) {
-        console.error('Failed to fetch alumni images:', error);
+        console.error('Failed to fetch about us images:', error);
       } finally {
         setLoading(false);
       }
@@ -29,16 +29,16 @@ const AlumniCarousel = () => {
 
   // Auto-slide logic
   useEffect(() => {
-    if (!carouselApi.current || loading || alumniImages.length === 0) return;
+    if (!carouselApi.current || loading || aboutImages.length === 0) return;
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => {
       if (!carouselApi.current) return;
-      const nextIdx = (current + 1) % alumniImages.length;
+      const nextIdx = (current + 1) % aboutImages.length;
       carouselApi.current.scrollTo(nextIdx);
     }, AUTO_SLIDE_INTERVAL);
 
     return () => clearTimeout(timer.current);
-  }, [current, loading, alumniImages.length]);
+  }, [current, loading, aboutImages.length]);
 
   // Handle carousel api
   function setApi(api: any) {
@@ -51,15 +51,15 @@ const AlumniCarousel = () => {
   if (loading) {
     return (
       <div className="py-0 w-full flex items-center justify-center h-[275px] md:h-[370px] lg:h-[415px]">
-        <div className="text-gray-500">Loading alumni images...</div>
+        <div className="text-gray-500">Loading about us images...</div>
       </div>
     );
   }
 
-  if (alumniImages.length === 0) {
+  if (aboutImages.length === 0) {
     return (
       <div className="py-0 w-full flex items-center justify-center h-[275px] md:h-[370px] lg:h-[415px]">
-        <div className="text-gray-500">No alumni images found.</div>
+        <div className="text-gray-500">No about us images found.</div>
       </div>
     );
   }
@@ -80,7 +80,7 @@ const AlumniCarousel = () => {
         }}
       >
         <CarouselContent>
-          {alumniImages.map((image, idx) => (
+          {aboutImages.map((image, idx) => (
             <CarouselItem
               key={idx}
               className={`
@@ -124,4 +124,4 @@ const AlumniCarousel = () => {
   );
 };
 
-export default AlumniCarousel;
+export default AboutUsCarousel;

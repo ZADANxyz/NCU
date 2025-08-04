@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AlumniCarousel from "@/components/AlumniCarousel";
+import AboutUsCarousel from "@/components/AboutUsCarousel";
 
 const AboutSectionalSUBPAGE = () => {
   return (
@@ -12,7 +12,7 @@ const AboutSectionalSUBPAGE = () => {
             About Us:
           </h2>
           <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
-            <AlumniCarousel />
+            <AboutUsCarousel />
           </div>
         </div>
 
