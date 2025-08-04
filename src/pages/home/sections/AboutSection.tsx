@@ -1,6 +1,6 @@
 
 import React from "react";
-import AlumniCarousel from "@/components/AlumniCarousel";
+import AboutUsCarousel from "@/components/AboutUsCarousel";
 import { Button } from "@/components/ui/button";
 
 const AboutSection = () => {
@@ -13,7 +13,7 @@ const AboutSection = () => {
             About Us:
           </h2>
           <div className="w-full overflow-hidden rounded-lg h-80 md:h-96">
-            <AlumniCarousel />
+            <AboutUsCarousel />
           </div>
         </div>
 
