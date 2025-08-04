@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import Apply from "./pages/Apply";
+import ApplyFinal from "./pages/ApplyFinal";
 import Store from "./pages/Store";
 import Media from "./pages/Media";
 import Downloads from "./pages/Downloads";
@@ -43,6 +44,7 @@ const App = () => (
               <Route path="/contact" element={<><Header /><main className="flex-1"><Contact /></main></>} />
               <Route path="/donate" element={<><Header /><main className="flex-1"><Donate /></main></>} />
               <Route path="/apply" element={<><Header /><main className="flex-1"><Apply /></main></>} />
+              <Route path="/apply/final" element={<><Header /><main className="flex-1"><ApplyFinal /></main></>} />
               <Route path="/store" element={<><Header /><main className="flex-1"><Store /></main></>} />
               <Route path="/media" element={<><Header /><main className="flex-1"><Media /></main></>} />
               <Route path="/downloads" element={<><Header /><main className="flex-1"><Downloads /></main></>} />

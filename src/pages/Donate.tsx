@@ -54,10 +54,10 @@ const Donate = () => {
       </div>
 
       {/* Donation Options Section */}
-      <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16">
-        <div className="w-full px-6 sm:px-8 md:px-[60px]">
+      <section className="w-full bg-white dark:bg-[#242836] pt-16 pb-16 px-3 sm:px-6 md:px-[52px]">
+        <div className="w-full">
         {/* Donation Buttons Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {donationOptions.map((option) => (
             <button
               key={option.name}
@@ -74,7 +74,7 @@ const Donate = () => {
         </div>
 
         {/* Description Text */}
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="w-full max-w-6xl mx-auto text-center">
           <p className="text-lg md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-relaxed mb-6">
             New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students.
           </p>
