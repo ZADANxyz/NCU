@@ -41,7 +41,7 @@ class GoogleDriveService {
 
       const images: GoogleDriveImage[] = data.files.map((file: GoogleDriveFile, index: number) => ({
         id: index + 1,
-        src: `https://drive.google.com/uc?id=${file.id}`,
+        src: `https://lh3.googleusercontent.com/d/${file.id}`,
         alt: file.name.replace(/\.[^/.]+$/, ""), // Remove file extension for alt text
         name: file.name,
         fileId: file.id
