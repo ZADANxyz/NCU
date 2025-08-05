@@ -10,6 +10,7 @@ import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
 import ContactAboutForm from "@/components/ContactAboutForm";
+import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 
@@ -370,6 +371,9 @@ const ApplyFinal = () => {
 
         {/* Reviews Section */}
         <ReviewsSection />
+        
+        {/* About Us Sectional */}
+        <AboutSectionalSUBPAGE />
 
         {/* Another Divider */}
         <HeroDividerSection />
