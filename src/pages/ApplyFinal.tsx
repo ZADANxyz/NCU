@@ -6,6 +6,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import HeroDividerSection from "./home/sections/HeroDividerSection";
+import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
+import ReviewsSection from "./home/sections/ReviewsSection";
+import ContactAboutForm from "@/components/ContactAboutForm";
+import MapSection from "./home/sections/MapSection";
+import FooterSection from "./home/sections/FooterSection";
 
 const ApplyFinal = () => {
   const { toast } = useToast();
@@ -97,9 +103,9 @@ const ApplyFinal = () => {
                     NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                   </div>
                   <div className="pl-20">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
-                      Application Finalized
-                    </h1>
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
+                    Application for Admission
+                  </h1>
                   </div>
                 </div>
               </div>
@@ -119,6 +125,8 @@ const ApplyFinal = () => {
             </div>
           </section>
         </main>
+        
+        <FooterSection />
       </div>
     );
   }
@@ -144,9 +152,9 @@ const ApplyFinal = () => {
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
                 <div className="pl-20">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
-                    Finalize Application
-                  </h1>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
+                  Application for Admission
+                </h1>
                   <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8 whitespace-nowrap">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
@@ -160,7 +168,7 @@ const ApplyFinal = () => {
                 
                 {/* Identity Verification Section */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
                     IDENTITY VERIFICATION DOCUMENTATION:
                   </h3>
                   
@@ -211,7 +219,7 @@ const ApplyFinal = () => {
 
                 {/* Payment Information Section */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
                     $50.00 USD APPLICATION FEE PAYMENT INFORMATION (NON-REFUNDABLE):
                   </h3>
                   
@@ -319,25 +327,16 @@ const ApplyFinal = () => {
 
                 {/* Authorization Section */}
                 <div className="space-y-4">
-                  <div className="flex items-start space-x-2">
+                  <div className="flex items-start justify-center space-x-2">
                     <Checkbox
                       id="authorized"
                       checked={formData.authorized}
                       onCheckedChange={(checked) => handleInputChange("authorized", checked)}
                       className="mt-1"
                     />
-                    <Label htmlFor="authorized" className="text-sm text-[#333] dark:text-gray-200 leading-relaxed">
+                    <Label htmlFor="authorized" className="text-sm text-[#333] dark:text-gray-200 leading-relaxed text-center">
                       I hereby authorize NEW COVENANT MINISTRIES to utilize my payment method provided to process my enrollment fees.
                     </Label>
-                  </div>
-                  
-                  <div className="text-center py-4">
-                    <Button
-                      type="button"
-                      className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-3 text-lg font-medium border-2 border-blue-600 hover:border-blue-700 transition-all duration-300 rounded-lg dark:bg-gradient-to-r dark:from-[#B19528] dark:to-[#D4AF37] dark:hover:from-[#D4AF37] dark:hover:to-[#B19528] dark:border-[#B19528] dark:hover:border-[#D4AF37]"
-                    >
-                      AUTHORIZE PAYMENTS
-                    </Button>
                   </div>
                 </div>
 
@@ -362,7 +361,29 @@ const ApplyFinal = () => {
             </div>
           </div>
         </section>
+
+        {/* Divider */}
+        <HeroDividerSection />
+
+        {/* Degrees Section */}
+        <DegreesOfferedSection />
+
+        {/* Reviews Section */}
+        <ReviewsSection />
+
+        {/* Another Divider */}
+        <HeroDividerSection />
+        
+        {/* Contact Form Section */}
+        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+          <ContactAboutForm />
+        </div>
+        
+        {/* Map Section */}
+        <MapSection />
       </main>
+      
+      <FooterSection />
     </div>
   );
 };
