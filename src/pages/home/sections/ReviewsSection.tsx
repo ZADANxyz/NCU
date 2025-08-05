@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
 
-// Fallback reviews in case API fails
+// Fallback reviews with realistic person photos
 const FALLBACK_REVIEWS = [
   {
     id: 1,
     name: "Sarah Johnson",
-    photo: "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png",
+    photo: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3",
     platform: "Google",
-    platformLogo: "G",
+    platformLogo: "G", 
     date: "2 weeks ago",
     rating: 5,
     verified: true,
@@ -19,11 +19,11 @@ const FALLBACK_REVIEWS = [
   },
   {
     id: 2,
-    name: "Michael Rodriguez",
-    photo: "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png",
-    platform: "Facebook",
-    platformLogo: "f",
-    date: "1 month ago",
+    name: "Michael Rodriguez", 
+    photo: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3",
+    platform: "Google",
+    platformLogo: "G",
+    date: "1 month ago", 
     rating: 5,
     verified: true,
     text: "The flexibility of online learning at NCU allowed me to continue my ministry while pursuing my degree. The quality of education exceeded my expectations."
@@ -31,7 +31,7 @@ const FALLBACK_REVIEWS = [
   {
     id: 3,
     name: "Jennifer Chen",
-    photo: "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png",
+    photo: "https://images.unsplash.com/photo-1581090464777-f3220bbe188b?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3", 
     platform: "Google",
     platformLogo: "G",
     date: "3 weeks ago",
@@ -102,8 +102,11 @@ const platformLogos: Record<string, React.FC<{ size?: number }>> = {
 
 const ReviewsSection: React.FC = () => {
   const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Set to false since we're not fetching for now
 
+  // Commenting out the Google Places API call for now
+  // Uncomment and set up GOOGLE_PLACES_API_KEY in Supabase when ready
+  /*
   useEffect(() => {
     const fetchGoogleReviews = async () => {
       try {
@@ -128,6 +131,7 @@ const ReviewsSection: React.FC = () => {
 
     fetchGoogleReviews();
   }, []);
+  */
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }).map((_, i) => (
