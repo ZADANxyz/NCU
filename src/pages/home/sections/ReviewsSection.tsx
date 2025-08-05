@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { supabase } from "@/integrations/supabase/client";
 
-const REVIEWS = [
+// Fallback reviews in case API fails
+const FALLBACK_REVIEWS = [
   {
     id: 1,
     name: "Sarah Johnson",
@@ -99,6 +101,34 @@ const platformLogos: Record<string, React.FC<{ size?: number }>> = {
 };
 
 const ReviewsSection: React.FC = () => {
+  const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGoogleReviews = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke('fetch-google-reviews');
+        
+        if (error) {
+          console.error('Error fetching reviews:', error);
+          setReviews(FALLBACK_REVIEWS);
+        } else if (data?.success && data?.reviews?.length > 0) {
+          setReviews(data.reviews);
+        } else {
+          console.log('No reviews found, using fallback');
+          setReviews(FALLBACK_REVIEWS);
+        }
+      } catch (error) {
+        console.error('Error calling reviews function:', error);
+        setReviews(FALLBACK_REVIEWS);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGoogleReviews();
+  }, []);
+
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }).map((_, i) => (
       <Star
@@ -141,72 +171,105 @@ const ReviewsSection: React.FC = () => {
 
       {/* Reviews Grid */}
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {REVIEWS.map((review) => {
-          const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
-
-          return (
+        {loading ? (
+          // Loading skeleton
+          Array.from({ length: 3 }).map((_, index) => (
             <Card
-              key={review.id}
+              key={`skeleton-${index}`}
               className="
                 glass glossy
                 bg-white/96 dark:bg-slate-900/80
                 border border-transparent dark:border-gold/10
-                shadow-lg hover:shadow-xl
-                hover:border-transparent dark:hover:border-gold/20
-                transition-shadow duration-300
+                shadow-lg
                 min-h-[320px]
               "
             >
               <CardContent className="p-6 h-full flex flex-col">
-                {/* Header with photo and platform */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={review.photo}
-                      alt={review.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-[#181818] dark:text-white text-base">
-                        {review.name}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        {review.date}
-                      </p>
+                <div className="animate-pulse">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="flex-1">
+                      <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+                      <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-2/3"></div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {/* Remove circle background here */}
-                    <PlatformLogo size={20} />
+                  <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-3"></div>
+                  <div className="space-y-2">
+                    <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    <div className="h-3 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
                   </div>
                 </div>
-
-                {/* Star rating and verified badge */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1">
-                    {renderStars(review.rating)}
-                  </div>
-                  {review.verified && (
-                    <div
-                      className="flex items-center gap-1 text-[#34A853]"
-                      aria-label="Verified review"
-                    >
-                      <VerifiedCheckmark size={16} />
-                      <span className="text-xs font-medium text-[#34A853]">
-                        Verified
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Review text */}
-                <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed flex-grow">
-                  {review.text}
-                </p>
               </CardContent>
             </Card>
-          );
-        })}
+          ))
+        ) : (
+          reviews.map((review) => {
+            const PlatformLogo = platformLogos[review.platform] || (() => <span className="text-white text-xs font-bold">{review.platformLogo}</span>);
+
+            return (
+              <Card
+                key={review.id}
+                className="
+                  glass glossy
+                  bg-white/96 dark:bg-slate-900/80
+                  border border-transparent dark:border-gold/10
+                  shadow-lg hover:shadow-xl
+                  hover:border-transparent dark:hover:border-gold/20
+                  transition-shadow duration-300
+                  min-h-[320px]
+                "
+              >
+                <CardContent className="p-6 h-full flex flex-col">
+                  {/* Header with photo and platform */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={review.photo}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-[#181818] dark:text-white text-base">
+                          {review.name}
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          {review.date}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <PlatformLogo size={20} />
+                    </div>
+                  </div>
+
+                  {/* Star rating and verified badge */}
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1">
+                      {renderStars(review.rating)}
+                    </div>
+                    {review.verified && (
+                      <div
+                        className="flex items-center gap-1 text-[#34A853]"
+                        aria-label="Verified review"
+                      >
+                        <VerifiedCheckmark size={16} />
+                        <span className="text-xs font-medium text-[#34A853]">
+                          Verified
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Review text */}
+                  <p className="text-[#333] dark:text-gray-200 text-sm leading-relaxed flex-grow">
+                    {review.text}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })
+        )}
       </div>
 
       {/* Call-to-Action Button */}
