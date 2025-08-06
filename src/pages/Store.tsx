@@ -9,6 +9,7 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
 import { useToast } from "@/hooks/use-toast";
+import { useCart } from "@/contexts/CartContext";
 import { removeBackground, loadImageFromUrl } from "@/utils/backgroundRemoval";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
@@ -89,10 +90,10 @@ const books = [
 ];
 
 const Store = () => {
-  const [cart, setCart] = useState<any[]>([]);
   const [processedImages, setProcessedImages] = useState<{ [key: number]: string }>({});
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const processBookImages = async () => {
@@ -129,8 +130,14 @@ const Store = () => {
     processBookImages();
   }, [toast]);
 
-  const addToCart = (book: any) => {
-    setCart(prev => [...prev, { ...book, price: 15 }]);
+  const handleAddToCart = (book: any) => {
+    addToCart({
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      image: processedImages[book.id] || book.image,
+      price: 15
+    });
     toast({
       title: "Added to Cart",
       description: `"${book.title}" has been added to your cart.`,
@@ -185,7 +192,7 @@ const Store = () => {
                   {book.author}
                 </p>
                 <button 
-                  onClick={() => addToCart(book)}
+                  onClick={() => handleAddToCart(book)}
                   className="group block font-bold py-3 px-6 transition text-center cursor-pointer relative shadow-lg overflow-hidden rounded border-2 text-white bg-blue-600 border-blue-600 hover:bg-blue-700 hover:border-blue-700 dark:bg-[#B19528] dark:border-[#B19528] dark:hover:bg-[#B19528]/90 dark:hover:border-[#B19528]/90 font-roboto w-full max-w-[200px] min-w-[140px] h-12"
                 >
                   <span className="relative z-20">Add to Cart</span>

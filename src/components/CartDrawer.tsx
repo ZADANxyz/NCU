@@ -1,41 +1,22 @@
 
-import React from "react";
-import { ShoppingCart, X } from "lucide-react";
+import React, { useState } from "react";
+import { X, ArrowRight } from "lucide-react";
 import CartItem from "./CartItem";
-import CartFooter from "./CartFooter";
-
-type Product = {
-  id: number;
-  title: string;
-  image: string;
-  qty: number;
-  price: number;
-};
-
-const demoCart: Product[] = [
-  {
-    id: 1,
-    title: "NCU Sweatshirt",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=200&q=80",
-    qty: 1,
-    price: 59.99,
-  },
-  {
-    id: 2,
-    title: "NCU Mug",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=200&q=80",
-    qty: 2,
-    price: 14.99,
-  },
-];
+import CartAuth from "./CartAuth";
+import CheckoutForm from "./CheckoutForm";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
 
 const CartDrawer: React.FC<{
   open: boolean;
   onClose: () => void;
 }> = ({ open, onClose }) => {
-  const [cart, setCart] = React.useState(demoCart);
+  const { cart, updateQuantity, removeFromCart } = useCart();
+  const [userEmail, setUserEmail] = useState('');
+  const [authComplete, setAuthComplete] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
 
-  const total = cart.reduce((acc, p) => acc + p.price * p.qty, 0);
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const glassBg = "rgba(255,255,255,0.87)";
   const glassBgDark = "rgba(13, 25, 49, 0.82)";
@@ -45,6 +26,7 @@ const CartDrawer: React.FC<{
       ? document.documentElement.classList.contains("dark")
       : false
   );
+  
   React.useEffect(() => {
     const obs = new MutationObserver(() => {
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -55,32 +37,53 @@ const CartDrawer: React.FC<{
   }, []);
 
   const handleQtyChange = (id: number, delta: number) => {
-    setCart((old) => {
-      return old
-        .map((itm) =>
-          itm.id === id
-            ? { ...itm, qty: itm.qty + delta }
-            : itm
-        )
-        .filter((itm) => itm.qty > 0);
-    });
+    const item = cart.find(item => item.id === id);
+    if (item) {
+      updateQuantity(id, item.quantity + delta);
+    }
   };
 
   const handleQtyInputChange = (id: number, value: number) => {
-    setCart((old) => {
-      return old
-        .map((itm) =>
-          itm.id === id
-            ? { ...itm, qty: Math.max(0, Number(value)) }
-            : itm
-        )
-        .filter((itm) => itm.qty > 0);
-    });
+    updateQuantity(id, Math.max(0, Number(value)));
   };
 
-  const removeFromCart = (id: number) => {
-    setCart((old) => old.filter((itm) => itm.id !== id));
+  const handleCheckout = () => {
+    if (!authComplete && !userEmail) {
+      return;
+    }
+    setShowCheckout(true);
   };
+
+  const canProceedToCheckout = () => {
+    return cart.length > 0 && (authComplete || userEmail);
+  };
+
+  if (showCheckout) {
+    return (
+      <div
+        className={`fixed inset-0 z-[100] flex justify-center items-start pt-8 transition-all duration-300 ${
+          open ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-modal="true"
+        role="dialog"
+      >
+        <div
+          className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={onClose}
+        />
+        <div className="relative bg-white dark:bg-gray-800 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-auto">
+          <CheckoutForm
+            email={userEmail}
+            total={total}
+            cartItems={cart}
+            onClose={() => setShowCheckout(false)}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -170,12 +173,33 @@ const CartDrawer: React.FC<{
         </div>
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 relative" style={{ zIndex: 12 }}>
           {cart.length === 0 ? (
-            <div className="text-center text-gray-500 py-10">Your cart is empty.</div>
+            <div className="text-center py-10 space-y-4">
+              <div className="text-gray-500">Your cart is empty.</div>
+              <div className="text-sm text-gray-400">
+                Please{" "}
+                <button
+                  onClick={() => {
+                    onClose();
+                    window.location.href = '/store';
+                  }}
+                  className="text-[#B19528] hover:underline font-medium"
+                >
+                  visit our store
+                </button>
+                {" "}to add items to your cart for purchase.
+              </div>
+            </div>
           ) : (
             cart.map((item) => (
               <CartItem
                 key={item.id}
-                item={item}
+                item={{
+                  id: item.id,
+                  title: item.title,
+                  image: item.image,
+                  qty: item.quantity,
+                  price: item.price
+                }}
                 isDark={isDark}
                 onQtyChange={handleQtyChange}
                 onQtyInputChange={handleQtyInputChange}
@@ -184,7 +208,34 @@ const CartDrawer: React.FC<{
             ))
           )}
         </div>
-        <CartFooter isDark={isDark} total={total} hasItems={cart.length > 0} />
+
+        {cart.length > 0 && (
+          <div className="px-6 py-4 space-y-4" style={{ zIndex: 12 }}>
+            <CartAuth
+              isDark={isDark}
+              onEmailSet={setUserEmail}
+              onAuthComplete={() => setAuthComplete(true)}
+            />
+            
+            <div className="flex items-center justify-between p-4 bg-white/40 dark:bg-black/30 rounded-xl border border-gold/40">
+              <span className="text-lg font-semibold text-[#B19528]">
+                Total: ${total.toFixed(2)}
+              </span>
+            </div>
+
+            <Button
+              onClick={handleCheckout}
+              disabled={!canProceedToCheckout()}
+              className="w-full h-12 text-base font-semibold"
+            >
+              {!canProceedToCheckout() 
+                ? "Complete authentication to continue"
+                : "Checkout"
+              }
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        )}
       </aside>
     </div>
   );
