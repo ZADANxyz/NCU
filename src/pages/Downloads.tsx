@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import HeroDividerSection from "./home/sections/HeroDividerSection";
@@ -8,34 +8,29 @@ import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { googleDriveService, GoogleDrivePdf } from "@/utils/googleDriveApi";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const Downloads = () => {
   usePageTitle("Downloads");
+  const [downloadItems, setDownloadItems] = useState<GoogleDrivePdf[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const downloadItems = [
-    {
-      title: "Student Handbook",
-      to: "/downloads/student-handbook",
-      description: "Complete guide for student policies and procedures"
-    },
-    {
-      title: "Tuition & Fees",
-      to: "/downloads/tuition-fees", 
-      description: "Current tuition rates and fee schedules"
-    },
-    {
-      title: "Graduate Studies Notebook", 
-      to: "/downloads/graduate-studies",
-      description: "Graduate program requirements and guidelines"
-    },
-    {
-      title: "Course Catalogue",
-      to: "/downloads/course-catalogue",
-      description: "Complete listing of available courses and programs"
-    }
-  ];
+  useEffect(() => {
+    const loadPdfs = async () => {
+      try {
+        const pdfs = await googleDriveService.fetchPdfs();
+        setDownloadItems(pdfs);
+      } catch (error) {
+        console.error("Failed to load PDF documents:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadPdfs();
+  }, []);
 
   return (
     <>
@@ -66,21 +61,31 @@ const Downloads = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-none">
-            {downloadItems.map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-white dark:bg-[#242836] hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-2xl font-roboto font-normal mb-4 text-[#181818] dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-[#333] dark:text-gray-200 font-roboto font-normal mb-6 max-w-sm">
-                  {item.description}
-                </p>
-                <Button asChild variant="default" className="w-full max-w-xs bg-[#046BD2] hover:bg-[#046BD2]/90 text-white">
-                  <a href={item.to} target="_blank" rel="noopener noreferrer">
-                    View Document
-                  </a>
-                </Button>
-              </div>
-            ))}
+            {loading ? (
+              Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-white dark:bg-[#242836]">
+                  <Skeleton className="h-8 w-3/4 mb-4" />
+                  <Skeleton className="h-4 w-full mb-6" />
+                  <Skeleton className="h-10 w-full max-w-xs" />
+                </div>
+              ))
+            ) : (
+              downloadItems.map((item) => (
+                <div key={item.id} className="flex flex-col items-center text-center p-8 rounded-lg border-2 border-[#B19528]/30 bg-white dark:bg-[#242836] hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-2xl font-roboto font-normal mb-4 text-[#181818] dark:text-white">
+                    {item.name}
+                  </h3>
+                  <p className="text-[#333] dark:text-gray-200 font-roboto font-normal mb-6 max-w-sm">
+                    View the {item.name} document.
+                  </p>
+                  <Button asChild variant="default" className="w-full max-w-xs bg-[#046BD2] hover:bg-[#046BD2]/90 text-white">
+                    <Link to={`/downloads/${item.slug}`}>
+                      View Document
+                    </Link>
+                  </Button>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </section>

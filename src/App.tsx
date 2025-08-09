@@ -18,10 +18,7 @@ import ApplyFinal from "./pages/ApplyFinal";
 import Store from "./pages/Store";
 import Media from "./pages/Media";
 import Downloads from "./pages/Downloads";
-import StudentHandbook from "./pages/downloads/StudentHandbook";
-import TuitionFees from "./pages/downloads/TuitionFees";
-import GraduateStudies from "./pages/downloads/GraduateStudies";
-import CourseCatalogue from "./pages/downloads/CourseCatalogue";
+import DownloadViewer from "./pages/downloads/DownloadViewer";
 import Degrees from "./pages/Degrees";
 import AssociateOfArts from "./pages/degrees/AssociateOfArts";
 import BachelorOfArts from "./pages/degrees/BachelorOfArts";
@@ -55,10 +52,7 @@ const App = () => (
                   <Route path="/store" element={<Store />} />
                   <Route path="/media" element={<Media />} />
                   <Route path="/downloads" element={<Downloads />} />
-                  <Route path="/downloads/student-handbook" element={<StudentHandbook />} />
-                  <Route path="/downloads/tuition-fees" element={<TuitionFees />} />
-                  <Route path="/downloads/graduate-studies" element={<GraduateStudies />} />
-                  <Route path="/downloads/course-catalogue" element={<CourseCatalogue />} />
+                  <Route path="/downloads/:slug" element={<DownloadViewer />} />
                   <Route path="/degrees" element={<Degrees />} />
                   <Route path="/degrees/associate-of-arts" element={<AssociateOfArts />} />
                   <Route path="/degrees/bachelor-of-arts" element={<BachelorOfArts />} />

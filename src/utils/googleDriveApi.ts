@@ -13,13 +13,21 @@ interface GoogleDriveFile {
   webViewLink: string;
 }
 
+export interface GoogleDrivePdf {
+  id: string; // fileId
+  name: string;
+  slug: string;
+  embedUrl: string;
+}
+
 class GoogleDriveService {
   private apiKey: string = "AIzaSyCkc1syK-D7R6zGUohUZ8_1uO73tVG3Y8g"; // Hardcoded API key
   private folderIds = {
     gallery: "1FDYQplYRsIjqJqYuAHHDBglmy7t_Ar94", // Media gallery
     alumni: "1Jd9a_WIwC6qoKxGw5oUJ6N9BtPuCB-Ex", // Alumni slider
     aboutUs: "1XCz8U5a8gf6fZC1rArLuP7vfY2_OjFUM", // About us slider
-    president: "11fChmVogNYLnvMEL_yG6q0PrdN9dqtN1" // Meet the president
+    president: "11fChmVogNYLnvMEL_yG6q0PrdN9dqtN1", // Meet the president
+    downloads: "1MYeEGTR6CRvSuu4nCZWQiCHduurJABYs", // PDFs for download
   };
 
   getApiKey(): string {
@@ -68,6 +76,41 @@ class GoogleDriveService {
     }
   }
 
+  async fetchPdfs(): Promise<GoogleDrivePdf[]> {
+    const folderId = this.folderIds.downloads;
+    const apiKey = this.getApiKey();
+
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/pdf'&key=${apiKey}&fields=files(id,name)`
+      );
+
+      if (!response.ok) {
+        throw new Error(`API request failed: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error.message);
+      }
+
+      const pdfs: GoogleDrivePdf[] = data.files.map((file: { id: string; name: string; }) => {
+        const cleanName = file.name.replace(/\.pdf$/i, "");
+        return {
+          id: file.id,
+          name: cleanName,
+          slug: cleanName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+          embedUrl: `https://drive.google.com/file/d/${file.id}/preview`
+        }
+      });
+
+      return pdfs;
+    } catch (error) {
+      console.error('Error fetching Google Drive PDFs:', error);
+      throw error;
+    }
+  }
 }
 
 export const googleDriveService = new GoogleDriveService();
