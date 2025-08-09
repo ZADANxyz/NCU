@@ -3,7 +3,6 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
-import chrisIsbellImg from "../../../../../public/lovable-uploads/chris-isbell.png";
 
 // Fallback reviews with realistic person photos
 const FALLBACK_REVIEWS = [
@@ -32,7 +31,7 @@ const FALLBACK_REVIEWS = [
   {
     id: 3,
     name: "Chris Isbell",
-    photo: chrisIsbellImg,
+    photo: "/lovable-uploads/chris-isbell.png",
     platform: "Google",
     platformLogo: "G",
     date: "Apr 1, 2025",
