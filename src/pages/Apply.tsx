@@ -70,7 +70,7 @@ const Apply = () => {
   }, [isDark]);
 
   return (
-    <>
+    <div className="pt-20">
       {/* Application Section */}
       <section className="w-full py-16 bg-background">
         <div className="w-full px-6 sm:px-8 md:px-[60px]">
@@ -132,7 +132,7 @@ const Apply = () => {
       
       {/* Map Section */}
       <MapSection />
-    </>
+    </div>
   );
 };
 

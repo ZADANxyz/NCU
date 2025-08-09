@@ -18,7 +18,7 @@ const TuitionFees = () => {
   };
 
   return (
-    <>
+    <div className="pt-20">
       {/* PDF Section */}
       <section className="w-full pt-2 pb-2 bg-background">
         <div className="w-full px-3 sm:px-6 md:px-[52px]">
@@ -65,7 +65,7 @@ const TuitionFees = () => {
       
       {/* Map Section */}
       <MapSection />
-    </>
+    </div>
   );
 };
 

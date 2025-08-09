@@ -139,7 +139,6 @@ const Header = () => {
           box-shadow: 0 6px 40px 0 rgba(4,107,210,0.12), 0 1px 0 0 #B19528;
           border-bottom-left-radius: 0.38rem;
           border-bottom-right-radius: 0.38rem;
-          position: relative;
           transition: background 0.38s, box-shadow 0.28s;
         }
         .apple-glass-header::after {

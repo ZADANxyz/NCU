@@ -13,7 +13,7 @@ const BiblicalStudies = () => {
   usePageTitle("Associate of Biblical Studies");
 
   return (
-    <>
+    <div className="pt-20">
       {/* PDF Embed Section */}
       <section className="w-full bg-background dark:bg-background py-16 px-3 sm:px-6 md:px-[52px]">
         <div className="w-full">
@@ -51,7 +51,7 @@ const BiblicalStudies = () => {
       
       {/* Map Section */}
       <MapSection />
-    </>
+    </div>
   );
 };
 

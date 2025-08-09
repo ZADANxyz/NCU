@@ -85,7 +85,7 @@ const ApplyFinal = () => {
 
   if (isSubmitted) {
     return (
-      <>
+      <div className="pt-20">
         <section className="w-full py-16 bg-background">
           <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
@@ -125,12 +125,12 @@ const ApplyFinal = () => {
             </div>
           </div>
         </section>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="pt-20">
       <section className="w-full py-16 bg-background">
         <div className="w-full px-6 sm:px-8 md:px-[60px]">
           {/* Header with Logo and University Info */}
@@ -381,7 +381,7 @@ const ApplyFinal = () => {
       
       {/* Map Section */}
       <MapSection />
-    </>
+    </div>
   );
 };
 
