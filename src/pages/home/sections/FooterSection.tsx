@@ -48,7 +48,7 @@ const FooterSection = () => {
       
       <div className="relative h-[96px] px-3 sm:px-6 md:px-[52px]">
         {/* Top row - Logo left, Social icons right */}
-        <div className="absolute top-3 left-3 sm:left-6 md:left-[52px] right-3 sm:right-6 md:right-[52px] flex items-center justify-between z-10">
+        <div className="absolute top-3 left-3 sm:left-6 md:left-[52px] right-3 sm:right-6 md:right-[52px] flex items-center justify-between z-30">
           {/* Logo - left side */}
           <div className="flex items-center">
             <Logo />
@@ -123,7 +123,7 @@ const FooterSection = () => {
         </div>
 
         {/* Center - Copyright Information */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-30">
           <div className="text-sm mb-1">
             Copyright © {new Date().getFullYear()} - <span className="text-[#046BD2] dark:text-[#B19528] font-semibold">NEW COVENANT UNIVERSITY</span>
             <br />
@@ -143,7 +143,7 @@ const FooterSection = () => {
         </div>
 
         {/* Bottom right - Search and Theme Toggle */}
-        <div className="absolute bottom-3 right-3 sm:right-6 md:right-[52px] flex items-center gap-2 z-10">
+        <div className="absolute bottom-3 right-3 sm:right-6 md:right-[52px] flex items-center gap-2 z-30">
           <Search 
             size={16} 
             className="text-[#181818] dark:text-white cursor-pointer hover:opacity-80 transition-opacity" 

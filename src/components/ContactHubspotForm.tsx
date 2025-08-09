@@ -1,98 +1,73 @@
-
-import React, { useRef, useEffect } from "react";
-
-const HUBSPOT_PORTAL_ID = "242249646";
-const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
-const HUBSPOT_REGION = "na2";
-
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (args: Record<string, any>) => void;
-      };
-    };
-  }
-}
+import React, { useEffect } from "react";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
 
 interface ContactHubspotFormProps {
   isDark: boolean;
+  portalId: string;
+  formId: string;
+  region: string;
+  targetId: string;
 }
 
-const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark }) => {
-  const formRef = useRef<HTMLDivElement>(null);
+const ContactHubspotForm: React.FC<ContactHubspotFormProps> = ({ isDark, portalId, formId, region, targetId }) => {
+  const hubspotLoaded = useHubspotForm();
 
   useEffect(() => {
-    if (!window.hbspt) {
-      const script = document.createElement("script");
-      script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
-      script.async = true;
-      script.onload = () => {
-        if (window.hbspt) {
-          window.hbspt.forms.create({
-            region: HUBSPOT_REGION,
-            portalId: HUBSPOT_PORTAL_ID,
-            formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-block-about",
-          });
-        }
-      };
-      document.body.appendChild(script);
-    } else if (window.hbspt) {
+    if (hubspotLoaded && window.hbspt) {
+      const container = document.querySelector(`#${targetId}`);
+      if (container) {
+        container.innerHTML = ''; // Clear previous form if it exists
+      }
+      
       window.hbspt.forms.create({
-        region: HUBSPOT_REGION,
-        portalId: HUBSPOT_PORTAL_ID,
-        formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-block-about",
+        region,
+        portalId,
+        formId,
+        target: `#${targetId}`,
       });
     }
-  }, []);
+  }, [hubspotLoaded, portalId, formId, region, targetId]);
 
   // Inject style to force HubSpot form dark mode text to white
   useEffect(() => {
-    if (!isDark) return;
-    let styleTag = document.getElementById("hubspot-darkmode-style");
-    if (!styleTag) {
-      styleTag = document.createElement("style");
-      styleTag.id = "hubspot-darkmode-style";
-      styleTag.innerHTML = `
-        #hubspot-form-block-about label,
-        #hubspot-form-block-about .hs-form-required,
-        #hubspot-form-block-about .hs-form-field label,
-        #hubspot-form-block-about .hs-richtext,
-        #hubspot-form-block-about .hs-file-description {
-          color: #fff !important;
-        }
-        #hubspot-form-block-about input, 
-        #hubspot-form-block-about textarea, 
-        #hubspot-form-block-about select {
-          background: rgba(35, 34, 50, 0.8) !important;
-          color: #fff !important;
-          border: 1px solid #666 !important;
-        }
-        #hubspot-form-block-about .hs-button.primary, 
-        #hubspot-form-block-about input[type=submit] {
-          background: #b19528 !important;
-          border-color: #b19528 !important;
-          color: #232232 !important;
-        }
-      `;
-      document.head.appendChild(styleTag);
+    const styleId = 'hubspot-darkmode-style';
+    if (isDark) {
+      let styleTag = document.getElementById(styleId);
+      if (!styleTag) {
+        styleTag = document.createElement("style");
+        styleTag.id = styleId;
+        styleTag.innerHTML = `
+          .hubspot-form-dark-mode .hs-form-field label,
+          .hubspot-form-dark-mode .hs-form-required,
+          .hubspot-form-dark-mode .hs-richtext,
+          .hubspot-form-dark-mode .hs-error-msg {
+            color: #fff !important;
+          }
+          .hubspot-form-dark-mode input, 
+          .hubspot-form-dark-mode textarea, 
+          .hubspot-form-dark-mode select {
+            background: rgba(35, 34, 50, 0.8) !important;
+            color: #fff !important;
+            border: 1px solid #666 !important;
+          }
+          .hubspot-form-dark-mode .hs-button.primary, 
+          .hubspot-form-dark-mode input[type=submit] {
+            background: #b19528 !important;
+            border-color: #b19528 !important;
+            color: #232232 !important;
+          }
+        `;
+        document.head.appendChild(styleTag);
+      }
     }
-    return () => {
-      styleTag?.remove();
-    };
   }, [isDark]);
 
   return (
     <div
-      id="hubspot-form-block-about"
-      ref={formRef}
+      id={targetId}
       className={
         "w-full mb-2 transition-colors" +
-        (isDark
-          ? " dark:text-white dark:[&_input]:text-white dark:[&_label]:text-white dark:[&_button]:text-gold"
-          : " text-black")
+        (isDark ? " hubspot-form-dark-mode" : "")
       }
     ></div>
   );

@@ -1,16 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import ContactHubspotForm from "./ContactHubspotForm";
 import ContactPhoneButton from "./ContactPhoneButton";
-
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (args: Record<string, any>) => void;
-      };
-    };
-  }
-}
 
 const glassyButtonBase =
   "block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer relative shadow-lg overflow-hidden group rounded-[0.38rem] font-roboto min-h-[3.7rem] flex items-center justify-center gap-3";
@@ -42,9 +32,9 @@ const goldButtonHover = {
 const HUBSPOT_PORTAL_ID = "242249646";
 const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
 const HUBSPOT_REGION = "na2";
+const TARGET_ID = "hubspot-form-about-page";
 
 const ContactAboutForm = () => {
-  const formRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = React.useState(false);
 
   useEffect(() => {
@@ -56,32 +46,6 @@ const ContactAboutForm = () => {
     return () => window.removeEventListener("storage", handler);
   }, []);
 
-  useEffect(() => {
-    if (!window.hbspt) {
-      const script = document.createElement("script");
-      script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
-      script.async = true;
-      script.onload = () => {
-        if (window.hbspt) {
-          window.hbspt.forms.create({
-            region: HUBSPOT_REGION,
-            portalId: HUBSPOT_PORTAL_ID,
-            formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-block-about",
-          });
-        }
-      };
-      document.body.appendChild(script);
-    } else if (window.hbspt) {
-      window.hbspt.forms.create({
-        region: HUBSPOT_REGION,
-        portalId: HUBSPOT_PORTAL_ID,
-        formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-block-about",
-      });
-    }
-  }, []);
-
   return (
     <div className="w-full">
       {/* Contact Us Title */}
@@ -91,7 +55,13 @@ const ContactAboutForm = () => {
       
       {/* Contact Form Box */}
       <div className="glass glossy rounded-[0.38rem] border-2 border-gold shadow-lg px-4 md:px-6 py-7 md:py-8 w-full bg-white/95 dark:bg-[#232232]/92 font-roboto mb-6">
-        <ContactHubspotForm isDark={isDark} />
+        <ContactHubspotForm 
+          isDark={isDark}
+          portalId={HUBSPOT_PORTAL_ID}
+          formId={HUBSPOT_FORM_ID}
+          region={HUBSPOT_REGION}
+          targetId={TARGET_ID}
+        />
       </div>
       
       {/* Phone Button */}

@@ -1,18 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Phone } from "lucide-react";
 import ContactPhoneButton from "./ContactPhoneButton";
 import ContactHubspotForm from "./ContactHubspotForm";
 import ContactApplyBlock from "./ContactApplyBlock";
-
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (args: Record<string, any>) => void;
-      };
-    };
-  }
-}
 
 const glassyButtonBase =
   "block w-full font-bold py-2 px-6 transition text-center text-lg cursor-pointer relative shadow-lg overflow-hidden group rounded-[0.38rem] font-roboto min-h-[3.7rem] flex items-center justify-center gap-3";
@@ -67,9 +57,9 @@ const APPLY_LINK = "/apply";
 const HUBSPOT_PORTAL_ID = "242249646";
 const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
 const HUBSPOT_REGION = "na2";
+const TARGET_ID = "hubspot-form-tab-block";
 
 const ContactTabBlock = () => {
-  const formRef = useRef<HTMLDivElement>(null);
   const [isDark, setIsDark] = React.useState(false);
 
   useEffect(() => {
@@ -80,33 +70,6 @@ const ContactTabBlock = () => {
     window.addEventListener("storage", handler);
     return () => window.removeEventListener("storage", handler);
   }, []);
-
-  useEffect(() => {
-    if (!window.hbspt) {
-      const script = document.createElement("script");
-      script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
-      script.async = true;
-      script.onload = () => {
-        if (window.hbspt) {
-          window.hbspt.forms.create({
-            region: HUBSPOT_REGION,
-            portalId: HUBSPOT_PORTAL_ID,
-            formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-block",
-          });
-        }
-      };
-      document.body.appendChild(script);
-    } else if (window.hbspt) {
-      window.hbspt.forms.create({
-        region: HUBSPOT_REGION,
-        portalId: HUBSPOT_PORTAL_ID,
-        formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-block",
-      });
-    }
-  }, []);
-
 
   return (
     <div className="w-full flex flex-col items-center font-roboto">
@@ -130,7 +93,13 @@ const ContactTabBlock = () => {
           goldButtonHover={goldButtonHover}
           blueButtonHover={blueButtonHover}
         />
-        <ContactHubspotForm isDark={isDark} />
+        <ContactHubspotForm 
+          isDark={isDark}
+          portalId={HUBSPOT_PORTAL_ID}
+          formId={HUBSPOT_FORM_ID}
+          region={HUBSPOT_REGION}
+          targetId={TARGET_ID}
+        />
       </div>
       <ContactApplyBlock
         isDark={isDark}

@@ -6,10 +6,17 @@ import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useHubspotForm } from "@/hooks/useHubspotForm";
+
+const APPLY_FORM_ID = "3105fcaf-cce4-45de-90a4-89705caec011";
+const HUBSPOT_PORTAL_ID = "242249646";
+const HUBSPOT_REGION = "na2";
+const TARGET_ID = "hubspot-form-apply-page";
 
 const Apply = () => {
   usePageTitle("Apply");
   const [isDark, setIsDark] = useState(false);
+  const hubspotLoaded = useHubspotForm();
 
   useEffect(() => {
     const observer = new MutationObserver(() => {
@@ -21,20 +28,17 @@ const Apply = () => {
   }, []);
 
   useEffect(() => {
-    // Load HubSpot form script
-    const script = document.createElement('script');
-    script.src = 'https://js-na2.hsforms.net/forms/embed/v2.js';
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://js-na2.hsforms.net/forms/embed/v2.js"]');
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, []);
+    if (hubspotLoaded && window.hbspt) {
+      const container = document.querySelector(`#${TARGET_ID}`);
+      if (container) container.innerHTML = '';
+      window.hbspt.forms.create({
+        region: HUBSPOT_REGION,
+        portalId: HUBSPOT_PORTAL_ID,
+        formId: APPLY_FORM_ID,
+        target: `#${TARGET_ID}`,
+      });
+    }
+  }, [hubspotLoaded]);
 
   useEffect(() => {
     const styleId = 'hubspot-darkmode-style';
@@ -104,12 +108,7 @@ const Apply = () => {
 
           {/* HubSpot Application Form */}
           <div className={`bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg ${isDark ? 'hubspot-form-dark-mode' : ''}`}>
-            <div 
-              className="hs-form-frame" 
-              data-region="na2" 
-              data-form-id="3105fcaf-cce4-45de-90a4-89705caec011" 
-              data-portal-id="242249646"
-            ></div>
+            <div id={TARGET_ID}></div>
           </div>
         </div>
       </section>

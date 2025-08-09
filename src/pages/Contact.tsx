@@ -1,6 +1,4 @@
-import React from "react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import ContactHubspotForm from "@/components/ContactHubspotForm";
+import React, { useEffect } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
@@ -8,21 +6,13 @@ import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import MapSection from "./home/sections/MapSection";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import ContactHubspotForm from "@/components/ContactHubspotForm";
 
 // HubSpot configuration
 const HUBSPOT_PORTAL_ID = "242249646";
 const HUBSPOT_FORM_ID = "fa0ae292-5a40-456b-9fda-506cf235517f";
 const HUBSPOT_REGION = "na2";
-
-declare global {
-  interface Window {
-    hbspt?: {
-      forms: {
-        create: (args: Record<string, any>) => void;
-      };
-    };
-  }
-}
+const TARGET_ID = "hubspot-form-contact-page";
 
 // Social media SVG icons
 const TikTokIcon = () => (
@@ -40,7 +30,7 @@ const Contact = () => {
       : false
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleStorageChange = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
@@ -54,67 +44,6 @@ const Contact = () => {
       obs.disconnect();
     };
   }, []);
-
-  React.useEffect(() => {
-    if (!window.hbspt) {
-      const script = document.createElement("script");
-      script.src = "//js-na2.hsforms.net/forms/embed/v2.js";
-      script.async = true;
-      script.onload = () => {
-        if (window.hbspt) {
-          window.hbspt.forms.create({
-            region: HUBSPOT_REGION,
-            portalId: HUBSPOT_PORTAL_ID,
-            formId: HUBSPOT_FORM_ID,
-            target: "#hubspot-form-contact",
-          });
-        }
-      };
-      document.body.appendChild(script);
-    } else if (window.hbspt) {
-      window.hbspt.forms.create({
-        region: HUBSPOT_REGION,
-        portalId: HUBSPOT_PORTAL_ID,
-        formId: HUBSPOT_FORM_ID,
-        target: "#hubspot-form-contact",
-      });
-    }
-  }, []);
-
-  // Inject dark mode styles for HubSpot form
-  React.useEffect(() => {
-    const styleId = 'hubspot-darkmode-style';
-    if (isDark) {
-      let styleTag = document.getElementById(styleId);
-      if (!styleTag) {
-        styleTag = document.createElement("style");
-        styleTag.id = styleId;
-        styleTag.innerHTML = `
-          .hubspot-form-dark-mode .hs-form-field label,
-          .hubspot-form-dark-mode .hs-form-required,
-          .hubspot-form-dark-mode .hs-richtext,
-          .hubspot-form-dark-mode .hs-error-msg {
-            color: #fff !important;
-          }
-          .hubspot-form-dark-mode input, 
-          .hubspot-form-dark-mode textarea, 
-          .hubspot-form-dark-mode select {
-            background: rgba(35, 34, 50, 0.8) !important;
-            color: #fff !important;
-            border: 1px solid #666 !important;
-          }
-          .hubspot-form-dark-mode .hs-button.primary, 
-          .hubspot-form-dark-mode input[type=submit] {
-            background: #b19528 !important;
-            border-color: #b19528 !important;
-            color: #232232 !important;
-          }
-        `;
-        document.head.appendChild(styleTag);
-      }
-    }
-    // We don't remove the style tag on cleanup in case other forms need it
-  }, [isDark]);
 
   return (
     <>
@@ -149,9 +78,12 @@ const Contact = () => {
             </div>
 
             {/* HubSpot Form */}
-            <div
-              id="hubspot-form-contact"
-              className={isDark ? "hubspot-form-dark-mode" : ""}
+            <ContactHubspotForm
+              isDark={isDark}
+              portalId={HUBSPOT_PORTAL_ID}
+              formId={HUBSPOT_FORM_ID}
+              region={HUBSPOT_REGION}
+              targetId={TARGET_ID}
             />
           </div>
 
