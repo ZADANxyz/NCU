@@ -8,7 +8,6 @@ import { CartProvider } from "@/contexts/CartContext";
 import Header from "@/components/Header";
 import FooterSection from "@/pages/home/sections/FooterSection";
 import BackToTopButton from "@/pages/home/sections/BackToTopButton";
-import DynamicFavicon from "@/components/DynamicFavicon";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -38,7 +37,6 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <DynamicFavicon />
             <div className="min-h-screen flex flex-col">
               <Header />
               <main className="flex-1">
