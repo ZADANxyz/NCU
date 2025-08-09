@@ -5,41 +5,16 @@ import CartDrawer from "./CartDrawer";
 import ProfileDrawer from "./ProfileDrawer";
 import HeaderNavigation from "./Header/HeaderNavigation";
 import HeaderActions from "./Header/HeaderActions";
+import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/contexts/CartContext";
 
-// Clean NCU wordmark SVG 140px width, fills with currentColor
-const NCUWordmark: React.FC = () => (
-  <svg
-    width={140}
-    height={38}
-    viewBox="0 0 220 38"
-    fill="none"
-    aria-label="NCU Logo"
-    className="mr-8"
-    style={{ minWidth: 120 }}
-  >
-    <text
-      x="0"
-      y="28"
-      fontFamily="system-ui, Segoe UI, sans-serif"
-      fontWeight="600"
-      fontSize="32"
-      fill="currentColor"
-      letterSpacing="5"
-      style={{ color: "inherit" }}
-    >
-      NCU
-    </text>
-  </svg>
-);
-
 const Header = () => {
   const [searchOpen, setSearchOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
   const { cart, isCartOpen, openCart, closeCart, isProfileOpen, openProfile, closeProfile } = useCart();
 
-  // track dark mode
   const [isDark, setIsDark] = React.useState(
     typeof window !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -88,22 +63,19 @@ const Header = () => {
             display: "flex"
           }}
         >
-          {/* Logo */}
           <div className="flex items-center" style={{ height: 40, alignItems: "center", display: "flex" }}>
             <Logo />
           </div>
-          {/* Navigation */}
           <HeaderNavigation isDark={isDark} />
-          {/* Actions */}
           <HeaderActions
             isDark={isDark}
             onCartOpen={openCart}
             onSearchOpen={() => setSearchOpen((v) => !v)}
             cartCount={cartCount}
             onProfileOpen={openProfile}
+            onMobileMenuOpen={() => setMobileMenuOpen(true)}
           />
         </div>
-        {/* Gold line visual (unchanged) */}
         <div
           className="mx-auto"
           style={{
@@ -124,7 +96,7 @@ const Header = () => {
       </header>
       <CartDrawer open={isCartOpen} onClose={closeCart} />
       <ProfileDrawer open={isProfileOpen} onClose={closeProfile} />
-      {/* REMOVE spacer for hero image flush with menu */}
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       <div style={{ height: 80 }} />
       <style>
         {`

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -26,15 +25,15 @@ const DEGREE_BUTTONS = [
   },
 ];
 
-const GOLD_BAR_MAX_WIDTH = "97vw"; // Matches the bottom bar!
+const GOLD_BAR_MAX_WIDTH = "97vw";
 
 const DegreesOfferedSection: React.FC = () => (
   <section
-    className="w-full bg-background dark:bg-background py-6 md:py-8 px-3 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
+    className="w-full bg-background dark:bg-background py-10 md:py-8 px-4 sm:px-6 md:px-[52px] flex flex-col items-center shadow-none"
   >
     <h2
       className="
-        text-4xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
+        text-3xl md:text-5xl text-center mb-4 tracking-tight font-roboto font-normal
         text-[#181818] dark:text-white
       "
       style={{
@@ -45,19 +44,19 @@ const DegreesOfferedSection: React.FC = () => (
     >
       Degrees Offered
     </h2>
-    <p className="text-lg md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-12">
+    <p className="text-base md:text-xl text-center font-roboto text-[#222] dark:text-gray-200 font-normal mb-8 md:mb-12">
       Click on any of the degrees below to learn more about each degree level.
     </p>
     <div className="w-full flex justify-center items-center mb-10">
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0.5 md:gap-1 items-stretch w-full"
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-1 items-stretch w-full"
       >
         {DEGREE_BUTTONS.map(({ alt, img, to }) => (
           <Link
             key={alt}
             to={to}
             className="
-              flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-2 md:p-4
+              flex flex-col items-center justify-center outline-none focus-visible:ring-4 focus-visible:ring-gold/30 rounded-lg transition-transform duration-200 hover:scale-105 p-1 md:p-4
               bg-white
               dark:bg-transparent dark:shadow-none
               w-full h-full
@@ -84,10 +83,9 @@ const DegreesOfferedSection: React.FC = () => (
         ))}
       </div>
     </div>
-    {/* Section Subtext */}
     <div className="max-w-5xl md:max-w-[700px] mx-auto mt-1 mb-3">
       <p
-        className="text-[1.11rem] md:text-[1.18rem] lg:text-[1.22rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal tracking-wide whitespace-normal"
+        className="text-sm md:text-[1.22rem] text-center text-[#333] dark:text-gray-100 font-roboto font-normal tracking-wide whitespace-normal"
         style={{
           lineHeight: 1.29,
           letterSpacing: "0.003em",
@@ -98,16 +96,14 @@ const DegreesOfferedSection: React.FC = () => (
         New Covenant University grants degrees under the authority of the Florida State Board of Independent Colleges and Universities in compliance with section 1005.06(1)(f), Florida Statutes. The letter of compliance is available for review.
       </p>
     </div>
-    {/* Department of Education Logo */}
     <div className="flex justify-center mt-7">
       <img
         src="/lovable-uploads/2f0c96d3-b19a-4b83-a1f3-de4da42ecc01.png"
         alt="Florida Department of Education Logo"
-        className="w-auto h-18 md:h-24"
+        className="w-auto h-16 md:h-24"
         style={{ maxWidth: "330px" }}
       />
     </div>
-    {/* THIN gold divider below the logo, matching the thin gold divider used above */}
     <div
       className="w-full flex justify-center"
       style={{

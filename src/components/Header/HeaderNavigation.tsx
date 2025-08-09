@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -32,7 +31,7 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
   const isDownloadsActive = location.pathname.startsWith('/downloads');
 
   return (
-    <nav className="flex-1 flex items-center justify-center relative z-20" style={{ height: 40 }}>
+    <nav className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
       <ul className="flex items-center gap-9">
         {NAV_ITEMS.map((item) => {
           // Special handling for Downloads item
