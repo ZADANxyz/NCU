@@ -19,6 +19,14 @@ export default {
 		},
 		extend: {
 			colors: {
+				'ncu-blue': {
+					DEFAULT: '#046BD2',
+					dark: '#035aa6'
+				},
+				'ncu-gold': {
+					DEFAULT: '#B19528',
+					dark: '#9a7d22'
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
