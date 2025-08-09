@@ -3,7 +3,7 @@ name: Deploy React Site to HostGator FTP
 on:
   push:
     branches:
-      - main   # or your deployment branch name
+      - main  # or your deployment branch
 
 jobs:
   deploy:
@@ -32,6 +32,6 @@ jobs:
         protocol: ftp
         port: 21
         local-dir: ./dist/
-        server-dir: /home2/mbisbell/ncu.education/
+        server-dir: ./             # Upload relative to FTP login root directory
         dangerous-clean-slate: true
         dry-run: false
