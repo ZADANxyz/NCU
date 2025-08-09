@@ -64,26 +64,28 @@ const HeroSection = () => {
           className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch px-4 md:px-0"
         >
           <div
-            className="w-full md:w-3/5 flex flex-col justify-start items-start md:pt-0 md:pl-[52px] md:pr-[18px]"
+            className="w-full md:w-3/5 flex flex-col justify-start items-start md:pt-0"
           >
-            <h2
-              className="text-3xl sm:text-4xl md:text-[3.2rem] font-bold mb-6 text-left tracking-tight font-roboto transition-colors"
-              style={{
-                color: "var(--h2-color, #181818)",
-                letterSpacing: 0.1,
-                fontFamily: "Roboto, Arial, sans-serif",
-                lineHeight: 1.12,
-                fontWeight: 700,
-              }}
-            >
-              <span className="dark:text-white transition-colors">Meet Our NCU Alumni</span>
-            </h2>
+            <div className="md:pl-[52px] md:pr-[18px] w-full">
+                <h2
+                className="text-3xl sm:text-4xl md:text-[3.2rem] font-bold mb-6 text-left tracking-tight font-roboto transition-colors"
+                style={{
+                    color: "var(--h2-color, #181818)",
+                    letterSpacing: 0.1,
+                    fontFamily: "Roboto, Arial, sans-serif",
+                    lineHeight: 1.12,
+                    fontWeight: 700,
+                }}
+                >
+                <span className="dark:text-white transition-colors">Meet Our NCU Alumni</span>
+                </h2>
+            </div>
             <div className="h-4 md:h-5" />
-            <div className="w-full md:-ml-[52px] md:-mr-[18px]">
+            <div className="w-full">
               <AlumniCarousel />
             </div>
             <div className="h-8 md:h-10" />
-            <div className="flex-1 flex flex-col justify-start w-full">
+            <div className="flex-1 flex flex-col justify-start w-full md:pl-[52px] md:pr-[18px]">
               <div className="text-lg md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
                    style={{ color: "inherit" }}>
                 {NCU_ALUMNI_TEXT}
