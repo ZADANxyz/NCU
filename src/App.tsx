@@ -28,6 +28,8 @@ import CourseViewer from "./pages/degrees/CourseViewer";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
+// # Small Edit for GIT Deplopyment v.1.0.0 
+
 const queryClient = new QueryClient();
 
 const App = () => (
