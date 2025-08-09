@@ -57,19 +57,19 @@ const FooterSection = () => {
 
           {/* Center: Copyright Info */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
-            <div className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
-              Copyright © {new Date().getFullYear()} - <Link to="/" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
+            <div className="text-[15px] text-gray-800 dark:text-gray-200">
+              Copyright © {new Date().getFullYear()} - <Link to="/" className="font-semibold text-ncu-blue hover:text-ncu-gold dark:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
             </div>
-            <div className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
-              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors">Sitemap</a>
+            <div className="text-[15px] text-gray-800 dark:text-gray-200">
+              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-bold text-ncu-blue hover:text-ncu-gold dark:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
             </div>
-            <div className="text-sm sm:text-base mt-4 text-gray-800 dark:text-gray-200">
+            <div className="text-[15px] mt-4 text-gray-800 dark:text-gray-200">
               <span>Designed & Hosted By: </span>
               <a 
                 href="https://zathenaventures.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors"
+                className="font-semibold text-ncu-blue hover:text-ncu-gold dark:text-ncu-gold dark:hover:text-ncu-blue transition-colors"
               >
                 ZATHENA VENTURES 🦁
               </a>
@@ -88,8 +88,8 @@ const FooterSection = () => {
               <a href="https://crm.ncu.education" aria-label="HubSpot" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><HubSpotIcon /></a>
             </div>
             <div className="flex items-center justify-center flex-wrap gap-2">
-              <button onClick={() => setSearchOpen(!searchOpen)} className="w-8 h-8 flex items-center justify-center transition-all transform hover:scale-110">
-                <Search size={16} className="text-gray-800 dark:text-slate-200" />
+              <button onClick={() => setSearchOpen(!searchOpen)} className="group w-8 h-8 flex items-center justify-center transition-all transform hover:scale-110">
+                <Search size={16} className="text-gray-800 dark:text-slate-200 group-hover:text-ncu-blue dark:group-hover:text-ncu-gold transition-colors" />
               </button>
               <ThemeToggle iconSize={16} />
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -33,7 +33,6 @@ const DEGREES_NAV_ITEMS = [
 ];
 
 const DOWNLOAD_ITEMS = [
-  { title: "All Downloads", href: "/downloads" },
   { title: "Student Handbook", href: "/downloads/student-handbook" },
   { title: "Tuition & Fees", href: "/downloads/tuition-fees" },
   { title: "Graduate Studies Notebook", href: "/downloads/graduate-studies" },
@@ -63,12 +62,9 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
         {currentNavItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
-          let colorClass = "";
-          if (active) {
-            colorClass = "text-ncu-blue dark:text-ncu-gold";
-          } else {
-            colorClass = "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-blue";
-          }
+          const activeColorClass = "text-ncu-blue dark:text-ncu-gold";
+          const inactiveColorClass = "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
+          const colorClass = active ? activeColorClass : inactiveColorClass;
 
           if (item.label === "Downloads" && isDownloadsPage) {
             return <DownloadsDropdown key={item.label} colorClass={colorClass} />;
@@ -95,25 +91,32 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
   );
 };
 
-const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => (
-  <NavigationMenuItem>
-    <NavigationMenuTrigger className={cn("bg-transparent", colorClass)}>
-      Downloads
-    </NavigationMenuTrigger>
-    <NavigationMenuContent>
-      <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
-        {DOWNLOAD_ITEMS.map((component) => (
-          <ListItem key={component.title} to={component.href} title={component.title} />
-        ))}
-      </ul>
-    </NavigationMenuContent>
-  </NavigationMenuItem>
-);
+const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
+  const navigate = useNavigate();
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuTrigger 
+        onClick={() => navigate('/downloads')}
+        className={cn("bg-transparent", colorClass)}
+      >
+        Downloads
+      </NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
+          {DOWNLOAD_ITEMS.map((component) => (
+            <ListItem key={component.title} to={component.href} title={component.title} />
+          ))}
+        </ul>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  );
+};
 
 const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
   const [courses, setCourses] = useState<Record<string, GoogleDrivePdf[]>>({});
   const { degreeLevel } = useParams<{ degreeLevel?: string }>();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllCourses = async () => {
@@ -132,12 +135,14 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
 
   return (
     <NavigationMenuItem>
-      <NavigationMenuTrigger className={cn("bg-transparent", colorClass)}>
+      <NavigationMenuTrigger 
+        onClick={() => navigate('/degrees')}
+        className={cn("bg-transparent", colorClass)}
+      >
         Degrees
       </NavigationMenuTrigger>
       <NavigationMenuContent>
         <ul className="grid w-auto gap-3 p-4 md:w-[500px] md:grid-cols-2">
-          <ListItem to="/degrees" title="All Degrees" />
           {DEGREE_LEVELS.map((level) => (
             <li key={level.title}>
               <NavigationMenuLink asChild>
