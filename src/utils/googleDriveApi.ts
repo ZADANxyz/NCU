@@ -20,6 +20,8 @@ export interface GoogleDrivePdf {
   embedUrl: string;
 }
 
+type DegreeFolderKeys = 'associate' | 'bachelor' | 'master' | 'doctorate';
+
 class GoogleDriveService {
   private apiKey: string = "AIzaSyCkc1syK-D7R6zGUohUZ8_1uO73tVG3Y8g"; // Hardcoded API key
   private folderIds = {
@@ -28,6 +30,10 @@ class GoogleDriveService {
     aboutUs: "1XCz8U5a8gf6fZC1rArLuP7vfY2_OjFUM", // About us slider
     president: "11fChmVogNYLnvMEL_yG6q0PrdN9dqtN1", // Meet the president
     downloads: "1MYeEGTR6CRvSuu4nCZWQiCHduurJABYs", // PDFs for download
+    associate: "1SNhV8dthzXYwz9ymV2JzlCJt1NJ8gdnc",
+    bachelor: "164N_AUBQEkUssOxoVtC1YUNy7hz8smkt",
+    master: "1U8zXzoxdQ73VuiEVStOp00dLDJlTV4lk",
+    doctorate: "1fJdXlf3--QT1c9Unr5k6fbsWi99guyu1",
   };
 
   getApiKey(): string {
@@ -76,8 +82,19 @@ class GoogleDriveService {
     }
   }
 
+  public async fetchPdfsForDegree(degreeLevel: DegreeFolderKeys): Promise<GoogleDrivePdf[]> {
+    const folderId = this.folderIds[degreeLevel];
+    if (!folderId) {
+        throw new Error(`Invalid degree level: ${degreeLevel}`);
+    }
+    return this.fetchPdfsFromFolderId(folderId);
+  }
+
   async fetchPdfs(): Promise<GoogleDrivePdf[]> {
-    const folderId = this.folderIds.downloads;
+    return this.fetchPdfsFromFolderId(this.folderIds.downloads);
+  }
+
+  private async fetchPdfsFromFolderId(folderId: string): Promise<GoogleDrivePdf[]> {
     const apiKey = this.getApiKey();
 
     try {

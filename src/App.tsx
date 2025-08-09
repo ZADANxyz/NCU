@@ -23,8 +23,7 @@ import AssociateOfArts from "./pages/degrees/AssociateOfArts";
 import BachelorOfArts from "./pages/degrees/BachelorOfArts";
 import MasterOfArts from "./pages/degrees/MasterOfArts";
 import Doctorate from "./pages/degrees/Doctorate";
-import BiblicalStudies from "./pages/degrees/courses/BiblicalStudies";
-import ChristianLeadership from "./pages/degrees/courses/ChristianLeadership";
+import CourseViewer from "./pages/degrees/CourseViewer";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
@@ -57,8 +56,7 @@ const App = () => (
                   <Route path="/degrees/bachelor-of-arts" element={<BachelorOfArts />} />
                   <Route path="/degrees/master-of-arts" element={<MasterOfArts />} />
                   <Route path="/degrees/doctorate" element={<Doctorate />} />
-                  <Route path="/degrees/associate-of-arts/biblical-studies" element={<BiblicalStudies />} />
-                  <Route path="/degrees/associate-of-arts/christian-leadership" element={<ChristianLeadership />} />
+                  <Route path="/degrees/:degreeLevel/:slug" element={<CourseViewer />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/profile/:username" element={<Profile />} />
                   <Route path="*" element={<NotFound />} />
