@@ -65,53 +65,50 @@ const AlumniCarousel = () => {
   }
 
   return (
-    <div className="py-0 w-full flex items-center justify-start md:justify-start">
-      <Carousel
-        opts={{
-          loop: true,
-          align: "start",
-          slidesToScroll: 1,
-          containScroll: 'trimSnaps'
-        }}
-        setApi={setApi}
-        className="w-full mx-0"
-      >
-        <CarouselContent>
-          {alumniImages.map((image, idx) => (
-            <CarouselItem
-              key={idx}
-              className={`
-                basis-full flex-none transition-all duration-500 ease-in-out
-                ${current === idx
-                  ? "opacity-100 pointer-events-auto scale-100 z-10"
-                  : "opacity-0 pointer-events-none scale-95 z-0"}
-              `}
-              aria-hidden={current !== idx}
+    <Carousel
+      opts={{
+        loop: true,
+        align: "start",
+        slidesToScroll: 1,
+        containScroll: 'trimSnaps'
+      }}
+      setApi={setApi}
+      className="w-full"
+    >
+      <CarouselContent>
+        {alumniImages.map((image, idx) => (
+          <CarouselItem
+            key={idx}
+            className={`
+              basis-full flex-none transition-all duration-500 ease-in-out
+              ${current === idx
+                ? "opacity-100 pointer-events-auto scale-100 z-10"
+                : "opacity-0 pointer-events-none scale-95 z-0"}
+            `}
+            aria-hidden={current !== idx}
+            style={{
+              transitionProperty: "opacity, transform",
+            }}
+          >
+            <div
+              className="rounded-lg shadow-md overflow-hidden"
               style={{
-                transitionProperty: "opacity, transform",
+                boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
+                width: "100%",
               }}
             >
-              <div
-                className="rounded-lg shadow-md overflow-hidden"
-                style={{
-                  boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
-                  width: "100%",
-                  margin: "0 auto",
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="rounded-lg object-cover w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 transition-all"
-                  draggable={false}
-                  loading="lazy"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="rounded-lg object-cover w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 transition-all"
+                draggable={false}
+                loading="lazy"
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+    </Carousel>
   );
 };
 
