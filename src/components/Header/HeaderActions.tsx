@@ -20,11 +20,14 @@ const HeaderActions: React.FC<Props> = ({
   onMobileMenuOpen,
   cartCount,
 }) => {
-  const cartSearchBase = "text-slate-700 dark:text-slate-200";
-  const cartSearchHover = isDark
-    ? "hover:text-ncu-gold"
-    : "hover:text-ncu-blue";
   const iconSize = 18;
+  const buttonClasses = cn(
+    "p-1.5 group outline-none ring-0 bg-transparent",
+    "transition-transform duration-150",
+    "text-slate-700 dark:text-slate-200",
+    "hover:text-ncu-blue dark:hover:text-ncu-gold",
+    "hover:scale-110 focus:scale-110"
+  );
 
   return (
     <div
@@ -32,13 +35,7 @@ const HeaderActions: React.FC<Props> = ({
       style={{ height: 40, alignItems: "center", display: "flex" }}
     >
       <button
-        className={cn(
-          cartSearchBase,
-          "p-1.5 group outline-none ring-0 bg-transparent",
-          "transition-transform duration-150",
-          cartSearchHover,
-          "hover:scale-110 focus:scale-110"
-        )}
+        className={buttonClasses}
         aria-label="Search"
         onClick={onSearchOpen}
         type="button"
@@ -47,13 +44,7 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <button
-        className={cn(
-          cartSearchBase,
-          "relative p-1.5 group outline-none ring-0 bg-transparent",
-          "transition-transform duration-150",
-          cartSearchHover,
-          "hover:scale-110 focus:scale-110"
-        )}
+        className={cn(buttonClasses, "relative")}
         aria-label="Open cart"
         onClick={onCartOpen}
         type="button"
@@ -67,13 +58,7 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <button
-        className={cn(
-          cartSearchBase,
-          "p-1.5 group outline-none ring-0 bg-transparent",
-          "transition-transform duration-150",
-          cartSearchHover,
-          "hover:scale-110 focus:scale-110"
-        )}
+        className={buttonClasses}
         aria-label="User Profile"
         onClick={onProfileOpen}
         type="button"
@@ -82,24 +67,14 @@ const HeaderActions: React.FC<Props> = ({
         <User size={iconSize} strokeWidth={2} />
       </button>
 
-      <span className={cn(cartSearchBase)}>
-        <ThemeToggle
-          className={cn(
-            "transition-transform duration-150 hover:scale-110 p-1.5"
-          )}
-          isDark={isDark}
-          iconSize={iconSize}
-        />
-      </span>
+      <ThemeToggle
+        className="transition-transform duration-150 hover:scale-110 p-1.5 text-slate-700 dark:text-slate-200"
+        isDark={isDark}
+        iconSize={iconSize}
+      />
 
       <button
-        className={cn(
-          cartSearchBase,
-          "p-1.5 group outline-none ring-0 bg-transparent md:hidden",
-          "transition-transform duration-150",
-          cartSearchHover,
-          "hover:scale-110 focus:scale-110"
-        )}
+        className={cn(buttonClasses, "md:hidden")}
         aria-label="Open menu"
         onClick={onMobileMenuOpen}
         type="button"

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Youtube, Facebook, Instagram, Twitter, Mail, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
@@ -45,17 +46,19 @@ const FooterSection = () => {
         
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 px-4 py-5 md:h-[96px] md:px-6 lg:px-[52px]">
           <div className="flex items-center order-1">
-            <Logo />
+            <Link to="/" aria-label="Go to homepage">
+              <Logo />
+            </Link>
           </div>
 
           <div className="flex flex-col items-center text-center order-3 md:order-2">
             <div className="text-xs sm:text-sm">
-              Copyright © {new Date().getFullYear()} - <span className="text-ncu-blue dark:text-ncu-gold font-semibold">NEW COVENANT UNIVERSITY</span>
-              <span className="hidden sm:inline"> | All Rights Reserved</span>
+              Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:underline">NEW COVENANT UNIVERSITY</Link>
             </div>
-            <div className="text-xs sm:text-sm mt-1">
-              <a href="/sitemap" className="text-ncu-blue dark:text-ncu-gold hover:underline">Sitemap</a>
-              <span className="mx-2">|</span>
+            <div className="text-xs sm:text-sm">
+              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-ncu-blue dark:text-ncu-gold hover:underline">Sitemap</a>
+            </div>
+            <div className="text-xs sm:text-sm mt-3">
               <span>Designed & Hosted By: </span>
               <a 
                 href="https://zathenaventures.xyz" 
@@ -68,7 +71,7 @@ const FooterSection = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 order-2 md:order-3">
+          <div className="flex items-center justify-center flex-wrap gap-2 order-2 md:order-3">
             <a href="https://www.facebook.com/newcovenantu" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Facebook size={16} /></a>
             <a href="https://www.instagram.com/newcovenantuniversity/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Instagram size={16} /></a>
             <a href="https://x.com/NewCovenantU" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Twitter size={16} /></a>

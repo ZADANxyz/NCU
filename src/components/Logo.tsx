@@ -35,7 +35,7 @@ const Logo = () => {
           src={LOGO_SRC}
           alt={alt}
           className={
-            "h-9 w-auto max-w-full block transition-all duration-200 drop-shadow-md"
+            "h-9 w-auto max-w-full block transition-all duration-200 drop-shadow-md dark:grayscale"
           }
           style={{
             maxHeight: 36,

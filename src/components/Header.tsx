@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
@@ -64,7 +65,9 @@ const Header = () => {
           }}
         >
           <div className="flex items-center" style={{ height: 40, alignItems: "center", display: "flex" }}>
-            <Logo />
+            <Link to="/" aria-label="Go to homepage">
+              <Logo />
+            </Link>
           </div>
           <HeaderNavigation isDark={isDark} />
           <HeaderActions
