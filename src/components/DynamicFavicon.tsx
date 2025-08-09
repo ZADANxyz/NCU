@@ -8,13 +8,10 @@ const DynamicFavicon = () => {
   const { isDark } = useTheme();
 
   useEffect(() => {
-    let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'icon';
-      document.head.appendChild(link);
+    const link = document.getElementById('favicon') as HTMLLinkElement | null;
+    if (link) {
+      link.href = isDark ? DARK_ICON : LIGHT_ICON;
     }
-    link.href = isDark ? DARK_ICON : LIGHT_ICON;
   }, [isDark]);
 
   return null; // This component doesn't render anything
