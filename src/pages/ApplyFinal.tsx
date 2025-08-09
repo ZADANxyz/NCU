@@ -92,7 +92,7 @@ const ApplyFinal = () => {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
               <div className="flex-shrink-0">
                 <img
-                  src="/lovable-uploads/ncu-official-seal.png"
+                  src="/favicon.png"
                   alt="New Covenant University Seal"
                   className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
                   style={{ aspectRatio: 'auto' }}
@@ -137,7 +137,7 @@ const ApplyFinal = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
             <div className="flex-shrink-0">
               <img
-                src="/lovable-uploads/ncu-official-seal.png"
+                src="/favicon.png"
                 alt="New Covenant University Seal"
                 className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
                 style={{ aspectRatio: 'auto' }}

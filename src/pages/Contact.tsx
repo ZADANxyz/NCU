@@ -68,7 +68,7 @@ const Contact = () => {
             {/* NCU Logo and Title */}
             <div className="flex flex-col items-center mb-8">
               <img
-                src="/lovable-uploads/ncu-official-seal.png"
+                src="/favicon.png"
                 alt="New Covenant University Logo"
                 className="w-40 h-40 mb-4 object-contain"
               />

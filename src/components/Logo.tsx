@@ -3,7 +3,7 @@ import React from "react";
 /**
  * Official site logo, shown in header.
  */
-const LOGO_SRC = "/lovable-uploads/ncu-official-seal.png";
+const LOGO_SRC = "/favicon.png";
 
 // Slightly increased logo width for more prominence
 const LOGO_WIDTH = 54; // px, was 44
