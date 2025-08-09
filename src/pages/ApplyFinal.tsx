@@ -12,9 +12,10 @@ import ReviewsSection from "./home/sections/ReviewsSection";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import MapSection from "./home/sections/MapSection";
-import FooterSection from "./home/sections/FooterSection";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const ApplyFinal = () => {
+  usePageTitle("Finalize Application");
   const { toast } = useToast();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -84,57 +85,7 @@ const ApplyFinal = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-background">
-        <main className="flex-1">
-          <section className="w-full py-16 bg-background">
-            <div className="w-full px-6 sm:px-8 md:px-[60px]">
-              {/* Header with Logo and University Info */}
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
-                <div className="flex-shrink-0">
-                  <img
-                    src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
-                    alt="New Covenant University Seal"
-                    className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
-                    style={{ aspectRatio: 'auto' }}
-                  />
-                </div>
-                
-                <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
-                  <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
-                    NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
-                  </div>
-                  <div>
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
-                    Application for Admission
-                  </h1>
-                  </div>
-                </div>
-              </div>
-
-              {/* Thank You Message */}
-              <div className="bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg text-center">
-                <h2 className="text-2xl md:text-3xl font-roboto font-bold text-[#181818] dark:text-white mb-6">
-                  Thank You for Submitting Your Final Application Steps!
-                </h2>
-                <p className="text-lg font-roboto text-[#333] dark:text-gray-200 mb-4">
-                  We have received your application finalization and will contact you soon to finish processing your enrollment.
-                </p>
-                <p className="text-base font-roboto text-[#666] dark:text-gray-300">
-                  A confirmation email has been sent to {formData.email}
-                </p>
-              </div>
-            </div>
-          </section>
-        </main>
-        
-        <FooterSection />
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-background">
-      <main className="flex-1">
+      <>
         <section className="w-full py-16 bg-background">
           <div className="w-full px-6 sm:px-8 md:px-[60px]">
             {/* Header with Logo and University Info */}
@@ -156,239 +107,281 @@ const ApplyFinal = () => {
                 <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                   Application for Admission
                 </h1>
-                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
-                    PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
-                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Finalization Form */}
-            <div className="bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {/* Identity Verification Section */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
-                    IDENTITY VERIFICATION DOCUMENTATION:
-                  </h3>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                        Applicant's E-Mail: *
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="w-full"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="ssnOrId" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                        SSN or NATIONAL ID#: *
-                      </Label>
-                      <Input
-                        id="ssnOrId"
-                        type="text"
-                        required
-                        value={formData.ssnOrId}
-                        onChange={(e) => handleInputChange("ssnOrId", e.target.value)}
-                        className="w-full"
-                      />
-                    </div>
-                  </div>
+            {/* Thank You Message */}
+            <div className="bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg text-center">
+              <h2 className="text-2xl md:text-3xl font-roboto font-bold text-[#181818] dark:text-white mb-6">
+                Thank You for Submitting Your Final Application Steps!
+              </h2>
+              <p className="text-lg font-roboto text-[#333] dark:text-gray-200 mb-4">
+                We have received your application finalization and will contact you soon to finish processing your enrollment.
+              </p>
+              <p className="text-base font-roboto text-[#666] dark:text-gray-300">
+                A confirmation email has been sent to {formData.email}
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
 
+  return (
+    <>
+      <section className="w-full py-16 bg-background">
+        <div className="w-full px-6 sm:px-8 md:px-[60px]">
+          {/* Header with Logo and University Info */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
+            <div className="flex-shrink-0">
+              <img
+                src="/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"
+                alt="New Covenant University Seal"
+                className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
+                style={{ aspectRatio: 'auto' }}
+              />
+            </div>
+            
+            <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
+              <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
+                NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
+              </div>
+              <div>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                Application for Admission
+              </h1>
+                <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
+                  PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Finalization Form */}
+          <div className="bg-white dark:bg-[#242836] rounded-2xl border-2 border-[#B19528]/30 p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {/* Identity Verification Section */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
+                  IDENTITY VERIFICATION DOCUMENTATION:
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="photoId" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                      Upload a photo copy of active/valid government issued photo ID: *
+                    <Label htmlFor="email" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                      Applicant's E-Mail: *
                     </Label>
                     <Input
-                      id="photoId"
-                      type="file"
-                      accept="image/*,.pdf"
+                      id="email"
+                      type="email"
                       required
-                      onChange={handleFileChange}
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="ssnOrId" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                      SSN or NATIONAL ID#: *
+                    </Label>
+                    <Input
+                      id="ssnOrId"
+                      type="text"
+                      required
+                      value={formData.ssnOrId}
+                      onChange={(e) => handleInputChange("ssnOrId", e.target.value)}
                       className="w-full"
                     />
                   </div>
                 </div>
 
-                {/* Payment Information Section */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
-                    $50.00 USD APPLICATION FEE PAYMENT INFORMATION (NON-REFUNDABLE):
-                  </h3>
+                <div className="space-y-2">
+                  <Label htmlFor="photoId" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                    Upload a photo copy of active/valid government issued photo ID: *
+                  </Label>
+                  <Input
+                    id="photoId"
+                    type="file"
+                    accept="image/*,.pdf"
+                    required
+                    onChange={handleFileChange}
+                    className="w-full"
+                  />
+                </div>
+              </div>
+
+              {/* Payment Information Section */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-roboto font-bold text-[#181818] dark:text-white mb-4 text-center">
+                  $50.00 USD APPLICATION FEE PAYMENT INFORMATION (NON-REFUNDABLE):
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="paymentMethod" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                      Payment Method: *
+                    </Label>
+                    <Select onValueChange={(value) => handleInputChange("paymentMethod", value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select payment method" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="credit-debit-card">Credit/Debit Card</SelectItem>
+                        <SelectItem value="check">Check</SelectItem>
+                        <SelectItem value="money-order">Money Order</SelectItem>
+                        <SelectItem value="cash">Cash</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                   
+                  {formData.paymentMethod === "credit-debit-card" && (
+                    <>
+                      <div className="space-y-2">
+                        <Label htmlFor="creditCardNumber" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                          Credit Card Number: *
+                        </Label>
+                        <Input
+                          id="creditCardNumber"
+                          type="text"
+                          required
+                          value={formData.creditCardNumber}
+                          onChange={(e) => handleInputChange("creditCardNumber", e.target.value)}
+                          className="w-full"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="expirationDate" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                          Expiration (MM/YY): *
+                        </Label>
+                        <Input
+                          id="expirationDate"
+                          type="text"
+                          placeholder="MM/YY"
+                          required
+                          value={formData.expirationDate}
+                          onChange={(e) => handleInputChange("expirationDate", e.target.value)}
+                          className="w-full"
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {formData.paymentMethod === "credit-debit-card" && (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="paymentMethod" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                        Payment Method: *
+                      <Label htmlFor="cardType" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                        Card Type (if applicable): *
                       </Label>
-                      <Select onValueChange={(value) => handleInputChange("paymentMethod", value)}>
+                      <Select onValueChange={(value) => handleInputChange("cardType", value)}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select payment method" />
+                          <SelectValue placeholder="Select card type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="credit-debit-card">Credit/Debit Card</SelectItem>
-                          <SelectItem value="check">Check</SelectItem>
-                          <SelectItem value="money-order">Money Order</SelectItem>
-                          <SelectItem value="cash">Cash</SelectItem>
+                          <SelectItem value="visa">Visa</SelectItem>
+                          <SelectItem value="mastercard">Mastercard</SelectItem>
+                          <SelectItem value="american-express">American Express</SelectItem>
+                          <SelectItem value="discover">Discover</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     
-                    {formData.paymentMethod === "credit-debit-card" && (
-                      <>
-                        <div className="space-y-2">
-                          <Label htmlFor="creditCardNumber" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                            Credit Card Number: *
-                          </Label>
-                          <Input
-                            id="creditCardNumber"
-                            type="text"
-                            required
-                            value={formData.creditCardNumber}
-                            onChange={(e) => handleInputChange("creditCardNumber", e.target.value)}
-                            className="w-full"
-                          />
-                        </div>
-                        
-                        <div className="space-y-2">
-                          <Label htmlFor="expirationDate" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                            Expiration (MM/YY): *
-                          </Label>
-                          <Input
-                            id="expirationDate"
-                            type="text"
-                            placeholder="MM/YY"
-                            required
-                            value={formData.expirationDate}
-                            onChange={(e) => handleInputChange("expirationDate", e.target.value)}
-                            className="w-full"
-                          />
-                        </div>
-                      </>
-                    )}
-                  </div>
-
-                  {formData.paymentMethod === "credit-debit-card" && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="cardType" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                          Card Type (if applicable): *
-                        </Label>
-                        <Select onValueChange={(value) => handleInputChange("cardType", value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select card type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="visa">Visa</SelectItem>
-                            <SelectItem value="mastercard">Mastercard</SelectItem>
-                            <SelectItem value="american-express">American Express</SelectItem>
-                            <SelectItem value="discover">Discover</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="billingAddress" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                          Billing Address, ZIP/Postal Code: *
-                        </Label>
-                        <Input
-                          id="billingAddress"
-                          type="text"
-                          required
-                          value={formData.billingAddress}
-                          onChange={(e) => handleInputChange("billingAddress", e.target.value)}
-                          className="w-full"
-                        />
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <Label htmlFor="securityCode" className="text-sm font-medium text-[#333] dark:text-gray-200">
-                          Security Code: *
-                        </Label>
-                        <Input
-                          id="securityCode"
-                          type="text"
-                          required
-                          value={formData.securityCode}
-                          onChange={(e) => handleInputChange("securityCode", e.target.value)}
-                          className="w-full"
-                        />
-                      </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="billingAddress" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                        Billing Address, ZIP/Postal Code: *
+                      </Label>
+                      <Input
+                        id="billingAddress"
+                        type="text"
+                        required
+                        value={formData.billingAddress}
+                        onChange={(e) => handleInputChange("billingAddress", e.target.value)}
+                        className="w-full"
+                      />
                     </div>
-                  )}
-                </div>
-
-                {/* Authorization Section */}
-                <div className="space-y-4">
-                  <div className="flex items-start justify-center space-x-2">
-                    <Checkbox
-                      id="authorized"
-                      checked={formData.authorized}
-                      onCheckedChange={(checked) => handleInputChange("authorized", checked)}
-                      className="mt-1"
-                    />
-                    <Label htmlFor="authorized" className="text-sm text-[#333] dark:text-gray-200 leading-relaxed text-center">
-                      I hereby authorize NEW COVENANT MINISTRIES to utilize my payment method provided to process my enrollment fees.
-                    </Label>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="securityCode" className="text-sm font-medium text-[#333] dark:text-gray-200">
+                        Security Code: *
+                      </Label>
+                      <Input
+                        id="securityCode"
+                        type="text"
+                        required
+                        value={formData.securityCode}
+                        onChange={(e) => handleInputChange("securityCode", e.target.value)}
+                        className="w-full"
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
+              </div>
 
-                {/* Mailing Information */}
-                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <p className="text-sm text-[#333] dark:text-gray-200 text-center">
-                    For expedited service please send all physical payments to our mailing address:<br />
-                    <strong>PO Box 574, Fremont, OH 43420</strong>
-                  </p>
+              {/* Authorization Section */}
+              <div className="space-y-4">
+                <div className="flex items-start justify-center space-x-2">
+                  <Checkbox
+                    id="authorized"
+                    checked={formData.authorized}
+                    onCheckedChange={(checked) => handleInputChange("authorized", checked)}
+                    className="mt-1"
+                  />
+                  <Label htmlFor="authorized" className="text-sm text-[#333] dark:text-gray-200 leading-relaxed text-center">
+                    I hereby authorize NEW COVENANT MINISTRIES to utilize my payment method provided to process my enrollment fees.
+                  </Label>
                 </div>
+              </div>
 
-                {/* Submit Button */}
-                <div className="text-center pt-6">
-                  <Button
-                    type="submit"
-                    className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-12 py-4 text-xl font-medium border-2 border-blue-600 hover:border-blue-700 transition-all duration-300 rounded-lg dark:bg-gradient-to-r dark:from-[#B19528] dark:to-[#D4AF37] dark:hover:from-[#D4AF37] dark:hover:to-[#B19528] dark:border-[#B19528] dark:hover:border-[#D4AF37]"
-                  >
-                    Finalize Application
-                  </Button>
-                </div>
-              </form>
-            </div>
+              {/* Mailing Information */}
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                <p className="text-sm text-[#333] dark:text-gray-200 text-center">
+                  For expedited service please send all physical payments to our mailing address:<br />
+                  <strong>PO Box 574, Fremont, OH 43420</strong>
+                </p>
+              </div>
+
+              {/* Submit Button */}
+              <div className="text-center pt-6">
+                <Button
+                  type="submit"
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-12 py-4 text-xl font-medium border-2 border-blue-600 hover:border-blue-700 transition-all duration-300 rounded-lg dark:bg-gradient-to-r dark:from-[#B19528] dark:to-[#D4AF37] dark:hover:from-[#D4AF37] dark:hover:to-[#B19528] dark:border-[#B19528] dark:hover:border-[#D4AF37]"
+                >
+                  Finalize Application
+                </Button>
+              </div>
+            </form>
           </div>
-        </section>
-
-        {/* Divider */}
-        <HeroDividerSection />
-
-        {/* Degrees Section */}
-        <DegreesOfferedSection />
-
-        {/* Reviews Section */}
-        <ReviewsSection />
-        
-        {/* About Us Sectional */}
-        <AboutSectionalSUBPAGE />
-
-        {/* Another Divider */}
-        <HeroDividerSection />
-        
-        {/* Contact Form Section */}
-        <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
-          <ContactAboutForm />
         </div>
-        
-        {/* Map Section */}
-        <MapSection />
-      </main>
+      </section>
+
+      {/* Divider */}
+      <HeroDividerSection />
+
+      {/* Degrees Section */}
+      <DegreesOfferedSection />
+
+      {/* Reviews Section */}
+      <ReviewsSection />
       
-      <FooterSection />
-    </div>
+      {/* About Us Sectional */}
+      <AboutSectionalSUBPAGE />
+
+      {/* Another Divider */}
+      <HeroDividerSection />
+      
+      {/* Contact Form Section */}
+      <div className="w-full bg-white dark:bg-[#242836] py-16 px-3 sm:px-6 md:px-[52px]">
+        <ContactAboutForm />
+      </div>
+      
+      {/* Map Section */}
+      <MapSection />
+    </>
   );
 };
 

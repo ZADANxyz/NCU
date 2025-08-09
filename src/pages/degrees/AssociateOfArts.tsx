@@ -1,14 +1,13 @@
 import React from "react";
-import HeaderMenuDEGREES from "@/components/HeaderMenuDEGREES";
 import DegreesOfferedSection from "@/pages/home/sections/DegreesOfferedSection";
 import ReviewsSection from "@/pages/home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "@/pages/home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "@/pages/home/sections/MapSection";
-import FooterSection from "@/pages/home/sections/FooterSection";
 import HeroDividerSection from "@/pages/home/sections/HeroDividerSection";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -24,10 +23,10 @@ const ASSOCIATE_COURSES = [
 ];
 
 const AssociateOfArts = () => {
+  usePageTitle("Associate of Arts");
+
   return (
-    <div className="min-h-screen bg-background">
-      <HeaderMenuDEGREES currentDegreeLevel="associate" />
-      
+    <>
       {/* Header Image Section */}
       <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
         <div className="absolute inset-0">
@@ -82,9 +81,7 @@ const AssociateOfArts = () => {
       
       {/* Map Section */}
       <MapSection />
-      
-      <FooterSection />
-    </div>
+    </>
   );
 };
 

@@ -5,9 +5,8 @@ import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
-import FooterSection from "./home/sections/FooterSection";
-import BackToTopButton from "./home/sections/BackToTopButton";
 import { useTheme } from "@/components/ThemeProvider";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -35,6 +34,7 @@ const donationOptions = [
 ];
 
 const Donate = () => {
+  usePageTitle("Donate");
   const { isDark } = useTheme();
 
   const handleDonationClick = (url: string) => {
@@ -42,7 +42,7 @@ const Donate = () => {
   };
 
   return (
-    <div className="bg-background min-h-screen pt-0">
+    <>
       {/* Hero Image - Same as other pages */}
       <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
@@ -95,7 +95,7 @@ const Donate = () => {
       </section>
 
       {/* Same sections as other pages */}
-      <main>
+      <>
         <HeroDividerSection />
         <DegreesOfferedSection />
         <ReviewsSection />
@@ -105,11 +105,8 @@ const Donate = () => {
           <ContactAboutForm />
         </div>
         <MapSection />
-      </main>
-      
-      <FooterSection />
-      <BackToTopButton />
-    </div>
+      </>
+    </>
   );
 };
 

@@ -1,20 +1,19 @@
 import React from "react";
-import HeaderMenuDEGREES from "@/components/HeaderMenuDEGREES";
 import DegreesOfferedSection from "@/pages/home/sections/DegreesOfferedSection";
 import ReviewsSection from "@/pages/home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "@/pages/home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "@/pages/home/sections/MapSection";
-import FooterSection from "@/pages/home/sections/FooterSection";
 import HeroDividerSection from "@/pages/home/sections/HeroDividerSection";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const BiblicalStudies = () => {
+  usePageTitle("Associate of Biblical Studies");
+
   return (
-    <div className="min-h-screen bg-background">
-      <HeaderMenuDEGREES currentDegreeLevel="associate" />
-      
+    <>
       {/* PDF Embed Section */}
       <section className="w-full bg-background dark:bg-background py-16 px-3 sm:px-6 md:px-[52px]">
         <div className="w-full">
@@ -52,9 +51,7 @@ const BiblicalStudies = () => {
       
       {/* Map Section */}
       <MapSection />
-      
-      <FooterSection />
-    </div>
+    </>
   );
 };
 

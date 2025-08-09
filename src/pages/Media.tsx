@@ -5,11 +5,10 @@ import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
-import FooterSection from "./home/sections/FooterSection";
-import BackToTopButton from "./home/sections/BackToTopButton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { googleDriveService, GoogleDriveImage } from "@/utils/googleDriveApi";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -30,6 +29,7 @@ const initialGalleryImages: GoogleDriveImage[] = [
 const IMAGES_PER_PAGE = 24;
 
 const Media = () => {
+  usePageTitle("Media");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(-1);
@@ -125,7 +125,7 @@ const Media = () => {
   };
 
   return (
-    <div className="bg-background min-h-screen pt-0">
+    <>
       {/* Hero Image - Same as About/Store pages */}
       <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
@@ -258,7 +258,7 @@ const Media = () => {
       )}
 
       {/* Same sections as Store page */}
-      <main>
+      <>
         <HeroDividerSection />
         <DegreesOfferedSection />
         <ReviewsSection />
@@ -268,11 +268,8 @@ const Media = () => {
           <ContactAboutForm />
         </div>
         <MapSection />
-      </main>
-      
-      <FooterSection />
-      <BackToTopButton />
-    </div>
+      </>
+    </>
   );
 };
 

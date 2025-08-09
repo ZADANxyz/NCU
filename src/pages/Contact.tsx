@@ -7,8 +7,7 @@ import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalSUBPAGE from "./home/sections/AboutSectionalSUBPAGE";
 import MapSection from "./home/sections/MapSection";
-import FooterSection from "./home/sections/FooterSection";
-import BackToTopButton from "./home/sections/BackToTopButton";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 // HubSpot configuration
 const HUBSPOT_PORTAL_ID = "242249646";
@@ -33,6 +32,8 @@ const TikTokIcon = () => (
 );
 
 const Contact = () => {
+  usePageTitle("Contact");
+
   const [isDark, setIsDark] = React.useState(() =>
     typeof window !== "undefined"
       ? document.documentElement.classList.contains("dark")
@@ -82,42 +83,41 @@ const Contact = () => {
 
   // Inject dark mode styles for HubSpot form
   React.useEffect(() => {
-    if (!isDark) return;
-    let styleTag = document.getElementById("hubspot-darkmode-style-contact");
-    if (!styleTag) {
-      styleTag = document.createElement("style");
-      styleTag.id = "hubspot-darkmode-style-contact";
-      styleTag.innerHTML = `
-        #hubspot-form-contact label,
-        #hubspot-form-contact .hs-form-required,
-        #hubspot-form-contact .hs-form-field label,
-        #hubspot-form-contact .hs-richtext,
-        #hubspot-form-contact .hs-file-description {
-          color: #fff !important;
-        }
-        #hubspot-form-contact input, 
-        #hubspot-form-contact textarea, 
-        #hubspot-form-contact select {
-          background: rgba(35, 34, 50, 0.8) !important;
-          color: #fff !important;
-          border: 1px solid #666 !important;
-        }
-        #hubspot-form-contact .hs-button.primary, 
-        #hubspot-form-contact input[type=submit] {
-          background: #b19528 !important;
-          border-color: #b19528 !important;
-          color: #232232 !important;
-        }
-      `;
-      document.head.appendChild(styleTag);
+    const styleId = 'hubspot-darkmode-style';
+    if (isDark) {
+      let styleTag = document.getElementById(styleId);
+      if (!styleTag) {
+        styleTag = document.createElement("style");
+        styleTag.id = styleId;
+        styleTag.innerHTML = `
+          .hubspot-form-dark-mode .hs-form-field label,
+          .hubspot-form-dark-mode .hs-form-required,
+          .hubspot-form-dark-mode .hs-richtext,
+          .hubspot-form-dark-mode .hs-error-msg {
+            color: #fff !important;
+          }
+          .hubspot-form-dark-mode input, 
+          .hubspot-form-dark-mode textarea, 
+          .hubspot-form-dark-mode select {
+            background: rgba(35, 34, 50, 0.8) !important;
+            color: #fff !important;
+            border: 1px solid #666 !important;
+          }
+          .hubspot-form-dark-mode .hs-button.primary, 
+          .hubspot-form-dark-mode input[type=submit] {
+            background: #b19528 !important;
+            border-color: #b19528 !important;
+            color: #232232 !important;
+          }
+        `;
+        document.head.appendChild(styleTag);
+      }
     }
-    return () => {
-      styleTag?.remove();
-    };
+    // We don't remove the style tag on cleanup in case other forms need it
   }, [isDark]);
 
   return (
-    <div className="bg-background min-h-screen">
+    <>
       {/* Header Image */}
       <div className="w-full h-[500px] md:h-[600px] lg:h-[700px] relative overflow-hidden">
         <img
@@ -151,12 +151,7 @@ const Contact = () => {
             {/* HubSpot Form */}
             <div
               id="hubspot-form-contact"
-              className={
-                "w-full transition-colors" +
-                (isDark
-                  ? " dark:text-white dark:[&_input]:text-white dark:[&_label]:text-white dark:[&_button]:text-gold"
-                  : " text-black")
-              }
+              className={isDark ? "hubspot-form-dark-mode" : ""}
             />
           </div>
 
@@ -330,9 +325,7 @@ const Contact = () => {
       <ReviewsSection />
       <AboutSectionalSUBPAGE />
       <MapSection />
-      <FooterSection />
-      <BackToTopButton />
-    </div>
+    </>
   );
 };
 
