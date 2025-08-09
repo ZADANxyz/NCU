@@ -18,7 +18,6 @@ const DEFAULT_NAV_ITEMS = [
   { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
   { label: "Downloads", to: "/downloads" },
-  { label: "Degrees", to: "/degrees" },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
