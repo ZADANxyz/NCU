@@ -3,7 +3,7 @@ name: Deploy React to HostGator via FTP
 on:
   push:
     branches:
-      - main  # or your deployment branch
+      - main  # your deployment branch
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Install Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 18
@@ -31,7 +31,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftp
         port: 21
-        local-dir: ./build/
+        local-dir: ./build/           # or ./dist/ if your build outputs there
         server-dir: /home2/mbisbell/ncu.education/
-        delete: true          # Delete existing files in the server-dir before upload
+        dangerous-clean-slate: true   # deletes ALL files in the remote directory before upload
         dry-run: false
