@@ -95,14 +95,12 @@ const AboutUsCarousel = () => {
               }}
             >
               <div
-                className="glass"
                 style={{
                   borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   width: "100%",
                   maxWidth: "870px",
                   margin: "0 auto",
-                  background: "linear-gradient(105deg,rgba(255,229,87,0.09) 0%,rgba(255,255,255,0.20) 100%)",
                 }}
               >
                 <img
