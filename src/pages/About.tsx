@@ -33,8 +33,8 @@ const About = () => {
             <h2 className="text-3xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-6 md:mb-8 tracking-tight">
               About Us:
             </h2>
-            <div className="text-base md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-loose flex-grow flex flex-col">
-              <div className="flex flex-col justify-between h-full">
+            <div className="text-base md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-loose flex-grow flex flex-col justify-center">
+              <div className="space-y-6">
                 <p>
                   New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were published into books and training manuals evolving into a state recognized program. Decades later the vision continues providing students with a leadership and ethics focused education by providing a wide array of undergraduate and graduate programs in Leadership, Education, Theology, Ministry and Counseling.
                 </p>
@@ -48,7 +48,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-1/3 flex flex-col gap-4 mt-8 lg:mt-0">
+          <div className="w-full lg:w-1/3 flex flex-col justify-center gap-4 mt-8 lg:mt-0">
             <div className="w-full overflow-hidden rounded-lg">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"

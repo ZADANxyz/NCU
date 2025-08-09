@@ -47,7 +47,7 @@ const FooterSection = () => {
           }}
         />
         
-        <div className="relative flex items-start justify-between gap-4 px-4 py-5 md:h-[96px] md:px-6 lg:px-[52px]">
+        <div className="relative flex items-start justify-between gap-4 px-4 py-5 md:px-6 lg:px-[52px]">
           {/* Left: Logo */}
           <div className="flex items-center pt-2">
             <Link to="/" aria-label="Go to homepage">
@@ -58,10 +58,10 @@ const FooterSection = () => {
           {/* Center: Copyright Info */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
             <div className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
-              Copyright © {new Date().getFullYear()} - <Link to="/" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
+              Copyright © {new Date().getFullYear()} - <Link to="/" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
             </div>
             <div className="text-sm sm:text-base text-gray-800 dark:text-gray-200">
-              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
+              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors">Sitemap</a>
             </div>
             <div className="text-sm sm:text-base mt-4 text-gray-800 dark:text-gray-200">
               <span>Designed & Hosted By: </span>
@@ -69,7 +69,7 @@ const FooterSection = () => {
                 href="https://zathenaventures.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors"
+                className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-blue dark:hover:text-ncu-blue transition-colors"
               >
                 ZATHENA VENTURES 🦁
               </a>

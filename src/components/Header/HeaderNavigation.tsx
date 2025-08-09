@@ -33,6 +33,7 @@ const DEGREES_NAV_ITEMS = [
 ];
 
 const DOWNLOAD_ITEMS = [
+  { title: "All Downloads", href: "/downloads" },
   { title: "Student Handbook", href: "/downloads/student-handbook" },
   { title: "Tuition & Fees", href: "/downloads/tuition-fees" },
   { title: "Graduate Studies Notebook", href: "/downloads/graduate-studies" },
@@ -66,7 +67,7 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
           if (active) {
             colorClass = "text-ncu-blue dark:text-ncu-gold";
           } else {
-            colorClass = "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-gold";
+            colorClass = "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-blue";
           }
 
           if (item.label === "Downloads" && isDownloadsPage) {
@@ -100,7 +101,7 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
       Downloads
     </NavigationMenuTrigger>
     <NavigationMenuContent>
-      <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
+      <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
         {DOWNLOAD_ITEMS.map((component) => (
           <ListItem key={component.title} to={component.href} title={component.title} />
         ))}
@@ -135,7 +136,8 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
         Degrees
       </NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+        <ul className="grid w-auto gap-3 p-4 md:w-[500px] md:grid-cols-2">
+          <ListItem to="/degrees" title="All Degrees" />
           {DEGREE_LEVELS.map((level) => (
             <li key={level.title}>
               <NavigationMenuLink asChild>
