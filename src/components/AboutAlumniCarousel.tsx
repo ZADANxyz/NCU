@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { googleDriveService, type GoogleDriveImage } from "@/utils/googleDriveApi";
 
-const AUTO_SLIDE_INTERVAL = 7400; // slower than before
+const AUTO_SLIDE_INTERVAL = 7400;
 
-const AlumniCarousel = () => {
+const AboutAlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
   const [alumniImages, setAlumniImages] = useState<GoogleDriveImage[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,22 +50,22 @@ const AlumniCarousel = () => {
 
   if (loading) {
     return (
-      <div className="py-0 w-full flex items-center justify-center h-[275px] md:h-[370px] lg:h-[415px]">
-        <div className="text-gray-500">Loading alumni images...</div>
+      <div className="py-0 w-full flex items-center justify-center h-80">
+        <div className="text-gray-500">Loading images...</div>
       </div>
     );
   }
 
   if (alumniImages.length === 0) {
     return (
-      <div className="py-0 w-full flex items-center justify-center h-[275px] md:h-[370px] lg:h-[415px]">
-        <div className="text-gray-500">No alumni images found.</div>
+      <div className="py-0 w-full flex items-center justify-center h-80">
+        <div className="text-gray-500">No images found.</div>
       </div>
     );
   }
 
   return (
-    <div className="py-0 w-full flex items-center justify-start md:justify-start">
+    <div className="py-0 w-full flex items-center justify-start">
       <Carousel
         opts={{
           loop: true,
@@ -102,7 +102,7 @@ const AlumniCarousel = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="rounded-lg object-cover w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 transition-all"
+                  className="rounded-lg object-cover w-full h-80 border-0 transition-all"
                   draggable={false}
                   loading="lazy"
                 />
@@ -115,4 +115,4 @@ const AlumniCarousel = () => {
   );
 };
 
-export default AlumniCarousel;
+export default AboutAlumniCarousel;

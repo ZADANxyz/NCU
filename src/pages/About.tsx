@@ -4,7 +4,7 @@ import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
 import ReviewsSection from "./home/sections/ReviewsSection";
 import AboutSectionalBIO from "./home/sections/AboutSectionalBIO";
 import MapSection from "./home/sections/MapSection";
-import AlumniCarousel from "@/components/AlumniCarousel";
+import AboutAlumniCarousel from "@/components/AboutAlumniCarousel";
 import ContactAboutForm from "@/components/ContactAboutForm";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
@@ -59,7 +59,7 @@ const About = () => {
             </div>
             
             <div className="w-full overflow-hidden rounded-lg">
-              <AlumniCarousel />
+              <AboutAlumniCarousel />
             </div>
           </div>
         </div>
