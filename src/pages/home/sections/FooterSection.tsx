@@ -26,7 +26,6 @@ const FooterSection = () => {
 
   const iconButtonClass = "w-8 h-8 rounded-full flex items-center justify-center text-white transition-all transform hover:scale-110";
   const socialButtonClass = `${iconButtonClass} bg-ncu-blue dark:bg-ncu-gold hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark`;
-  const utilityButtonClass = `${iconButtonClass} bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600`;
 
   return (
     <>
@@ -48,9 +47,9 @@ const FooterSection = () => {
           }}
         />
         
-        <div className="relative flex items-center justify-between gap-4 px-4 py-5 md:h-[96px] md:px-6 lg:px-[52px]">
+        <div className="relative flex items-start justify-between gap-4 px-4 py-5 md:h-[96px] md:px-6 lg:px-[52px]">
           {/* Left: Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center pt-2">
             <Link to="/" aria-label="Go to homepage">
               <Logo />
             </Link>
@@ -62,7 +61,7 @@ const FooterSection = () => {
               Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
             </div>
             <div className="text-xs sm:text-sm">
-              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
+              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
             </div>
             <div className="text-xs sm:text-sm mt-4">
               <span>Designed & Hosted By: </span>
@@ -89,7 +88,9 @@ const FooterSection = () => {
               <a href="https://crm.ncu.education" aria-label="HubSpot" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><HubSpotIcon /></a>
             </div>
             <div className="flex items-center justify-center flex-wrap gap-2">
-              <button onClick={() => setSearchOpen(!searchOpen)} className={utilityButtonClass}><Search size={16} /></button>
+              <button onClick={() => setSearchOpen(!searchOpen)} className="w-8 h-8 flex items-center justify-center transition-all transform hover:scale-110">
+                <Search size={16} className="text-gray-600 dark:text-gray-200" />
+              </button>
               <ThemeToggle iconSize={16} />
             </div>
           </div>

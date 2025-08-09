@@ -106,7 +106,7 @@ const AlumniCarousel = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="rounded-lg object-cover shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
+                  className="rounded-lg object-contain shadow-md w-full md:w-[700px] lg:w-[870px] max-w-[870px] h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
                   style={{

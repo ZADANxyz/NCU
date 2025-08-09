@@ -13,7 +13,7 @@ const FALLBACK_REVIEWS = [
     photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G", 
-    date: new Date(Date.now() - 3 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
+    date: new Date(new Date('2025-08-09T12:00:00Z').getTime() - 21 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
     rating: 5,
     verified: true,
     text: "NCU provided me with an exceptional educational experience. The faculty is knowledgeable and supportive, and the curriculum is both challenging and relevant to today's ministry needs."
@@ -24,7 +24,7 @@ const FALLBACK_REVIEWS = [
     photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G",
-    date: "2024-06-10", 
+    date: "2025-06-10", 
     rating: 5,
     verified: true,
     text: "The flexibility of online learning at NCU allowed me to continue my ministry while pursuing my degree. The quality of education exceeded my expectations."
@@ -35,7 +35,7 @@ const FALLBACK_REVIEWS = [
     photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G",
-    date: "2024-04-01",
+    date: "2025-04-01",
     rating: 5,
     verified: true,
     text: "This is an amazing University!! The classes are well thought out and the tuition is affordable for most everyone."

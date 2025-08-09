@@ -75,26 +75,27 @@ const Apply = () => {
 
   return (
     <div className="pt-20">
-      <section className="w-full py-12 md:py-16 bg-background">
+      <section className="w-full pt-8 pb-12 md:pb-16 bg-background">
         <div className="w-full px-4 sm:px-6 md:px-[60px]">
-          <div className="flex flex-col items-center justify-center gap-6 md:gap-12 mb-8 w-full text-center">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8 w-full">
             <div className="flex-shrink-0">
               <img
                 src="/ncu-seal.png"
                 alt="New Covenant University Seal"
-                className="w-auto h-28 md:h-52"
+                className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
+                style={{ aspectRatio: 'auto' }}
               />
             </div>
             
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <div className="text-sm md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
+            <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
+              <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                 NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
               </div>
               <div>
-                <h1 className="text-2xl md:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
-                  Application for Admission
-                </h1>
-                <p className="text-xs md:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
+                Application for Admission
+              </h1>
+                <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
                   PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                 </p>
               </div>
