@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
@@ -15,6 +15,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
   const { cart, isCartOpen, openCart, closeCart, isProfileOpen, openProfile, closeProfile } = useCart();
+  const location = useLocation();
 
   const [isDark, setIsDark] = React.useState(
     typeof window !== "undefined"
@@ -38,6 +39,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
+  const onHero = location.pathname === '/' && !elevate;
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -69,7 +71,7 @@ const Header = () => {
               <Logo />
             </Link>
           </div>
-          <HeaderNavigation isDark={isDark} />
+          <HeaderNavigation isDark={isDark} onHero={onHero} />
           <HeaderActions
             isDark={isDark}
             onCartOpen={openCart}
@@ -77,6 +79,7 @@ const Header = () => {
             cartCount={cartCount}
             onProfileOpen={openProfile}
             onMobileMenuOpen={() => setMobileMenuOpen(true)}
+            onHero={onHero}
           />
         </div>
         <div

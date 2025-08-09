@@ -79,7 +79,7 @@ const HeroSection = () => {
               <span className="dark:text-white transition-colors">Meet Our NCU Alumni</span>
             </h2>
             <div className="h-4 md:h-5" />
-            <div className="w-full">
+            <div className="w-full md:-ml-[52px] md:-mr-[18px]">
               <AlumniCarousel />
             </div>
             <div className="h-8 md:h-10" />

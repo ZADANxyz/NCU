@@ -64,7 +64,7 @@ const Donate = () => {
           {donationOptions.map((option) => {
             const isPreferred = option.preferred;
             const preferredClasses = isDark
-              ? 'border-blue-500 text-blue-400 bg-blue-500/10 hover:bg-blue-500/20'
+              ? 'border-blue-500 text-ncu-gold bg-blue-500/10 hover:bg-blue-500/20'
               : 'border-[#B19528] text-blue-800 bg-blue-100/10 hover:bg-blue-200/20';
             const nonPreferredClasses = 'border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20';
 

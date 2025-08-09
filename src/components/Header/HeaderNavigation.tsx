@@ -32,13 +32,6 @@ const DEGREES_NAV_ITEMS = [
   { label: "Apply Now!", to: "/apply" },
 ];
 
-const DOWNLOAD_ITEMS = [
-  { title: "Student Handbook", href: "/downloads/student-handbook" },
-  { title: "Tuition & Fees", href: "/downloads/tuition-fees" },
-  { title: "Graduate Studies Notebook", href: "/downloads/graduate-studies" },
-  { title: "Course Catalogue", href: "/downloads/course-catalogue" },
-];
-
 const DEGREE_LEVELS = [
   { title: "Associate of Arts", level: "associate" as const, href: "/degrees/associate-of-arts" },
   { title: "Bachelor of Arts", level: "bachelor" as const, href: "/degrees/bachelor-of-arts" },
@@ -48,9 +41,10 @@ const DEGREE_LEVELS = [
 
 interface Props {
   isDark: boolean;
+  onHero: boolean;
 }
 
-const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
+const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
   const location = useLocation();
   const isDegreesPage = location.pathname.startsWith('/degrees');
   const isDownloadsPage = location.pathname.startsWith('/downloads');
@@ -62,8 +56,8 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
         {currentNavItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
-          const activeColorClass = "text-ncu-blue dark:text-ncu-gold";
-          const inactiveColorClass = "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
+          const activeColorClass = onHero ? "text-ncu-blue" : "text-ncu-blue dark:text-ncu-gold";
+          const inactiveColorClass = onHero ? "text-gray-700 hover:text-ncu-blue" : "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
           const colorClass = active ? activeColorClass : inactiveColorClass;
 
           if (item.label === "Downloads" && isDownloadsPage) {
@@ -93,6 +87,20 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
 
 const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
   const navigate = useNavigate();
+  const [downloadItems, setDownloadItems] = useState<GoogleDrivePdf[]>([]);
+
+  useEffect(() => {
+    const fetchDownloads = async () => {
+      try {
+        const pdfs = await googleDriveService.fetchPdfs();
+        setDownloadItems(pdfs);
+      } catch (error) {
+        console.error("Failed to load download links:", error);
+      }
+    };
+    fetchDownloads();
+  }, []);
+
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger 
@@ -103,8 +111,8 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
       </NavigationMenuTrigger>
       <NavigationMenuContent>
         <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
-          {DOWNLOAD_ITEMS.map((component) => (
-            <ListItem key={component.title} to={component.href} title={component.title} />
+          {downloadItems.map((component) => (
+            <ListItem key={component.id} to={`/downloads/${component.slug}`} title={component.name} />
           ))}
         </ul>
       </NavigationMenuContent>
@@ -114,24 +122,23 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
 
 const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
   const [courses, setCourses] = useState<Record<string, GoogleDrivePdf[]>>({});
-  const { degreeLevel } = useParams<{ degreeLevel?: string }>();
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllCourses = async () => {
       const allCourses: Record<string, GoogleDrivePdf[]> = {};
       for (const level of DEGREE_LEVELS) {
-        const pdfs = await googleDriveService.fetchPdfsForDegree(level.level);
-        allCourses[level.level] = pdfs;
+        try {
+          const pdfs = await googleDriveService.fetchPdfsForDegree(level.level);
+          allCourses[level.level] = pdfs;
+        } catch (error) {
+          console.error(`Failed to load courses for ${level.level}:`, error);
+        }
       }
       setCourses(allCourses);
     };
     fetchAllCourses();
   }, []);
-
-  const currentDegreeKey = degreeLevel ? degreeLevel.replace(/-/g, '_') : null;
-  const isGeneralDegreesPage = location.pathname === '/degrees';
 
   return (
     <NavigationMenuItem>
@@ -149,7 +156,7 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
                 <Link to={level.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
                   <div className="text-sm font-medium leading-none">{level.title}</div>
                   <div className="mt-2 space-y-1">
-                    {(isGeneralDegreesPage || currentDegreeKey === level.level) && courses[level.level]?.map(course => (
+                    {courses[level.level]?.map(course => (
                       <Link key={course.id} to={`/degrees/${level.href.split('/').pop()}/${course.slug}`} className="block text-sm text-muted-foreground hover:text-foreground">
                         {course.name}
                       </Link>

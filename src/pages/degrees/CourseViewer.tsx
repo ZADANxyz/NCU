@@ -67,6 +67,11 @@ const CourseViewer = () => {
     }
   };
 
+  const handleBack = () => {
+    window.scrollTo(0, 0);
+    navigate(-1);
+  };
+
   if (loading) {
     return (
       <div className="pt-20">
@@ -100,7 +105,7 @@ const CourseViewer = () => {
         <div className="w-full px-3 sm:px-6 md:px-[52px]">
           {/* Header with Back, Title, and Download */}
           <div className="flex justify-between items-center mb-4">
-            <Button variant="ghost" onClick={() => navigate(-1)} className="flex items-center gap-2 text-foreground">
+            <Button variant="ghost" onClick={handleBack} className="flex items-center gap-2 text-foreground">
               <ChevronLeft size={20} />
               Back to Courses
             </Button>

@@ -10,6 +10,7 @@ interface Props {
   onProfileOpen: () => void;
   onMobileMenuOpen: () => void;
   cartCount: number;
+  onHero: boolean;
 }
 
 const HeaderActions: React.FC<Props> = ({
@@ -19,12 +20,13 @@ const HeaderActions: React.FC<Props> = ({
   onProfileOpen,
   onMobileMenuOpen,
   cartCount,
+  onHero,
 }) => {
   const iconSize = 18;
   const buttonClasses = cn(
     "p-1.5 group outline-none ring-0 bg-transparent",
     "transition-transform duration-150",
-    "text-slate-700 dark:text-slate-200",
+    onHero && isDark ? "text-slate-700" : "text-slate-700 dark:text-slate-200",
     "hover:text-ncu-blue dark:hover:text-ncu-gold",
     "hover:scale-110 focus:scale-110"
   );

@@ -28,13 +28,13 @@ const About = () => {
       </div>
 
       <section className="w-full bg-white dark:bg-[#242836] pt-12 md:pt-16 pb-12 md:pb-16 px-4 sm:px-6 md:px-[52px]">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-stretch">
           <div className="w-full lg:w-2/3 flex flex-col">
             <h2 className="text-3xl md:text-5xl font-roboto font-normal text-[#181818] dark:text-white mb-6 md:mb-8 tracking-tight">
               About Us:
             </h2>
-            <div className="text-base md:text-xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-loose flex-grow flex flex-col justify-center">
-              <div className="space-y-6">
+            <div className="text-lg md:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 leading-loose flex-grow flex flex-col justify-center">
+              <div className="space-y-8">
                 <p>
                   New Covenant University was established in 1987 by Dr. Paul Crites with a founding principle to mentor leaders with a focused strategy of discovering each student's life purpose and strengthen each student's skill set for success in the marketplace of ideas. It all began with Dr. Crites' pragmatic and biblical approach of teaching purpose and order in his "School of Purpose" where hundreds of leaders gathered weekly to hear him. Soon the class notes were published into books and training manuals evolving into a state recognized program. Decades later the vision continues providing students with a leadership and ethics focused education by providing a wide array of undergraduate and graduate programs in Leadership, Education, Theology, Ministry and Counseling.
                 </p>
