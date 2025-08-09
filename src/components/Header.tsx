@@ -34,21 +34,10 @@ const NCUWordmark: React.FC = () => (
   </svg>
 );
 
-const NAV_ITEMS = [
-  { label: "Home", to: "/" },
-  { label: "About Us", to: "/about" },
-  { label: "Store", to: "/store" },
-  { label: "Media", to: "/media" },
-  { label: "Downloads", to: "/downloads" },
-  { label: "Donate", to: "/donate" },
-  { label: "Apply Now!", to: "/apply" },
-];
-
 const Header = () => {
-  const [cartOpen, setCartOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
-  const { cart } = useCart();
+  const { cart, isCartOpen, openCart, closeCart } = useCart();
 
   // Floating header position when footer visible
   const footerVisible = useFooterVisible("site-footer");
@@ -114,7 +103,7 @@ const Header = () => {
           {/* Actions */}
           <HeaderActions
             isDark={isDark}
-            onCartOpen={() => setCartOpen(true)}
+            onCartOpen={openCart}
             onSearchOpen={() => setSearchOpen((v) => !v)}
             cartCount={cartCount}
           />
@@ -138,7 +127,7 @@ const Header = () => {
         />
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
-      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+      <CartDrawer open={isCartOpen} onClose={closeCart} />
       {/* REMOVE spacer for hero image flush with menu */}
       <div style={{ height: 0 }} />
       <style>

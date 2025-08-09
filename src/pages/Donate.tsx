@@ -7,6 +7,7 @@ import ContactAboutForm from "@/components/ContactAboutForm";
 import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 import BackToTopButton from "./home/sections/BackToTopButton";
+import { useTheme } from "@/components/ThemeProvider";
 
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
@@ -34,6 +35,8 @@ const donationOptions = [
 ];
 
 const Donate = () => {
+  const { isDark } = useTheme();
+
   const handleDonationClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -58,19 +61,25 @@ const Donate = () => {
         <div className="w-full">
         {/* Donation Buttons Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {donationOptions.map((option) => (
-            <button
-              key={option.name}
-              onClick={() => handleDonationClick(option.url)}
-              className={`group w-full font-bold py-6 px-8 transition text-center cursor-pointer shadow-lg overflow-hidden rounded border-2 font-roboto h-20 text-xl ${
-                option.preferred
-                  ? 'border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20'
-                  : 'border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20'
-              }`}
-            >
-              <span className="relative z-20">{option.name}</span>
-            </button>
-          ))}
+          {donationOptions.map((option) => {
+            const isPreferred = option.preferred;
+            const preferredClasses = isDark
+              ? 'border-blue-500 text-blue-400 bg-blue-500/10 hover:bg-blue-500/20'
+              : 'border-[#B19528] text-blue-800 bg-blue-100/10 hover:bg-blue-200/20';
+            const nonPreferredClasses = 'border-blue-700 dark:border-[#B19528] text-blue-800 dark:text-[#B19528] bg-blue-100/10 dark:bg-[#B19528]/10 hover:bg-blue-200/20 dark:hover:bg-[#B19528]/20';
+
+            return (
+              <button
+                key={option.name}
+                onClick={() => handleDonationClick(option.url)}
+                className={`group w-full font-bold py-6 px-8 transition text-center cursor-pointer shadow-lg overflow-hidden rounded border-2 font-roboto h-20 text-xl ${
+                  isPreferred ? preferredClasses : nonPreferredClasses
+                }`}
+              >
+                <span className="relative z-20">{option.name}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Description Text */}

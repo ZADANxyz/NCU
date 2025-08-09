@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import HeroDividerSection from "./home/sections/HeroDividerSection";
 import DegreesOfferedSection from "./home/sections/DegreesOfferedSection";
@@ -9,21 +9,67 @@ import MapSection from "./home/sections/MapSection";
 import FooterSection from "./home/sections/FooterSection";
 
 const Apply = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    setIsDark(document.documentElement.classList.contains('dark'));
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     // Load HubSpot form script
     const script = document.createElement('script');
-    script.src = 'https://js-na2.hsforms.net/forms/embed/242249646.js';
+    script.src = 'https://js-na2.hsforms.net/forms/embed/v2.js';
     script.defer = true;
     document.body.appendChild(script);
 
     return () => {
       // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://js-na2.hsforms.net/forms/embed/242249646.js"]');
+      const existingScript = document.querySelector('script[src="https://js-na2.hsforms.net/forms/embed/v2.js"]');
       if (existingScript) {
         existingScript.remove();
       }
     };
   }, []);
+
+  useEffect(() => {
+    const styleId = 'hubspot-darkmode-style-apply';
+    if (isDark) {
+      let styleTag = document.getElementById(styleId);
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = styleId;
+        styleTag.innerHTML = `
+          .hs-form-iframe, .hs-form-frame {
+            background-color: transparent !important;
+          }
+          body.dark .hs-form-field label,
+          body.dark .hs-form-field .hs-form-required,
+          body.dark .hs-richtext,
+          body.dark .hs-error-msg {
+            color: #fff !important;
+          }
+        `;
+        document.head.appendChild(styleTag);
+      }
+    } else {
+      const styleTag = document.getElementById(styleId);
+      if (styleTag) {
+        styleTag.remove();
+      }
+    }
+    return () => {
+      const styleTag = document.getElementById(styleId);
+      if (styleTag) {
+        styleTag.remove();
+      }
+    };
+  }, [isDark]);
+
   return (
     <div className="min-h-screen bg-background">
       <main className="flex-1">
@@ -42,16 +88,16 @@ const Apply = () => {
                 />
               </div>
               
-              {/* University Info - Positioned more to the right and centered vertically */}
-              <div className="flex-1 flex flex-col justify-center pl-12 pt-4">
-                <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4 whitespace-nowrap">
+              {/* University Info - Centered */}
+              <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
+                <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
-                <div className="pl-20">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
+                <div>
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                     Application for Admission
                   </h1>
-                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8 whitespace-nowrap">
+                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
                 </div>

@@ -35,6 +35,9 @@ interface CartContextType {
   signup: (email: string, password: string) => Promise<{ error: any }>;
   logout: () => Promise<void>;
   isAuthenticated: boolean;
+  isCartOpen: boolean;
+  openCart: () => void;
+  closeCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -52,6 +55,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     // Set up auth state listener FIRST
@@ -145,6 +149,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     clearCart();
   };
 
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
+
   const value: CartContextType = {
     cart,
     user,
@@ -157,7 +164,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     login,
     signup,
     logout,
-    isAuthenticated: !!user
+    isAuthenticated: !!user,
+    isCartOpen,
+    openCart,
+    closeCart,
   };
 
   return (

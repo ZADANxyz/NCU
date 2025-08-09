@@ -61,7 +61,7 @@ const FooterSection = () => {
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <Facebook size={16} />
             </a>
@@ -70,7 +70,7 @@ const FooterSection = () => {
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <Instagram size={16} />
             </a>
@@ -79,7 +79,7 @@ const FooterSection = () => {
               aria-label="Twitter"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <Twitter size={16} />
             </a>
@@ -88,7 +88,7 @@ const FooterSection = () => {
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <Youtube size={16} />
             </a>
@@ -97,7 +97,7 @@ const FooterSection = () => {
               aria-label="TikTok"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <TikTokIcon />
             </a>
@@ -106,7 +106,7 @@ const FooterSection = () => {
               aria-label="Email"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <Mail size={16} />
             </a>
@@ -115,7 +115,7 @@ const FooterSection = () => {
               aria-label="HubSpot"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:opacity-80 transition-opacity"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
             >
               <HubSpotIcon />
             </a>

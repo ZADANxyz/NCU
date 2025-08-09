@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -41,27 +40,27 @@ const App = () => (
           <BrowserRouter>
           <div className="min-h-screen flex flex-col">
             <Routes>
-              <Route path="/" element={<><Header /><main className="flex-1"><Index /></main></>} />
-              <Route path="/about" element={<><Header /><main className="flex-1"><About /></main></>} />
-              <Route path="/contact" element={<><Header /><main className="flex-1"><Contact /></main></>} />
-              <Route path="/donate" element={<><Header /><main className="flex-1"><Donate /></main></>} />
-              <Route path="/apply" element={<><Header /><main className="flex-1"><Apply /></main></>} />
-              <Route path="/apply/final" element={<><Header /><main className="flex-1"><ApplyFinal /></main></>} />
-              <Route path="/store" element={<><Header /><main className="flex-1"><Store /></main></>} />
-              <Route path="/media" element={<><Header /><main className="flex-1"><Media /></main></>} />
-              <Route path="/downloads" element={<><Header /><main className="flex-1"><Downloads /></main></>} />
-              <Route path="/downloads/student-handbook" element={<><Header /><main className="flex-1"><StudentHandbook /></main></>} />
-              <Route path="/downloads/tuition-fees" element={<><Header /><main className="flex-1"><TuitionFees /></main></>} />
-              <Route path="/downloads/graduate-studies" element={<><Header /><main className="flex-1"><GraduateStudies /></main></>} />
-              <Route path="/downloads/course-catalogue" element={<><Header /><main className="flex-1"><CourseCatalogue /></main></>} />
-              <Route path="/degrees" element={<main className="flex-1"><Degrees /></main>} />
-              <Route path="/degrees/associate-of-arts" element={<main className="flex-1"><AssociateOfArts /></main>} />
-              <Route path="/degrees/bachelor-of-arts" element={<main className="flex-1"><BachelorOfArts /></main>} />
-              <Route path="/degrees/master-of-arts" element={<main className="flex-1"><MasterOfArts /></main>} />
-              <Route path="/degrees/doctorate" element={<main className="flex-1"><Doctorate /></main>} />
-              <Route path="/degrees/associate-of-arts/biblical-studies" element={<main className="flex-1"><BiblicalStudies /></main>} />
-              <Route path="/degrees/associate-of-arts/christian-leadership" element={<main className="flex-1"><ChristianLeadership /></main>} />
-              <Route path="*" element={<><Header /><main className="flex-1"><NotFound /></main></>} />
+              <Route path="/" element={<><Header /><main className="flex-1 pt-20"><Index /></main></>} />
+              <Route path="/about" element={<><Header /><main className="flex-1 pt-20"><About /></main></>} />
+              <Route path="/contact" element={<><Header /><main className="flex-1 pt-20"><Contact /></main></>} />
+              <Route path="/donate" element={<><Header /><main className="flex-1 pt-20"><Donate /></main></>} />
+              <Route path="/apply" element={<><Header /><main className="flex-1 pt-20"><Apply /></main></>} />
+              <Route path="/apply/final" element={<><Header /><main className="flex-1 pt-20"><ApplyFinal /></main></>} />
+              <Route path="/store" element={<><Header /><main className="flex-1 pt-20"><Store /></main></>} />
+              <Route path="/media" element={<><Header /><main className="flex-1 pt-20"><Media /></main></>} />
+              <Route path="/downloads" element={<><Header /><main className="flex-1 pt-20"><Downloads /></main></>} />
+              <Route path="/downloads/student-handbook" element={<><Header /><main className="flex-1 pt-20"><StudentHandbook /></main></>} />
+              <Route path="/downloads/tuition-fees" element={<><Header /><main className="flex-1 pt-20"><TuitionFees /></main></>} />
+              <Route path="/downloads/graduate-studies" element={<><Header /><main className="flex-1 pt-20"><GraduateStudies /></main></>} />
+              <Route path="/downloads/course-catalogue" element={<><Header /><main className="flex-1 pt-20"><CourseCatalogue /></main></>} />
+              <Route path="/degrees" element={<main className="flex-1 pt-20"><Degrees /></main>} />
+              <Route path="/degrees/associate-of-arts" element={<main className="flex-1 pt-20"><AssociateOfArts /></main>} />
+              <Route path="/degrees/bachelor-of-arts" element={<main className="flex-1 pt-20"><BachelorOfArts /></main>} />
+              <Route path="/degrees/master-of-arts" element={<main className="flex-1 pt-20"><MasterOfArts /></main>} />
+              <Route path="/degrees/doctorate" element={<main className="flex-1 pt-20"><Doctorate /></main>} />
+              <Route path="/degrees/associate-of-arts/biblical-studies" element={<main className="flex-1 pt-20"><BiblicalStudies /></main>} />
+              <Route path="/degrees/associate-of-arts/christian-leadership" element={<main className="flex-1 pt-20"><ChristianLeadership /></main>} />
+              <Route path="*" element={<><Header /><main className="flex-1 pt-20"><NotFound /></main></>} />
             </Routes>
           </div>
           </BrowserRouter>

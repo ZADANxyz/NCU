@@ -99,12 +99,12 @@ const ApplyFinal = () => {
                   />
                 </div>
                 
-                <div className="flex-1 flex flex-col justify-center pl-12 pt-4">
-                  <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4 whitespace-nowrap">
+                <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
+                  <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                     NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                   </div>
-                  <div className="pl-20">
-                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
+                  <div>
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                     Application for Admission
                   </h1>
                   </div>
@@ -148,15 +148,15 @@ const ApplyFinal = () => {
                 />
               </div>
               
-              <div className="flex-1 flex flex-col justify-center pl-12 pt-4">
-                <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4 whitespace-nowrap">
+              <div className="flex-1 flex flex-col items-center text-center justify-center pt-4">
+                <div className="text-base md:text-lg lg:text-xl xl:text-2xl font-roboto font-normal text-[#333] dark:text-gray-200 mb-4">
                   NEW COVENANT UNIVERSITY • ST. AUGUSTINE, FLORIDA • PHONE: 615-948-2212
                 </div>
-                <div className="pl-20">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4 whitespace-nowrap">
+                <div>
+                <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-roboto font-bold text-[#181818] dark:text-white mb-4">
                   Application for Admission
                 </h1>
-                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide pl-8 whitespace-nowrap">
+                  <p className="text-xs md:text-sm lg:text-base xl:text-lg font-roboto font-bold text-[#333] dark:text-gray-200 uppercase tracking-wide">
                     PLEASE TYPE OR PRINT CLEARLY USING THE SPACE PROVIDED:
                   </p>
                 </div>
