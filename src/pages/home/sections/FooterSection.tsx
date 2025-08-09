@@ -61,16 +61,16 @@ const FooterSection = () => {
               aria-label="Facebook"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <Facebook size={16} />
             </a>
             <a
-              href="https://www.instagram.com/newcovenantuniversity"
+              href="https://www.instagram.com/newcovenantuniversity/"
               aria-label="Instagram"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <Instagram size={16} />
             </a>
@@ -79,7 +79,7 @@ const FooterSection = () => {
               aria-label="Twitter"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <Twitter size={16} />
             </a>
@@ -88,7 +88,7 @@ const FooterSection = () => {
               aria-label="YouTube"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <Youtube size={16} />
             </a>
@@ -97,7 +97,7 @@ const FooterSection = () => {
               aria-label="TikTok"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <TikTokIcon />
             </a>
@@ -106,7 +106,7 @@ const FooterSection = () => {
               aria-label="Email"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <Mail size={16} />
             </a>
@@ -115,7 +115,7 @@ const FooterSection = () => {
               aria-label="HubSpot"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:bg-[#B19528]/80 transition-colors"
+              className="w-8 h-8 bg-[#046BD2] dark:bg-[#B19528] rounded-full flex items-center justify-center text-white hover:bg-blue-700 dark:hover:brightness-90 transition-all"
             >
               <HubSpotIcon />
             </a>
