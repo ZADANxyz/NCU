@@ -1,23 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
-  { label: "Downloads", to: "/downloads" },
+  { label: "Downloads", to: "/downloads", isDropdown: true },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
 
 const DOWNLOAD_ITEMS = [
-  { label: "Student Handbook", to: "/downloads/student-handbook" },
-  { label: "Tuition & Fees", to: "/downloads/tuition-fees" },
-  { label: "Graduate Studies Notebook", to: "/downloads/graduate-studies" },
-  { label: "Course Catalogue", to: "/downloads/course-catalogue" },
+  { title: "Student Handbook", href: "/downloads/student-handbook" },
+  { title: "Tuition & Fees", href: "/downloads/tuition-fees" },
+  { title: "Graduate Studies Notebook", href: "/downloads/graduate-studies" },
+  { title: "Course Catalogue", href: "/downloads/course-catalogue" },
 ];
 
 interface Props {
@@ -26,108 +34,80 @@ interface Props {
 
 const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
   const location = useLocation();
-  const [downloadsOpen, setDownloadsOpen] = useState(false);
-  
-  const isDownloadsActive = location.pathname.startsWith('/downloads');
 
   return (
-    <nav className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
-      <ul className="flex items-center gap-9">
+    <NavigationMenu className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
+      <NavigationMenuList className="flex items-center gap-9">
         {NAV_ITEMS.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
-          const baseStyle = "tracking-wide font-sans text-[12.5px] font-normal px-0.5 pb-0.5 rounded-none transition-colors transition-transform duration-150";
           
           let colorClass = "";
           if (!isDark) {
-            colorClass = active
-              ? "text-ncu-blue"
-              : "text-gray-700 hover:text-ncu-gold";
+            colorClass = active ? "text-ncu-blue" : "text-gray-700 hover:text-ncu-gold";
           } else {
-            colorClass = active
-              ? "text-ncu-gold"
-              : "text-gray-200 hover:text-ncu-blue";
+            colorClass = active ? "text-ncu-gold" : "text-gray-200 hover:text-ncu-blue";
           }
 
-          if (item.label === "Downloads" && isDownloadsActive) {
+          if (item.isDropdown) {
             return (
-              <li 
-                key={item.label}
-                className="flex items-center h-full relative"
-                onMouseEnter={() => setDownloadsOpen(true)}
-                onMouseLeave={() => setDownloadsOpen(false)}
-              >
-                <Link
-                  to={item.to}
-                  className={cn(
-                    baseStyle,
-                    "hover:scale-105 focus:scale-105 flex items-center gap-1",
-                    colorClass
-                  )}
-                  style={{
-                    fontFamily: "system-ui, Segoe UI, sans-serif",
-                    textTransform: "none",
-                    letterSpacing: "0.01em",
-                    fontWeight: 400,
-                    display: "flex",
-                    alignItems: "center",
-                    height: 38,
-                  }}
-                >
+              <NavigationMenuItem key={item.label}>
+                <NavigationMenuTrigger className={cn("bg-transparent", colorClass)}>
                   {item.label}
-                  <ChevronDown size={12} className={`transition-transform duration-200 ${downloadsOpen ? 'rotate-180' : ''}`} />
-                </Link>
-                
-                {downloadsOpen && (
-                  <div className="absolute top-full left-0 mt-2 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 min-w-48 z-50">
-                    {DOWNLOAD_ITEMS.map((downloadItem) => {
-                      const isActive = location.pathname === downloadItem.to;
-                      return (
-                        <Link
-                          key={downloadItem.to}
-                          to={downloadItem.to}
-                          className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                            isActive
-                              ? "bg-primary text-primary-foreground"
-                              : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                          }`}
-                        >
-                          {downloadItem.label}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </li>
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
+                    {DOWNLOAD_ITEMS.map((component) => (
+                      <ListItem key={component.title} to={component.href} title={component.title} />
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
             );
           }
-          
+
           return (
-            <li key={item.label} className="flex items-center h-full">
-              <Link
-                to={item.to}
-                className={cn(
-                  baseStyle,
-                  "hover:scale-105 focus:scale-105",
-                  colorClass
-                )}
-                style={{
-                  fontFamily: "system-ui, Segoe UI, sans-serif",
-                  textTransform: "none",
-                  letterSpacing: "0.01em",
-                  fontWeight: 400,
-                  display: "flex",
-                  alignItems: "center",
-                  height: 38,
-                }}
-              >
-                {item.label}
-              </Link>
-            </li>
+            <NavigationMenuItem key={item.label}>
+              <NavigationMenuLink asChild>
+                <Link
+                  to={item.to}
+                  className={cn(navigationMenuTriggerStyle(), "bg-transparent", colorClass)}
+                >
+                  {item.label}
+                </Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
           );
         })}
-      </ul>
-    </nav>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  { to: string } & React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, to, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <Link
+          to={to}
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
 
 export default HeaderNavigation;

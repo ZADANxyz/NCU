@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Youtube, Facebook, Instagram, Twitter, Mail, Search } from "lucide-react";
+import { Youtube, Facebook, Instagram, Twitter, Mail, Search, ArrowUp } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
 import SearchBar from "@/components/SearchBar";
@@ -23,6 +23,23 @@ const HubSpotIcon = () => (
 
 const FooterSection = () => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isBackToTopVisible, setIsBackToTopVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setIsBackToTopVisible(window.pageYOffset > 300);
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const iconButtonClass = "w-8 h-8 rounded-full flex items-center justify-center text-white transition-all transform hover:scale-110";
+  const socialButtonClass = `${iconButtonClass} bg-ncu-blue dark:bg-ncu-gold hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark`;
+  const utilityButtonClass = `${iconButtonClass} bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600`;
 
   return (
     <>
@@ -44,14 +61,8 @@ const FooterSection = () => {
           }}
         />
         
-        <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 px-4 py-5 md:h-[96px] md:px-6 lg:px-[52px]">
-          <div className="flex items-center order-1">
-            <Link to="/" aria-label="Go to homepage">
-              <Logo />
-            </Link>
-          </div>
-
-          <div className="flex flex-col items-center text-center order-3 md:order-2">
+        <div className="relative flex flex-col items-center justify-center gap-4 px-4 py-5 md:px-6 lg:px-[52px]">
+          <div className="flex flex-col items-center text-center">
             <div className="text-xs sm:text-sm">
               Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:underline">NEW COVENANT UNIVERSITY</Link>
             </div>
@@ -71,16 +82,22 @@ const FooterSection = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center flex-wrap gap-2 order-2 md:order-3">
-            <a href="https://www.facebook.com/newcovenantu" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Facebook size={16} /></a>
-            <a href="https://www.instagram.com/newcovenantuniversity/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Instagram size={16} /></a>
-            <a href="https://x.com/NewCovenantU" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Twitter size={16} /></a>
-            <a href="https://www.youtube.com/@newcovenantuniversity808" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Youtube size={16} /></a>
-            <a href="https://www.tiktok.com/@newcovenantuniversity" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><TikTokIcon /></a>
-            <a href="https://ncu.education/webmail" aria-label="Email" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><Mail size={16} /></a>
-            <a href="https://crm.ncu.education" aria-label="HubSpot" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-ncu-blue dark:bg-ncu-gold rounded-full flex items-center justify-center text-white hover:bg-ncu-blue-dark dark:hover:bg-ncu-gold-dark transition-all transform hover:scale-110"><HubSpotIcon /></a>
-            <button onClick={() => setSearchOpen(!searchOpen)} className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all transform hover:scale-110"><Search size={16} /></button>
+          <div className="flex items-center justify-center flex-wrap gap-2">
+            <a href="https://www.facebook.com/newcovenantu" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Facebook size={16} /></a>
+            <a href="https://www.instagram.com/newcovenantuniversity/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Instagram size={16} /></a>
+            <a href="https://x.com/NewCovenantU" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Twitter size={16} /></a>
+            <a href="https://www.youtube.com/@newcovenantuniversity808" aria-label="YouTube" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Youtube size={16} /></a>
+            <a href="https://www.tiktok.com/@newcovenantuniversity" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><TikTokIcon /></a>
+            <a href="https://ncu.education/webmail" aria-label="Email" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Mail size={16} /></a>
+            <a href="https://crm.ncu.education" aria-label="HubSpot" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><HubSpotIcon /></a>
+          </div>
+
+          <div className="flex items-center justify-center flex-wrap gap-2">
+            <button onClick={() => setSearchOpen(!searchOpen)} className={utilityButtonClass}><Search size={16} /></button>
             <ThemeToggle iconSize={16} />
+            {isBackToTopVisible && (
+              <button onClick={scrollToTop} className={utilityButtonClass}><ArrowUp size={16} /></button>
+            )}
           </div>
         </div>
 

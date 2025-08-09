@@ -3,16 +3,17 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
+import { formatDistanceToNow } from "@/lib/utils";
 
 // Fallback reviews with realistic person photos
 const FALLBACK_REVIEWS = [
   {
     id: 1,
     name: "Sarah Johnson",
-    photo: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3",
+    photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G", 
-    date: "2 weeks ago",
+    date: "2024-07-25",
     rating: 5,
     verified: true,
     text: "NCU provided me with an exceptional educational experience. The faculty is knowledgeable and supportive, and the curriculum is both challenging and relevant to today's ministry needs."
@@ -20,10 +21,10 @@ const FALLBACK_REVIEWS = [
   {
     id: 2,
     name: "Michael Rodriguez", 
-    photo: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3",
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G",
-    date: "1 month ago", 
+    date: "2024-06-10", 
     rating: 5,
     verified: true,
     text: "The flexibility of online learning at NCU allowed me to continue my ministry while pursuing my degree. The quality of education exceeded my expectations."
@@ -31,10 +32,10 @@ const FALLBACK_REVIEWS = [
   {
     id: 3,
     name: "Chris Isbell",
-    photo: "/lovable-uploads/chris-isbell.png",
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G",
-    date: "Apr 1, 2025",
+    date: "2024-04-01",
     rating: 5,
     verified: true,
     text: "This is an amazing University!! The classes are well thought out and the tuition is affordable for most everyone."
@@ -238,7 +239,7 @@ const ReviewsSection: React.FC = () => {
                           {review.name}
                         </h3>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                          {review.date}
+                          {formatDistanceToNow(review.date)}
                         </p>
                       </div>
                     </div>

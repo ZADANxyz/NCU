@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Download } from "lucide-react";
+import { Download, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HeroDividerSection from "../home/sections/HeroDividerSection";
 import DegreesOfferedSection from "../home/sections/DegreesOfferedSection";
@@ -98,9 +98,13 @@ const CourseViewer = () => {
       {/* PDF Section */}
       <section className="w-full pt-2 pb-2 bg-background">
         <div className="w-full px-3 sm:px-6 md:px-[52px]">
-          {/* Download Button */}
+          {/* Header with Back, Title, and Download */}
           <div className="flex justify-between items-center mb-4">
-            <h1 className="text-2xl font-bold text-foreground">{pdf?.name}</h1>
+            <Button variant="ghost" onClick={() => navigate(-1)} className="flex items-center gap-2 text-foreground">
+              <ChevronLeft size={20} />
+              Back to Courses
+            </Button>
+            <h1 className="text-2xl font-bold text-foreground text-center">{pdf?.name}</h1>
             <Button 
               onClick={handleDownload} 
               className="flex items-center gap-2 bg-[#046BD2] hover:bg-[#046BD2]/90 dark:bg-[#B19528] dark:hover:bg-[#B19528]/90 text-white font-roboto"

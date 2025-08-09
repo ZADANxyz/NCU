@@ -95,7 +95,7 @@ const AlumniCarousel = () => {
               }}
             >
               <div
-                className="glass glossy"
+                className="glass"
                 style={{
                   borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
