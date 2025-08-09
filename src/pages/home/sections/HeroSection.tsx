@@ -64,9 +64,9 @@ const HeroSection = () => {
           className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch px-4 md:px-0"
         >
           <div
-            className="w-full md:w-3/5 flex flex-col justify-start items-start md:pt-0"
+            className="w-full md:w-3/5 flex flex-col justify-start items-start md:pt-0 md:pl-[52px] md:pr-[18px]"
           >
-            <div className="md:pl-[52px] md:pr-[18px] w-full">
+            <div className="w-full">
                 <h2
                 className="text-3xl sm:text-4xl md:text-[3.2rem] font-bold mb-6 text-left tracking-tight font-roboto transition-colors"
                 style={{
@@ -85,7 +85,7 @@ const HeroSection = () => {
               <AlumniCarousel />
             </div>
             <div className="h-8 md:h-10" />
-            <div className="flex-1 flex flex-col justify-start w-full md:pl-[52px] md:pr-[18px]">
+            <div className="flex-1 flex flex-col justify-start w-full">
               <div className="text-lg md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
                    style={{ color: "inherit" }}>
                 {NCU_ALUMNI_TEXT}

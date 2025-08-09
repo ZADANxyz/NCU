@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -56,14 +56,14 @@ const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
         {currentNavItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
-          const activeColorClass = onHero ? "text-ncu-blue" : "text-ncu-blue dark:text-ncu-gold";
-          const inactiveColorClass = onHero ? "text-gray-700 hover:text-ncu-blue" : "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
+          const activeColorClass = onHero && !isDark ? "text-ncu-blue" : "text-ncu-blue dark:text-ncu-gold";
+          const inactiveColorClass = onHero && !isDark ? "text-gray-700 hover:text-ncu-blue" : "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
           const colorClass = active ? activeColorClass : inactiveColorClass;
 
-          if (item.label === "Downloads" && isDownloadsPage) {
+          if (item.label === "Downloads") {
             return <DownloadsDropdown key={item.label} colorClass={colorClass} />;
           }
-          if (item.label === "Degrees" && isDegreesPage) {
+          if (item.label === "Degrees") {
             return <DegreesDropdown key={item.label} colorClass={colorClass} />;
           }
 
@@ -88,14 +88,18 @@ const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
 const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
   const navigate = useNavigate();
   const [downloadItems, setDownloadItems] = useState<GoogleDrivePdf[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDownloads = async () => {
+      setLoading(true);
       try {
         const pdfs = await googleDriveService.fetchPdfs();
         setDownloadItems(pdfs);
       } catch (error) {
         console.error("Failed to load download links:", error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchDownloads();
@@ -111,9 +115,15 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
       </NavigationMenuTrigger>
       <NavigationMenuContent>
         <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
-          {downloadItems.map((component) => (
-            <ListItem key={component.id} to={`/downloads/${component.slug}`} title={component.name} />
-          ))}
+          {loading ? (
+            <li><p className="text-muted-foreground text-sm">Loading...</p></li>
+          ) : downloadItems.length > 0 ? (
+            downloadItems.map((component) => (
+              <ListItem key={component.id} to={`/downloads/${component.slug}`} title={component.name} />
+            ))
+          ) : (
+            <li><p className="text-muted-foreground text-sm">No downloads available.</p></li>
+          )}
         </ul>
       </NavigationMenuContent>
     </NavigationMenuItem>
@@ -122,9 +132,11 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
 
 const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
   const [courses, setCourses] = useState<Record<string, GoogleDrivePdf[]>>({});
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const fetchAllCourses = async () => {
       const allCourses: Record<string, GoogleDrivePdf[]> = {};
       for (const level of DEGREE_LEVELS) {
@@ -133,9 +145,11 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
           allCourses[level.level] = pdfs;
         } catch (error) {
           console.error(`Failed to load courses for ${level.level}:`, error);
+          allCourses[level.level] = [];
         }
       }
       setCourses(allCourses);
+      setLoading(false);
     };
     fetchAllCourses();
   }, []);
@@ -149,24 +163,42 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
         Degrees
       </NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-auto gap-3 p-4 md:w-[500px] md:grid-cols-2">
-          {DEGREE_LEVELS.map((level) => (
-            <li key={level.title}>
-              <NavigationMenuLink asChild>
-                <Link to={level.href} className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                  <div className="text-sm font-medium leading-none">{level.title}</div>
-                  <div className="mt-2 space-y-1">
-                    {courses[level.level]?.map(course => (
-                      <Link key={course.id} to={`/degrees/${level.href.split('/').pop()}/${course.slug}`} className="block text-sm text-muted-foreground hover:text-foreground">
-                        {course.name}
-                      </Link>
-                    ))}
-                  </div>
-                </Link>
-              </NavigationMenuLink>
-            </li>
-          ))}
-        </ul>
+        {loading ? (
+          <div className="p-4 text-muted-foreground text-sm w-[200px]">Loading...</div>
+        ) : (
+          <ul className="grid w-auto gap-3 p-4 md:w-[500px] md:grid-cols-2">
+            {DEGREE_LEVELS.map((level) => (
+              <li key={level.title}>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to={level.href}
+                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                  >
+                    <div className="text-sm font-medium leading-none">{level.title}</div>
+                  </Link>
+                </NavigationMenuLink>
+                <ul className="ml-4 mt-2 space-y-1">
+                  {courses[level.level] && courses[level.level].length > 0 ? (
+                    courses[level.level].map(course => (
+                      <li key={course.id}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            to={`/degrees/${level.href.split('/').pop()}/${course.slug}`}
+                            className="block text-sm text-muted-foreground hover:text-foreground p-2 rounded-md hover:bg-accent"
+                          >
+                            {course.name}
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))
+                  ) : (
+                    !loading && <li className="text-xs text-muted-foreground p-2">No courses found.</li>
+                  )}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        )}
       </NavigationMenuContent>
     </NavigationMenuItem>
   );
