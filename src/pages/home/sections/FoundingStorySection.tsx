@@ -1,6 +1,5 @@
-
 import React from "react";
-const HERO_IMAGE = "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png";
+const HERO_IMAGE = "/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png";
 const FoundingStorySection = () => (
   <section className="max-w-6xl mx-auto px-3 md:px-7 flex flex-col md:flex-row items-center gap-10 mb-18 md:mb-24">
     <div className="flex-1 order-2 md:order-1">

@@ -68,7 +68,7 @@ const Contact = () => {
             {/* NCU Logo and Title */}
             <div className="flex flex-col items-center mb-8">
               <img
-                src={isDark ? "/lovable-uploads/0b8ffb5b-2139-4853-890a-c2ee2ca521ac.png" : "/lovable-uploads/430b0ab3-bc47-4326-b653-b105734db3a4.png"}
+                src="/lovable-uploads/ncu-official-seal.png"
                 alt="New Covenant University Logo"
                 className="w-40 h-40 mb-4 object-contain"
               />
