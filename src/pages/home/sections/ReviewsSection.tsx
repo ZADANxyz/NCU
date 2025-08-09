@@ -30,14 +30,14 @@ const FALLBACK_REVIEWS = [
   },
   {
     id: 3,
-    name: "Jennifer Chen",
-    photo: "https://images.unsplash.com/photo-1581090464777-f3220bbe188b?auto=format&fit=crop&q=80&w=150&h=150&ixlib=rb-4.0.3", 
+    name: "Chris Isbell",
+    photo: "/lovable-uploads/chris-isbell.png",
     platform: "Google",
     platformLogo: "G",
-    date: "3 weeks ago",
+    date: "Apr 1, 2025",
     rating: 5,
     verified: true,
-    text: "Outstanding university with a strong focus on spiritual growth and academic excellence. The professors genuinely care about student success and provide excellent mentorship."
+    text: "This is an amazing University!! The classes are well thought out and the tuition is affordable for most everyone."
   }
 ];
 
