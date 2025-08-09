@@ -58,7 +58,7 @@ const FooterSection = () => {
           {/* Center: Copyright Info */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
             <div className="text-xs sm:text-sm">
-              Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
+              Copyright © {new Date().getFullYear()} - <Link to="/" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
             </div>
             <div className="text-xs sm:text-sm">
               All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
@@ -69,7 +69,7 @@ const FooterSection = () => {
                 href="https://zathenaventures.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-ncu-blue dark:text-ncu-gold font-semibold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors"
+                className="font-semibold text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors"
               >
                 ZATHENA VENTURES 🦁
               </a>
@@ -77,7 +77,7 @@ const FooterSection = () => {
           </div>
 
           {/* Right: Icons */}
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-2 pt-2">
             <div className="flex items-center justify-center flex-wrap gap-2">
               <a href="https://www.facebook.com/newcovenantu" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Facebook size={16} /></a>
               <a href="https://www.instagram.com/newcovenantuniversity/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><Instagram size={16} /></a>
@@ -88,8 +88,8 @@ const FooterSection = () => {
               <a href="https://crm.ncu.education" aria-label="HubSpot" target="_blank" rel="noopener noreferrer" className={socialButtonClass}><HubSpotIcon /></a>
             </div>
             <div className="flex items-center justify-center flex-wrap gap-2">
-              <button onClick={() => setSearchOpen(!searchOpen)} className="w-8 h-8 flex items-center justify-center transition-all transform hover:scale-110">
-                <Search size={16} className="text-gray-600 dark:text-gray-200" />
+              <button onClick={() => setSearchOpen(!searchOpen)} className="w-8 h-8 flex items-center justify-center transition-all transform hover:scale-110 text-slate-700 dark:text-slate-200">
+                <Search size={16} />
               </button>
               <ThemeToggle iconSize={16} />
             </div>
