@@ -75,11 +75,12 @@ const AlumniCarousel = () => {
       setApi={setApi}
       className="w-full"
     >
-      <CarouselContent>
+      <CarouselContent className="ml-0">
         {alumniImages.map((image, idx) => (
           <CarouselItem
             key={idx}
             className={`
+              pl-0
               basis-full flex-none transition-all duration-500 ease-in-out
               ${current === idx
                 ? "opacity-100 pointer-events-auto scale-100 z-10"
