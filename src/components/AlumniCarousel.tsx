@@ -99,13 +99,12 @@ const AlumniCarousel = () => {
                   margin: "0 auto",
                 }}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="rounded-lg object-cover w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
-                  draggable={false}
-                  loading="lazy"
-                />
+                <div
+                  className="w-full h-[275px] md:h-[370px] lg:h-[415px] rounded-lg bg-cover bg-center"
+                  style={{ backgroundImage: `url(${image.src})` }}
+                  role="img"
+                  aria-label={image.alt}
+                ></div>
               </div>
             </CarouselItem>
           ))}
