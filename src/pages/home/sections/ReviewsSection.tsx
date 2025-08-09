@@ -13,7 +13,7 @@ const FALLBACK_REVIEWS = [
     photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
     platform: "Google",
     platformLogo: "G", 
-    date: "2024-07-25",
+    date: new Date(Date.now() - 3 * 7 * 24 * 60 * 60 * 1000).toISOString(), // 3 weeks ago
     rating: 5,
     verified: true,
     text: "NCU provided me with an exceptional educational experience. The faculty is knowledgeable and supportive, and the curriculum is both challenging and relevant to today's ministry needs."

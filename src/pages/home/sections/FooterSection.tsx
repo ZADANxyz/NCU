@@ -57,20 +57,20 @@ const FooterSection = () => {
           </div>
 
           {/* Center: Copyright Info */}
-          <div className="flex flex-col items-center text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center">
             <div className="text-xs sm:text-sm">
-              Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:underline">NEW COVENANT UNIVERSITY</Link>
+              Copyright © {new Date().getFullYear()} - <Link to="/" className="text-ncu-blue dark:text-ncu-gold font-semibold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">NEW COVENANT UNIVERSITY</Link>
             </div>
             <div className="text-xs sm:text-sm">
-              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-ncu-blue dark:text-ncu-gold hover:underline">Sitemap</a>
+              All Rights Reserved - <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="text-ncu-blue dark:text-ncu-gold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors">Sitemap</a>
             </div>
-            <div className="text-xs sm:text-sm mt-3">
+            <div className="text-xs sm:text-sm mt-4">
               <span>Designed & Hosted By: </span>
               <a 
                 href="https://zathenaventures.xyz" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-ncu-blue dark:text-ncu-gold font-semibold hover:underline"
+                className="text-ncu-blue dark:text-ncu-gold font-semibold hover:text-ncu-gold dark:hover:text-ncu-blue transition-colors"
               >
                 ZATHENA VENTURES 🦁
               </a>
