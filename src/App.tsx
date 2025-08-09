@@ -25,6 +25,7 @@ import MasterOfArts from "./pages/degrees/MasterOfArts";
 import Doctorate from "./pages/degrees/Doctorate";
 import BiblicalStudies from "./pages/degrees/courses/BiblicalStudies";
 import ChristianLeadership from "./pages/degrees/courses/ChristianLeadership";
+import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,8 @@ const App = () => (
                   <Route path="/degrees/doctorate" element={<Doctorate />} />
                   <Route path="/degrees/associate-of-arts/biblical-studies" element={<BiblicalStudies />} />
                   <Route path="/degrees/associate-of-arts/christian-leadership" element={<ChristianLeadership />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/profile/:username" element={<Profile />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
+import ProfileDrawer from "./ProfileDrawer";
 import HeaderNavigation from "./Header/HeaderNavigation";
 import HeaderActions from "./Header/HeaderActions";
 import { cn } from "@/lib/utils";
@@ -36,7 +37,7 @@ const NCUWordmark: React.FC = () => (
 const Header = () => {
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
-  const { cart, isCartOpen, openCart, closeCart } = useCart();
+  const { cart, isCartOpen, openCart, closeCart, isProfileOpen, openProfile, closeProfile } = useCart();
 
   // track dark mode
   const [isDark, setIsDark] = React.useState(
@@ -99,6 +100,7 @@ const Header = () => {
             onCartOpen={openCart}
             onSearchOpen={() => setSearchOpen((v) => !v)}
             cartCount={cartCount}
+            onProfileOpen={openProfile}
           />
         </div>
         {/* Gold line visual (unchanged) */}
@@ -121,6 +123,7 @@ const Header = () => {
         <SearchBar open={searchOpen} onClose={() => setSearchOpen(false)} />
       </header>
       <CartDrawer open={isCartOpen} onClose={closeCart} />
+      <ProfileDrawer open={isProfileOpen} onClose={closeProfile} />
       {/* REMOVE spacer for hero image flush with menu */}
       <div style={{ height: 80 }} />
       <style>
