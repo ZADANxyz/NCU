@@ -32,6 +32,6 @@ jobs:
         protocol: ftp
         port: 21
         local-dir: ./dist/
-        server-dir: ./ncu.education/
-        dangerous-clean-slate: false  # Since folder is blank, no need to delete
+        server-dir: ./
+        dangerous-clean-slate: true
         dry-run: false
