@@ -18,16 +18,7 @@ const NAV_ITEMS = [
   { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
   { label: "Downloads", to: "/downloads" },
-  { label: "Donate", to: "/donate" },
-  { label: "Apply Now!", to: "/apply" },
-];
-
-const DEGREES_NAV_ITEMS = [
-  { label: "Home", to: "/" },
-  { label: "About Us", to: "/about" },
-  { label: "Store", to: "/store" },
   { label: "Degrees", to: "/degrees" },
-  { label: "Downloads", to: "/downloads" },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
@@ -46,18 +37,15 @@ interface Props {
 
 const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
   const location = useLocation();
-  const isDegreesPage = location.pathname.startsWith('/degrees');
-  const isDownloadsPage = location.pathname.startsWith('/downloads');
-  const currentNavItems = isDegreesPage ? DEGREES_NAV_ITEMS : NAV_ITEMS;
 
   return (
     <NavigationMenu className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
       <NavigationMenuList className="flex items-center gap-2">
-        {currentNavItems.map((item) => {
+        {NAV_ITEMS.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
-          const activeColorClass = onHero && !isDark ? "text-ncu-blue" : "text-ncu-blue dark:text-ncu-gold";
-          const inactiveColorClass = onHero && !isDark ? "text-gray-700 hover:text-ncu-blue" : "text-gray-700 hover:text-ncu-gold dark:text-gray-200 dark:hover:text-ncu-blue";
+          const activeColorClass = onHero ? "text-white" : "text-ncu-blue dark:text-ncu-gold";
+          const inactiveColorClass = onHero ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-gold";
           const colorClass = active ? activeColorClass : inactiveColorClass;
 
           if (item.label === "Downloads") {
@@ -114,15 +102,24 @@ const DownloadsDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => 
         Downloads
       </NavigationMenuTrigger>
       <NavigationMenuContent>
-        <ul className="grid w-auto gap-3 p-4 md:w-[250px]">
+        <ul className="grid w-auto gap-1 p-4 md:w-[250px]">
           {loading ? (
-            <li><p className="text-muted-foreground text-sm">Loading...</p></li>
+            <li className="p-2 text-sm text-muted-foreground">Loading...</li>
           ) : downloadItems.length > 0 ? (
-            downloadItems.map((component) => (
-              <ListItem key={component.id} to={`/downloads/${component.slug}`} title={component.name} />
+            downloadItems.map((item) => (
+              <li key={item.id}>
+                <NavigationMenuLink asChild>
+                  <Link
+                    to={`/downloads/${item.slug}`}
+                    className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm font-medium"
+                  >
+                    {item.name}
+                  </Link>
+                </NavigationMenuLink>
+              </li>
             ))
           ) : (
-            <li><p className="text-muted-foreground text-sm">No downloads available.</p></li>
+            <li className="p-2 text-sm text-muted-foreground">No downloads available.</li>
           )}
         </ul>
       </NavigationMenuContent>
@@ -203,32 +200,5 @@ const DegreesDropdown: React.FC<{ colorClass: string }> = ({ colorClass }) => {
     </NavigationMenuItem>
   );
 };
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  { to: string } & React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, to, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          to={to}
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";
 
 export default HeaderNavigation;

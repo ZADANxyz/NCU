@@ -5,35 +5,20 @@ import ContactTabBlock from "@/components/ContactTabBlock";
 const HERO_IMAGE = "/lovable-uploads/72bef9f3-0c46-4484-b7cb-1af7990b8c18.png";
 
 const NCU_ALUMNI_TEXT = (
-  <div className="text-base md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
-    style={{
-      color: "inherit"
-    }}
-  >
-    <p className="mb-8 font-normal font-roboto dark:text-white text-base md:text-[1.38rem]">
+  <div className="text-base md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors">
+    <p className="mb-8 font-normal font-roboto text-base md:text-[1.38rem]">
       New Covenant University believes in the proper and extensive training for Christian Leaders called to Ministry, Entrepreneurship, and Education. New Covenant University is committed to providing an environment of understanding biblical standards of leadership and inspires a deeper relationship with God. Each graduate is supported by a mentor and is prepared to meet the rigorous demands of their calling. Please consider sowing into one of our scholarship programs or sponsoring one of our students{" "}
       <a
         href="/donate"
-        className="font-bold underline font-roboto transition-colors dark:text-white"
-        style={{ color: "inherit" }}
+        className="font-bold underline font-roboto transition-colors"
       >
         here
       </a>
       , as they take what they have learned from NCU to the marketplace and ministry.
     </p>
-    <p className="font-normal font-roboto dark:text-white text-base md:text-[1.38rem]">
+    <p className="font-normal font-roboto text-base md:text-[1.38rem]">
       The most important person in your life is one who inspires your faith when you need it the most. Thank you for helping us to inspire another!
     </p>
-    <style>
-      {`
-      .dark .font-roboto, 
-      .dark .font-normal, 
-      .dark p, 
-      .dark a {
-        color: #fff !important;
-      }
-      `}
-    </style>
   </div>
 );
 
@@ -64,7 +49,7 @@ const HeroSection = () => {
           className="w-full flex flex-col md:flex-row min-h-[500px] items-stretch px-4 md:px-0"
         >
           <div
-            className="w-full md:w-3/5 flex flex-col justify-start items-start md:pt-0 md:pl-[52px] md:pr-[18px]"
+            className="w-full md:w-2/3 flex flex-col justify-start items-start md:pt-0 md:pl-[52px] md:pr-[18px]"
           >
             <div className="w-full">
                 <h2
@@ -85,15 +70,14 @@ const HeroSection = () => {
               <AlumniCarousel />
             </div>
             <div className="h-8 md:h-10" />
-            <div className="flex-1 flex flex-col justify-start w-full">
-              <div className="text-lg md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
-                   style={{ color: "inherit" }}>
+            <div className="flex-1 flex flex-col justify-start w-full alumni-text-container">
+              <div className="text-lg md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors">
                 {NCU_ALUMNI_TEXT}
               </div>
             </div>
           </div>
           <div
-            className="w-full md:w-2/5 flex flex-col items-stretch justify-start mt-12 md:mt-0"
+            className="w-full md:w-1/3 flex flex-col items-stretch justify-start mt-12 md:mt-0"
           >
             <div className="w-full flex md:justify-end">
               <div
@@ -105,6 +89,14 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
+      <style>
+        {`
+        .dark .alumni-text-container p,
+        .dark .alumni-text-container a {
+          color: #fff !important;
+        }
+        `}
+      </style>
     </>
   );
 };

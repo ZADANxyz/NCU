@@ -26,8 +26,8 @@ const HeaderActions: React.FC<Props> = ({
   const buttonClasses = cn(
     "p-1.5 group outline-none ring-0 bg-transparent",
     "transition-transform duration-150",
-    onHero && isDark ? "text-slate-700" : "text-slate-700 dark:text-slate-200",
-    "hover:text-ncu-blue dark:hover:text-ncu-gold",
+    onHero ? "text-white" : "text-slate-700 dark:text-slate-200",
+    onHero ? "hover:text-gray-200" : "hover:text-ncu-blue dark:hover:text-ncu-gold",
     "hover:scale-110 focus:scale-110"
   );
 
@@ -70,7 +70,7 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <ThemeToggle
-        className="transition-transform duration-150 hover:scale-110 p-1.5 text-slate-700 dark:text-slate-200"
+        className={cn("transition-transform duration-150 hover:scale-110 p-1.5", onHero ? "text-white" : "text-slate-700 dark:text-slate-200")}
         isDark={isDark}
         iconSize={iconSize}
       />
