@@ -47,16 +47,16 @@ const About = () => {
           </div>
 
           <div className="w-full lg:w-1/3 flex flex-col gap-4 mt-8 lg:mt-0">
-            <div className="w-full h-[400px] md:h-[500px] overflow-hidden rounded-lg">
+            <div className="w-full overflow-hidden rounded-lg">
               <img
                 src="/lovable-uploads/2d48b4a2-c29c-4b51-86c4-5dc45ec36d67.png"
                 alt="Paul Crites"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover rounded-lg"
                 style={{ objectPosition: "center 20%" }}
               />
             </div>
             
-            <div className="w-full h-[180px] md:h-[200px] overflow-hidden rounded-lg">
+            <div className="w-full overflow-hidden rounded-lg">
               <AlumniCarousel />
             </div>
           </div>
