@@ -79,11 +79,11 @@ const HeroSection = () => {
               <span className="dark:text-white transition-colors">Meet Our NCU Alumni</span>
             </h2>
             <div className="h-4 md:h-5" />
-            <div className="w-full max-w-[870px]">
+            <div className="w-full">
               <AlumniCarousel />
             </div>
             <div className="h-8 md:h-10" />
-            <div className="flex-1 flex flex-col justify-start w-full max-w-[870px]">
+            <div className="flex-1 flex flex-col justify-start w-full">
               <div className="text-lg md:text-[1.55rem] leading-relaxed font-normal font-roboto transition-colors"
                    style={{ color: "inherit" }}>
                 {NCU_ALUMNI_TEXT}

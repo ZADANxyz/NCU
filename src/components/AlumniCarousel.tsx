@@ -74,10 +74,7 @@ const AlumniCarousel = () => {
           containScroll: 'trimSnaps'
         }}
         setApi={setApi}
-        className="w-full max-w-[870px] md:max-w-[870px] lg:max-w-[870px] mx-0"
-        style={{
-          marginLeft: 0,
-        }}
+        className="w-full mx-0"
       >
         <CarouselContent>
           {alumniImages.map((image, idx) => (
@@ -95,23 +92,19 @@ const AlumniCarousel = () => {
               }}
             >
               <div
+                className="rounded-lg shadow-md overflow-hidden"
                 style={{
-                  borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   width: "100%",
-                  maxWidth: "870px",
                   margin: "0 auto",
                 }}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="rounded-lg object-contain shadow-md w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
+                  className="rounded-lg object-contain w-full h-[275px] md:h-[370px] lg:h-[415px] border-0 mx-auto transition-all"
                   draggable={false}
                   loading="lazy"
-                  style={{
-                    marginLeft: 0,
-                  }}
                 />
               </div>
             </CarouselItem>

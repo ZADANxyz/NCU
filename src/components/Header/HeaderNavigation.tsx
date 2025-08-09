@@ -17,7 +17,7 @@ const NAV_ITEMS = [
   { label: "About Us", to: "/about" },
   { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
-  { label: "Downloads", to: "/downloads", isDropdown: true },
+  { label: "Downloads", to: "/downloads" },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
@@ -26,8 +26,8 @@ const DEGREES_NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Store", to: "/store" },
-  { label: "Degrees", to: "/degrees", isDropdown: true },
-  { label: "Downloads", to: "/downloads", isDropdown: true },
+  { label: "Degrees", to: "/degrees" },
+  { label: "Downloads", to: "/downloads" },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
@@ -53,25 +53,26 @@ interface Props {
 const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
   const location = useLocation();
   const isDegreesPage = location.pathname.startsWith('/degrees');
+  const isDownloadsPage = location.pathname.startsWith('/downloads');
   const currentNavItems = isDegreesPage ? DEGREES_NAV_ITEMS : NAV_ITEMS;
 
   return (
     <NavigationMenu className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
-      <NavigationMenuList className="flex items-center gap-9">
+      <NavigationMenuList className="flex items-center gap-4">
         {currentNavItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
           let colorClass = "";
-          if (!isDark) {
-            colorClass = active ? "text-ncu-blue" : "text-gray-700 hover:text-ncu-gold";
+          if (active) {
+            colorClass = "text-ncu-blue dark:text-ncu-gold";
           } else {
-            colorClass = active ? "text-ncu-gold" : "text-gray-200 hover:text-ncu-blue";
+            colorClass = "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-gold";
           }
 
-          if (item.label === "Downloads") {
+          if (item.label === "Downloads" && isDownloadsPage) {
             return <DownloadsDropdown key={item.label} colorClass={colorClass} />;
           }
-          if (item.label === "Degrees") {
+          if (item.label === "Degrees" && isDegreesPage) {
             return <DegreesDropdown key={item.label} colorClass={colorClass} />;
           }
 
