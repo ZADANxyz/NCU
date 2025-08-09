@@ -1,16 +1,16 @@
-name: Deploy React to HostGator via FTP
+name: Deploy React Site to HostGator FTP
 
 on:
   push:
     branches:
-      - main  # your deployment branch
+      - main   # or your deployment branch name
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Setup Node.js
@@ -18,7 +18,7 @@ jobs:
       with:
         node-version: 18
 
-    - name: Install dependencies and build
+    - name: Install dependencies and build React app
       run: |
         npm install
         npm run build
@@ -31,7 +31,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftp
         port: 21
-        local-dir: ./build/           # or ./dist/ if your build outputs there
+        local-dir: ./dist/
         server-dir: /home2/mbisbell/ncu.education/
-        dangerous-clean-slate: true   # deletes ALL files in the remote directory before upload
+        dangerous-clean-slate: true
         dry-run: false
