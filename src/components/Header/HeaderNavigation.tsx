@@ -58,7 +58,7 @@ const HeaderNavigation: React.FC<Props> = ({ isDark }) => {
 
   return (
     <NavigationMenu className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
-      <NavigationMenuList className="flex items-center gap-4">
+      <NavigationMenuList className="flex items-center gap-2">
         {currentNavItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           

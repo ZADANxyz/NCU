@@ -95,8 +95,8 @@ const AboutUsCarousel = () => {
               }}
             >
               <div
+                className="rounded-lg shadow-md overflow-hidden"
                 style={{
-                  borderRadius: "0.38rem",
                   boxShadow: "0 6px 26px 0 rgba(177,149,40,0.12)",
                   width: "100%",
                   maxWidth: "870px",
