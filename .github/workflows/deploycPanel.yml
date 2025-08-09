@@ -9,25 +9,41 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Pull the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Setup Node for Vite build
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # Build the production site
       - name: Build project
         run: npm run build
 
+      # Clear the public_html folder before deploying
+      - name: Clear public_html
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./empty-dir/
+          server-dir: /public_html/
+          dangerous-clean-slate: true
+
+      # Deploy the new build
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist
-          server-dir: /public_html
+          local-dir: ./dist/
+          server-dir: /public_html/
