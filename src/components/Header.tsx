@@ -6,6 +6,7 @@ import { useFooterVisible } from "./Header/useFloatingHeader";
 import HeaderNavigation from "./Header/HeaderNavigation";
 import HeaderActions from "./Header/HeaderActions";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/contexts/CartContext";
 
 // Clean NCU wordmark SVG 140px width, fills with currentColor
 const NCUWordmark: React.FC = () => (
@@ -47,6 +48,7 @@ const Header = () => {
   const [cartOpen, setCartOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
+  const { cart } = useCart();
 
   // Floating header position when footer visible
   const footerVisible = useFooterVisible("site-footer");
@@ -74,8 +76,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
-  // Demo: Always 3 in cart
-  const cartCount = 3;
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>

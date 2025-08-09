@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ShoppingCart, Search, User } from "lucide-react";
 import ThemeToggle from "../ThemeToggle";
@@ -61,9 +60,11 @@ const HeaderActions: React.FC<Props> = ({
         type="button"
       >
         <ShoppingCart size={iconSize} strokeWidth={2.05} />
-        <span className="absolute -top-1 -right-0 bg-[#046BD2] text-[9px] text-white font-bold h-3 w-3 flex items-center justify-center rounded-full ring-2 ring-white shadow">
-          {cartCount}
-        </span>
+        {cartCount > 0 && (
+          <span className="absolute -top-1.5 -right-1.5 bg-[#046BD2] text-[10px] text-white font-bold min-w-[1rem] h-4 px-1 flex items-center justify-center rounded-full ring-2 ring-white dark:ring-gray-800 shadow">
+            {cartCount}
+          </span>
+        )}
       </button>
 
       {/* Person Icon - updated to User (replaces Person) */}
@@ -99,4 +100,3 @@ const HeaderActions: React.FC<Props> = ({
 };
 
 export default HeaderActions;
-
