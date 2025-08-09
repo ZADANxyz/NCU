@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { googleDriveService, type GoogleDriveImage } from "@/utils/googleDriveApi";
 
-const AUTO_SLIDE_INTERVAL = 7400;
+const AUTO_SLIDE_INTERVAL = 7400; // slower than before
 
 const AlumniCarousel = () => {
   const [current, setCurrent] = React.useState(0);
@@ -75,7 +75,7 @@ const AlumniCarousel = () => {
       setApi={setApi}
       className="w-full"
     >
-      <CarouselContent className="-ml-0">
+      <CarouselContent className="ml-0">
         {alumniImages.map((image, idx) => (
           <CarouselItem
             key={idx}
