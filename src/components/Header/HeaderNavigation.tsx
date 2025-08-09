@@ -12,13 +12,23 @@ import {
 } from "@/components/ui/navigation-menu";
 import { googleDriveService, GoogleDrivePdf } from "@/utils/googleDriveApi";
 
-const NAV_ITEMS = [
+const DEFAULT_NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Store", to: "/store" },
   { label: "Media", to: "/media" },
   { label: "Downloads", to: "/downloads" },
   { label: "Degrees", to: "/degrees" },
+  { label: "Donate", to: "/donate" },
+  { label: "Apply Now!", to: "/apply" },
+];
+
+const DEGREES_NAV_ITEMS = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Store", to: "/store" },
+  { label: "Degrees", to: "/degrees" },
+  { label: "Downloads", to: "/downloads" },
   { label: "Donate", to: "/donate" },
   { label: "Apply Now!", to: "/apply" },
 ];
@@ -37,16 +47,32 @@ interface Props {
 
 const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
   const location = useLocation();
+  const isDegreesPage = location.pathname.startsWith('/degrees');
+  const navItems = isDegreesPage ? DEGREES_NAV_ITEMS : DEFAULT_NAV_ITEMS;
 
   return (
     <NavigationMenu className="hidden md:flex flex-1 items-center justify-center relative z-20" style={{ height: 40 }}>
       <NavigationMenuList className="flex items-center gap-2">
-        {NAV_ITEMS.map((item) => {
+        {navItems.map((item) => {
           const active = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
           
-          const activeColorClass = onHero ? "text-white" : "text-ncu-blue dark:text-ncu-gold";
-          const inactiveColorClass = onHero ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-gold";
-          const colorClass = active ? activeColorClass : inactiveColorClass;
+          let colorClass = '';
+          if (onHero) {
+            if (isDark) {
+              // Dark mode on hero
+              colorClass = cn('text-white hover:text-ncu-blue', active && 'text-ncu-gold');
+            } else {
+              // Light mode on hero
+              colorClass = cn('text-black hover:text-ncu-gold', active && 'text-ncu-blue');
+            }
+          } else {
+            // Scrolled state (not on hero)
+            colorClass = cn(
+              'text-gray-700 dark:text-gray-200',
+              'hover:text-ncu-blue dark:hover:text-ncu-gold',
+              active && 'text-ncu-blue dark:text-ncu-gold'
+            );
+          }
 
           if (item.label === "Downloads" && location.pathname.startsWith('/downloads')) {
             return <DownloadsDropdown key={item.label} colorClass={colorClass} />;

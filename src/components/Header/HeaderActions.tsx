@@ -23,12 +23,21 @@ const HeaderActions: React.FC<Props> = ({
   onHero,
 }) => {
   const iconSize = 18;
-  const buttonClasses = cn(
+
+  const iconClasses = cn(
     "p-1.5 group outline-none ring-0 bg-transparent",
     "transition-transform duration-150",
-    onHero ? "text-white" : "text-slate-700 dark:text-slate-200",
-    onHero ? "hover:text-gray-200" : "hover:text-ncu-blue dark:hover:text-ncu-gold",
-    "hover:scale-110 focus:scale-110"
+    "hover:scale-110 focus:scale-110",
+    onHero 
+      ? (isDark ? 'text-white hover:text-ncu-blue' : 'text-black hover:text-ncu-blue')
+      : 'text-slate-700 dark:text-slate-200 hover:text-ncu-blue dark:hover:text-ncu-gold'
+  );
+
+  const themeToggleClasses = cn(
+    "transition-transform duration-150 hover:scale-110 p-1.5",
+    onHero
+      ? (isDark ? 'text-white' : 'text-black')
+      : 'text-slate-700 dark:text-slate-200'
   );
 
   return (
@@ -37,7 +46,7 @@ const HeaderActions: React.FC<Props> = ({
       style={{ height: 40, alignItems: "center", display: "flex" }}
     >
       <button
-        className={buttonClasses}
+        className={iconClasses}
         aria-label="Search"
         onClick={onSearchOpen}
         type="button"
@@ -46,7 +55,7 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <button
-        className={cn(buttonClasses, "relative")}
+        className={cn(iconClasses, "relative")}
         aria-label="Open cart"
         onClick={onCartOpen}
         type="button"
@@ -60,7 +69,7 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <button
-        className={buttonClasses}
+        className={iconClasses}
         aria-label="User Profile"
         onClick={onProfileOpen}
         type="button"
@@ -70,13 +79,13 @@ const HeaderActions: React.FC<Props> = ({
       </button>
 
       <ThemeToggle
-        className={cn("transition-transform duration-150 hover:scale-110 p-1.5", onHero ? "text-white" : "text-slate-700 dark:text-slate-200")}
+        className={themeToggleClasses}
         isDark={isDark}
         iconSize={iconSize}
       />
 
       <button
-        className={cn(buttonClasses, "md:hidden")}
+        className={cn(iconClasses, "md:hidden")}
         aria-label="Open menu"
         onClick={onMobileMenuOpen}
         type="button"
