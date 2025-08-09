@@ -48,10 +48,11 @@ const HeaderNavigation: React.FC<Props> = ({ isDark, onHero }) => {
           const inactiveColorClass = onHero ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-ncu-blue dark:text-gray-200 dark:hover:text-ncu-gold";
           const colorClass = active ? activeColorClass : inactiveColorClass;
 
-          if (item.label === "Downloads") {
+          if (item.label === "Downloads" && location.pathname.startsWith('/downloads')) {
             return <DownloadsDropdown key={item.label} colorClass={colorClass} />;
           }
-          if (item.label === "Degrees") {
+
+          if (item.label === "Degrees" && location.pathname.startsWith('/degrees')) {
             return <DegreesDropdown key={item.label} colorClass={colorClass} />;
           }
 
