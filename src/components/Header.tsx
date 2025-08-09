@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import CartDrawer from "./CartDrawer";
-import { useFooterVisible } from "./Header/useFloatingHeader";
 import HeaderNavigation from "./Header/HeaderNavigation";
 import HeaderActions from "./Header/HeaderActions";
 import { cn } from "@/lib/utils";
@@ -38,9 +37,6 @@ const Header = () => {
   const [searchOpen, setSearchOpen] = React.useState(false);
   const [elevate, setElevate] = React.useState(false);
   const { cart, isCartOpen, openCart, closeCart } = useCart();
-
-  // Floating header position when footer visible
-  const footerVisible = useFooterVisible("site-footer");
 
   // track dark mode
   const [isDark, setIsDark] = React.useState(
@@ -78,10 +74,7 @@ const Header = () => {
         style={{
           borderBottomLeftRadius: "0.38rem",
           borderBottomRightRadius: "0.38rem",
-          transition: "top 0.12s cubic-bezier(.4,0,.2,1), box-shadow 0.28s",
-          top: footerVisible
-            ? `calc(100vh - 60px - var(--footer-height,96px))`
-            : 0,
+          transition: "box-shadow 0.28s",
         }}
       >
         <div
@@ -129,7 +122,7 @@ const Header = () => {
       </header>
       <CartDrawer open={isCartOpen} onClose={closeCart} />
       {/* REMOVE spacer for hero image flush with menu */}
-      <div style={{ height: 0 }} />
+      <div style={{ height: 80 }} />
       <style>
         {`
         .apple-glass-header {
