@@ -162,7 +162,8 @@ const Store = () => {
                   case 'sold-out': return 'bg-red-600';
                   case 'on-sale': return 'bg-green-600';
                   case 'exclusive': return 'bg-purple-600';
-                  default: return '';
+                  case 'in-stock': return 'bg-blue-600';
+                  default: return 'bg-blue-600';
                 }
               };
 
@@ -174,11 +175,9 @@ const Store = () => {
                       alt={book.title}
                       className="max-w-full max-h-full object-contain drop-shadow-lg"
                     />
-                    {status !== 'in-stock' && (
-                      <span className={`absolute top-2 left-2 text-white text-xs font-bold px-2 py-1 rounded-full ${getBadgeClasses()}`}>
-                        {status.replace('-', ' ').toUpperCase()}
-                      </span>
-                    )}
+                    <span className={`absolute top-2 left-2 text-white text-xs font-bold px-2 py-1 rounded-full ${getBadgeClasses()}`}>
+                      {status.replace('-', ' ').toUpperCase()}
+                    </span>
                   </div>
                   <h3 className="text-base font-medium italic text-[#2c2c2c] dark:text-gray-200 mb-2 min-h-[3rem] flex items-center">
                     {book.title}

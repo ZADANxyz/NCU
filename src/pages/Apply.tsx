@@ -83,7 +83,7 @@ const Apply = () => {
             {/* Logo - Large and pinned to left with proper aspect ratio */}
             <div className="flex-shrink-0">
               <img
-                src="/favicon.png"
+                src="/ncu-seal.png"
                 alt="New Covenant University Seal"
                 className="w-auto h-36 md:h-44 lg:h-52 max-w-none"
                 style={{ aspectRatio: 'auto' }}
